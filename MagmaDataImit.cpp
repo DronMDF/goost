@@ -1,5 +1,6 @@
 
 #include "MagmaDataImit.h"
+#include "MagmaKey.h"
 
 using namespace std;
 
@@ -26,4 +27,10 @@ vector<uint8_t> MagmaDataImit::value() const
 		state = key->imit(state);
 	}
 	return state;
+}
+
+uint32_t MagmaDataImit::asUInt32() const
+{
+	const auto rv = value();
+	return *reinterpret_cast<const uint32_t *>(&rv[0]);
 }
