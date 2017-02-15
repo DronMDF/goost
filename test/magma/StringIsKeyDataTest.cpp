@@ -1,5 +1,5 @@
 #include "upp11.h"
-#include "MagmaStringIsKeyData.h"
+#include "magma/StringIsKeyData.h"
 
 UP_TEST(TK26ExampleKey)
 {

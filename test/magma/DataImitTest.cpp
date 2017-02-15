@@ -1,7 +1,7 @@
 #include "upp11.h"
-#include "MagmaSbox.h"
-#include "MagmaKey.h"
-#include "MagmaDataImit.h"
+#include "magma/Sbox.h"
+#include "magma/Key.h"
+#include "magma/DataImit.h"
 
 using namespace std;
 

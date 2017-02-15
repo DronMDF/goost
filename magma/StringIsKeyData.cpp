@@ -1,4 +1,4 @@
-#include "MagmaStringIsKeyData.h"
+#include "StringIsKeyData.h"
 #include <sstream>
 #include <stdexcept>
 

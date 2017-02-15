@@ -1,4 +1,4 @@
-#include "MagmaSbox.h"
+#include "Sbox.h"
 #include <stdexcept>
 
 using namespace std;

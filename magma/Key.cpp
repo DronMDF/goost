@@ -1,6 +1,6 @@
-#include "MagmaKey.h"
+#include "Key.h"
 #include <cstring>
-#include "MagmaSbox.h"
+#include "Sbox.h"
 
 using namespace std;
 

@@ -1,5 +1,5 @@
 #pragma once
-#include "MagmaKeyData.h"
+#include "KeyData.h"
 #include <string>
 
 class MagmaStringIsKeyData : public MagmaKeyData {

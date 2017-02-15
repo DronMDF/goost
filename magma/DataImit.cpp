@@ -1,6 +1,6 @@
 
-#include "MagmaDataImit.h"
-#include "MagmaKey.h"
+#include "DataImit.h"
+#include "Key.h"
 
 using namespace std;
 

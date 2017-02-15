@@ -7,10 +7,10 @@ env = Environment(
 env.Library(
 	'goost',
 	[
-		'MagmaDataImit.cpp',
-		'MagmaKey.cpp',
-		'MagmaSbox.cpp',
-		'MagmaStringIsKeyData.cpp'
+		'magma/DataImit.cpp',
+		'magma/Key.cpp',
+		'magma/Sbox.cpp',
+		'magma/StringIsKeyData.cpp'
 	]
 )
 
