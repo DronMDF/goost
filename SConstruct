@@ -1,5 +1,6 @@
 env = Environment(
 	CCFLAGS='-O2',
+	CPPPATH=['.', 'test'],
 	LIBPATH='.'
 )
 
@@ -14,11 +15,11 @@ env.Library(
 )
 
 test = env.Program(
-	'test',
+	'test_runner',
 	[
-		'TestMagmaDataImit.cpp',
-		'TestMagmaStringIsKeyData.cpp',
-		'main.cpp'
+		'test/magma/DataImitTest.cpp',
+		'test/magma/StringIsKeyDataTest.cpp',
+		'test/main.cpp'
 	],
 	LIBS='goost'
 )
