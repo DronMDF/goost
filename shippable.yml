@@ -6,6 +6,7 @@ compiler:
 
 build:
   ci:
-    cmake
-    make
-    ./test_runner -t
+    - apt-get install cmake
+    - cmake
+    - make
+    - ./test_runner -t
