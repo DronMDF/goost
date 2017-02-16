@@ -1,9 +1,11 @@
 #include "upp11.h"
 #include "magma/Sbox.h"
 #include "magma/Key.h"
+#include "magma/KeyDataNative.h"
 #include "magma/DataImit.h"
 
 using namespace std;
+using namespace magma;
 
 #define LINE(X) \
 0x##X##4##X##5##X##6##X##7, \
@@ -43,17 +45,19 @@ UP_TEST(SimpleImit)
 		0x6d, 0xa6, 0x02, 0xf1, 0x07, 0x4f, 0xe1, 0x4a,
 		0xba, 0x30, 0x2f, 0x12, 0x56, 0x8b, 0x44, 0x8d
 	}));
-	const auto key = make_shared<const MagmaKey>(
-		vector<uint32_t>({
-			0xE0F67504,
-			0xFAFB3850,
-			0x90C3C7D2,
-			0x3DCAB3ED,
-			0x42124715,
-			0x8A1EAE91,
-			0x9ECD792F,
-			0xBDEFBCD2
-		}),
+	const auto key = make_shared<const Key>(
+		make_shared<const KeyDataNative>(
+			vector<uint32_t>({
+				0xE0F67504U,
+				0xFAFB3850U,
+				0x90C3C7D2U,
+				0x3DCAB3EDU,
+				0x42124715U,
+				0x8A1EAE91U,
+				0x9ECD792FU,
+				0xBDEFBCD2U
+			})
+		),
 		sbox
 	);
 	vector<uint8_t> data(sizeof(Text02));
@@ -76,17 +80,19 @@ UP_TEST(BenchmarkImit)
 		0x6d, 0xa6, 0x02, 0xf1, 0x07, 0x4f, 0xe1, 0x4a,
 		0xba, 0x30, 0x2f, 0x12, 0x56, 0x8b, 0x44, 0x8d
 	}));
-	const auto key = make_shared<const MagmaKey>(
-		vector<uint32_t>({
-			0xE0F67504,
-			0xFAFB3850,
-			0x90C3C7D2,
-			0x3DCAB3ED,
-			0x42124715,
-			0x8A1EAE91,
-			0x9ECD792F,
-			0xBDEFBCD2
-		}),
+	const auto key = make_shared<const Key>(
+		make_shared<const KeyDataNative>(
+			vector<uint32_t>({
+				0xE0F67504U,
+				0xFAFB3850U,
+				0x90C3C7D2U,
+				0x3DCAB3EDU,
+				0x42124715U,
+				0x8A1EAE91U,
+				0x9ECD792FU,
+				0xBDEFBCD2U
+			})
+		),
 		sbox
 	);
 	const MagmaDataImit imit(vector<uint8_t>(100000000U, 'A'), key);

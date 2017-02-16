@@ -3,8 +3,9 @@
 #include "Key.h"
 
 using namespace std;
+using namespace magma;
 
-MagmaDataImit::MagmaDataImit(const vector<uint8_t> &data, const shared_ptr<const MagmaKey> &key)
+MagmaDataImit::MagmaDataImit(const vector<uint8_t> &data, const shared_ptr<const Key> &key)
 	: data(data), key(key)
 {
 }

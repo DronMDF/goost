@@ -1,25 +1,22 @@
 #include "Key.h"
 #include <cstring>
+#include "KeyData.h"
 #include "Sbox.h"
 
 using namespace std;
+using namespace magma;
 
-MagmaKey::MagmaKey(const vector<uint8_t> &key, const shared_ptr<const MagmaSbox> &sbox)
-	: MagmaKey(MagmaKey::fromBytes(key), sbox)
+Key::Key(const shared_ptr<const KeyData> &key_data, const shared_ptr<const MagmaSbox> &sbox)
+	: key_data(key_data), sbox(sbox)
 {
 }
 
-MagmaKey::MagmaKey(const vector<uint32_t> &key, const shared_ptr<const MagmaSbox> &sbox)
-	: key(key), sbox(sbox)
+uint32_t Key::cycle(uint32_t v, int index) const
 {
+	return sbox->transform(key_data->key(index) + v);
 }
 
-uint32_t MagmaKey::cycle(uint32_t v, int index) const
-{
-	return sbox->transform(key[index] + v);
-}
-
-vector<uint8_t> MagmaKey::imit(const vector<uint8_t> &block) const
+vector<uint8_t> Key::imit(const vector<uint8_t> &block) const
 {
 	if (block.size() != 8) {
 		throw runtime_error("Wrong block size");
@@ -49,14 +46,4 @@ vector<uint8_t> MagmaKey::imit(const vector<uint8_t> &block) const
 	reinterpret_cast<uint32_t *>(&rv[0])[1] = a;
 	reinterpret_cast<uint32_t *>(&rv[0])[0] = b;
 	return rv;
-}
-
-vector<uint32_t> MagmaKey::fromBytes(const vector<uint8_t> &key)
-{
-	if (key.size() != 32) {
-		throw runtime_error("Wrong key size");
-	}
-	vector<uint32_t> rk(8);
-	memcpy(&rk[0], &key[0], 32);
-	return rk;
 }
