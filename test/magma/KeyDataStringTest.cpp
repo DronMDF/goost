@@ -1,5 +1,5 @@
 #include <upp11.h>
-#include "magma/KeyDataString.h"
+#include <magma/KeyDataString.h>
 
 using namespace magma;
 

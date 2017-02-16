@@ -13,6 +13,7 @@ ADD_COMPILE_OPTIONS(-std=c++11 -O2 -g0)
 ADD_LIBRARY(goost
 	magma/DataImit.cpp
 	magma/Key.cpp
+	magma/KeyDataNative.cpp
 	magma/KeyDataString.cpp
 	magma/Sbox.cpp
 )
@@ -20,6 +21,7 @@ ADD_LIBRARY(goost
 ADD_EXECUTABLE(test_runner
 	test/main.cpp
 	test/magma/DataImitTest.cpp
+	test/magma/KeyDataNativeTest.cpp
 	test/magma/KeyDataStringTest.cpp
 )
 TARGET_LINK_LIBRARIES(test_runner goost)
