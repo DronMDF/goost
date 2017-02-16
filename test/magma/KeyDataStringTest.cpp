@@ -1,9 +1,11 @@
-#include "upp11.h"
-#include "magma/StringIsKeyData.h"
+#include <upp11.h>
+#include "magma/KeyDataString.h"
+
+using namespace magma;
 
 UP_TEST(TK26ExampleKey)
 {
-	MagmaStringIsKeyData kd("ffeeddccbbaa99887766554433221100f0f1f2f3f4f5f6f7f8f9fafbfcfdfeff");
+	KeyDataString kd("ffeeddccbbaa99887766554433221100f0f1f2f3f4f5f6f7f8f9fafbfcfdfeff");
 	UP_ASSERT_EQUAL(kd.key(0), 0xffeeddcc);
 	UP_ASSERT_EQUAL(kd.key(1), 0xbbaa9988);
 	UP_ASSERT_EQUAL(kd.key(2), 0x77665544);
@@ -13,4 +15,3 @@ UP_TEST(TK26ExampleKey)
 	UP_ASSERT_EQUAL(kd.key(6), 0xf8f9fafb);
 	UP_ASSERT_EQUAL(kd.key(7), 0xfcfdfeff);
 }
-

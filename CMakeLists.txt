@@ -13,14 +13,14 @@ ADD_COMPILE_OPTIONS(-O2 -g0)
 ADD_LIBRARY(goost
 	magma/DataImit.cpp
 	magma/Key.cpp
+	magma/KeyDataString.cpp
 	magma/Sbox.cpp
-	magma/StringIsKeyData.cpp
 )
 
 ADD_EXECUTABLE(test_runner
 	test/main.cpp
 	test/magma/DataImitTest.cpp
-	test/magma/StringIsKeyDataTest.cpp
+	test/magma/KeyDataStringTest.cpp
 )
 TARGET_LINK_LIBRARIES(test_runner goost)
 ADD_TEST(unittest test_runner)
