@@ -6,7 +6,8 @@ compiler:
 
 build:
   ci:
+    - apt-get update
     - apt-get install cmake
-    - cmake
+    - cmake .
     - make
     - ./test_runner -t
