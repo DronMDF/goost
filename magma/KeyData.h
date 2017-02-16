@@ -1,8 +1,12 @@
 #pragma once
 #include <cstdint>
 
-class MagmaKeyData {
+namespace magma {
+
+class KeyData {
 public:
-	virtual ~MagmaKeyData() = default;
+	virtual ~KeyData() = default;
 	virtual uint32_t key(int index) const = 0;
 };
+
+}

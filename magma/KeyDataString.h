@@ -4,7 +4,7 @@
 
 namespace magma {
 
-class KeyDataString : public MagmaKeyData {
+class KeyDataString : public KeyData {
 public:
 	explicit KeyDataString(const std::string &key_data);
 	virtual uint32_t key(int index) const override;
@@ -12,4 +12,4 @@ private:
 	const std::string key_data;
 };
 
-};
+}
