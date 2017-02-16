@@ -8,7 +8,7 @@ INCLUDE_DIRECTORIES(
 	"${PROJECT_SOURCE_DIR}/test"
 )
 
-ADD_COMPILE_OPTIONS(-O2 -g0)
+ADD_COMPILE_OPTIONS(-std=c++11 -O2 -g0)
 
 ADD_LIBRARY(goost
 	magma/DataImit.cpp
