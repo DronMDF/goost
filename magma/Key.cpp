@@ -6,7 +6,7 @@
 using namespace std;
 using namespace magma;
 
-Key::Key(const shared_ptr<const KeyData> &key_data, const shared_ptr<const MagmaSbox> &sbox)
+Key::Key(const shared_ptr<const KeyData> &key_data, const shared_ptr<const Sbox> &sbox)
 	: key_data(key_data), sbox(sbox)
 {
 }

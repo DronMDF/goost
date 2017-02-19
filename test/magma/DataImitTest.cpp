@@ -1,8 +1,8 @@
 #include "upp11.h"
-#include "magma/Sbox.h"
-#include "magma/Key.h"
-#include "magma/KeyDataNative.h"
 #include "magma/DataImit.h"
+#include "magma/KeyDataNative.h"
+#include "magma/Key.h"
+#include "magma/SboxByte.h"
 
 using namespace std;
 using namespace magma;
@@ -35,7 +35,7 @@ static const uint32_t Text02[] = {
 UP_TEST(SimpleImit)
 {
 	// Given
-	const auto sbox = make_shared<const MagmaSbox>(vector<uint8_t>({
+	const auto sbox = make_shared<const SboxByte>(vector<uint8_t>({
 		0xc4, 0xed, 0x83, 0xc9, 0x92, 0x98, 0xfe, 0x6b,
 		0xff, 0xbe, 0x65, 0x5c, 0xe5, 0x2c, 0xb9, 0x20,
 		0x89, 0x57, 0x16, 0xb3, 0x11, 0xf3, 0x98, 0x06,
@@ -70,7 +70,7 @@ UP_TEST(SimpleImit)
 UP_TEST(BenchmarkImit)
 {
 	// Given
-	const auto sbox = make_shared<const MagmaSbox>(vector<uint8_t>({
+	const auto sbox = make_shared<const SboxByte>(vector<uint8_t>({
 		0xc4, 0xed, 0x83, 0xc9, 0x92, 0x98, 0xfe, 0x6b,
 		0xff, 0xbe, 0x65, 0x5c, 0xe5, 0x2c, 0xb9, 0x20,
 		0x89, 0x57, 0x16, 0xb3, 0x11, 0xf3, 0x98, 0x06,
@@ -99,8 +99,3 @@ UP_TEST(BenchmarkImit)
 	// Then
 	UP_ASSERT_EQUAL(imit.asUInt32(), 2148187304);
 }
-
-
-
-
-
