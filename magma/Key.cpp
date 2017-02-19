@@ -1,12 +1,12 @@
 #include "Key.h"
 #include <cstring>
 #include "KeyData.h"
-#include "Sbox.h"
+#include "SboxByte.h"
 
 using namespace std;
 using namespace magma;
 
-Key::Key(const shared_ptr<const KeyData> &key_data, const shared_ptr<const MagmaSbox> &sbox)
+Key::Key(const shared_ptr<const KeyData> &key_data, const shared_ptr<const SboxByte> &sbox)
 	: key_data(key_data), sbox(sbox)
 {
 }

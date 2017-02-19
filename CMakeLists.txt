@@ -15,7 +15,7 @@ ADD_LIBRARY(goost
 	magma/Key.cpp
 	magma/KeyDataNative.cpp
 	magma/KeyDataString.cpp
-	magma/Sbox.cpp
+	magma/SboxByte.cpp
 )
 
 ADD_EXECUTABLE(test_runner
