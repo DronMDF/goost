@@ -25,6 +25,7 @@ ADD_EXECUTABLE(test_runner
 	test/magma/DataImitTest.cpp
 	test/magma/KeyDataNativeTest.cpp
 	test/magma/KeyDataStringTest.cpp
+	test/magma/KeyTest.cpp
 	test/magma/SboxNibbleTest.cpp
 	test/magma/SboxTwistedTest.cpp
 )
