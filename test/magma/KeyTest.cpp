@@ -10,9 +10,8 @@ using namespace magma;
 
 UP_SUITE_BEGIN(KeyTest)
 
-UP_TEST(A24ExampleTest)
-{
-	const auto sbox = make_shared<const SboxTwisted>(
+struct KeyTestFixture {
+	const shared_ptr<const Sbox> sbox = make_shared<const SboxTwisted>(
 		make_shared<const SboxNibble>(
 			vector<int>{12, 4, 6, 2, 10, 5, 11, 9, 14, 8, 13, 7, 0, 3, 15, 1},
 			vector<int>{6, 8, 2, 3, 9, 10, 5, 12, 1, 14, 4, 7, 11, 13, 0, 15},
@@ -24,12 +23,23 @@ UP_TEST(A24ExampleTest)
 			vector<int>{1, 7, 14, 13, 0, 5, 8, 3, 4, 15, 10, 6, 9, 12, 11, 2}
 		)
 	);
-	const auto key_data = make_shared<const KeyDataString>(
+	const shared_ptr<const KeyData> key_data = make_shared<const KeyDataString>(
 		"ffeeddccbbaa99887766554433221100f0f1f2f3f4f5f6f7f8f9fafbfcfdfeff"
 	);
+};
+
+UP_FIXTURE_TEST(A24ExampleTest, KeyTestFixture)
+{
 	const Key key(key_data, sbox);
 	const auto result = key.encrypt({0x10, 0x32, 0x54, 0x76, 0x98, 0xba, 0xdc, 0xfe});
 	UP_ASSERT_EQUAL(result, vector<uint8_t>{0x3d, 0xca, 0xd8, 0xc2, 0xe5, 0x01, 0xe9, 0x4e});
+}
+
+UP_FIXTURE_TEST(A25ExampleTest, KeyTestFixture)
+{
+	const Key key(key_data, sbox);
+	const auto result = key.decrypt({0x3d, 0xca, 0xd8, 0xc2, 0xe5, 0x01, 0xe9, 0x4e});
+	UP_ASSERT_EQUAL(result, vector<uint8_t>{0x10, 0x32, 0x54, 0x76, 0x98, 0xba, 0xdc, 0xfe});
 }
 
 UP_SUITE_END()
