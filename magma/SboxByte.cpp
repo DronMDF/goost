@@ -18,11 +18,10 @@ SboxByte::SboxByte(const vector<uint8_t> &tab1, const vector<uint8_t> &tab2,
 
 uint32_t SboxByte::transform(uint32_t v) const
 {
-	const uint32_t tmp = tab1[v & 0xff] |
+	return tab1[v & 0xff] |
 		(tab2[(v >> 8) & 0xff] << 8) |
 		(tab3[(v >> 16) & 0xff] << 16) |
 		(tab4[(v >> 24) & 0xff]) << 24;
-	return (tmp << 11) | ((tmp >> 21) & 0x7ff);
 }
 
 vector<uint8_t> SboxByte::expand_tab(const vector<uint8_t> &uz, int offset)

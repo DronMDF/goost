@@ -15,7 +15,9 @@ ADD_LIBRARY(goost
 	magma/Key.cpp
 	magma/KeyDataNative.cpp
 	magma/KeyDataString.cpp
+	magma/SboxNibble.cpp
 	magma/SboxByte.cpp
+	magma/SboxTwisted.cpp
 )
 
 ADD_EXECUTABLE(test_runner
@@ -23,6 +25,9 @@ ADD_EXECUTABLE(test_runner
 	test/magma/DataImitTest.cpp
 	test/magma/KeyDataNativeTest.cpp
 	test/magma/KeyDataStringTest.cpp
+	test/magma/KeyTest.cpp
+	test/magma/SboxNibbleTest.cpp
+	test/magma/SboxTwistedTest.cpp
 )
 TARGET_LINK_LIBRARIES(test_runner goost)
 ADD_TEST(unittest test_runner)
