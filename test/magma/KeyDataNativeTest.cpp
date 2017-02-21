@@ -3,7 +3,7 @@
 
 using namespace magma;
 
-UP_SUITE_BEGIN(KeyDataNativeSuite)
+UP_SUITE_BEGIN(KeyDataNativeTest)
 
 UP_TEST(SimpleKey)
 {

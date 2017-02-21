@@ -8,6 +8,8 @@
 using namespace std;
 using namespace magma;
 
+UP_SUITE_BEGIN(DataImitTest)
+
 #define LINE(X) \
 0x##X##4##X##5##X##6##X##7, \
 0x##X##0##X##1##X##2##X##3, \
@@ -50,7 +52,7 @@ UP_TEST(SimpleImit)
 	);
 	const auto key = make_shared<const Key>(
 		make_shared<const KeyDataNative>(
-			vector<uint32_t>({
+			vector<uint32_t>{
 				0xE0F67504U,
 				0xFAFB3850U,
 				0x90C3C7D2U,
@@ -59,13 +61,13 @@ UP_TEST(SimpleImit)
 				0x8A1EAE91U,
 				0x9ECD792FU,
 				0xBDEFBCD2U
-			})
+			}
 		),
 		sbox
 	);
 	vector<uint8_t> data(sizeof(Text02));
 	memcpy(&data[0], Text02, data.size());
-	const MagmaDataImit imit(data, key);
+	const DataImit imit(data, key);
 	// Then
 	UP_ASSERT_EQUAL(imit.asUInt32(), 0x46738F54);
 }
@@ -87,7 +89,7 @@ UP_TEST(BenchmarkImit)
 	);
 	const auto key = make_shared<const Key>(
 		make_shared<const KeyDataNative>(
-			vector<uint32_t>({
+			vector<uint32_t>{
 				0xE0F67504U,
 				0xFAFB3850U,
 				0x90C3C7D2U,
@@ -96,11 +98,13 @@ UP_TEST(BenchmarkImit)
 				0x8A1EAE91U,
 				0x9ECD792FU,
 				0xBDEFBCD2U
-			})
+			}
 		),
 		sbox
 	);
-	const MagmaDataImit imit(vector<uint8_t>(100000000U, 'A'), key);
+	const DataImit imit(vector<uint8_t>(100000000U, 'A'), key);
 	// Then
 	UP_ASSERT_EQUAL(imit.asUInt32(), 2148187304);
 }
+
+UP_SUITE_END()

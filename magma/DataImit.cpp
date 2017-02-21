@@ -5,12 +5,12 @@
 using namespace std;
 using namespace magma;
 
-MagmaDataImit::MagmaDataImit(const vector<uint8_t> &data, const shared_ptr<const Key> &key)
+DataImit::DataImit(const vector<uint8_t> &data, const shared_ptr<const Key> &key)
 	: data(data), key(key)
 {
 }
 
-vector<uint8_t> MagmaDataImit::value() const
+vector<uint8_t> DataImit::value() const
 {
 	vector<uint8_t> state(8);
 	auto pdata = data;
@@ -30,7 +30,7 @@ vector<uint8_t> MagmaDataImit::value() const
 	return state;
 }
 
-uint32_t MagmaDataImit::asUInt32() const
+uint32_t DataImit::asUInt32() const
 {
 	const auto rv = value();
 	return *reinterpret_cast<const uint32_t *>(&rv[0]);
