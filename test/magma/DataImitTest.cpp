@@ -65,7 +65,7 @@ UP_TEST(SimpleImit)
 	);
 	vector<uint8_t> data(sizeof(Text02));
 	memcpy(&data[0], Text02, data.size());
-	const MagmaDataImit imit(data, key);
+	const DataImit imit(data, key);
 	// Then
 	UP_ASSERT_EQUAL(imit.asUInt32(), 0x46738F54);
 }
@@ -100,7 +100,7 @@ UP_TEST(BenchmarkImit)
 		),
 		sbox
 	);
-	const MagmaDataImit imit(vector<uint8_t>(100000000U, 'A'), key);
+	const DataImit imit(vector<uint8_t>(100000000U, 'A'), key);
 	// Then
 	UP_ASSERT_EQUAL(imit.asUInt32(), 2148187304);
 }
