@@ -5,6 +5,7 @@
 
 namespace magma {
 
+class Block;
 class KeyData;
 class Sbox;
 
@@ -12,6 +13,9 @@ class Key {
 public:
 	Key(const std::shared_ptr<const KeyData> &key_data,
 		const std::shared_ptr<const Sbox> &sbox);
+
+	Block forward(const Block &block) const;
+	Block backward(const Block &block) const;
 
 	std::vector<uint8_t> imit(const std::vector<uint8_t> &block) const;
 	std::vector<uint8_t> encrypt(const std::vector<uint8_t> &block) const;

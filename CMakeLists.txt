@@ -11,6 +11,7 @@ INCLUDE_DIRECTORIES(
 ADD_COMPILE_OPTIONS(-std=c++11 -O2 -g0)
 
 ADD_LIBRARY(goost
+	magma/Block.cpp
 	magma/DataImit.cpp
 	magma/Key.cpp
 	magma/KeyDataNative.cpp
