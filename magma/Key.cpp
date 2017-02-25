@@ -2,10 +2,16 @@
 #include <cstring>
 #include "Block.h"
 #include "KeyData.h"
+#include "KeyDataString.h"
 #include "Sbox.h"
 
 using namespace std;
 using namespace magma;
+
+Key::Key(const string &key_data, const shared_ptr<const Sbox> &sbox)
+	: Key(make_shared<const KeyDataString>(key_data), sbox)
+{
+}
 
 Key::Key(const shared_ptr<const KeyData> &key_data, const shared_ptr<const Sbox> &sbox)
 	: key_data(key_data), sbox(sbox)

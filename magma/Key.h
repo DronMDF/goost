@@ -11,6 +11,7 @@ class Sbox;
 
 class Key {
 public:
+	Key(const std::string &key_data, const std::shared_ptr<const Sbox> &sbox);
 	Key(const std::shared_ptr<const KeyData> &key_data,
 		const std::shared_ptr<const Sbox> &sbox);
 

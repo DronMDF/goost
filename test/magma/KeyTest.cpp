@@ -23,21 +23,18 @@ struct KeyTestFixture {
 			vector<int>{1, 7, 14, 13, 0, 5, 8, 3, 4, 15, 10, 6, 9, 12, 11, 2}
 		)
 	);
-	const shared_ptr<const KeyData> key_data = make_shared<const KeyDataString>(
-		"ffeeddccbbaa99887766554433221100f0f1f2f3f4f5f6f7f8f9fafbfcfdfeff"
-	);
 };
 
 UP_FIXTURE_TEST(A24ExampleTest, KeyTestFixture)
 {
-	const Key key(key_data, sbox);
+	const Key key("ffeeddccbbaa99887766554433221100f0f1f2f3f4f5f6f7f8f9fafbfcfdfeff", sbox);
 	const auto result = key.encrypt({0x10, 0x32, 0x54, 0x76, 0x98, 0xba, 0xdc, 0xfe});
 	UP_ASSERT_EQUAL(result, vector<uint8_t>{0x3d, 0xca, 0xd8, 0xc2, 0xe5, 0x01, 0xe9, 0x4e});
 }
 
 UP_FIXTURE_TEST(A25ExampleTest, KeyTestFixture)
 {
-	const Key key(key_data, sbox);
+	const Key key("ffeeddccbbaa99887766554433221100f0f1f2f3f4f5f6f7f8f9fafbfcfdfeff", sbox);
 	const auto result = key.decrypt({0x3d, 0xca, 0xd8, 0xc2, 0xe5, 0x01, 0xe9, 0x4e});
 	UP_ASSERT_EQUAL(result, vector<uint8_t>{0x10, 0x32, 0x54, 0x76, 0x98, 0xba, 0xdc, 0xfe});
 }
