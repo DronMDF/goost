@@ -4,9 +4,15 @@
 #include "KeyData.h"
 #include "KeyDataString.h"
 #include "Sbox.h"
+#include "SboxR3412.h"
 
 using namespace std;
 using namespace magma;
+
+Key::Key(const string &key_data)
+	: Key(key_data, make_shared<SboxR3412>())
+{
+}
 
 Key::Key(const string &key_data, const shared_ptr<const Sbox> &sbox)
 	: Key(make_shared<const KeyDataString>(key_data), sbox)
