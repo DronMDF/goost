@@ -77,20 +77,6 @@ vector<uint8_t> Key::imit(const vector<uint8_t> &block) const
 	return rv;
 }
 
-vector<uint8_t> Key::encrypt(const vector<uint8_t> &block) const
-{
-	if (block.size() != 8) {
-		throw runtime_error("Wrong block size");
-	}
-
-	const auto rb = backward(forward(forward(forward(Block{&block[0]}))));
-
-	vector<uint8_t> rv(8);
-	reinterpret_cast<uint32_t *>(&rv[0])[0] = rb.high;
-	reinterpret_cast<uint32_t *>(&rv[0])[1] = rb.low;
-	return rv;
-}
-
 vector<uint8_t> Key::decrypt(const vector<uint8_t> &block) const
 {
 	if (block.size() != 8) {
