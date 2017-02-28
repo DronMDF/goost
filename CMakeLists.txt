@@ -15,6 +15,7 @@ ADD_LIBRARY(goost
 	magma/DataImit.cpp
 	magma/DecryptedBlock.cpp
 	magma/EncryptedBlock.cpp
+	magma/ImitedBlock.cpp
 	magma/Key.cpp
 	magma/KeyDataNative.cpp
 	magma/KeyDataString.cpp

@@ -62,17 +62,3 @@ Block Key::backward(const Block &block) const
 
 	return {a, b};
 }
-
-vector<uint8_t> Key::imit(const vector<uint8_t> &block) const
-{
-	if (block.size() != 8) {
-		throw runtime_error("Wrong block size");
-	}
-
-	const auto rb = forward(forward(Block{&block[0]}));
-
-	vector<uint8_t> rv(8);
-	reinterpret_cast<uint32_t *>(&rv[0])[1] = rb.high;
-	reinterpret_cast<uint32_t *>(&rv[0])[0] = rb.low;
-	return rv;
-}

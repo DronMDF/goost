@@ -14,4 +14,3 @@ Block DecryptedBlock::value() const
 	const auto rb = key->backward(key->backward(key->backward(key->forward(block))));
 	return {rb.high, rb.low};
 }
-
