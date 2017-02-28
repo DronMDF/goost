@@ -13,6 +13,7 @@ ADD_COMPILE_OPTIONS(-std=c++11 -O2 -g0)
 ADD_LIBRARY(goost
 	magma/Block.cpp
 	magma/DataImit.cpp
+	magma/DecryptedBlock.cpp
 	magma/EncryptedBlock.cpp
 	magma/Key.cpp
 	magma/KeyDataNative.cpp
@@ -26,10 +27,10 @@ ADD_LIBRARY(goost
 ADD_EXECUTABLE(test_runner
 	test/main.cpp
 	test/magma/DataImitTest.cpp
+	test/magma/DecryptedBlockTest.cpp
 	test/magma/EncryptedBlockTest.cpp
 	test/magma/KeyDataNativeTest.cpp
 	test/magma/KeyDataStringTest.cpp
-	test/magma/KeyTest.cpp
 	test/magma/SboxNibbleTest.cpp
 	test/magma/SboxTwistedTest.cpp
 )

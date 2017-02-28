@@ -20,7 +20,6 @@ public:
 	Block backward(const Block &block) const;
 
 	std::vector<uint8_t> imit(const std::vector<uint8_t> &block) const;
-	std::vector<uint8_t> decrypt(const std::vector<uint8_t> &block) const;
 
 private:
 	uint32_t cycle(uint32_t v, int index) const;

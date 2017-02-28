@@ -7,7 +7,7 @@ using namespace magma;
 
 UP_SUITE_BEGIN(EncryptedBlockTest)
 
-UP_TEST(A24ExampleTest)
+UP_TEST(R3412_A24_Test)
 {
 	const EncryptedBlock eb(
 		Block({0x10, 0x32, 0x54, 0x76, 0x98, 0xba, 0xdc, 0xfe}),
