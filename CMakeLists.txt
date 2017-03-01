@@ -11,21 +11,27 @@ INCLUDE_DIRECTORIES(
 ADD_COMPILE_OPTIONS(-std=c++11 -O2 -g0)
 
 ADD_LIBRARY(goost
+	magma/Block.cpp
 	magma/DataImit.cpp
+	magma/DecryptedBlock.cpp
+	magma/EncryptedBlock.cpp
+	magma/ImitedBlock.cpp
 	magma/Key.cpp
 	magma/KeyDataNative.cpp
 	magma/KeyDataString.cpp
 	magma/SboxNibble.cpp
 	magma/SboxByte.cpp
+	magma/SboxR3412.cpp
 	magma/SboxTwisted.cpp
 )
 
 ADD_EXECUTABLE(test_runner
 	test/main.cpp
 	test/magma/DataImitTest.cpp
+	test/magma/DecryptedBlockTest.cpp
+	test/magma/EncryptedBlockTest.cpp
 	test/magma/KeyDataNativeTest.cpp
 	test/magma/KeyDataStringTest.cpp
-	test/magma/KeyTest.cpp
 	test/magma/SboxNibbleTest.cpp
 	test/magma/SboxTwistedTest.cpp
 )

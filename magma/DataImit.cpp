@@ -1,6 +1,5 @@
-
 #include "DataImit.h"
-#include "Key.h"
+#include "ImitedBlock.h"
 
 using namespace std;
 using namespace magma;
@@ -25,7 +24,9 @@ vector<uint8_t> DataImit::value() const
 		for (auto &s: state) {
 			s ^= *pi++;
 		}
-		state = key->imit(state);
+		const auto b = ImitedBlock(Block(state), key).value();
+		reinterpret_cast<uint32_t *>(&state[0])[0] = b.low;
+		reinterpret_cast<uint32_t *>(&state[0])[1] = b.high;
 	}
 	return state;
 }
