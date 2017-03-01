@@ -15,7 +15,7 @@ public:
 		const std::vector<int> &p6,
 		const std::vector<int> &p7);
 
-	virtual uint32_t transform(uint32_t value) const override;
+	uint32_t transform(uint32_t value) const final;
 
 private:
 	const std::vector<int> p0;
