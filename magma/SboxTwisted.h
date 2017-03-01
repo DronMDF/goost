@@ -9,7 +9,7 @@ class SboxTwisted : public Sbox {
 public:
 	explicit SboxTwisted(const std::shared_ptr<const Sbox> &sbox);
 
-	virtual uint32_t transform(uint32_t value) const override;
+	uint32_t transform(uint32_t value) const final;
 private:
 	const std::shared_ptr<const Sbox> sbox;
 };

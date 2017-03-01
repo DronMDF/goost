@@ -8,7 +8,7 @@ class SboxR3412 : public Sbox {
 public:
 	SboxR3412();
 
-	virtual uint32_t transform(uint32_t value) const override;
+	uint32_t transform(uint32_t value) const final;
 private:
 	const std::shared_ptr<const Sbox> sbox;
 };
