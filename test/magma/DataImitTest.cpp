@@ -36,6 +36,8 @@ static const uint32_t Text02[] = {
 };
 
 struct DataImitFixture {
+	virtual ~DataImitFixture() = default;
+
 	const shared_ptr<const Sbox> sbox = make_shared<SboxTwisted>(
 		make_shared<const SboxByte>(vector<uint8_t>{
 			0xc4, 0xed, 0x83, 0xc9, 0x92, 0x98, 0xfe, 0x6b,
