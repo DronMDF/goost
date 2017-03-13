@@ -12,7 +12,7 @@ public:
 	SboxByte(const std::vector<uint8_t> &tab1, const std::vector<uint8_t> &tab2,
 		const std::vector<uint8_t> &tab3, const std::vector<uint8_t> &tab4);
 
-	virtual uint32_t transform(uint32_t v) const override;
+	uint32_t transform(uint32_t v) const final;
 
 private:
 	static std::vector<uint8_t> expand_tab(const std::vector<uint8_t> &uz, int offset);
