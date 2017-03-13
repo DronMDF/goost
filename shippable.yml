@@ -1,13 +1,13 @@
 language: c
 
-# TODO: Very old ubuntu image 14.04, clang is not work with c++11
 compiler:
   - gcc
+  - clang
 
 build:
   ci:
     - apt-get update
     - apt-get install cmake
     - cmake .
-    - make
+    - make VERBOSE=1
     - ./test_runner -t
