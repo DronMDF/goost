@@ -8,14 +8,12 @@ class BlockIterator;
 class DataStream;
 class Key;
 
-class Imit {
+class Imit final {
 public:
 	Imit(const std::shared_ptr<const DataStream> &data, const std::shared_ptr<const Key> &key);
 
-	uint32_t asUint32() const;
+	Block value() const;
 private:
-	Block do_imit(const std::shared_ptr<const BlockIterator> &iter, const Block &block) const;
-
 	const std::shared_ptr<const DataStream> data;
 	const std::shared_ptr<const Key> key;
 };
