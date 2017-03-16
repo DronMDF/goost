@@ -2,6 +2,7 @@
 #include "Sbox.h"
 #include <array>
 #include <memory>
+#include <vector>
 
 namespace magma {
 
@@ -12,6 +13,18 @@ public:
 		virtual ~Tab() = default;
 		virtual std::array<uint32_t, 256> table() const = 0;
 	};
+
+	/// Ctor from 16x8 matrix
+	SboxExpanded(
+		const std::vector<int> &p0,
+		const std::vector<int> &p1,
+		const std::vector<int> &p2,
+		const std::vector<int> &p3,
+		const std::vector<int> &p4,
+		const std::vector<int> &p5,
+		const std::vector<int> &p6,
+		const std::vector<int> &p7
+	);
 
 	SboxExpanded(
 		std::unique_ptr<const Tab> tab1,

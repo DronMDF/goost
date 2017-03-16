@@ -23,6 +23,7 @@ ADD_LIBRARY(goost
 	magma/KeyDataString.cpp
 	magma/SboxByte.cpp
 	magma/SboxExpanded.cpp
+	magma/SboxExpandedNibbleTab.cpp
 	magma/SboxNibble.cpp
 	magma/SboxR3412.cpp
 	magma/SboxTwisted.cpp
