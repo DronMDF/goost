@@ -13,8 +13,8 @@ SboxExpanded::SboxExpanded(unique_ptr<const Tab> tab1,
 
 uint32_t SboxExpanded::transform(uint32_t v) const
 {
-	return tab1->translate(v & 0xff) |
-		tab2->translate((v >> 8) & 0xff) |
-		tab3->translate((v >> 16) & 0xff) |
-		tab4->translate((v >> 24) & 0xff);
+	return tab1->table()[v & 0xff] |
+		tab2->table()[(v >> 8) & 0xff] |
+		tab3->table()[(v >> 16) & 0xff] |
+		tab4->table()[(v >> 24) & 0xff];
 }

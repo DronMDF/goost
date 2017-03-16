@@ -8,8 +8,10 @@ UP_SUITE_BEGIN(SboxExpandedTest)
 
 template<int N>
 struct TestTab final : public SboxExpanded::Tab {
-	uint32_t translate(uint32_t) const override {
-		return N;
+	array<uint32_t, 256> table() const override {
+		array<uint32_t, 256> tab;
+		tab.fill(N);
+		return tab;
 	}
 };
 

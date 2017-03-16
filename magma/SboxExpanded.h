@@ -1,5 +1,6 @@
 #pragma once
 #include "Sbox.h"
+#include <array>
 #include <memory>
 
 namespace magma {
@@ -9,7 +10,7 @@ public:
 	class Tab {
 	public:
 		virtual ~Tab() = default;
-		virtual uint32_t translate(uint32_t v) const = 0;
+		virtual std::array<uint32_t, 256> table() const = 0;
 	};
 
 	SboxExpanded(
