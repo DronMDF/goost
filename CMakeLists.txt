@@ -8,7 +8,7 @@ INCLUDE_DIRECTORIES(
 	"${PROJECT_SOURCE_DIR}/test"
 )
 
-ADD_COMPILE_OPTIONS(-std=c++11 -O2 -fomit-frame-pointer -g0 -Wall -Wextra -Werror)
+ADD_COMPILE_OPTIONS(-std=c++14 -O2 -fomit-frame-pointer -g0 -Wall -Wextra -Werror)
 
 ADD_LIBRARY(goost
 	magma/Block.cpp
@@ -22,6 +22,8 @@ ADD_LIBRARY(goost
 	magma/KeyDataNative.cpp
 	magma/KeyDataString.cpp
 	magma/SboxByte.cpp
+	magma/SboxExpanded.cpp
+	magma/SboxExpandedNibbleTab.cpp
 	magma/SboxNibble.cpp
 	magma/SboxR3412.cpp
 	magma/SboxTwisted.cpp
@@ -35,6 +37,7 @@ ADD_EXECUTABLE(test_runner
 	test/magma/ImitTest.cpp
 	test/magma/KeyDataNativeTest.cpp
 	test/magma/KeyDataStringTest.cpp
+	test/magma/SboxExpandedTest.cpp
 	test/magma/SboxNibbleTest.cpp
 	test/magma/SboxTwistedTest.cpp
 	test/main.cpp
