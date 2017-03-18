@@ -1,4 +1,5 @@
 #include "SboxExpanded.h"
+#include "SboxExpandedCachedTab.h"
 #include "SboxExpandedNibbleTab.h"
 
 using namespace std;
@@ -15,10 +16,10 @@ SboxExpanded::SboxExpanded(
 		const std::vector<int> &p7
 	)
 	: SboxExpanded(
-		make_unique<SboxExpandedNibbleTab>(p0, p1, 0),
-		make_unique<SboxExpandedNibbleTab>(p2, p3, 8),
-		make_unique<SboxExpandedNibbleTab>(p4, p5, 16),
-		make_unique<SboxExpandedNibbleTab>(p6, p7, 24)
+		make_unique<SboxExpandedCachedTab>(make_unique<SboxExpandedNibbleTab>(p0, p1, 0)),
+		make_unique<SboxExpandedCachedTab>(make_unique<SboxExpandedNibbleTab>(p2, p3, 8)),
+		make_unique<SboxExpandedCachedTab>(make_unique<SboxExpandedNibbleTab>(p4, p5, 16)),
+		make_unique<SboxExpandedCachedTab>(make_unique<SboxExpandedNibbleTab>(p6, p7, 24))
 	)
 {
 }

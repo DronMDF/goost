@@ -23,6 +23,7 @@ ADD_LIBRARY(goost
 	magma/KeyDataString.cpp
 	magma/SboxByte.cpp
 	magma/SboxExpanded.cpp
+	magma/SboxExpandedCachedTab.cpp
 	magma/SboxExpandedNibbleTab.cpp
 	magma/SboxNibble.cpp
 	magma/SboxR3412.cpp
@@ -37,6 +38,7 @@ ADD_EXECUTABLE(test_runner
 	test/magma/ImitTest.cpp
 	test/magma/KeyDataNativeTest.cpp
 	test/magma/KeyDataStringTest.cpp
+	test/magma/SboxExpandedCachedTabTest.cpp
 	test/magma/SboxExpandedTest.cpp
 	test/magma/SboxNibbleTest.cpp
 	test/magma/SboxTwistedTest.cpp
