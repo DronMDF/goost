@@ -6,32 +6,34 @@ using namespace magma;
 
 UP_SUITE_BEGIN(SboxExpandedCachedTabTest)
 
-struct TestTab final : public SboxExpanded::Tab {
-	static int counter;
-	TestTab() {
+class TestTab final : public SboxExpanded::Tab {
+public:
+	TestTab(int * const counter)
+		: counter(counter)
+	{
 	}
 	array<uint32_t, 256> table() const override {
-		counter++;
+		++*counter;
 		return {};
 	}
+private:
+	int * const counter;
 };
-
-int TestTab::counter;
 
 UP_TEST(TestTabCounter)
 {
-	TestTab::counter = 0;
-	const TestTab tab;
+	int counter = 0;
+	const TestTab tab(&counter);
 	UP_ASSERT_EQUAL(tab.table()[0], tab.table()[0]);
-	UP_ASSERT_EQUAL(TestTab::counter, 2);
+	UP_ASSERT_EQUAL(counter, 2);
 };
 
 UP_TEST(CallInnerTabOnlyOnce)
 {
-	TestTab::counter = 0;
-	const SboxExpandedCachedTab tab(make_unique<TestTab>());
+	int counter = 0;
+	const SboxExpandedCachedTab tab(make_unique<TestTab>(&counter));
 	UP_ASSERT_EQUAL(tab.table()[0], tab.table()[0]);
-	UP_ASSERT_EQUAL(TestTab::counter, 1);
+	UP_ASSERT_EQUAL(counter, 1);
 };
 
 UP_SUITE_END()
