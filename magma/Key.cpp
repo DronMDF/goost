@@ -15,12 +15,12 @@ Key::Key(const string &key_data)
 }
 
 Key::Key(const string &key_data, const shared_ptr<const Sbox> &sbox)
-	: Key(make_shared<const KeyDataString>(key_data), sbox)
+	: Key(make_unique<const KeyDataString>(key_data), sbox)
 {
 }
 
-Key::Key(const shared_ptr<const KeyData> &key_data, const shared_ptr<const Sbox> &sbox)
-	: key_data(key_data), sbox(sbox)
+Key::Key(unique_ptr<const KeyData> key_data, const shared_ptr<const Sbox> &sbox)
+	: key_data(move(key_data)), sbox(sbox)
 {
 }
 

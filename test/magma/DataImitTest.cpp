@@ -51,7 +51,7 @@ struct DataImitFixture {
 		})
 	);
 	const shared_ptr<const Key> key = make_shared<const Key>(
-		make_shared<const KeyDataNative>(
+		make_unique<const KeyDataNative>(
 			vector<uint32_t>{
 				0xE0F67504U,
 				0xFAFB3850U,
