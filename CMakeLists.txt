@@ -19,6 +19,7 @@ ADD_LIBRARY(goost
 	magma/Imit.cpp
 	magma/ImitedBlock.cpp
 	magma/Key.cpp
+	magma/KeyCachedData.cpp
 	magma/KeyDataNative.cpp
 	magma/KeyDataString.cpp
 	magma/SboxByte.cpp
@@ -36,6 +37,7 @@ ADD_EXECUTABLE(test_runner
 	test/magma/DecryptedBlockTest.cpp
 	test/magma/EncryptedBlockTest.cpp
 	test/magma/ImitTest.cpp
+	test/magma/KeyCachedDataTest.cpp
 	test/magma/KeyDataNativeTest.cpp
 	test/magma/KeyDataStringTest.cpp
 	test/magma/SboxExpandedCachedTabTest.cpp
