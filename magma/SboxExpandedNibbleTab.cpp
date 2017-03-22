@@ -12,14 +12,10 @@ SboxExpandedNibbleTab::SboxExpandedNibbleTab(
 {
 }
 
-array<uint32_t, 256> SboxExpandedNibbleTab::table() const
+uint32_t SboxExpandedNibbleTab::translate(int index) const
 {
-	array<uint32_t, 256> tab;
-	for (int l = 0; l < 16; l++) {
-		for (int h = 0; h < 16; h++) {
-			const auto b = ((ph[h] << 4) | pl[l]) << shift;
-			tab[h * 16 + l] = (b << 11) | ((b >> 21) & 0x7ff);
-		}
-	}
-	return tab;
+	const auto l = index & 0xf;
+	const auto h = (index >> 4) & 0xf;
+	const auto b = ((ph[h] << 4) | pl[l]) << shift;
+	return (b << 11) | ((b >> 21) & 0x7ff);
 }

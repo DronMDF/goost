@@ -11,7 +11,7 @@ public:
 	class Tab {
 	public:
 		virtual ~Tab() = default;
-		virtual std::array<uint32_t, 256> table() const = 0;
+		virtual uint32_t translate(int index) const = 0;
 	};
 
 	/// Ctor from 16x8 matrix

@@ -13,11 +13,13 @@ SboxExpandedCachedTab::SboxExpandedCachedTab(unique_ptr<SboxExpanded::Tab> tab)
 {
 }
 
-array<uint32_t, 256> SboxExpandedCachedTab::table() const
+uint32_t SboxExpandedCachedTab::translate(int index) const
 {
 	if (!cache->cached) {
-		cache->tab = tab->table();
+		for (size_t i = 0; i < cache->tab.size(); i++) {
+			cache->tab[i] = tab->translate(i);
+		}
 		cache->cached = true;
 	}
-	return cache->tab;
+	return cache->tab[index & 0xff];
 }

@@ -12,9 +12,9 @@ public:
 		: counter(counter)
 	{
 	}
-	array<uint32_t, 256> table() const override {
+	uint32_t translate(int) const override {
 		++*counter;
-		return {};
+		return 0;
 	}
 private:
 	int * const counter;
@@ -24,7 +24,7 @@ UP_TEST(TestTabCounter)
 {
 	int counter = 0;
 	const TestTab tab(&counter);
-	UP_ASSERT_EQUAL(tab.table()[0], tab.table()[0]);
+	UP_ASSERT_EQUAL(tab.translate(0), tab.translate(0));
 	UP_ASSERT_EQUAL(counter, 2);
 };
 
@@ -32,8 +32,9 @@ UP_TEST(CallInnerTabOnlyOnce)
 {
 	int counter = 0;
 	const SboxExpandedCachedTab tab(make_unique<TestTab>(&counter));
-	UP_ASSERT_EQUAL(tab.table()[0], tab.table()[0]);
-	UP_ASSERT_EQUAL(counter, 1);
+	UP_ASSERT_EQUAL(tab.translate(0), tab.translate(0));
+	// Cacher gathered all table
+	UP_ASSERT_EQUAL(counter, 256);
 };
 
 UP_SUITE_END()
