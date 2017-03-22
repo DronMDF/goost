@@ -10,9 +10,11 @@ KeyCachedData::KeyCachedData(unique_ptr<const KeyData> keydata)
 
 uint32_t KeyCachedData::key(int index) const
 {
-	if (!cache->cached[index]) {
-		cache->key[index] = keydata->key(index);
-		cache->cached[index] = true;
+	if (!cache->cached) {
+		for (size_t i = 0; i < cache->key.size(); i++) {
+			cache->key[i] = keydata->key(i);
+		}
+		cache->cached = true;
 	}
 	return cache->key[index];
 }

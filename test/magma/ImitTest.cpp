@@ -33,10 +33,10 @@ UP_TEST(BenchmarkTest)
 		"ffeeddccbbaa99887766554433221100f0f1f2f3f4f5f6f7f8f9fafbfcfdfeff"
 	);
 	const auto data = make_shared<const DataStream>(
-		vector<uint64_t>(1000000U / sizeof(uint64_t))
+		vector<uint64_t>(10000000U / sizeof(uint64_t))
 	);
 	const Imit imit(data, key);
-	UP_ASSERT_EQUAL(imit.value().high, 613923356);
+	UP_ASSERT_EQUAL(imit.value().high, 3801817732);
 }
 
 UP_TEST(BenchmarkTestExpanded)
@@ -55,10 +55,10 @@ UP_TEST(BenchmarkTestExpanded)
 		)
 	);
 	const auto data = make_shared<const DataStream>(
-		vector<uint64_t>(1000000U / sizeof(uint64_t))
+		vector<uint64_t>(10000000U / sizeof(uint64_t))
 	);
 	const Imit imit(data, key);
-	UP_ASSERT_EQUAL(imit.value().high, 613923356);
+	UP_ASSERT_EQUAL(imit.value().high, 3801817732);
 }
 
 UP_SUITE_END()
