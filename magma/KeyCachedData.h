@@ -10,7 +10,7 @@ public:
 	uint32_t key(int index) const override;
 private:
 	struct CachedData {
-		std::array<bool, 8> cached;
+		bool cached;
 		std::array<uint32_t, 8> key;
 	};
 	const std::unique_ptr<CachedData> cache;
