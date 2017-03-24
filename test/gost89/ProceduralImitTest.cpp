@@ -74,7 +74,7 @@ public:
 	uint32_t result()
 	{
 		check_two_blocks();
-		return reinterpret_cast<uint32_t *>(state)[0];
+		return reinterpret_cast<uint32_t *>(&state[0])[0];
 	}
 
 private:
