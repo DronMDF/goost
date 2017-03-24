@@ -6,20 +6,17 @@ UP_SUITE_BEGIN(ProceduralImitTest)
 
 class Key final {
 public:
-	Key(const void *key)
-		: sbox(0)
-	{
+	Key(const void *key) {
 		memcpy(key_, key, sizeof(key_));
 		memset(mask_, 0, sizeof(mask_));
 	}
 
 	virtual void set_sbox(const void *box) {
 		const uint8_t *sptr = static_cast<const uint8_t *>(box);
-		sbox = new uint8_t[256 * 4];
-		expand_tab(sptr, 0, sbox);
-		expand_tab(sptr, 1, sbox + 256);
-		expand_tab(sptr, 2, sbox + 512);
-		expand_tab(sptr, 3, sbox + 768);
+		expand_tab(sptr, 0, &sbox[0]);
+		expand_tab(sptr, 1, &sbox[256]);
+		expand_tab(sptr, 2, &sbox[512]);
+		expand_tab(sptr, 3, &sbox[768]);
 	}
 private:
 	friend class ImitContext;
@@ -33,7 +30,7 @@ private:
 
 	uint32_t key_[8];
 	uint32_t mask_[8];
-	uint8_t *sbox;
+	array<uint8_t, 1024> sbox;
 };
 
 class ImitContext final {
@@ -55,7 +52,7 @@ public:
 
 		while (len >= 8) {
 			for (int i = 0; i < 8; i++) {
-				((uint8_t *)state)[i] ^= ptr[i];
+				state[i] ^= ptr[i];
 			}
 
 			imit_block(state);
@@ -66,7 +63,7 @@ public:
 
 		if (len != 0) {
 			for (size_t i = 0; i < len; i++) {
-				((uint8_t *)state)[i] ^= ptr[i];
+				state[i] ^= ptr[i];
 			}
 
 			imit_block(state);
@@ -77,7 +74,7 @@ public:
 	uint32_t result()
 	{
 		check_two_blocks();
-		return *((int *)state);
+		return reinterpret_cast<uint32_t *>(state)[0];
 	}
 
 private:
@@ -125,8 +122,8 @@ private:
 		cycle(a, b, ekey[6], emask[6]);
 		cycle(b, a, ekey[7], emask[7]);
 
-		((u_int32_t *) block)[1] = a;
-		((u_int32_t *) block)[0] = b;
+		((uint32_t *)block)[1] = a;
+		((uint32_t *)block)[0] = b;
 	}
 
 	const Key *key_;
