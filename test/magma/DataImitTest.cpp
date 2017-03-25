@@ -77,7 +77,7 @@ UP_FIXTURE_TEST(SimpleImit, DataImitFixture)
 	UP_ASSERT_EQUAL(imit.asUInt32(), 0x46738F54);
 }
 
-UP_FIXTURE_TEST(BenchmarkImit, DataImitFixture)
+UP_FIXTURE_TEST(Benchmark100M, DataImitFixture)
 {
 	// Given
 	const DataImit imit(vector<uint8_t>(100000000U, 'A'), key);

@@ -27,7 +27,7 @@ UP_TEST(R3413_A262_Test)
 	UP_ASSERT_EQUAL(imit.value().high, 0x154e7210);
 }
 
-UP_TEST(BenchmarkTest)
+UP_TEST(Benchmark10M)
 {
 	const auto key = make_shared<const Key>(
 		"ffeeddccbbaa99887766554433221100f0f1f2f3f4f5f6f7f8f9fafbfcfdfeff"
@@ -39,7 +39,7 @@ UP_TEST(BenchmarkTest)
 	UP_ASSERT_EQUAL(imit.value().high, 3801817732);
 }
 
-UP_TEST(BenchmarkTestExpanded)
+UP_TEST(Benchmark10MExpanded)
 {
 	const auto key = make_shared<const Key>(
 		"ffeeddccbbaa99887766554433221100f0f1f2f3f4f5f6f7f8f9fafbfcfdfeff",
