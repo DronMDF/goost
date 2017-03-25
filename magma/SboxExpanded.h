@@ -14,6 +14,9 @@ public:
 		virtual uint32_t translate(int index) const = 0;
 	};
 
+	/// Default sbox from R3412
+	SboxExpanded();
+
 	/// Ctor from 16x8 matrix
 	SboxExpanded(
 		const std::vector<int> &p0,
@@ -26,6 +29,7 @@ public:
 		const std::vector<int> &p7
 	);
 
+	// Primary ctor
 	SboxExpanded(
 		std::unique_ptr<const Tab> tab1,
 		std::unique_ptr<const Tab> tab2,
