@@ -11,8 +11,14 @@ class Sbox;
 
 class Key {
 public:
+	/// String key
 	explicit Key(const std::string &key_data);
 	Key(const std::string &key_data, const std::shared_ptr<const Sbox> &sbox);
+
+	/// Native key
+	Key(const std::vector<uint32_t> &key_data, const std::shared_ptr<const Sbox> &sbox);
+
+	/// Primary ctor
 	Key(std::unique_ptr<const KeyData> key_data, const std::shared_ptr<const Sbox> &sbox);
 
 	Block forward(const Block &block) const;
