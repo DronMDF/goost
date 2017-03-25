@@ -3,6 +3,7 @@
 #include "Block.h"
 #include "KeyCachedData.h"
 #include "KeyData.h"
+#include "KeyDataNative.h"
 #include "KeyDataString.h"
 #include "Sbox.h"
 #include "SboxR3412.h"
@@ -17,6 +18,11 @@ Key::Key(const string &key_data)
 
 Key::Key(const string &key_data, const shared_ptr<const Sbox> &sbox)
 	: Key(make_unique<const KeyCachedData>(make_unique<const KeyDataString>(key_data)), sbox)
+{
+}
+
+Key::Key(const vector<uint32_t> &key_data, const shared_ptr<const Sbox> &sbox)
+	: Key(make_unique<const KeyDataNative>(key_data), sbox)
 {
 }
 

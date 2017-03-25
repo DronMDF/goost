@@ -61,4 +61,20 @@ UP_TEST(Benchmark10MExpanded)
 	UP_ASSERT_EQUAL(imit.value().high, 3801817732);
 }
 
+UP_TEST(Benchmark10MExpandedFastest)
+{
+	const auto key = make_shared<const Key>(
+		vector<uint32_t>{
+			0xffeeddcc, 0xbbaa9988, 0x77665544, 0x33221100,
+			0xf0f1f2f3, 0xf4f5f6f7, 0xf8f9fafb, 0xfcfdfeff
+		},
+		make_shared<SboxExpanded>()
+	);
+	const auto data = make_shared<const DataStream>(
+		vector<uint64_t>(10000000U / sizeof(uint64_t))
+	);
+	const Imit imit(data, key);
+	UP_ASSERT_EQUAL(imit.value().high, 3801817732);
+}
+
 UP_SUITE_END()

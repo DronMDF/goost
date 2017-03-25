@@ -25,6 +25,7 @@ ADD_LIBRARY(goost
 	magma/SboxByte.cpp
 	magma/SboxExpanded.cpp
 	magma/SboxExpandedCachedTab.cpp
+	magma/SboxExpandedNativeTab.cpp
 	magma/SboxExpandedNibbleTab.cpp
 	magma/SboxNibble.cpp
 	magma/SboxR3412.cpp
