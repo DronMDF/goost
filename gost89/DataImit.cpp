@@ -2,6 +2,7 @@
 #include "ImitedBlock.h"
 
 using namespace std;
+using namespace gost89;
 using namespace magma;
 
 DataImit::DataImit(const vector<uint8_t> &data, const shared_ptr<const Key> &key)

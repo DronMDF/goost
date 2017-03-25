@@ -11,20 +11,20 @@ INCLUDE_DIRECTORIES(
 ADD_COMPILE_OPTIONS(-std=c++14 -O2 -fomit-frame-pointer -g0 -Wall -Wextra -Werror)
 
 ADD_LIBRARY(goost
+	gost89/DataImit.cpp
+	gost89/ImitedBlock.cpp
 	magma/Block.cpp
-	magma/DataImit.cpp
 	magma/DataStream.cpp
 	magma/DecryptedBlock.cpp
 	magma/EncryptedBlock.cpp
 	magma/Imit.cpp
-	magma/ImitedBlock.cpp
-	magma/Key.cpp
 	magma/KeyCachedData.cpp
+	magma/Key.cpp
 	magma/KeyDataNative.cpp
 	magma/KeyDataString.cpp
 	magma/SboxByte.cpp
-	magma/SboxExpanded.cpp
 	magma/SboxExpandedCachedTab.cpp
+	magma/SboxExpanded.cpp
 	magma/SboxExpandedNativeTab.cpp
 	magma/SboxExpandedNibbleTab.cpp
 	magma/SboxNibble.cpp
@@ -33,8 +33,8 @@ ADD_LIBRARY(goost
 )
 
 ADD_EXECUTABLE(test_runner
+	test/gost89/DataImitTest.cpp
 	test/gost89/ProceduralImitTest.cpp
-	test/magma/DataImitTest.cpp
 	test/magma/DataStreamTest.cpp
 	test/magma/DecryptedBlockTest.cpp
 	test/magma/EncryptedBlockTest.cpp
