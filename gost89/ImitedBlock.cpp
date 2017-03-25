@@ -1,7 +1,7 @@
 #include "ImitedBlock.h"
-#include "Key.h"
 
 using namespace std;
+using namespace gost89;
 using namespace magma;
 
 ImitedBlock::ImitedBlock(const Block &block, const shared_ptr<const Key> &key)

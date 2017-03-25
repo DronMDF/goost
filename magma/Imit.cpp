@@ -1,10 +1,9 @@
 #include "Imit.h"
+#include <iostream>
 #include "Block.h"
 #include "BlockIterator.h"
 #include "DataStream.h"
 #include "EncryptedBlock.h"
-#include "ImitedBlock.h"
-#include <iostream>
 
 using namespace std;
 using namespace magma;

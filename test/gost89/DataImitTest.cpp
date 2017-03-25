@@ -1,11 +1,12 @@
 #include "upp11.h"
-#include "magma/DataImit.h"
-#include "magma/KeyDataNative.h"
-#include "magma/Key.h"
-#include "magma/SboxByte.h"
-#include "magma/SboxTwisted.h"
+#include <gost89/DataImit.h>
+#include <magma/KeyDataNative.h>
+#include <magma/Key.h>
+#include <magma/SboxByte.h>
+#include <magma/SboxTwisted.h>
 
 using namespace std;
+using namespace gost89;
 using namespace magma;
 
 UP_SUITE_BEGIN(DataImitTest)
