@@ -3,8 +3,8 @@
 using namespace std;
 using namespace magma;
 
-SboxTwisted::SboxTwisted(const shared_ptr<const Sbox> &sbox)
-	: sbox(sbox)
+SboxTwisted::SboxTwisted(unique_ptr<const Sbox> sbox)
+	: sbox(move(sbox))
 {
 }
 
