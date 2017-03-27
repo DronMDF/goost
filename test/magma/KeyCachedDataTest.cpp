@@ -4,6 +4,7 @@
 using namespace std;
 using namespace magma;
 
+UP_SUITE_BEGIN(magma)
 UP_SUITE_BEGIN(KeyCachedDataTest)
 
 class TestKeyData final : public KeyData {
@@ -39,4 +40,5 @@ UP_TEST(InvokeOriginOnce)
 	}
 }
 
+UP_SUITE_END()
 UP_SUITE_END()

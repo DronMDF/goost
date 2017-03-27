@@ -3,6 +3,7 @@
 
 using namespace magma;
 
+UP_SUITE_BEGIN(magma)
 UP_SUITE_BEGIN(KeyDataNativeTest)
 
 UP_TEST(SimpleKey)
@@ -27,4 +28,5 @@ UP_TEST(SimpleKey)
 	UP_ASSERT_EQUAL(kd.key(7), 0xBDEFBCD2);
 }
 
+UP_SUITE_END()
 UP_SUITE_END()

@@ -9,6 +9,7 @@ using namespace std;
 using namespace gost89;
 using namespace magma;
 
+UP_SUITE_BEGIN(gost89)
 UP_SUITE_BEGIN(DataImitTest)
 
 #define LINE(X) \
@@ -86,4 +87,5 @@ UP_FIXTURE_TEST(Benchmark100M, DataImitFixture)
 	UP_ASSERT_EQUAL(imit.asUInt32(), 2148187304);
 }
 
+UP_SUITE_END()
 UP_SUITE_END()

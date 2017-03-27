@@ -3,6 +3,7 @@
 
 using namespace magma;
 
+UP_SUITE_BEGIN(magma)
 UP_SUITE_BEGIN(SboxNibbleTest)
 
 UP_TEST(A21ExampleTest)
@@ -23,4 +24,5 @@ UP_TEST(A21ExampleTest)
 	UP_ASSERT_EQUAL(sbox.transform(0xb039bb3d), 0x68695433);
 }
 
+UP_SUITE_END()
 UP_SUITE_END()

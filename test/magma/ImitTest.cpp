@@ -8,6 +8,7 @@
 using namespace std;
 using namespace magma;
 
+UP_SUITE_BEGIN(magma)
 UP_SUITE_BEGIN(ImitTest)
 
 UP_TEST(R3413_A262_Test)
@@ -77,4 +78,5 @@ UP_TEST(Benchmark10MExpandedFastest)
 	UP_ASSERT_EQUAL(imit.value().high, 3801817732);
 }
 
+UP_SUITE_END()
 UP_SUITE_END()

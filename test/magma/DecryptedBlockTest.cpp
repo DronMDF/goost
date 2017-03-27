@@ -5,6 +5,7 @@
 using namespace std;
 using namespace magma;
 
+UP_SUITE_BEGIN(magma)
 UP_SUITE_BEGIN(DecryptedBlockTest)
 
 UP_TEST(R3412_A25_Test)
@@ -18,5 +19,6 @@ UP_TEST(R3412_A25_Test)
 	UP_ASSERT_EQUAL(db.value(), Block({0x10, 0x32, 0x54, 0x76, 0x98, 0xba, 0xdc, 0xfe}));
 }
 
+UP_SUITE_END()
 UP_SUITE_END()
 
