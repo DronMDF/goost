@@ -2,6 +2,7 @@
 
 using namespace std;
 
+UP_SUITE_BEGIN(gost89)
 UP_SUITE_BEGIN(ProceduralImitTest)
 
 class Key final {
@@ -166,4 +167,5 @@ UP_TEST(Benchmark100M)
 	UP_ASSERT_EQUAL(imit.result(), 2148187304);
 }
 
+UP_SUITE_END()
 UP_SUITE_END()

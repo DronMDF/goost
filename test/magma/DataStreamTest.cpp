@@ -6,6 +6,7 @@
 using namespace std;
 using namespace magma;
 
+UP_SUITE_BEGIN(magma)
 UP_SUITE_BEGIN(DataStreamTest)
 
 UP_TEST(R3413_2015_Test)
@@ -36,4 +37,5 @@ UP_TEST(R3413_2015_Test)
 	UP_ASSERT(block3->last());
 }
 
+UP_SUITE_END()
 UP_SUITE_END()

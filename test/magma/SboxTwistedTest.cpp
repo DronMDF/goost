@@ -5,6 +5,7 @@
 using namespace std;
 using namespace magma;
 
+UP_SUITE_BEGIN(magma)
 UP_SUITE_BEGIN(SboxTwistedTest)
 
 UP_TEST(A22ExampleTest)
@@ -25,4 +26,5 @@ UP_TEST(A22ExampleTest)
 	UP_ASSERT_EQUAL(sbox.transform(0xc76549ec + 0x7e791a4b), 0x9791c849);
 }
 
+UP_SUITE_END()
 UP_SUITE_END()

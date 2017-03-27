@@ -4,6 +4,7 @@
 using namespace std;
 using namespace magma;
 
+UP_SUITE_BEGIN(magma)
 UP_SUITE_BEGIN(SboxExpandedCachedTabTest)
 
 class TestTab final : public SboxExpanded::Tab {
@@ -37,4 +38,5 @@ UP_TEST(CallInnerTabOnlyOnce)
 	UP_ASSERT_EQUAL(counter, 256);
 };
 
+UP_SUITE_END()
 UP_SUITE_END()

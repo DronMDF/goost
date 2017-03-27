@@ -5,6 +5,7 @@
 using namespace std;
 using namespace magma;
 
+UP_SUITE_BEGIN(magma)
 UP_SUITE_BEGIN(EncryptedBlockTest)
 
 struct KeyFixture {
@@ -37,4 +38,5 @@ UP_FIXTURE_PARAMETRIZED_TEST(R3413_A262_Test, KeyFixture, data)
 	UP_ASSERT_EQUAL(e.value(), Block(get<1>(data)));
 }
 
+UP_SUITE_END()
 UP_SUITE_END()

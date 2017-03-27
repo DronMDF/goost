@@ -3,6 +3,7 @@
 
 using namespace magma;
 
+UP_SUITE_BEGIN(magma)
 UP_SUITE_BEGIN(KeyDataStringTest)
 
 UP_TEST(TK26ExampleKey)
@@ -18,4 +19,5 @@ UP_TEST(TK26ExampleKey)
 	UP_ASSERT_EQUAL(kd.key(7), 0xfcfdfeff);
 }
 
+UP_SUITE_END()
 UP_SUITE_END()
