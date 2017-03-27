@@ -8,8 +8,8 @@ using namespace magma;
 
 SboxR3412::SboxR3412()
 	: sbox(
-		make_shared<const SboxTwisted>(
-			make_shared<const SboxNibble>(
+		make_unique<const SboxTwisted>(
+			make_unique<const SboxNibble>(
 				vector<int>{12, 4, 6, 2, 10, 5, 11, 9, 14, 8, 13, 7, 0, 3, 15, 1},
 				vector<int>{6, 8, 2, 3, 9, 10, 5, 12, 1, 14, 4, 7, 11, 13, 0, 15},
 				vector<int>{11, 3, 5, 8, 2, 15, 10, 13, 14, 1, 7, 4, 12, 9, 6, 0},

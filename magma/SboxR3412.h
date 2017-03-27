@@ -10,7 +10,7 @@ public:
 
 	uint32_t transform(uint32_t value) const final;
 private:
-	const std::shared_ptr<const Sbox> sbox;
+	const std::unique_ptr<const Sbox> sbox;
 };
 
 }
