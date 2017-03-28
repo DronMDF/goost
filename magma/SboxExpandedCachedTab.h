@@ -7,7 +7,7 @@ class SboxExpandedCachedTab final : public SboxExpanded::Tab {
 public:
 	explicit SboxExpandedCachedTab(std::unique_ptr<SboxExpanded::Tab> tab);
 
-	virtual uint32_t translate(int index) const override;
+	uint32_t translate(int index) const override;
 private:
 	struct CachedTab {
 		CachedTab();

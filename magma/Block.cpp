@@ -9,8 +9,8 @@ Block::Block()
 {
 }
 
-Block::Block(uint64_t low)
-	: Block(low, low >> 32)
+Block::Block(uint64_t block)
+	: Block(block, block >> 32)
 {
 }
 
