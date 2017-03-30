@@ -28,7 +28,7 @@ class Main:
 		return re.match('^.* \(\d+us\): (SUCCESS|FAILURE)$', l.decode('utf8'))
 
 	def split(self, l):
-		r = re.match('^(.*) \((\d)+us\): (SUCCESS|FAILURE)$', l.decode('utf8'))
+		r = re.match('^(.*) \((\d+)us\): (SUCCESS|FAILURE)$', l.decode('utf8'))
 		return (r.group(1), int(r.group(2)), r.group(3))
 
 	def log(self):
@@ -39,11 +39,12 @@ class Main:
 		return '\n'.join(sorted(('%s (%dus): %s' % l for l in log)))
 
 	def xml(self, log):
-		result = ''.join((
-			'<testcase name="%s" time="%f" status="%s"/>' % (n, t / 1000000, s)
-				for n, t, s in log
+		result = '\n'.join((
+			'<testcase name="%s" time="%f" status="%s"/>' %
+				(n.translate(str.maketrans("<>", "{}")), t / 1000000, s)
+					for n, t, s in log
 		))
-		return ''.join((
+		return '\n'.join((
 			'<?xml version="1.0" encoding="UTF-8"?>',
 			'<testsuites name="all">',
 				'<testsuite name="goost">',
