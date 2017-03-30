@@ -10,4 +10,4 @@ build:
     - apt-get install cmake
     - cmake .
     - make VERBOSE=1
-    - ./test_runner -t
+    - ./test_report.py -o shippable/testresults/result.xml ./test_runner
