@@ -1,38 +1,33 @@
 #include "SboxByte.h"
-#include <stdexcept>
+#include "SboxByte64Tab.h"
 
 using namespace std;
 using namespace magma;
 
 SboxByte::SboxByte(const std::vector<uint8_t> &uz)
-	: SboxByte(SboxByte::expand_tab(uz, 0), SboxByte::expand_tab(uz, 1),
-		SboxByte::expand_tab(uz, 2), SboxByte::expand_tab(uz, 3))
+	: SboxByte(
+		make_unique<SboxByte64Tab>(uz, 0),
+		make_unique<SboxByte64Tab>(uz, 1),
+		make_unique<SboxByte64Tab>(uz, 2),
+		make_unique<SboxByte64Tab>(uz, 3)
+	)
 {
 }
 
-SboxByte::SboxByte(const vector<uint8_t> &tab1, const vector<uint8_t> &tab2,
-		const vector<uint8_t> &tab3, const vector<uint8_t> &tab4)
-	: tab1(tab1), tab2(tab2), tab3(tab3), tab4(tab4)
+SboxByte::SboxByte(
+		unique_ptr<const Tab> tab1,
+		unique_ptr<const Tab> tab2,
+		unique_ptr<const Tab> tab3,
+		unique_ptr<const Tab> tab4
+	)
+	: tab1(move(tab1)), tab2(move(tab2)), tab3(move(tab3)), tab4(move(tab4))
 {
 }
 
 uint32_t SboxByte::transform(uint32_t v) const
 {
-	return tab1[v & 0xff] |
-		(tab2[(v >> 8) & 0xff] << 8) |
-		(tab3[(v >> 16) & 0xff] << 16) |
-		(tab4[(v >> 24) & 0xff]) << 24;
-}
-
-vector<uint8_t> SboxByte::expand_tab(const vector<uint8_t> &uz, int offset)
-{
-	if (uz.size() != 64) {
-		throw runtime_error("Wrong uz size");
-	}
-	vector<uint8_t> tab(256);
-	for (size_t i = 0; i < tab.size(); i++) {
-		tab[i] = (uz[(i / 16) * 4 + offset] & 0xf0)
-			+ (uz[(i % 16) * 4 + offset] & 0x0f);
-	}
-	return tab;
+	return tab1->translate(v) |
+		(tab2->translate(v >> 8) << 8) |
+		(tab3->translate(v >> 16) << 16) |
+		(tab4->translate(v >> 24) << 24);
 }
