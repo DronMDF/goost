@@ -134,10 +134,10 @@ private:
 	size_t blocks;
 };
 
-UP_TEST(Benchmark100M)
+UP_TEST(Benchmark10M)
 {
 	// Given
-	const vector<uint8_t> data(100000000U, 'A');
+	const vector<uint8_t> data(10000000U, 'A');
 	vector<uint32_t> keydata = {
 		0xE0F67504U,
 		0xFAFB3850U,
@@ -164,7 +164,7 @@ UP_TEST(Benchmark100M)
 	// When
 	imit.imit(&data[0], data.size());
 	// Then
-	UP_ASSERT_EQUAL(imit.result(), 2148187304);
+	UP_ASSERT_EQUAL(imit.result(), 2954209623);
 }
 
 UP_SUITE_END()

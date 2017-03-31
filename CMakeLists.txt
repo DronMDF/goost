@@ -23,6 +23,7 @@ ADD_LIBRARY(goost
 	magma/KeyDataNative.cpp
 	magma/KeyDataString.cpp
 	magma/SboxByte.cpp
+	magma/SboxByte64Tab.cpp
 	magma/SboxExpandedCachedTab.cpp
 	magma/SboxExpanded.cpp
 	magma/SboxExpandedNativeTab.cpp

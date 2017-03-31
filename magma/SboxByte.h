@@ -1,26 +1,38 @@
 #pragma once
 #include "Sbox.h"
 #include <cstdint>
+#include <memory>
 #include <vector>
 
 namespace magma {
 
 // This is a byte expanded sbox, not fastest.
-class SboxByte : public Sbox {
+class SboxByte final : public Sbox {
 public:
-	explicit SboxByte(const std::vector<uint8_t> &uz);
-	SboxByte(const std::vector<uint8_t> &tab1, const std::vector<uint8_t> &tab2,
-		const std::vector<uint8_t> &tab3, const std::vector<uint8_t> &tab4);
+	class Tab {
+	public:
+		virtual ~Tab() = default;
+		virtual uint32_t translate(int index) const = 0;
+	};
 
-	uint32_t transform(uint32_t v) const final;
+	// Ctor from collapsed sbox
+	explicit SboxByte(const std::vector<uint8_t> &uz);
+
+	// Primary ctor
+	SboxByte(
+		std::unique_ptr<const Tab> tab1,
+		std::unique_ptr<const Tab> tab2,
+		std::unique_ptr<const Tab> tab3,
+		std::unique_ptr<const Tab> tab4
+	);
+
+	uint32_t transform(uint32_t v) const override;
 
 private:
-	static std::vector<uint8_t> expand_tab(const std::vector<uint8_t> &uz, int offset);
-
-	const std::vector<uint8_t> tab1;
-	const std::vector<uint8_t> tab2;
-	const std::vector<uint8_t> tab3;
-	const std::vector<uint8_t> tab4;
+	const std::unique_ptr<const Tab> tab1;
+	const std::unique_ptr<const Tab> tab2;
+	const std::unique_ptr<const Tab> tab3;
+	const std::unique_ptr<const Tab> tab4;
 };
 
 }
