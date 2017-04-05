@@ -16,6 +16,7 @@ ADD_LIBRARY(goost
 	kuznyechik/Block.cpp
 	kuznyechik/EncryptedBlock.cpp
 	kuznyechik/Imit.cpp
+	kuznyechik/KeyDataString.cpp
 	magma/Block.cpp
 	magma/DataStream.cpp
 	magma/DecryptedBlock.cpp
@@ -41,6 +42,7 @@ ADD_EXECUTABLE(test_runner
 	test/gost89/ProceduralImitTest.cpp
 	test/kuznyechik/EncryptedBlockTest.cpp
 	test/kuznyechik/ImitTest.cpp
+	test/kuznyechik/KeyDataStringTest.cpp
 	test/magma/DataStreamTest.cpp
 	test/magma/DecryptedBlockTest.cpp
 	test/magma/EncryptedBlockTest.cpp
