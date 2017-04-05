@@ -1,5 +1,5 @@
 #include "KeyDataString.h"
-#include <sstream>
+#include <string>
 #include "Block.h"
 
 using namespace std;
@@ -12,16 +12,18 @@ KeyDataString::KeyDataString(const string &key_data)
 
 Block KeyDataString::low() const
 {
-	uint64_t hi, lo;
-	istringstream in(string(key_data, 32, 32));
-	in >> hex >> hi >> lo;
-	return {lo, hi};
+	size_t pos;
+	return {
+		stoull(string(key_data, 48, 16), &pos, 16),
+		stoull(string(key_data, 32, 16), &pos, 16),
+	};
 }
 
 Block KeyDataString::high() const
 {
-	uint64_t hi, lo;
-	istringstream in(string(key_data, 0, 32));
-	in >> hex >> hi >> lo;
-	return {lo, hi};
+	size_t pos;
+	return {
+		stoull(string(key_data, 16, 16), &pos, 16),
+		stoull(string(key_data, 0, 16), &pos, 16),
+	};
 }
