@@ -23,16 +23,21 @@ class Options:
 class Main:
 	def __init__(self, args):
 		self.options = Options(args)
+		self.returncode = 0
 
 	def isTest(self, l):
-		return re.match('^.* \(\d+us\): (SUCCESS|FAILURE)$', l.decode('utf8'))
+		return re.match('^.* \(\d+us\): (SUCCESS|FAIL)$', l.decode('utf8'))
 
 	def split(self, l):
-		r = re.match('^(.*) \((\d+)us\): (SUCCESS|FAILURE)$', l.decode('utf8'))
+		r = re.match('^(.*) \((\d+)us\): (SUCCESS|FAIL)$', l.decode('utf8'))
 		return (r.group(1), int(r.group(2)), r.group(3))
 
 	def log(self):
-		out = subprocess.check_output([self.options.runner(), '-t'])
+		try:
+			out = subprocess.check_output([self.options.runner(), '-t'])
+		except subprocess.CalledProcessError as e:
+			self.returncode = e.returncode
+			out = e.output
 		return [self.split(l) for l in out.split(b'\n') if self.isTest(l)]
 
 	def text(self, log):
@@ -57,6 +62,9 @@ class Main:
 		log = self.log()
 		open(self.options.outfile(), 'w').write(self.xml(log))
 		print(self.text(log))
+		return self.returncode
 
 
-Main(sys.argv[1:]).run()
+sys.exit(
+	Main(sys.argv[1:]).run()
+)
