@@ -41,6 +41,7 @@ ADD_LIBRARY(goost
 ADD_EXECUTABLE(test_runner
 	test/gost89/DataImitTest.cpp
 	test/gost89/ProceduralImitTest.cpp
+	test/kuznyechik/BlockTest.cpp
 	test/kuznyechik/EncryptedBlockTest.cpp
 	test/kuznyechik/ImitTest.cpp
 	test/kuznyechik/KeyDataStringTest.cpp
