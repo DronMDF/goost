@@ -255,3 +255,63 @@ Block KeyIter8::value() const
 
 	return a8;
 }
+
+KeyIter9::KeyIter9(const shared_ptr<const Key::Data> &key_data)
+	: k7(make_unique<KeyIter7>(key_data)), k8(make_unique<KeyIter8>(key_data))
+{
+}
+
+Block KeyIter9::value() const
+{
+	auto a1 = k7->value();
+	auto a0 = k8->value();
+
+	const Block c1 = L(Block(25));
+	const Block c2 = L(Block(26));
+	const Block c3 = L(Block(27));
+	const Block c4 = L(Block(28));
+	const Block c5 = L(Block(29));
+	const Block c6 = L(Block(30));
+	const Block c7 = L(Block(31));
+	const Block c8 = L(Block(32));
+
+	const Block a2 = a0 ^ L(S(a1 ^ c1));
+	const Block a3 = a1 ^ L(S(a2 ^ c2));
+	const Block a4 = a2 ^ L(S(a3 ^ c3));
+	const Block a5 = a3 ^ L(S(a4 ^ c4));
+	const Block a6 = a4 ^ L(S(a5 ^ c5));
+	const Block a7 = a5 ^ L(S(a6 ^ c6));
+	const Block a8 = a6 ^ L(S(a7 ^ c7));
+	const Block a9 = a7 ^ L(S(a8 ^ c8));
+
+	return a9;
+}
+
+KeyIter10::KeyIter10(const shared_ptr<const Key::Data> &key_data)
+	: k7(make_unique<KeyIter7>(key_data)), k8(make_unique<KeyIter8>(key_data))
+{
+}
+
+Block KeyIter10::value() const
+{
+	auto a1 = k7->value();
+	auto a0 = k8->value();
+
+	const Block c1 = L(Block(25));
+	const Block c2 = L(Block(26));
+	const Block c3 = L(Block(27));
+	const Block c4 = L(Block(28));
+	const Block c5 = L(Block(29));
+	const Block c6 = L(Block(30));
+	const Block c7 = L(Block(31));
+
+	const Block a2 = a0 ^ L(S(a1 ^ c1));
+	const Block a3 = a1 ^ L(S(a2 ^ c2));
+	const Block a4 = a2 ^ L(S(a3 ^ c3));
+	const Block a5 = a3 ^ L(S(a4 ^ c4));
+	const Block a6 = a4 ^ L(S(a5 ^ c5));
+	const Block a7 = a5 ^ L(S(a6 ^ c6));
+	const Block a8 = a6 ^ L(S(a7 ^ c7));
+
+	return a8;
+}
