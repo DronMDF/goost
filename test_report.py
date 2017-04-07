@@ -50,7 +50,7 @@ class Main:
 	#  Details should be stored in <system-out/> tag
 	def xml(self, log):
 		result = '\n'.join((
-			'<testcase name="%s" time="%f">%s%</testcase>' % (
+			'<testcase name="%s" time="%f">%s</testcase>' % (
 				n.translate(str.maketrans("<>", "{}")),
 				t / 1000000,
 				"" if s == "SUCCESS" else "<failure/>"
