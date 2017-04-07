@@ -25,9 +25,8 @@ public:
 	explicit KeyIter3(const std::shared_ptr<const Key::Data> &key_data);
 	Block value() const override;
 private:
-	Block R(const Block &a) const;
+	Block S(const Block &a) const;
 	Block L(const Block &a) const;
-	Block LSX(const Block &a, const Block &c) const;
 
 	const std::unique_ptr<const Key::Iter> k1;
 	const std::unique_ptr<const Key::Iter> k2;
