@@ -4,7 +4,7 @@
 
 namespace kuznyechik {
 
-// @todo: Remove KeyIterPrimitives, this is a utility class
+// @todo #59:30min Remove KeyIterPrimitives, this is a utility class
 // Need to introduce Small classes for transformed blocks
 class KeyIterPrimitives {
 public:
@@ -12,6 +12,7 @@ public:
 	Block L(const Block &a) const;
 };
 
+// @todo #59:30min KeyIter are very similar and it looks like copy-paste
 class KeyIter1 final : public Key::Iter {
 public:
 	explicit KeyIter1(const std::shared_ptr<const Key::Data> &key_data);
@@ -44,6 +45,15 @@ public:
 private:
 	const std::unique_ptr<const Key::Iter> k1;
 	const std::unique_ptr<const Key::Iter> k2;
+};
+
+class KeyIter5 final : public Key::Iter, private KeyIterPrimitives {
+public:
+	explicit KeyIter5(const std::shared_ptr<const Key::Data> &key_data);
+	Block value() const override;
+private:
+	const std::unique_ptr<const Key::Iter> k3;
+	const std::unique_ptr<const Key::Iter> k4;
 };
 
 }

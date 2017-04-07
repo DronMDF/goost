@@ -39,5 +39,11 @@ UP_FIXTURE_TEST(R3412_A14_K4, KeyDataFixture)
 	UP_ASSERT_EQUAL(key.value(), Block(0x15ebadc40a9ffd04, 0x3d4553d8e9cfec68));
 }
 
+UP_FIXTURE_TEST(R3412_A14_K5, KeyDataFixture)
+{
+	KeyIter5 key(key_data);
+	UP_ASSERT_EQUAL(key.value(), Block(0xd3e59246f429f1ac, 0x57646468c44a5e28));
+}
+
 UP_SUITE_END()
 UP_SUITE_END()
