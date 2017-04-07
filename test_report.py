@@ -40,14 +40,21 @@ class Main:
 			out = e.output
 		return [self.split(l) for l in out.split(b'\n') if self.isTest(l)]
 
+	# @todo #63 test_result hide detailes of test failure.
+	#  This may be a problem if build machine have specific environment.
+	#  Shippable should display failure details in log
 	def text(self, log):
 		return '\n'.join(sorted(('%s (%dus): %s' % l for l in log)))
 
+	# @todo #63 Failures in xml file without details
+	#  Details should be stored in <system-out/> tag
 	def xml(self, log):
 		result = '\n'.join((
-			'<testcase name="%s" time="%f" status="%s"/>' %
-				(n.translate(str.maketrans("<>", "{}")), t / 1000000, s)
-					for n, t, s in log
+			'<testcase name="%s" time="%f">%s</testcase>' % (
+				n.translate(str.maketrans("<>", "{}")),
+				t / 1000000,
+				"" if s == "SUCCESS" else "<failure/>"
+			) for n, t, s in log
 		))
 		return '\n'.join((
 			'<?xml version="1.0" encoding="UTF-8"?>',
