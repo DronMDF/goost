@@ -56,4 +56,31 @@ private:
 	const std::unique_ptr<const Key::Iter> k4;
 };
 
+class KeyIter6 final : public Key::Iter, private KeyIterPrimitives {
+public:
+	explicit KeyIter6(const std::shared_ptr<const Key::Data> &key_data);
+	Block value() const override;
+private:
+	const std::unique_ptr<const Key::Iter> k3;
+	const std::unique_ptr<const Key::Iter> k4;
+};
+
+class KeyIter7 final : public Key::Iter, private KeyIterPrimitives {
+public:
+	explicit KeyIter7(const std::shared_ptr<const Key::Data> &key_data);
+	Block value() const override;
+private:
+	const std::unique_ptr<const Key::Iter> k5;
+	const std::unique_ptr<const Key::Iter> k6;
+};
+
+class KeyIter8 final : public Key::Iter, private KeyIterPrimitives {
+public:
+	explicit KeyIter8(const std::shared_ptr<const Key::Data> &key_data);
+	Block value() const override;
+private:
+	const std::unique_ptr<const Key::Iter> k5;
+	const std::unique_ptr<const Key::Iter> k6;
+};
+
 }

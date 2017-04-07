@@ -166,3 +166,92 @@ Block KeyIter5::value() const
 
 	return a9;
 }
+
+KeyIter6::KeyIter6(const shared_ptr<const Key::Data> &key_data)
+	: k3(make_unique<KeyIter3>(key_data)), k4(make_unique<KeyIter4>(key_data))
+{
+}
+
+Block KeyIter6::value() const
+{
+	auto a1 = k3->value();
+	auto a0 = k4->value();
+
+	const Block c1 = L(Block(9));
+	const Block c2 = L(Block(10));
+	const Block c3 = L(Block(11));
+	const Block c4 = L(Block(12));
+	const Block c5 = L(Block(13));
+	const Block c6 = L(Block(14));
+	const Block c7 = L(Block(15));
+
+	const Block a2 = a0 ^ L(S(a1 ^ c1));
+	const Block a3 = a1 ^ L(S(a2 ^ c2));
+	const Block a4 = a2 ^ L(S(a3 ^ c3));
+	const Block a5 = a3 ^ L(S(a4 ^ c4));
+	const Block a6 = a4 ^ L(S(a5 ^ c5));
+	const Block a7 = a5 ^ L(S(a6 ^ c6));
+	const Block a8 = a6 ^ L(S(a7 ^ c7));
+
+	return a8;
+}
+
+KeyIter7::KeyIter7(const shared_ptr<const Key::Data> &key_data)
+	: k5(make_unique<KeyIter5>(key_data)), k6(make_unique<KeyIter6>(key_data))
+{
+}
+
+Block KeyIter7::value() const
+{
+	auto a1 = k5->value();
+	auto a0 = k6->value();
+
+	const Block c1 = L(Block(17));
+	const Block c2 = L(Block(18));
+	const Block c3 = L(Block(19));
+	const Block c4 = L(Block(20));
+	const Block c5 = L(Block(21));
+	const Block c6 = L(Block(22));
+	const Block c7 = L(Block(23));
+	const Block c8 = L(Block(24));
+
+	const Block a2 = a0 ^ L(S(a1 ^ c1));
+	const Block a3 = a1 ^ L(S(a2 ^ c2));
+	const Block a4 = a2 ^ L(S(a3 ^ c3));
+	const Block a5 = a3 ^ L(S(a4 ^ c4));
+	const Block a6 = a4 ^ L(S(a5 ^ c5));
+	const Block a7 = a5 ^ L(S(a6 ^ c6));
+	const Block a8 = a6 ^ L(S(a7 ^ c7));
+	const Block a9 = a7 ^ L(S(a8 ^ c8));
+
+	return a9;
+}
+
+KeyIter8::KeyIter8(const shared_ptr<const Key::Data> &key_data)
+	: k5(make_unique<KeyIter5>(key_data)), k6(make_unique<KeyIter6>(key_data))
+{
+}
+
+Block KeyIter8::value() const
+{
+	auto a1 = k5->value();
+	auto a0 = k6->value();
+
+	const Block c1 = L(Block(17));
+	const Block c2 = L(Block(18));
+	const Block c3 = L(Block(19));
+	const Block c4 = L(Block(20));
+	const Block c5 = L(Block(21));
+	const Block c6 = L(Block(22));
+	const Block c7 = L(Block(23));
+
+	const Block a2 = a0 ^ L(S(a1 ^ c1));
+	const Block a3 = a1 ^ L(S(a2 ^ c2));
+	const Block a4 = a2 ^ L(S(a3 ^ c3));
+	const Block a5 = a3 ^ L(S(a4 ^ c4));
+	const Block a6 = a4 ^ L(S(a5 ^ c5));
+	const Block a7 = a5 ^ L(S(a6 ^ c6));
+	const Block a8 = a6 ^ L(S(a7 ^ c7));
+
+	return a8;
+}
