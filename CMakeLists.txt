@@ -13,7 +13,14 @@ ADD_COMPILE_OPTIONS(-std=c++14 -O2 -fomit-frame-pointer -g0 -Wall -Wextra -Werro
 ADD_LIBRARY(goost
 	gost89/DataImit.cpp
 	gost89/ImitedBlock.cpp
+	kuznyechik/Block.cpp
+	kuznyechik/EncryptedBlock.cpp
 	kuznyechik/Imit.cpp
+	kuznyechik/Key.cpp
+	kuznyechik/KeyDataString.cpp
+	kuznyechik/KeyIter.cpp
+	kuznyechik/Operations.cpp
+	kuznyechik/RBlock.cpp
 	magma/Block.cpp
 	magma/DataStream.cpp
 	magma/DecryptedBlock.cpp
@@ -37,7 +44,12 @@ ADD_LIBRARY(goost
 ADD_EXECUTABLE(test_runner
 	test/gost89/DataImitTest.cpp
 	test/gost89/ProceduralImitTest.cpp
+	test/kuznyechik/BlockTest.cpp
+	test/kuznyechik/EncryptedBlockTest.cpp
 	test/kuznyechik/ImitTest.cpp
+	test/kuznyechik/KeyDataStringTest.cpp
+	test/kuznyechik/KeyIterTest.cpp
+	test/kuznyechik/RBlockTest.cpp
 	test/magma/DataStreamTest.cpp
 	test/magma/DecryptedBlockTest.cpp
 	test/magma/EncryptedBlockTest.cpp
