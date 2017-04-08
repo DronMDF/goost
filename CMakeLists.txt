@@ -16,8 +16,10 @@ ADD_LIBRARY(goost
 	kuznyechik/Block.cpp
 	kuznyechik/EncryptedBlock.cpp
 	kuznyechik/Imit.cpp
+	kuznyechik/Key.cpp
 	kuznyechik/KeyDataString.cpp
 	kuznyechik/KeyIter.cpp
+	kuznyechik/Operations.cpp
 	kuznyechik/RBlock.cpp
 	magma/Block.cpp
 	magma/DataStream.cpp

@@ -1,11 +1,13 @@
 #pragma once
 #include <string>
+#include <memory>
+#include "Operations.h"
 
 namespace kuznyechik {
 
 class Block;
 
-class Key final {
+class Key final : public Operations {
 public:
 	class Data {
 	public:
@@ -18,8 +20,22 @@ public:
 		virtual Block value() const = 0;
 	};
 
-	explicit Key(const std::string &key_data [[gnu::unused]]) {};
+	explicit Key(const std::string &key_data);
+	explicit Key(const std::shared_ptr<const Data> &key_data);
+
+	Block encrypt(const Block &block) const;
+
+private:
+	const std::unique_ptr<const Iter> k1;
+	const std::unique_ptr<const Iter> k2;
+	const std::unique_ptr<const Iter> k3;
+	const std::unique_ptr<const Iter> k4;
+	const std::unique_ptr<const Iter> k5;
+	const std::unique_ptr<const Iter> k6;
+	const std::unique_ptr<const Iter> k7;
+	const std::unique_ptr<const Iter> k8;
+	const std::unique_ptr<const Iter> k9;
+	const std::unique_ptr<const Iter> k10;
 };
 
 }
-

@@ -6,7 +6,7 @@ namespace kuznyechik {
 
 class Key;
 
-class EncryptedBlock {
+class EncryptedBlock final {
 public:
 	EncryptedBlock(const Block &block, const std::shared_ptr<const Key> &key);
 
