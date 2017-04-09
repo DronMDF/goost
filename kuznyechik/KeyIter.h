@@ -21,76 +21,59 @@ private:
 	const std::shared_ptr<const Key::Data> key_data;
 };
 
-class KeyIter3 final : public Key::Iter, private Operations {
+// @todo #71:30min KeyIterAny is not final
+//  It is a base class for KeyIter2-10, this is a code sharing.
+//  But I can't right named him for agregate
+class KeyIterAny: public Key::Iter, private Operations {
+public:
+	KeyIterAny(const std::shared_ptr<const Key::Data> &key_data, int iter);
+	Block value() const override;
+private:
+	const std::unique_ptr<const Key::Iter> k1;
+	const std::unique_ptr<const Key::Iter> k2;
+	const int iter;
+
+	Block generate(const Block &a, const Block &b, int iter) const;
+};
+
+class KeyIter3 final : public KeyIterAny {
 public:
 	explicit KeyIter3(const std::shared_ptr<const Key::Data> &key_data);
-	Block value() const override;
-private:
-	const std::unique_ptr<const Key::Iter> k1;
-	const std::unique_ptr<const Key::Iter> k2;
 };
 
-class KeyIter4 final : public Key::Iter, private Operations {
+class KeyIter4 final : public KeyIterAny {
 public:
 	explicit KeyIter4(const std::shared_ptr<const Key::Data> &key_data);
-	Block value() const override;
-private:
-	const std::unique_ptr<const Key::Iter> k1;
-	const std::unique_ptr<const Key::Iter> k2;
 };
 
-class KeyIter5 final : public Key::Iter, private Operations {
+class KeyIter5 final : public KeyIterAny {
 public:
 	explicit KeyIter5(const std::shared_ptr<const Key::Data> &key_data);
-	Block value() const override;
-private:
-	const std::unique_ptr<const Key::Iter> k3;
-	const std::unique_ptr<const Key::Iter> k4;
 };
 
-class KeyIter6 final : public Key::Iter, private Operations {
+class KeyIter6 final : public KeyIterAny {
 public:
 	explicit KeyIter6(const std::shared_ptr<const Key::Data> &key_data);
-	Block value() const override;
-private:
-	const std::unique_ptr<const Key::Iter> k3;
-	const std::unique_ptr<const Key::Iter> k4;
 };
 
-class KeyIter7 final : public Key::Iter, private Operations {
+class KeyIter7 final : public KeyIterAny {
 public:
 	explicit KeyIter7(const std::shared_ptr<const Key::Data> &key_data);
-	Block value() const override;
-private:
-	const std::unique_ptr<const Key::Iter> k5;
-	const std::unique_ptr<const Key::Iter> k6;
 };
 
-class KeyIter8 final : public Key::Iter, private Operations {
+class KeyIter8 final : public KeyIterAny {
 public:
 	explicit KeyIter8(const std::shared_ptr<const Key::Data> &key_data);
-	Block value() const override;
-private:
-	const std::unique_ptr<const Key::Iter> k5;
-	const std::unique_ptr<const Key::Iter> k6;
 };
 
-class KeyIter9 final : public Key::Iter, private Operations {
+class KeyIter9 final : public KeyIterAny {
 public:
 	explicit KeyIter9(const std::shared_ptr<const Key::Data> &key_data);
-	Block value() const override;
-private:
-	const std::unique_ptr<const Key::Iter> k7;
-	const std::unique_ptr<const Key::Iter> k8;
 };
 
-class KeyIter10 final : public Key::Iter, private Operations {
+class KeyIter10 final : public KeyIterAny {
 public:
 	explicit KeyIter10(const std::shared_ptr<const Key::Data> &key_data);
-	Block value() const override;
-private:
-	const std::unique_ptr<const Key::Iter> k7;
-	const std::unique_ptr<const Key::Iter> k8;
 };
 
 }
