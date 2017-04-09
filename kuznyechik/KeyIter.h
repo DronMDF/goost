@@ -4,7 +4,6 @@
 
 namespace kuznyechik {
 
-// @todo #59:30min KeyIter are very similar and it looks like copy-paste
 class KeyIter1 final : public Key::Iter {
 public:
 	explicit KeyIter1(const std::shared_ptr<const Key::Data> &key_data);
