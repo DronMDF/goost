@@ -1,13 +1,12 @@
 #pragma once
 #include <string>
 #include <memory>
-#include "Operations.h"
 
 namespace kuznyechik {
 
 class Block;
 
-class Key final : public Operations {
+class Key final {
 public:
 	class Data {
 	public:

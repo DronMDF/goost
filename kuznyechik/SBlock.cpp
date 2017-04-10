@@ -1,36 +1,18 @@
-#include "Operations.h"
+#include "SBlock.h"
 #include <array>
 #include <cstring>
-#include "Block.h"
-#include "RBlock.h"
 
 using namespace std;
 using namespace kuznyechik;
 
-Block Operations::L(const Block &a) const
+SBlock::SBlock(const Block &block)
+	: block(block)
 {
-	const auto t1 = RBlock(a).value();
-	const auto t2 = RBlock(t1).value();
-	const auto t3 = RBlock(t2).value();
-	const auto t4 = RBlock(t3).value();
-	const auto t5 = RBlock(t4).value();
-	const auto t6 = RBlock(t5).value();
-	const auto t7 = RBlock(t6).value();
-	const auto t8 = RBlock(t7).value();
-	const auto t9 = RBlock(t8).value();
-	const auto t10 = RBlock(t9).value();
-	const auto t11 = RBlock(t10).value();
-	const auto t12 = RBlock(t11).value();
-	const auto t13 = RBlock(t12).value();
-	const auto t14 = RBlock(t13).value();
-	const auto t15 = RBlock(t14).value();
-	const auto t16 = RBlock(t15).value();
-	return t16;
 }
 
-Block Operations::S(const Block &a) const
+Block SBlock::value() const
 {
-	array<uint8_t, 256> sbox = {{
+	constexpr array<uint8_t, 256> sbox = {{
 		252, 238, 221, 17, 207, 110, 49, 22, 251, 196, 250, 218, 35, 197, 4, 77, 233,
 		119, 240, 219, 147, 46, 153, 186, 23, 54, 241, 187, 20, 205, 95, 193, 249, 24, 101,
 		90, 226, 92, 239, 33, 129, 28, 60, 66, 139, 1, 142, 79, 5, 132, 2, 174, 227, 106,
@@ -49,8 +31,8 @@ Block Operations::S(const Block &a) const
 	}};
 
 	array<uint8_t, 16> data;
-	memcpy(&data[0], &a.low, sizeof(a.low));
-	memcpy(&data[8], &a.high, sizeof(a.high));
+	memcpy(&data[0], &block.low, sizeof(block.low));
+	memcpy(&data[8], &block.high, sizeof(block.high));
 	for (int i = 0; i < 16; i++) {
 		data[i] = sbox[data[i]];
 	}
