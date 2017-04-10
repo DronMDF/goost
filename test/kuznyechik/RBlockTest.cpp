@@ -14,7 +14,7 @@ const vector<tuple<uint64_t, uint64_t, uint64_t, uint64_t>> data = {
 	{0x0000000000000000, 0x64a5940000000000, 0x0000000000000000, 0x0d64a59400000000}
 };
 
-UP_PARAMETRIZED_TEST(R3413_A12, data)
+UP_PARAMETRIZED_TEST(R3412_A12, data)
 {
 	const RBlock block(Block(get<0>(data), get<1>(data)));
 	UP_ASSERT_EQUAL(block.value(), Block(get<2>(data), get<3>(data)));

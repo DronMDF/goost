@@ -14,7 +14,7 @@ const vector<tuple<uint64_t, uint64_t, uint64_t, uint64_t>> data = {
 	{0x8b7b68f66b513c13, 0x0e93691a0cfc6040, 0xfd97bcb0b44b8580, 0xe6a8094fee0aa204}
 };
 
-UP_PARAMETRIZED_TEST(R3413_A13, data)
+UP_PARAMETRIZED_TEST(R3412_A13, data)
 {
 	const LBlock block(Block(get<0>(data), get<1>(data)));
 	UP_ASSERT_EQUAL(block.value(), Block(get<2>(data), get<3>(data)));
