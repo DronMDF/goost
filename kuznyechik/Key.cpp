@@ -2,6 +2,8 @@
 #include "Block.h"
 #include "KeyDataString.h"
 #include "KeyIter.h"
+#include "LBlock.h"
+#include "SBlock.h"
 
 using namespace std;
 using namespace kuznyechik;
@@ -27,14 +29,16 @@ Key::Key(const std::shared_ptr<const Data> &key_data)
 
 Block Key::encrypt(const Block &block) const
 {
-	const auto t1 = L(S(block ^ k1->value()));
-	const auto t2 = L(S(t1 ^ k2->value()));
-	const auto t3 = L(S(t2 ^ k3->value()));
-	const auto t4 = L(S(t3 ^ k4->value()));
-	const auto t5 = L(S(t4 ^ k5->value()));
-	const auto t6 = L(S(t5 ^ k6->value()));
-	const auto t7 = L(S(t6 ^ k7->value()));
-	const auto t8 = L(S(t7 ^ k8->value()));
-	const auto t9 = L(S(t8 ^ k9->value()));
+	// @todo #73:30min Lazy object LBlock and SBlock looks ugly in this context
+	//  Maybe i need to introduce LSX object? Or rework parameters passing to them.
+	const auto t1 = LBlock(SBlock(block ^ k1->value()).value()).value();
+	const auto t2 = LBlock(SBlock(t1 ^ k2->value()).value()).value();
+	const auto t3 = LBlock(SBlock(t2 ^ k3->value()).value()).value();
+	const auto t4 = LBlock(SBlock(t3 ^ k4->value()).value()).value();
+	const auto t5 = LBlock(SBlock(t4 ^ k5->value()).value()).value();
+	const auto t6 = LBlock(SBlock(t5 ^ k6->value()).value()).value();
+	const auto t7 = LBlock(SBlock(t6 ^ k7->value()).value()).value();
+	const auto t8 = LBlock(SBlock(t7 ^ k8->value()).value()).value();
+	const auto t9 = LBlock(SBlock(t8 ^ k9->value()).value()).value();
 	return t9 ^ k10->value();
 }

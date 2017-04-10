@@ -23,7 +23,7 @@ private:
 // @todo #71:30min KeyIterAny is not final
 //  It is a base class for KeyIter2-10, this is a code sharing.
 //  But I can't right named him for agregate
-class KeyIterAny: public Key::Iter, private Operations {
+class KeyIterAny: public Key::Iter {
 public:
 	KeyIterAny(const std::shared_ptr<const Key::Data> &key_data, int iter);
 	Block value() const override;

@@ -1,6 +1,8 @@
 #include "KeyIter.h"
 #include <cstring>
 #include "Block.h"
+#include "LBlock.h"
+#include "SBlock.h"
 
 using namespace std;
 using namespace kuznyechik;
@@ -41,7 +43,8 @@ Block KeyIterAny::generate(const Block &a, const Block &b, int n) const
 		return b;
 	}
 
-	return generate(b, a ^ L(S(b ^ L(Block(n)))), n + 1);
+	const auto cn = LBlock(Block(n)).value();
+	return generate(b, a ^ LBlock(SBlock(b ^ cn).value()).value(), n + 1);
 }
 
 KeyIter3::KeyIter3(const shared_ptr<const Key::Data> &key_data)

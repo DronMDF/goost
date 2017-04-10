@@ -20,7 +20,6 @@ ADD_LIBRARY(goost
 	kuznyechik/KeyDataString.cpp
 	kuznyechik/KeyIter.cpp
 	kuznyechik/LBlock.cpp
-	kuznyechik/Operations.cpp
 	kuznyechik/RBlock.cpp
 	kuznyechik/SBlock.cpp
 	magma/Block.cpp
