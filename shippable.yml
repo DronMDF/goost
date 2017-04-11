@@ -7,9 +7,9 @@ compiler:
 build:
   ci:
     - apt-get update
+    - apt-get install cmake ruby-dev
     - gem install pdd
     - ./style.sh
-    - apt-get install cmake
     - cmake .
     - make VERBOSE=1
     - ./test_report.py -o shippable/testresults/result.xml ./test_runner
