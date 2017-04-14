@@ -14,6 +14,7 @@ ADD_LIBRARY(goost
 	gost89/DataImit.cpp
 	gost89/ImitedBlock.cpp
 	kuznyechik/Block.cpp
+	kuznyechik/DataStream.cpp
 	kuznyechik/EncryptedBlock.cpp
 	kuznyechik/Imit.cpp
 	kuznyechik/Key.cpp
