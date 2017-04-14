@@ -12,6 +12,7 @@ public:
 	Block(uint64_t low, uint64_t high);
 
 	bool operator ==(const Block &block) const;
+	Block operator <<(int i) const;
 	Block operator ^(const Block &b) const;
 
 	const uint64_t low;
