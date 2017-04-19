@@ -10,6 +10,8 @@ RBlock::RBlock(const Block &block)
 {
 }
 
+// @todo #82:32min Use predefined gmul tab for speedup kuznyechik alg
+//  Calculation is slower solution.
 uint8_t RBlock::gmul(uint8_t a, uint8_t b) const
 {
 	uint8_t p = 0;

@@ -8,6 +8,8 @@ class BlockIterator;
 class DataStream;
 class Key;
 
+// @todo #82:30min CTREncryptedStream is a generic alg.
+//  May be share this code with magma with templates?
 class CTREncryptedStream final {
 public:
 	CTREncryptedStream(
