@@ -14,6 +14,7 @@ ADD_LIBRARY(goost
 	gost89/DataImit.cpp
 	gost89/ImitedBlock.cpp
 	kuznyechik/Block.cpp
+	kuznyechik/CTREncryptedStream.cpp
 	kuznyechik/DataStream.cpp
 	kuznyechik/EncryptedBlock.cpp
 	kuznyechik/Imit.cpp
@@ -47,6 +48,7 @@ ADD_EXECUTABLE(test_runner
 	test/gost89/DataImitTest.cpp
 	test/gost89/ProceduralImitTest.cpp
 	test/kuznyechik/BlockTest.cpp
+	test/kuznyechik/CTREncryptedStreamTest.cpp
 	test/kuznyechik/EncryptedBlockTest.cpp
 	test/kuznyechik/ImitTest.cpp
 	test/kuznyechik/KeyDataStringTest.cpp

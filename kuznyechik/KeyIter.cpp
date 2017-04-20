@@ -43,6 +43,8 @@ Block KeyIterAny::generate(const Block &a, const Block &b, int n) const
 		return b;
 	}
 
+	// @todo #82:30min Cn is a const key.
+	//  Need to predefine this keys
 	const auto cn = LBlock(Block(n)).value();
 	return generate(b, a ^ LBlock(SBlock(b ^ cn).value()).value(), n + 1);
 }
