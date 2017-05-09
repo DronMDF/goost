@@ -4,6 +4,7 @@
 using namespace std;
 using namespace magma;
 
+// @todo #89:15min SboxByte should use source sbox as is, without creating tab
 SboxByte::SboxByte(const std::vector<uint8_t> &uz)
 	: SboxByte(
 		make_unique<SboxByte64Tab>(uz, 0),
