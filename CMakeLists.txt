@@ -35,10 +35,6 @@ ADD_LIBRARY(goost
 	magma/KeyDataString.cpp
 	magma/SboxByte.cpp
 	magma/SboxByte64Tab.cpp
-	magma/SboxExpandedCachedTab.cpp
-	magma/SboxExpanded.cpp
-	magma/SboxExpandedNativeTab.cpp
-	magma/SboxExpandedNibbleTab.cpp
 	magma/SboxNibble.cpp
 	magma/SboxR3412.cpp
 	magma/SboxTwisted.cpp
@@ -63,8 +59,6 @@ ADD_EXECUTABLE(test_runner
 	test/magma/KeyCachedDataTest.cpp
 	test/magma/KeyDataNativeTest.cpp
 	test/magma/KeyDataStringTest.cpp
-	test/magma/SboxExpandedCachedTabTest.cpp
-	test/magma/SboxExpandedTest.cpp
 	test/magma/SboxNibbleTest.cpp
 	test/magma/SboxTwistedTest.cpp
 	test/main.cpp
