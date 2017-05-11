@@ -48,7 +48,7 @@ Block DataStreamIterator::value() const
 shared_ptr<const BlockIterator> DataStreamIterator::next() const
 {
 	const auto stream = stream_ptr.lock();
-	return stream->iter(offset + sizeof(Block));
+	return stream->next_iter(offset + sizeof(Block));
 }
 
 DataStream::DataStream(const vector<uint64_t> &data)
@@ -56,7 +56,12 @@ DataStream::DataStream(const vector<uint64_t> &data)
 {
 }
 
-shared_ptr<const BlockIterator> DataStream::iter(size_t offset) const
+shared_ptr<const BlockIterator> DataStream::iter() const
+{
+	return next_iter(0);
+}
+
+shared_ptr<const BlockIterator> DataStream::next_iter(size_t offset) const
 {
 	if (data.size() <= offset / sizeof(uint64_t)) {
 		return {};
