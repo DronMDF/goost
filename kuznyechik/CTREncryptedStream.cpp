@@ -7,7 +7,7 @@
 using namespace std;
 using namespace kuznyechik;
 
-class CTREncryptedIterator final: public BlockIterator {
+class CTREncryptedIterator final : public BlockIterator {
 public:
 	CTREncryptedIterator(
 		const shared_ptr<const BlockIterator> &iter,
@@ -60,7 +60,7 @@ shared_ptr<const BlockIterator> CTREncryptedIterator::next() const
 }
 
 CTREncryptedStream::CTREncryptedStream(
-		const shared_ptr<const DataStream> &stream,
+		const shared_ptr<const Stream> &stream,
 		const shared_ptr<const Key> &key,
 		const uint64_t iv)
 	: stream(stream), key(key), iv(iv)

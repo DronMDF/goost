@@ -3,14 +3,20 @@
 #include <memory>
 #include <vector>
 #include "BlockIterator.h"
+#include "Stream.h"
 
 namespace kuznyechik {
 
-class DataStream final : public std::enable_shared_from_this<const DataStream> {
+// @todo #93:15min Reame DataStream to StMemory, DataStream is very abstract name.
+class DataStream final :
+	public Stream,
+	public std::enable_shared_from_this<const DataStream>
+{
 public:
 	explicit DataStream(const std::vector<uint64_t> &data);
 
-	std::shared_ptr<const BlockIterator> iter(size_t offset = 0) const;
+	virtual std::shared_ptr<const BlockIterator> iter() const override;
+	std::shared_ptr<const BlockIterator> next_iter(size_t offset = 0) const;
 
 private:
 	const std::vector<uint64_t> data;
