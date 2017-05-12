@@ -1,4 +1,4 @@
-#include "DataStream.h"
+#include "StMemory.h"
 #include "Block.h"
 #include "BlockIterator.h"
 
@@ -9,7 +9,7 @@ namespace kuznyechik {
 
 class DataStreamIterator final : public BlockIterator {
 public:
-	DataStreamIterator(const weak_ptr<const DataStream> &stream_ptr,
+	DataStreamIterator(const weak_ptr<const StMemory> &stream_ptr,
 		size_t offset, const Block &data);
 
 	bool last() const override;
@@ -17,14 +17,14 @@ public:
 	Block value() const override;
 	shared_ptr<const BlockIterator> next() const override;
 private:
-	const weak_ptr<const DataStream> stream_ptr;
+	const weak_ptr<const StMemory> stream_ptr;
 	const size_t offset;
 	const Block data;
 };
 
 }
 
-DataStreamIterator::DataStreamIterator(const weak_ptr<const DataStream> &stream_ptr,
+DataStreamIterator::DataStreamIterator(const weak_ptr<const StMemory> &stream_ptr,
 		size_t offset, const Block &data)
 	: stream_ptr(stream_ptr), offset(offset), data(data)
 {
@@ -51,17 +51,17 @@ shared_ptr<const BlockIterator> DataStreamIterator::next() const
 	return stream->next_iter(offset + sizeof(Block));
 }
 
-DataStream::DataStream(const vector<uint64_t> &data)
+StMemory::StMemory(const vector<uint64_t> &data)
 	: data(data)
 {
 }
 
-shared_ptr<const BlockIterator> DataStream::iter() const
+shared_ptr<const BlockIterator> StMemory::iter() const
 {
 	return next_iter(0);
 }
 
-shared_ptr<const BlockIterator> DataStream::next_iter(size_t offset) const
+shared_ptr<const BlockIterator> StMemory::next_iter(size_t offset) const
 {
 	if (data.size() <= offset / sizeof(uint64_t)) {
 		return {};

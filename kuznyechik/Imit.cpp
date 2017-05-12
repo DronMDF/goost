@@ -1,12 +1,13 @@
 #include "Imit.h"
 #include "Block.h"
-#include "DataStream.h"
+#include "BlockIterator.h"
 #include "EncryptedBlock.h"
+#include "Stream.h"
 
 using namespace std;
 using namespace kuznyechik;
 
-Imit::Imit(const shared_ptr<const DataStream> &data, const shared_ptr<const Key> &key)
+Imit::Imit(const shared_ptr<const Stream> &data, const shared_ptr<const Key> &key)
 	: data(data), key(key)
 {
 }

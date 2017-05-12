@@ -1,8 +1,8 @@
 #include "upp11.h"
 #include <kuznyechik/Block.h>
-#include <kuznyechik/DataStream.h>
 #include <kuznyechik/Imit.h>
 #include <kuznyechik/Key.h>
+#include <kuznyechik/StMemory.h>
 
 using namespace std;
 using namespace kuznyechik;
@@ -15,7 +15,7 @@ UP_TEST(R3413_A162)
 	const auto key = make_shared<const Key>(
 		"8899aabbccddeeff0011223344556677fedcba98765432100123456789abcdef"
 	);
-	const auto data = make_shared<const DataStream>(
+	const auto data = make_shared<const StMemory>(
 		vector<uint64_t>{
 			0xffeeddccbbaa9988, 0x1122334455667700,
 			0x8899aabbcceeff0a, 0x0011223344556677,

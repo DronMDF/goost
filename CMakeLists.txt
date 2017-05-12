@@ -15,7 +15,6 @@ ADD_LIBRARY(goost
 	gost89/ImitedBlock.cpp
 	kuznyechik/Block.cpp
 	kuznyechik/CTREncryptedStream.cpp
-	kuznyechik/DataStream.cpp
 	kuznyechik/EncryptedBlock.cpp
 	kuznyechik/Imit.cpp
 	kuznyechik/Key.cpp
@@ -24,6 +23,7 @@ ADD_LIBRARY(goost
 	kuznyechik/LBlock.cpp
 	kuznyechik/RBlock.cpp
 	kuznyechik/SBlock.cpp
+	kuznyechik/StMemory.cpp
 	magma/Block.cpp
 	magma/DataStream.cpp
 	magma/DecryptedBlock.cpp
