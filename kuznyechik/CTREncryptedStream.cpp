@@ -1,7 +1,6 @@
 #include "CTREncryptedStream.h"
 #include "Block.h"
 #include "BlockIterator.h"
-#include "DataStream.h"
 #include "EncryptedBlock.h"
 
 using namespace std;
