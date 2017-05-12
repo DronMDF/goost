@@ -2,7 +2,7 @@
 #include <cstdint>
 #include <memory>
 #include <vector>
-#include "BlockIterator.h"
+#include "Iterator.h"
 #include "Stream.h"
 
 namespace kuznyechik {
@@ -14,8 +14,8 @@ class StMemory final :
 public:
 	explicit StMemory(const std::vector<uint64_t> &data);
 
-	virtual std::shared_ptr<const BlockIterator> iter() const override;
-	std::shared_ptr<const BlockIterator> next_iter(size_t offset = 0) const;
+	virtual std::shared_ptr<const Iterator> iter() const override;
+	std::shared_ptr<const Iterator> next_iter(size_t offset = 0) const;
 
 private:
 	const std::vector<uint64_t> data;

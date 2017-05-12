@@ -1,15 +1,16 @@
 #include "StCTREncrypted.h"
 #include "Block.h"
-#include "BlockIterator.h"
 #include "EncryptedBlock.h"
+#include "Iterator.h"
 
 using namespace std;
 using namespace kuznyechik;
 
-class CTREncryptedIterator final : public BlockIterator {
+// @todo #95:15min Rename CTREncryptedIterator to ItCTREncrypted
+class CTREncryptedIterator final : public Iterator {
 public:
 	CTREncryptedIterator(
-		const shared_ptr<const BlockIterator> &iter,
+		const shared_ptr<const Iterator> &iter,
 		const shared_ptr<const Key> &key,
 		const Block &ctr
 	);
@@ -17,16 +18,16 @@ public:
 	bool last() const override;
 	size_t size() const override;
 	Block value() const override;
-	shared_ptr<const BlockIterator> next() const override;
+	shared_ptr<const Iterator> next() const override;
 
 private:
-	const shared_ptr<const BlockIterator> iter;
+	const shared_ptr<const Iterator> iter;
 	const shared_ptr<const Key> key;
 	const Block ctr;
 };
 
 CTREncryptedIterator::CTREncryptedIterator(
-		const shared_ptr<const BlockIterator> &iter,
+		const shared_ptr<const Iterator> &iter,
 		const shared_ptr<const Key> &key,
 		const Block &ctr)
 	: iter(iter), key(key), ctr(ctr)
@@ -49,7 +50,7 @@ Block CTREncryptedIterator::value() const
 	return iter->value() ^ block.value();
 }
 
-shared_ptr<const BlockIterator> CTREncryptedIterator::next() const
+shared_ptr<const Iterator> CTREncryptedIterator::next() const
 {
 	return make_shared<const CTREncryptedIterator>(
 		iter->next(),
@@ -66,7 +67,7 @@ StCTREncrypted::StCTREncrypted(
 {
 }
 
-shared_ptr<const BlockIterator> StCTREncrypted::iter() const
+shared_ptr<const Iterator> StCTREncrypted::iter() const
 {
 	return make_shared<const CTREncryptedIterator>(stream->iter(), key, Block(0, iv));
 }
