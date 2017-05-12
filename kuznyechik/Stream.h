@@ -3,8 +3,7 @@
 
 namespace kuznyechik {
 
-// @todo #93:15min Rename BlockIterator to Iterator, KISS
-class BlockIterator;
+class Iterator;
 
 // This is abstract stream type.
 // Prefix for classes is 'St'
@@ -12,7 +11,7 @@ class Stream {
 public:
 	virtual ~Stream() = default;
 
-	virtual std::shared_ptr<const BlockIterator> iter() const = 0;
+	virtual std::shared_ptr<const Iterator> iter() const = 0;
 };
 
 }

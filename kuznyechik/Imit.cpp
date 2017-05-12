@@ -1,7 +1,7 @@
 #include "Imit.h"
 #include "Block.h"
-#include "BlockIterator.h"
 #include "EncryptedBlock.h"
+#include "Iterator.h"
 #include "Stream.h"
 
 using namespace std;

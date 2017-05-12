@@ -18,7 +18,7 @@ public:
 		const uint64_t iv
 	);
 
-	virtual std::shared_ptr<const BlockIterator> iter() const override;
+	virtual std::shared_ptr<const Iterator> iter() const override;
 
 private:
 	const std::shared_ptr<const Stream> stream;
