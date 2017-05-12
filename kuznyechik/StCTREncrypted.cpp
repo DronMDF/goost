@@ -1,4 +1,4 @@
-#include "CTREncryptedStream.h"
+#include "StCTREncrypted.h"
 #include "Block.h"
 #include "BlockIterator.h"
 #include "EncryptedBlock.h"
@@ -58,7 +58,7 @@ shared_ptr<const BlockIterator> CTREncryptedIterator::next() const
 	);
 }
 
-CTREncryptedStream::CTREncryptedStream(
+StCTREncrypted::StCTREncrypted(
 		const shared_ptr<const Stream> &stream,
 		const shared_ptr<const Key> &key,
 		const uint64_t iv)
@@ -66,7 +66,7 @@ CTREncryptedStream::CTREncryptedStream(
 {
 }
 
-shared_ptr<const BlockIterator> CTREncryptedStream::iter() const
+shared_ptr<const BlockIterator> StCTREncrypted::iter() const
 {
 	return make_shared<const CTREncryptedIterator>(stream->iter(), key, Block(0, iv));
 }

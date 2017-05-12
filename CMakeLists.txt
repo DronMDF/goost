@@ -14,7 +14,6 @@ ADD_LIBRARY(goost
 	gost89/DataImit.cpp
 	gost89/ImitedBlock.cpp
 	kuznyechik/Block.cpp
-	kuznyechik/CTREncryptedStream.cpp
 	kuznyechik/EncryptedBlock.cpp
 	kuznyechik/Imit.cpp
 	kuznyechik/Key.cpp
@@ -23,6 +22,7 @@ ADD_LIBRARY(goost
 	kuznyechik/LBlock.cpp
 	kuznyechik/RBlock.cpp
 	kuznyechik/SBlock.cpp
+	kuznyechik/StCTREncrypted.cpp
 	kuznyechik/StMemory.cpp
 	magma/Block.cpp
 	magma/DataStream.cpp
@@ -44,7 +44,6 @@ ADD_EXECUTABLE(test_runner
 	test/gost89/DataImitTest.cpp
 	test/gost89/ProceduralImitTest.cpp
 	test/kuznyechik/BlockTest.cpp
-	test/kuznyechik/CTREncryptedStreamTest.cpp
 	test/kuznyechik/EncryptedBlockTest.cpp
 	test/kuznyechik/ImitTest.cpp
 	test/kuznyechik/KeyDataStringTest.cpp
@@ -52,6 +51,7 @@ ADD_EXECUTABLE(test_runner
 	test/kuznyechik/LBlockTest.cpp
 	test/kuznyechik/RBlockTest.cpp
 	test/kuznyechik/SBlockTest.cpp
+	test/kuznyechik/StCTREncryptedTest.cpp
 	test/magma/DataStreamTest.cpp
 	test/magma/DecryptedBlockTest.cpp
 	test/magma/EncryptedBlockTest.cpp

@@ -8,13 +8,11 @@ class Block;
 class BlockIterator;
 class Key;
 
-// @todo #82:30min CTREncryptedStream is a generic alg.
+// @todo #82:30min StCTREncrypted is a generic alg.
 //  May be share this code with magma with templates?
-
-// @todo #93:15min Rename CTREncryptedStream to StCTREncrypted
-class CTREncryptedStream final : public Stream {
+class StCTREncrypted final : public Stream {
 public:
-	CTREncryptedStream(
+	StCTREncrypted(
 		const std::shared_ptr<const Stream> &stream,
 		const std::shared_ptr<const Key> &key,
 		const uint64_t iv
