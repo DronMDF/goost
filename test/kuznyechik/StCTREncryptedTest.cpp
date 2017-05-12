@@ -4,19 +4,19 @@
 
 #include <upp11.h>
 #include <kuznyechik/Block.h>
-#include <kuznyechik/CTREncryptedStream.h>
 #include <kuznyechik/Key.h>
+#include <kuznyechik/StCTREncrypted.h>
 #include <kuznyechik/StMemory.h>
 
 using namespace std;
 using namespace kuznyechik;
 
 UP_SUITE_BEGIN(kuznyechik)
-UP_SUITE_BEGIN(CTREncryptedStreamTest)
+UP_SUITE_BEGIN(StCTREncryptedTest)
 
 UP_TEST(R3413_A121)
 {
-	const CTREncryptedStream stream(
+	const StCTREncrypted stream(
 		make_shared<StMemory>(
 			vector<uint64_t>{
 				0xffeeddccbbaa9988, 0x1122334455667700,
