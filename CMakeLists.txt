@@ -8,7 +8,7 @@ INCLUDE_DIRECTORIES(
 	"${PROJECT_SOURCE_DIR}/test"
 )
 
-ADD_COMPILE_OPTIONS(-std=c++14 -O2 -fomit-frame-pointer -g0 -Wall -Wextra -Werror)
+ADD_COMPILE_OPTIONS(-std=c++14 -O2 -fomit-frame-pointer -g0 -Wall -Wextra -Wpedantic -Werror)
 
 ADD_LIBRARY(goost
 	gost89/DataImit.cpp
