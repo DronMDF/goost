@@ -10,12 +10,14 @@ class Key final {
 public:
 	class Data {
 	public:
+		virtual ~Data() = default;
 		virtual Block low() const = 0;
 		virtual Block high() const = 0;
 	};
 
 	class Iter {
 	public:
+		virtual ~Iter() = default;
 		virtual Block value() const = 0;
 	};
 

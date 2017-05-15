@@ -8,7 +8,11 @@ INCLUDE_DIRECTORIES(
 	"${PROJECT_SOURCE_DIR}/test"
 )
 
-ADD_COMPILE_OPTIONS(-std=c++14 -O2 -fomit-frame-pointer -g0 -Wall -Wextra -Wpedantic -Werror)
+# @todo #104:15min -Wno-non-virtual-dtor cause from boost::enable_shared_trom_this class
+#  How resolve this? Avois shared_from_this?
+ADD_COMPILE_OPTIONS(-std=c++14 -O2 -fomit-frame-pointer -g0
+	-Wall -Wextra -Weffc++ -Wpedantic -Werror
+	-Wno-non-virtual-dtor)
 
 ADD_LIBRARY(goost
 	gost89/DataImit.cpp
