@@ -19,6 +19,9 @@ public:
 		return index * 12345;
 	}
 private:
+	TestKeyData(const TestKeyData &) = delete;
+	TestKeyData operator = (const TestKeyData &) = delete;
+
 	array<int, 8> * const counter;
 };
 

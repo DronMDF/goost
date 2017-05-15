@@ -7,7 +7,9 @@ UP_SUITE_BEGIN(ProceduralImitTest)
 
 class Key final {
 public:
-	Key(const void *key) {
+	Key(const void *key)
+		: sbox()
+	{
 		memcpy(key_, key, sizeof(key_));
 		memset(mask_, 0, sizeof(mask_));
 	}
