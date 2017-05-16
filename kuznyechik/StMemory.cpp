@@ -7,10 +7,9 @@ using namespace kuznyechik;
 
 namespace kuznyechik {
 
-// @todo #95:15min Rename DataStreamIterator to ItMemory
-class DataStreamIterator final : public Iterator {
+class ItMemory final : public Iterator {
 public:
-	DataStreamIterator(const weak_ptr<const StMemory> &stream_ptr,
+	ItMemory(const weak_ptr<const StMemory> &stream_ptr,
 		size_t offset, const Block &data);
 
 	bool last() const override;
@@ -25,28 +24,28 @@ private:
 
 }
 
-DataStreamIterator::DataStreamIterator(const weak_ptr<const StMemory> &stream_ptr,
+ItMemory::ItMemory(const weak_ptr<const StMemory> &stream_ptr,
 		size_t offset, const Block &data)
 	: stream_ptr(stream_ptr), offset(offset), data(data)
 {
 }
 
-bool DataStreamIterator::last() const
+bool ItMemory::last() const
 {
 	return !next();
 }
 
-size_t DataStreamIterator::size() const
+size_t ItMemory::size() const
 {
 	return sizeof(Block);
 }
 
-Block DataStreamIterator::value() const
+Block ItMemory::value() const
 {
 	return data;
 }
 
-shared_ptr<const Iterator> DataStreamIterator::next() const
+shared_ptr<const Iterator> ItMemory::next() const
 {
 	const auto stream = stream_ptr.lock();
 	return stream->next_iter(offset + sizeof(Block));
@@ -67,7 +66,7 @@ shared_ptr<const Iterator> StMemory::next_iter(size_t offset) const
 	if (data.size() <= offset / sizeof(uint64_t)) {
 		return {};
 	}
-	return make_shared<const DataStreamIterator>(
+	return make_shared<const ItMemory>(
 		shared_from_this(),
 		offset,
 		Block(&data[offset / sizeof(uint64_t)])
