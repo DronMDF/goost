@@ -7,6 +7,7 @@ namespace magma {
 
 class BlockIterator;
 
+// @todo #102:15min Introduce magma::Stream interface
 class DataStream : public std::enable_shared_from_this<const DataStream> {
 public:
 	explicit DataStream(const std::vector<uint64_t> &data);
