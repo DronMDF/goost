@@ -1,7 +1,3 @@
-// @todo #82:30min Class naming style is Ambiguous
-//  Need to use suffix extension for close proximity of related classes
-//  This applies to BlockStreams and Blocks
-
 #include <upp11.h>
 #include <kuznyechik/Block.h>
 #include <kuznyechik/Key.h>
