@@ -15,14 +15,12 @@ RBlock::RBlock(const Block &block)
 uint8_t RBlock::gmul(uint8_t a, uint8_t b) const
 {
 	uint8_t p = 0;
-	uint8_t counter;
-	uint8_t hi_bit_set;
-	for (counter = 0; counter < 8; counter++) {
+	for (int counter = 0; counter < 8; counter++) {
 		if ((b & 1) == 1) {
 			p ^= a;
 		}
 
-		hi_bit_set = (a & 0x80);
+		uint8_t hi_bit_set = (a & 0x80);
 		a <<= 1;
 
 		if (hi_bit_set == 0x80) {

@@ -1,4 +1,4 @@
-#include "upp11.h"
+#include <upp11.h>
 
 using namespace std;
 
@@ -7,7 +7,7 @@ UP_SUITE_BEGIN(ProceduralImitTest)
 
 class Key final {
 public:
-	Key(const void *key)
+	explicit Key(const void *key)
 		: sbox()
 	{
 		memcpy(key_, key, sizeof(key_));
@@ -38,7 +38,7 @@ private:
 
 class ImitContext final {
 public:
-	ImitContext(const Key *key)
+	explicit ImitContext(const Key *key)
 		: key_(key), blocks(0)
 	{
 		memset(state, 0, sizeof(state));
