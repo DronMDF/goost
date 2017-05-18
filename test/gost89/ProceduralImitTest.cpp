@@ -94,14 +94,14 @@ private:
 	void cycle(uint32_t *half1, uint32_t *half2,
 		 const uint32_t key, const uint32_t mask) const
 	{
-		uint32_t tmp1 = key + half2 - mask;
+		uint32_t tmp1 = key + *half2 - mask;
 		uint32_t tmp2 = key_->sbox[tmp1 & 0xff];
 		tmp2 |= (key_->sbox[256 + ((tmp1 >> 8) & 0xff)]) << 8;
 		tmp2 |= (key_->sbox[512 + ((tmp1 >> 16) & 0xff)]) << 16;
 		tmp2 |= (key_->sbox[768 + ((tmp1 >> 24) & 0xff)]) << 24;
 		tmp2 = (tmp2 << 11) | ((tmp2 >> 21) & 0x7ff);
 
-		half1 ^= tmp2;
+		*half1 ^= tmp2;
 	}
 
 	void imit_block(void *block) const {
