@@ -38,7 +38,7 @@ UP_TEST(InvokeOriginOnce)
 		UP_ASSERT_EQUAL(kd.key(i), i * 12345);
 	}
 	// Then
-	for (auto const &c: counter) {
+	for (auto const &c : counter) {
 		UP_ASSERT_EQUAL(c, 1);
 	}
 }

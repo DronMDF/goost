@@ -21,6 +21,7 @@ public:
 		expand_tab(sptr, 2, &sbox[512]);
 		expand_tab(sptr, 3, &sbox[768]);
 	}
+
 private:
 	friend class ImitContext;
 
@@ -90,7 +91,7 @@ private:
 		}
 	}
 
-	void cycle(uint32_t &half1, uint32_t &half2,
+	void cycle(uint32_t *half1, uint32_t *half2,
 		 const uint32_t key, const uint32_t mask) const
 	{
 		uint32_t tmp1 = key + half2 - mask;
@@ -109,23 +110,23 @@ private:
 		const uint32_t *ekey = key_->key_;
 		const uint32_t *emask = key_->mask_;
 
-		cycle(a, b, ekey[0], emask[0]);
-		cycle(b, a, ekey[1], emask[1]);
-		cycle(a, b, ekey[2], emask[2]);
-		cycle(b, a, ekey[3], emask[3]);
-		cycle(a, b, ekey[4], emask[4]);
-		cycle(b, a, ekey[5], emask[5]);
-		cycle(a, b, ekey[6], emask[6]);
-		cycle(b, a, ekey[7], emask[7]);
+		cycle(&a, &b, ekey[0], emask[0]);
+		cycle(&b, &a, ekey[1], emask[1]);
+		cycle(&a, &b, ekey[2], emask[2]);
+		cycle(&b, &a, ekey[3], emask[3]);
+		cycle(&a, &b, ekey[4], emask[4]);
+		cycle(&b, &a, ekey[5], emask[5]);
+		cycle(&a, &b, ekey[6], emask[6]);
+		cycle(&b, &a, ekey[7], emask[7]);
 
-		cycle(a, b, ekey[0], emask[0]);
-		cycle(b, a, ekey[1], emask[1]);
-		cycle(a, b, ekey[2], emask[2]);
-		cycle(b, a, ekey[3], emask[3]);
-		cycle(a, b, ekey[4], emask[4]);
-		cycle(b, a, ekey[5], emask[5]);
-		cycle(a, b, ekey[6], emask[6]);
-		cycle(b, a, ekey[7], emask[7]);
+		cycle(&a, &b, ekey[0], emask[0]);
+		cycle(&b, &a, ekey[1], emask[1]);
+		cycle(&a, &b, ekey[2], emask[2]);
+		cycle(&b, &a, ekey[3], emask[3]);
+		cycle(&a, &b, ekey[4], emask[4]);
+		cycle(&b, &a, ekey[5], emask[5]);
+		cycle(&a, &b, ekey[6], emask[6]);
+		cycle(&b, &a, ekey[7], emask[7]);
 
 		((uint32_t *)block)[1] = a;
 		((uint32_t *)block)[0] = b;
