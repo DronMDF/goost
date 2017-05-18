@@ -185,7 +185,7 @@ public:
 
 class TestSuiteBegin {
 public:
-	TestSuiteBegin(const std::string &name) {
+	explicit TestSuiteBegin(const std::string &name) {
 		TestCollection::getInstance().beginSuite(name);
 	}
 };

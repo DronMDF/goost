@@ -7,7 +7,7 @@ compiler:
 build:
   ci:
     - apt-get update
-    - apt-get install cmake ruby-dev
+    - apt-get install cmake cppcheck ruby-dev
     - gem install pdd
     - ./style.sh
     - cmake .

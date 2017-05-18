@@ -9,7 +9,7 @@ UP_SUITE_BEGIN(KeyCachedDataTest)
 
 class TestKeyData final : public KeyData {
 public:
-	TestKeyData(array<int, 8> * const counter)
+	explicit TestKeyData(array<int, 8> * const counter)
 		: counter(counter)
 	{
 	}
