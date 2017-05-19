@@ -22,7 +22,7 @@ private:
 	const Block data;
 };
 
-}
+}  // namespace kuznyechik
 
 ItMemory::ItMemory(const weak_ptr<const StMemory> &stream_ptr,
 		size_t offset, const Block &data)

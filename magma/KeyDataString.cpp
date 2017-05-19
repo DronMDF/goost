@@ -15,7 +15,7 @@ uint32_t KeyDataString::key(int index) const
 	if (key_data.size() != 64) {
 		throw runtime_error("Wrong key size");
 	}
-	if (index < 0 or index > 7) {
+	if (index < 0 || index > 7) {
 		throw runtime_error("Wrong key index");
 	}
 

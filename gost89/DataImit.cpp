@@ -22,7 +22,7 @@ vector<uint8_t> DataImit::value() const
 	}
 	auto pi = pdata.begin();
 	while (pi != pdata.end()) {
-		for (auto &s: state) {
+		for (auto &s : state) {
 			s ^= *pi++;
 		}
 		const auto b = ImitedBlock(Block(state), key).value();
