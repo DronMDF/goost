@@ -105,8 +105,8 @@ private:
 	}
 
 	void imit_block(void *block) const {
-		uint32_t a = ((uint32_t *)block)[1];
-		uint32_t b = ((uint32_t *)block)[0];
+		uint32_t a = static_cast<uint32_t *>(block)[1];
+		uint32_t b = static_cast<uint32_t *>(block)[0];
 		const uint32_t *ekey = key_->key_;
 		const uint32_t *emask = key_->mask_;
 
@@ -128,8 +128,8 @@ private:
 		cycle(&a, &b, ekey[6], emask[6]);
 		cycle(&b, &a, ekey[7], emask[7]);
 
-		((uint32_t *)block)[1] = a;
-		((uint32_t *)block)[0] = b;
+		static_cast<uint32_t *>(block)[1] = a;
+		static_cast<uint32_t *>(block)[0] = b;
 	}
 
 	const Key *key_;
