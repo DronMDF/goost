@@ -12,4 +12,4 @@ build:
     - ./style.sh
     - cmake .
     - make VERBOSE=1
-    - ./test_report.py -o shippable/testresults/result.xml ./test_runner
+    - ./test_report.py -o shippable/testresults/result.xml ./test_goost

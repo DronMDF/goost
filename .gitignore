@@ -1,5 +1,5 @@
 *.o
 *.a
 .obj
-test_runner
+test_goost
 .sconsign.dblite
