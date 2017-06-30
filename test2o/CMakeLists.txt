@@ -7,10 +7,12 @@ INCLUDE_DIRECTORIES(
 ADD_EXECUTABLE(
 	test2o
 	test2o.cpp
+	kuznyechik/BlockTest.cpp
 )
 
 TARGET_LINK_LIBRARIES(
 	test2o
+	goost
 	2out
 )
 
@@ -23,5 +25,5 @@ ADD_CUSTOM_COMMAND(
 # @todo #122:15min Hardcoded shippable path
 ADD_TEST(
 	NAME test2o
-	COMMAND sh -c "./test2o > ${CMAKE_BINARY_DIR}/shippable/testresults/2out.xml"
+	COMMAND sh -c "./test2o > ${CMAKE_BINARY_DIR}/shippable/testresults/test2o.xml"
 )

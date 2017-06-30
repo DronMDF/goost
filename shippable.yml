@@ -12,4 +12,5 @@ build:
     - ./style.sh
     - cmake .
     - make VERBOSE=1
-    - ./test_report.py -o shippable/testresults/result.xml ./test_goost
+    - make test
+    - ./test_report.py -o shippable/testresults/goost.xml ./test_goost
