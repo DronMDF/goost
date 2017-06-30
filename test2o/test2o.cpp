@@ -8,6 +8,7 @@
 #include <2out/CountFailure.h>
 #include <2out/JUnitXmlReport.h>
 #include <2out/TestSuite.h>
+#include "kuznyechik/BlockTest.h"
 
 using namespace std;
 using namespace oout;
@@ -15,7 +16,9 @@ using namespace oout;
 int main(int, char **)
 {
 	const auto result = TestSuite(
-		list<shared_ptr<const Test>>{}
+		list<shared_ptr<const Test>>{
+			make_unique<kuznyechik::BlockTest>()
+		}
 	).result();
 
 	cout << JUnitXmlReport(result).asString() << endl;
