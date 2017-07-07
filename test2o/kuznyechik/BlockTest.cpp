@@ -15,6 +15,7 @@ using namespace std;
 using namespace oout;
 using namespace kuznyechik;
 
+// @todo #128:15min Replace BlockRepr to oout::ReprPrintable
 class BlockRepr final : public Representation {
 public:
 	explicit BlockRepr(const shared_ptr<const Block> &block)
