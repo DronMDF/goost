@@ -19,7 +19,7 @@ class StMemory final :
 public:
 	explicit StMemory(const std::vector<uint64_t> &data);
 
-	virtual std::shared_ptr<const Iterator> iter() const override;
+	std::shared_ptr<const Iterator> iter() const override;
 	std::shared_ptr<const Iterator> next_iter(size_t offset = 0) const;
 
 private:
