@@ -6,7 +6,7 @@
 #include "BlockTest.h"
 #include <sstream>
 #include <list>
-#include <2out/Representation.h>
+#include <2out/ReprPrintable.h>
 #include <2out/TestEqual.h>
 #include <2out/TestNamed.h>
 #include <kuznyechik/Block.h>
@@ -14,24 +14,6 @@
 using namespace std;
 using namespace oout;
 using namespace kuznyechik;
-
-// @todo #128:15min Replace BlockRepr to oout::ReprPrintable
-class BlockRepr final : public Representation {
-public:
-	explicit BlockRepr(const shared_ptr<const Block> &block)
-		: block(block)
-	{
-	}
-
-	string asString() const override
-	{
-		ostringstream os;
-		os << *block;
-		return os.str();
-	}
-private:
-	const shared_ptr<const Block> block;
-};
 
 BlockTest::BlockTest()
 : tests(
@@ -41,8 +23,8 @@ BlockTest::BlockTest()
 			make_unique<TestNamed>(
 				"ByteOrder",
 				make_unique<TestEqual>(
-					make_unique<BlockRepr>(
-						make_unique<Block>(1)
+					make_unique<ReprPrintable<Block>>(
+						Block(1)
 					),
 					"00000000000000000000000000000001"
 				)
