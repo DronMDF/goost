@@ -1,0 +1,53 @@
+language: cpp
+
+matrix:
+  include:
+    - os: linux
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+          packages:
+            - g++-6
+      env:
+        - MATRIX_EVAL="CXX=g++-6"
+    - os: linux
+      addons:
+        apt:
+          sources:
+            - llvm-toolchain-trusty-3.9
+          packages:
+            - clang-3.9
+      env:
+        - MATRIX_EVAL="CXX=clang++-3.9"
+    - os: linux
+      addons:
+        apt:
+          sources:
+            - llvm-toolchain-trusty-4.0
+          packages:
+            - clang-4.0
+      env:
+        - MATRIX_EVAL="CXX=clang++-4.0"
+    - os: linux
+      addons:
+        apt:
+          sources:
+            - llvm-toolchain-trusty
+          packages:
+            - clang-5.0
+      env:
+        - MATRIX_EVAL="CXX=clang++-5.0"
+
+before_install:
+  - eval "${MATRIX_EVAL}"
+  - sudo apt-get install cppcheck ruby-dev
+  - gem install pdd
+
+# @todo #124:15min Add style make target
+script:
+  - cmake .
+  - ./style.sh
+  - make VERBOSE=1
+  - make test
+  - ./test_report.py -o shippable/testresults/goost.xml ./test_goost
