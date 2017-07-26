@@ -30,7 +30,7 @@ Block Imit::value() const
 	}
 
 	const auto R = EncryptedBlock({}, key).value();
-	const Block B{0x87};
+	const Block B(0x87);
 	const auto K1 = ((R.high & 0x8000000000000000) == 0) ? (R << 1) : (R << 1) ^ B;
 	if (iter->size() == 16) {
 		return EncryptedBlock(*block ^ iter->value() ^ K1, key).value();
