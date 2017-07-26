@@ -1,0 +1,28 @@
+language: cpp
+
+matrix:
+  include:
+    - os: linux
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+          packages:
+            - g++-6
+      env:
+        - MATRIX_EVAL="CXX=g++-6"
+
+# @todo #124:15min Add clang and new gcc compliers
+
+before_install:
+  - eval "${MATRIX_EVAL}"
+  - sudo apt-get install cppcheck ruby-dev
+  - gem install pdd
+
+# @todo #124:15min Add style make target
+script:
+  - cmake .
+  - ./style.sh
+  - make VERBOSE=1
+  - make test
+  - ./test_report.py -o shippable/testresults/goost.xml ./test_goost

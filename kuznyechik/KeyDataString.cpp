@@ -18,17 +18,17 @@ KeyDataString::KeyDataString(const string &key_data)
 Block KeyDataString::low() const
 {
 	size_t pos;
-	return {
+	return Block(
 		stoull(string(key_data, 48, 16), &pos, 16),
-		stoull(string(key_data, 32, 16), &pos, 16),
-	};
+		stoull(string(key_data, 32, 16), &pos, 16)
+	);
 }
 
 Block KeyDataString::high() const
 {
 	size_t pos;
-	return {
+	return Block(
 		stoull(string(key_data, 16, 16), &pos, 16),
-		stoull(string(key_data, 0, 16), &pos, 16),
-	};
+		stoull(string(key_data, 0, 16), &pos, 16)
+	);
 }
