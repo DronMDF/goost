@@ -4,10 +4,14 @@ INCLUDE_DIRECTORIES(
 	"${PROJECT_SOURCE_DIR}/2out"
 )
 
+# @todo #134:15min move kuznyechik/ImitTest.cpp to 2out
+# @todo #134:15min Move kuznyechik/EncryptedBlockTest.cpp to 2out
+
 ADD_EXECUTABLE(
 	test2o
 	test2o.cpp
 	kuznyechik/BlockTest.cpp
+	kuznyechik/KeyDataStringTest.cpp
 )
 
 TARGET_LINK_LIBRARIES(

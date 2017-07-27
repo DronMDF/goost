@@ -4,7 +4,6 @@
 // of the MIT license.  See the LICENSE file for details.
 
 #include "BlockTest.h"
-#include <sstream>
 #include <list>
 #include <2out/ReprPrintable.h>
 #include <2out/TestEqual.h>

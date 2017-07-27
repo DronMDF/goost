@@ -8,7 +8,9 @@
 #include <2out/CountFailure.h>
 #include <2out/JUnitXmlReport.h>
 #include <2out/TestSuite.h>
+// @todo #134:15min Make Suite class for entire kuznyechik tests
 #include "kuznyechik/BlockTest.h"
+#include "kuznyechik/KeyDataStringTest.h"
 
 using namespace std;
 using namespace oout;
@@ -17,7 +19,8 @@ int main(int, char **)
 {
 	const auto result = TestSuite(
 		list<shared_ptr<const Test>>{
-			make_unique<kuznyechik::BlockTest>()
+			make_unique<kuznyechik::BlockTest>(),
+			make_unique<kuznyechik::KeyDataStringTest>()
 		}
 	).result();
 
