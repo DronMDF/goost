@@ -12,6 +12,7 @@ ADD_EXECUTABLE(
 	test2o.cpp
 	kuznyechik/BlockTest.cpp
 	kuznyechik/KeyDataStringTest.cpp
+	kuznyechik/Test.cpp
 )
 
 TARGET_LINK_LIBRARIES(
