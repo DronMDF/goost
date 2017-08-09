@@ -10,7 +10,7 @@
 #include <2out/TestNamed.h>
 #include <kuznyechik/Block.h>
 #include <kuznyechik/KeyDataString.h>
-#include "ReprKey.h"
+#include "ReprKeyData.h"
 
 using namespace std;
 using namespace oout;
@@ -24,7 +24,7 @@ KeyDataStringTest::KeyDataStringTest()
 			make_unique<TestNamed>(
 				"High block",
 				make_unique<TestEqual>(
-					make_unique<ReprKeyHigh>(
+					make_unique<ReprKeyDataHigh>(
 						make_unique<KeyDataString>(
 							"8899aabbccddeeff0011223344556677"
 							"fedcba98765432100123456789abcdef"
@@ -38,7 +38,7 @@ KeyDataStringTest::KeyDataStringTest()
 			make_unique<TestNamed>(
 				"Low block",
 				make_unique<TestEqual>(
-					make_unique<ReprKeyLow>(
+					make_unique<ReprKeyDataLow>(
 						make_unique<KeyDataString>(
 							"8899aabbccddeeff0011223344556677"
 							"fedcba98765432100123456789abcdef"

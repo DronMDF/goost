@@ -12,7 +12,7 @@ ADD_EXECUTABLE(
 	test2o.cpp
 	kuznyechik/BlockTest.cpp
 	kuznyechik/KeyDataStringTest.cpp
-	kuznyechik/ReprKey.cpp
+	kuznyechik/ReprKeyData.cpp
 	kuznyechik/Test.cpp
 )
 
