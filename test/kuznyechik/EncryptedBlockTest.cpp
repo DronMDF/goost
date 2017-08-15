@@ -19,14 +19,7 @@ struct KeyFixture {
 	);
 };
 
-UP_FIXTURE_TEST(R3412_A15, KeyFixture)
-{
-	const EncryptedBlock block(
-		Block(0xffeeddccbbaa9988, 0x1122334455667700),
-		key
-	);
-	UP_ASSERT_EQUAL(block.value(), Block(0x5a468d42b9d4edcd, 0x7f679d90bebc2430));
-}
+// @todo #139:15min Move A11 tests to 2out
 
 const vector<tuple<uint64_t, uint64_t, uint64_t, uint64_t>> data = {
 	{0xffeeddccbbaa9988, 0x1122334455667700, 0x5a468d42b9d4edcd, 0x7f679d90bebc2430},
