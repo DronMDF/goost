@@ -7,6 +7,7 @@
 #include <list>
 #include <2out/TestNamed.h>
 #include "BlockTest.h"
+#include "EncryptedBlockTest.h"
 #include "KeyDataStringTest.h"
 
 using namespace std;
@@ -19,6 +20,7 @@ kuznyechik::Test::Test()
 		"Kuznyechik tests",
 		list<shared_ptr<const oout::Test>>{
 			make_unique<kuznyechik::BlockTest>(),
+			make_unique<kuznyechik::EncryptedBlockTest>(),
 			make_unique<kuznyechik::KeyDataStringTest>()
 		}
 	)
