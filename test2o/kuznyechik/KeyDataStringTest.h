@@ -12,7 +12,7 @@ namespace kuznyechik {
 class KeyDataStringTest final : public oout::Test {
 public:
 	KeyDataStringTest();
-	std::shared_ptr<const oout::Result> result() const override;
+	std::unique_ptr<const oout::Result> result() const override;
 private:
 	const std::shared_ptr<const oout::Test> tests;
 };

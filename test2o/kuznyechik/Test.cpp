@@ -28,7 +28,7 @@ kuznyechik::Test::Test()
 {
 }
 
-shared_ptr<const Result> kuznyechik::Test::result() const
+unique_ptr<const Result> kuznyechik::Test::result() const
 {
 	return tests->result();
 }
