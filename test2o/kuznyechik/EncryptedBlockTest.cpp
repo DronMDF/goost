@@ -16,12 +16,24 @@ using namespace std;
 using namespace oout;
 using namespace kuznyechik;
 
-ostream &operator << (ostream &os, const EncryptedBlock &block)
-{
-	os << block.value();
-	return os;
-}
+// @todo #139:15min If EncryptBlock has Block type,
+//  we can introduce universal block representation instead this class
+class ReprEncryptedBlock final : public Representation {
+public:
+	explicit ReprEncryptedBlock(const shared_ptr<EncryptedBlock> &block)
+		: block(block)
+	{
+	}
 
+	string asString() const override {
+		return ReprPrintable<Block>(block->value()).asString();
+	}
+private:
+	const shared_ptr<EncryptedBlock> block;
+};
+
+// @todo #139:15min Extract key to fixture.
+//  Fixture conception is not complete. Can try this here.
 EncryptedBlockTest::EncryptedBlockTest()
 : tests(
 	make_unique<TestNamed>(
@@ -30,8 +42,8 @@ EncryptedBlockTest::EncryptedBlockTest()
 			make_unique<TestNamed>(
 				"R3412_A15",
 				make_unique<TestEqual>(
-					make_unique<ReprPrintable<EncryptedBlock>>(
-						EncryptedBlock(
+					make_unique<ReprEncryptedBlock>(
+						make_unique<EncryptedBlock>(
 							Block(
 								0xffeeddccbbaa9988,
 								0x1122334455667700
