@@ -55,7 +55,7 @@ KeyDataStringTest::KeyDataStringTest()
 {
 }
 
-shared_ptr<const Result> KeyDataStringTest::result() const
+unique_ptr<const Result> KeyDataStringTest::result() const
 {
 	return tests->result();
 }

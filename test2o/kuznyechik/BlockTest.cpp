@@ -34,7 +34,7 @@ BlockTest::BlockTest()
 {
 }
 
-shared_ptr<const Result> BlockTest::result() const
+unique_ptr<const Result> BlockTest::result() const
 {
 	return tests->result();
 }

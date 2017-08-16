@@ -15,7 +15,7 @@ using namespace oout;
 
 int main(int, char **)
 {
-	const auto result = TestSuite(
+	const shared_ptr<const Result> result = TestSuite(
 		list<shared_ptr<const Test>>{
 			make_unique<kuznyechik::Test>()
 		}

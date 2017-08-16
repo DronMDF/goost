@@ -12,7 +12,7 @@ namespace kuznyechik {
 class BlockTest final : public oout::Test {
 public:
 	BlockTest();
-	std::shared_ptr<const oout::Result> result() const override;
+	std::unique_ptr<const oout::Result> result() const override;
 private:
 	const std::shared_ptr<const oout::Test> tests;
 };

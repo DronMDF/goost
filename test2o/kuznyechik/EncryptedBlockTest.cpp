@@ -65,7 +65,7 @@ EncryptedBlockTest::EncryptedBlockTest()
 {
 }
 
-shared_ptr<const Result> EncryptedBlockTest::result() const
+unique_ptr<const Result> EncryptedBlockTest::result() const
 {
 	return tests->result();
 }
