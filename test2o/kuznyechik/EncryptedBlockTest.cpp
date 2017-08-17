@@ -10,7 +10,6 @@
 #include <2out/TestNamed.h>
 #include <kuznyechik/Block.h>
 #include <kuznyechik/EncryptedBlock.h>
-#include <kuznyechik/Key.h>
 
 using namespace std;
 using namespace oout;
@@ -32,10 +31,9 @@ private:
 	const shared_ptr<EncryptedBlock> block;
 };
 
-// @todo #139:15min Extract key to fixture.
-//  Fixture conception is not complete. Can try this here.
 EncryptedBlockTest::EncryptedBlockTest()
-: tests(
+: key(make_unique<Key>("8899aabbccddeeff0011223344556677fedcba98765432100123456789abcdef")),
+  tests(
 	make_unique<TestNamed>(
 		__func__,
 		list<shared_ptr<const Test>>{
@@ -48,10 +46,7 @@ EncryptedBlockTest::EncryptedBlockTest()
 								0xffeeddccbbaa9988,
 								0x1122334455667700
 							),
-							make_unique<Key>(
-								"8899aabbccddeeff0011223344556677"
-								"fedcba98765432100123456789abcdef"
-							)
+							key
 						)
 					),
 					make_unique<ReprPrintable<Block>>(
