@@ -23,6 +23,7 @@ ADD_LIBRARY(goost
 	kuznyechik/Key.cpp
 	kuznyechik/KeyDataString.cpp
 	kuznyechik/KeyIter.cpp
+	kuznyechik/LBlock.cpp
 	kuznyechik/RBlock.cpp
 	kuznyechik/SBlock.cpp
 	kuznyechik/StCTREncrypted.cpp
@@ -46,7 +47,6 @@ ADD_LIBRARY(goost
 ADD_EXECUTABLE(test_goost
 	test/gost89/DataImitTest.cpp
 	test/gost89/ProceduralImitTest.cpp
-	test/kuznyechik/LBlockTest.cpp
 	test/kuznyechik/RBlockTest.cpp
 	test/kuznyechik/SBlockTest.cpp
 	test/kuznyechik/StCTREncryptedTest.cpp
