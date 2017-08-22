@@ -47,7 +47,6 @@ ADD_LIBRARY(goost
 ADD_EXECUTABLE(test_goost
 	test/gost89/DataImitTest.cpp
 	test/gost89/ProceduralImitTest.cpp
-	test/kuznyechik/KeyIterTest.cpp
 	test/kuznyechik/LBlockTest.cpp
 	test/kuznyechik/RBlockTest.cpp
 	test/kuznyechik/SBlockTest.cpp
