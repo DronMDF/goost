@@ -23,7 +23,6 @@ ADD_LIBRARY(goost
 	kuznyechik/Key.cpp
 	kuznyechik/KeyDataString.cpp
 	kuznyechik/KeyIter.cpp
-	kuznyechik/LBlock.cpp
 	kuznyechik/RBlock.cpp
 	kuznyechik/SBlock.cpp
 	kuznyechik/StCTREncrypted.cpp
