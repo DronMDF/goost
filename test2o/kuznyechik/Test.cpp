@@ -11,6 +11,7 @@
 #include "ImitTest.h"
 #include "KeyDataStringTest.h"
 #include "KeyIterTest.h"
+#include "LBlockTest.h"
 
 using namespace std;
 using namespace oout;
@@ -25,7 +26,8 @@ kuznyechik::Test::Test()
 			make_unique<kuznyechik::EncryptedBlockTest>(),
 			make_unique<kuznyechik::ImitTest>(),
 			make_unique<kuznyechik::KeyDataStringTest>(),
-			make_unique<kuznyechik::KeyIterTest>()
+			make_unique<kuznyechik::KeyIterTest>(),
+			make_unique<kuznyechik::LBlockTest>()
 		}
 	)
 )

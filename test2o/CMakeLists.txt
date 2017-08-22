@@ -12,6 +12,7 @@ ADD_EXECUTABLE(
 	kuznyechik/ImitTest.cpp
 	kuznyechik/KeyDataStringTest.cpp
 	kuznyechik/KeyIterTest.cpp
+	kuznyechik/LBlockTest.cpp
 	kuznyechik/ReprKeyData.cpp
 	kuznyechik/Test.cpp
 )
