@@ -9,7 +9,7 @@
 
 namespace kuznyechik {
 
-class Block;
+class BlkRaw;
 class BlockIterator;
 class Key;
 

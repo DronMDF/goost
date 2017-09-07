@@ -5,7 +5,7 @@
 
 #include "ReprKeyData.h"
 #include <2out/ReprPrintable.h>
-#include <kuznyechik/Block.h>
+#include <kuznyechik/BlkRaw.h>
 
 using namespace std;
 using namespace oout;
@@ -18,7 +18,7 @@ ReprKeyDataHigh::ReprKeyDataHigh(const shared_ptr<Key::Data> &key)
 
 string ReprKeyDataHigh::asString() const
 {
-	return ReprPrintable<Block>(key->high()).asString();
+	return ReprPrintable<BlkRaw>(key->high()).asString();
 }
 
 ReprKeyDataLow::ReprKeyDataLow(const shared_ptr<Key::Data> &key)
@@ -28,5 +28,5 @@ ReprKeyDataLow::ReprKeyDataLow(const shared_ptr<Key::Data> &key)
 
 string ReprKeyDataLow::asString() const
 {
-	return ReprPrintable<Block>(key->low()).asString();
+	return ReprPrintable<BlkRaw>(key->low()).asString();
 }

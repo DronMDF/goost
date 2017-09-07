@@ -9,27 +9,27 @@
 
 namespace kuznyechik {
 
-class Block;
+class BlkRaw;
 
 class Key final {
 public:
 	class Data {
 	public:
 		virtual ~Data() = default;
-		virtual Block low() const = 0;
-		virtual Block high() const = 0;
+		virtual BlkRaw low() const = 0;
+		virtual BlkRaw high() const = 0;
 	};
 
 	class Iter {
 	public:
 		virtual ~Iter() = default;
-		virtual Block value() const = 0;
+		virtual BlkRaw value() const = 0;
 	};
 
 	explicit Key(const std::string &key_data);
 	explicit Key(const std::shared_ptr<const Data> &key_data);
 
-	Block encrypt(const Block &block) const;
+	BlkRaw encrypt(const BlkRaw &block) const;
 
 private:
 	const std::unique_ptr<const Iter> k1;

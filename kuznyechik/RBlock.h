@@ -4,23 +4,23 @@
 // of the MIT license.  See the LICENSE file for details.
 
 #pragma once
-#include "Block.h"
+#include "BlkRaw.h"
 
 namespace kuznyechik {
 
 // @todo #59 Need to introduce abstract interface for Block.
-//  For the sake of speed, I want Block to be a non-polymorphic type,
+//  For the sake of speed, I want BlkRaw to be a non-polymorphic type,
 //  but premature optimization is evil, and maybe it's worth making
 //  it polymorphic, then RBlock, EnkriptedBlock will implement its
 //  interface.
 class RBlock final {
 public:
-	explicit RBlock(const Block &block);
+	explicit RBlock(const BlkRaw &block);
 
-	Block value() const;
+	BlkRaw value() const;
 
 private:
-	const Block block;
+	const BlkRaw block;
 
 	uint8_t gmul(uint8_t a, uint8_t b) const;
 };

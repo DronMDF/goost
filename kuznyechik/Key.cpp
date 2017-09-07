@@ -4,7 +4,7 @@
 // of the MIT license.  See the LICENSE file for details.
 
 #include "Key.h"
-#include "Block.h"
+#include "BlkRaw.h"
 #include "KeyDataString.h"
 #include "KeyIter.h"
 #include "LBlock.h"
@@ -32,7 +32,7 @@ Key::Key(const std::shared_ptr<const Data> &key_data)
 {
 }
 
-Block Key::encrypt(const Block &block) const
+BlkRaw Key::encrypt(const BlkRaw &block) const
 {
 	// @todo #73:30min Lazy object LBlock and SBlock looks ugly in this context
 	//  Maybe i need to introduce LSX object? Or rework parameters passing to them.

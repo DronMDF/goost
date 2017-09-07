@@ -4,7 +4,7 @@
 // of the MIT license.  See the LICENSE file for details.
 
 #include "StCTREncrypted.h"
-#include "Block.h"
+#include "BlkRaw.h"
 #include "EncryptedBlock.h"
 #include "Iterator.h"
 
@@ -17,24 +17,24 @@ public:
 	CTREncryptedIterator(
 		const shared_ptr<const Iterator> &iter,
 		const shared_ptr<const Key> &key,
-		const Block &ctr
+		const BlkRaw &ctr
 	);
 
 	bool last() const override;
 	size_t size() const override;
-	Block value() const override;
+	BlkRaw value() const override;
 	shared_ptr<const Iterator> next() const override;
 
 private:
 	const shared_ptr<const Iterator> iter;
 	const shared_ptr<const Key> key;
-	const Block ctr;
+	const BlkRaw ctr;
 };
 
 CTREncryptedIterator::CTREncryptedIterator(
 		const shared_ptr<const Iterator> &iter,
 		const shared_ptr<const Key> &key,
-		const Block &ctr)
+		const BlkRaw &ctr)
 	: iter(iter), key(key), ctr(ctr)
 {
 }
@@ -49,7 +49,7 @@ size_t CTREncryptedIterator::size() const
 	return iter->size();
 }
 
-Block CTREncryptedIterator::value() const
+BlkRaw CTREncryptedIterator::value() const
 {
 	EncryptedBlock block(ctr, key);
 	return iter->value() ^ block.value();
@@ -60,7 +60,7 @@ shared_ptr<const Iterator> CTREncryptedIterator::next() const
 	return make_shared<const CTREncryptedIterator>(
 		iter->next(),
 		key,
-		Block(ctr.low + 1, ctr.high)
+		BlkRaw(ctr.low + 1, ctr.high)
 	);
 }
 
@@ -74,5 +74,5 @@ StCTREncrypted::StCTREncrypted(
 
 shared_ptr<const Iterator> StCTREncrypted::iter() const
 {
-	return make_shared<const CTREncryptedIterator>(stream->iter(), key, Block(0, iv));
+	return make_shared<const CTREncryptedIterator>(stream->iter(), key, BlkRaw(0, iv));
 }

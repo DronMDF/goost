@@ -8,7 +8,7 @@
 #include <2out/ReprPrintable.h>
 #include <2out/TestEqual.h>
 #include <2out/TestNamed.h>
-#include <kuznyechik/Block.h>
+#include <kuznyechik/BlkRaw.h>
 
 using namespace std;
 using namespace oout;
@@ -22,8 +22,8 @@ BlockTest::BlockTest()
 			make_unique<TestNamed>(
 				"ByteOrder",
 				make_unique<TestEqual>(
-					make_unique<ReprPrintable<Block>>(
-						Block(1)
+					make_unique<ReprPrintable<BlkRaw>>(
+						BlkRaw(1)
 					),
 					"00000000000000000000000000000001"
 				)

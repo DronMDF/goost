@@ -5,7 +5,7 @@
 
 #include "KeyIter.h"
 #include <cstring>
-#include "Block.h"
+#include "BlkRaw.h"
 #include "LBlock.h"
 #include "SBlock.h"
 
@@ -17,7 +17,7 @@ KeyIter1::KeyIter1(const shared_ptr<const Key::Data> &key_data)
 {
 }
 
-Block KeyIter1::value() const
+BlkRaw KeyIter1::value() const
 {
 	return key_data->high();
 }
@@ -27,7 +27,7 @@ KeyIter2::KeyIter2(const shared_ptr<const Key::Data> &key_data)
 {
 }
 
-Block KeyIter2::value() const
+BlkRaw KeyIter2::value() const
 {
 	return key_data->low();
 }
@@ -37,12 +37,12 @@ KeyIterAny::KeyIterAny(const shared_ptr<const Key::Data> &key_data, int iter)
 {
 }
 
-Block KeyIterAny::value() const
+BlkRaw KeyIterAny::value() const
 {
 	return generate(k2->value(), k1->value(), 1);
 }
 
-Block KeyIterAny::generate(const Block &a, const Block &b, int n) const
+BlkRaw KeyIterAny::generate(const BlkRaw &a, const BlkRaw &b, int n) const
 {
 	if (n > iter) {
 		return b;
@@ -50,7 +50,7 @@ Block KeyIterAny::generate(const Block &a, const Block &b, int n) const
 
 	// @todo #82:30min Cn is a const key.
 	//  Need to predefine this keys
-	const auto cn = LBlock(Block(n)).value();
+	const auto cn = LBlock(BlkRaw(n)).value();
 	return generate(b, a ^ LBlock(SBlock(b ^ cn).value()).value(), n + 1);
 }
 

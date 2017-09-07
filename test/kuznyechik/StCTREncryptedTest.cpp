@@ -4,7 +4,7 @@
 // of the MIT license.  See the LICENSE file for details.
 
 #include <upp11.h>
-#include <kuznyechik/Block.h>
+#include <kuznyechik/BlkRaw.h>
 #include <kuznyechik/Key.h>
 #include <kuznyechik/StCTREncrypted.h>
 #include <kuznyechik/StMemory.h>
@@ -33,13 +33,13 @@ UP_TEST(R3413_A121)
 	);
 
 	const auto iter1 = stream.iter();
-	UP_ASSERT_EQUAL(iter1->value(), Block(0xd57b5fa240bda1b8, 0xf195d8bec10ed1db));
+	UP_ASSERT_EQUAL(iter1->value(), BlkRaw(0xd57b5fa240bda1b8, 0xf195d8bec10ed1db));
 	const auto iter2 = iter1->next();
-	UP_ASSERT_EQUAL(iter2->value(), Block(0xf33ce4b33c45dee4, 0x85eee733f6a13e5d));
+	UP_ASSERT_EQUAL(iter2->value(), BlkRaw(0xf33ce4b33c45dee4, 0x85eee733f6a13e5d));
 	const auto iter3 = iter2->next();
-	UP_ASSERT_EQUAL(iter3->value(), Block(0xd5e877f13564a3a5, 0xa5eae88be6356ed3));
+	UP_ASSERT_EQUAL(iter3->value(), BlkRaw(0xd5e877f13564a3a5, 0xa5eae88be6356ed3));
 	const auto iter4 = iter3->next();
-	UP_ASSERT_EQUAL(iter4->value(), Block(0xd1c6d15820bdba73, 0xcb91fab1f20cbab6));
+	UP_ASSERT_EQUAL(iter4->value(), BlkRaw(0xd1c6d15820bdba73, 0xcb91fab1f20cbab6));
 }
 
 UP_SUITE_END()

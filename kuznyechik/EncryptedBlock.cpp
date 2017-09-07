@@ -9,12 +9,12 @@
 using namespace std;
 using namespace kuznyechik;
 
-EncryptedBlock::EncryptedBlock(const Block &block, const shared_ptr<const Key> &key)
+EncryptedBlock::EncryptedBlock(const BlkRaw &block, const shared_ptr<const Key> &key)
 	: block(block), key(key)
 {
 }
 
-Block EncryptedBlock::value() const
+BlkRaw EncryptedBlock::value() const
 {
 	return key->encrypt(block);
 }
