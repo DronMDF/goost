@@ -29,13 +29,13 @@ BlkRaw Imit::value() const
 		iter = iter->next();
 	}
 
-	const auto R = EncryptedBlock({}, key).value();
+	const auto R = BlkRaw(EncryptedBlock({}, key).value());
 	const BlkRaw B(0x87);
 	const auto K1 = ((R.high & 0x8000000000000000) == 0) ? (R << 1) : (R << 1) ^ B;
 	if (iter->size() == 16) {
-		return EncryptedBlock(*block ^ iter->value() ^ K1, key).value();
+		return BlkRaw(EncryptedBlock(*block ^ iter->value() ^ K1, key).value());
 	}
 
 	const auto K2 = ((K1.high & 0x8000000000000000) == 0) ? (K1 << 1) : (K1 << 1) ^ B;
-	return EncryptedBlock(*block ^ iter->value() ^ K2, key).value();
+	return BlkRaw(EncryptedBlock(*block ^ iter->value() ^ K2, key).value());
 }
