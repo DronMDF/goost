@@ -4,18 +4,18 @@
 // of the MIT license.  See the LICENSE file for details.
 
 #pragma once
-#include "Block.h"
+#include "BlkRaw.h"
 
 namespace kuznyechik {
 
 class SBlock final {
 public:
-	explicit SBlock(const Block &block);
+	explicit SBlock(const BlkRaw &block);
 
-	Block value() const;
+	BlkRaw value() const;
 
 private:
-	const Block block;
+	const BlkRaw block;
 };
 
 }

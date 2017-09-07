@@ -21,8 +21,8 @@ const vector<tuple<uint64_t, uint64_t, uint64_t, uint64_t>> data = {
 
 UP_PARAMETRIZED_TEST(R3412_A12, data)
 {
-	const RBlock block(Block(get<0>(data), get<1>(data)));
-	UP_ASSERT_EQUAL(block.value(), Block(get<2>(data), get<3>(data)));
+	const RBlock block(BlkRaw(get<0>(data), get<1>(data)));
+	UP_ASSERT_EQUAL(block.value(), BlkRaw(get<2>(data), get<3>(data)));
 }
 
 UP_SUITE_END()

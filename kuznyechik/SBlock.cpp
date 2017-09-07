@@ -10,12 +10,12 @@
 using namespace std;
 using namespace kuznyechik;
 
-SBlock::SBlock(const Block &block)
+SBlock::SBlock(const BlkRaw &block)
 	: block(block)
 {
 }
 
-Block SBlock::value() const
+BlkRaw SBlock::value() const
 {
 	constexpr array<uint8_t, 256> sbox = {{
 		252, 238, 221, 17, 207, 110, 49, 22, 251, 196, 250, 218, 35, 197, 4, 77, 233,
@@ -41,5 +41,5 @@ Block SBlock::value() const
 	for (int i = 0; i < 16; i++) {
 		data[i] = sbox[data[i]];
 	}
-	return Block(&data[0]);
+	return BlkRaw(&data[0]);
 }

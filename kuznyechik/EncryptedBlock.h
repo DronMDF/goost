@@ -5,23 +5,23 @@
 
 #pragma once
 #include <memory>
-#include "Block.h"
+#include "BlkRaw.h"
 
 namespace kuznyechik {
 
 class Key;
 
-// @todo #87:15min Need to introduce Block abstraction
+// @todo #87:15min Need to introduce BlkRaw abstraction
 //  EncryptedBlock block should be a Block.
-//  Q: If block is a abstraction - value cannot return Block by value.
+//  Q: If block is a abstraction - value cannot return BlkRaw by value.
 class EncryptedBlock final {
 public:
-	EncryptedBlock(const Block &block, const std::shared_ptr<const Key> &key);
+	EncryptedBlock(const BlkRaw &block, const std::shared_ptr<const Key> &key);
 
-	Block value() const;
+	BlkRaw value() const;
 
 private:
-	const Block block;
+	const BlkRaw block;
 	const std::shared_ptr<const Key> key;
 };
 

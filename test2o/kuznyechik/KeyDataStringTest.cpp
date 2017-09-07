@@ -8,7 +8,7 @@
 #include <2out/ReprPrintable.h>
 #include <2out/TestEqual.h>
 #include <2out/TestNamed.h>
-#include <kuznyechik/Block.h>
+#include <kuznyechik/BlkRaw.h>
 #include <kuznyechik/KeyDataString.h>
 #include "ReprKeyData.h"
 
@@ -30,8 +30,8 @@ KeyDataStringTest::KeyDataStringTest()
 							"fedcba98765432100123456789abcdef"
 						)
 					),
-					make_unique<ReprPrintable<Block>>(
-						Block(0x0011223344556677, 0x8899aabbccddeeff)
+					make_unique<ReprPrintable<BlkRaw>>(
+						BlkRaw(0x0011223344556677, 0x8899aabbccddeeff)
 					)
 				)
 			),
@@ -44,8 +44,8 @@ KeyDataStringTest::KeyDataStringTest()
 							"fedcba98765432100123456789abcdef"
 						)
 					),
-					make_unique<ReprPrintable<Block>>(
-						Block(0x0123456789abcdef, 0xfedcba9876543210)
+					make_unique<ReprPrintable<BlkRaw>>(
+						BlkRaw(0x0123456789abcdef, 0xfedcba9876543210)
 					)
 				)
 			)

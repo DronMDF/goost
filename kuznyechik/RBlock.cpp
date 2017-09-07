@@ -10,7 +10,7 @@
 using namespace std;
 using namespace kuznyechik;
 
-RBlock::RBlock(const Block &block)
+RBlock::RBlock(const BlkRaw &block)
 	: block(block)
 {
 }
@@ -37,7 +37,7 @@ uint8_t RBlock::gmul(uint8_t a, uint8_t b) const
 	return p;
 }
 
-Block RBlock::value() const
+BlkRaw RBlock::value() const
 {
 	constexpr int k[16] = {
 		1, 148, 32, 133, 16, 194, 192, 1, 251, 1, 192, 194, 16, 133, 32, 148
@@ -50,5 +50,5 @@ Block RBlock::value() const
 		sum ^= gmul(data[i], k[i]);
 	}
 	data[16] = sum;
-	return Block(&data[1]);
+	return BlkRaw(&data[1]);
 }

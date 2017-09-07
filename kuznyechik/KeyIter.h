@@ -12,7 +12,7 @@ namespace kuznyechik {
 class KeyIter1 final : public Key::Iter {
 public:
 	explicit KeyIter1(const std::shared_ptr<const Key::Data> &key_data);
-	Block value() const override;
+	BlkRaw value() const override;
 private:
 	const std::shared_ptr<const Key::Data> key_data;
 };
@@ -20,7 +20,7 @@ private:
 class KeyIter2 final : public Key::Iter {
 public:
 	explicit KeyIter2(const std::shared_ptr<const Key::Data> &key_data);
-	Block value() const override;
+	BlkRaw value() const override;
 private:
 	const std::shared_ptr<const Key::Data> key_data;
 };
@@ -31,13 +31,13 @@ private:
 class KeyIterAny: public Key::Iter {
 public:
 	KeyIterAny(const std::shared_ptr<const Key::Data> &key_data, int iter);
-	Block value() const override;
+	BlkRaw value() const override;
 private:
 	const std::unique_ptr<const Key::Iter> k1;
 	const std::unique_ptr<const Key::Iter> k2;
 	const int iter;
 
-	Block generate(const Block &a, const Block &b, int iter) const;
+	BlkRaw generate(const BlkRaw &a, const BlkRaw &b, int iter) const;
 };
 
 class KeyIter3 final : public KeyIterAny {

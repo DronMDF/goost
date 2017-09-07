@@ -10,7 +10,7 @@
 #include <2out/TestEqual.h>
 #include <2out/TestNamed.h>
 #include <kuznyechik/Imit.h>
-#include <kuznyechik/Block.h>
+#include <kuznyechik/BlkRaw.h>
 #include <kuznyechik/StMemory.h>
 #include <kuznyechik/Key.h>
 

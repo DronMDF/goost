@@ -8,7 +8,7 @@
 
 namespace kuznyechik {
 
-class Block;
+class BlkRaw;
 class Key;
 class Stream;
 
@@ -16,7 +16,7 @@ class Imit {
 public:
 	Imit(const std::shared_ptr<const Stream> &data, const std::shared_ptr<const Key> &key);
 
-	Block value() const;
+	BlkRaw value() const;
 private:
 	const std::shared_ptr<const Stream> data;
 	const std::shared_ptr<const Key> key;

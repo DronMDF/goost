@@ -4,7 +4,7 @@
 // of the MIT license.  See the LICENSE file for details.
 
 #include "Imit.h"
-#include "Block.h"
+#include "BlkRaw.h"
 #include "EncryptedBlock.h"
 #include "Iterator.h"
 #include "Stream.h"
@@ -17,20 +17,20 @@ Imit::Imit(const shared_ptr<const Stream> &data, const shared_ptr<const Key> &ke
 {
 }
 
-Block Imit::value() const
+BlkRaw Imit::value() const
 {
 	auto iter = data->iter();
-	auto block = make_shared<const Block>();
+	auto block = make_shared<const BlkRaw>();
 
 	while (!iter->last()) {
-		block = make_shared<const Block>(
+		block = make_shared<const BlkRaw>(
 			EncryptedBlock(*block ^ iter->value(), key).value()
 		);
 		iter = iter->next();
 	}
 
 	const auto R = EncryptedBlock({}, key).value();
-	const Block B(0x87);
+	const BlkRaw B(0x87);
 	const auto K1 = ((R.high & 0x8000000000000000) == 0) ? (R << 1) : (R << 1) ^ B;
 	if (iter->size() == 16) {
 		return EncryptedBlock(*block ^ iter->value() ^ K1, key).value();

@@ -12,8 +12,8 @@ namespace kuznyechik {
 class KeyDataString final : public Key::Data {
 public:
 	explicit KeyDataString(const std::string &key_data);
-	Block low() const override;
-	Block high() const override;
+	BlkRaw low() const override;
+	BlkRaw high() const override;
 private:
 	const std::string key_data;
 };

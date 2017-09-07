@@ -7,7 +7,7 @@
 
 namespace kuznyechik {
 
-class Block;
+class BlkRaw;
 
 // This is abstract Iterator type
 // Prefix for implementations is It
@@ -17,7 +17,7 @@ public:
 
 	virtual bool last() const = 0;
 	virtual size_t size() const = 0;
-	virtual Block value() const = 0;
+	virtual BlkRaw value() const = 0;
 	virtual std::shared_ptr<const Iterator> next() const = 0;
 };
 

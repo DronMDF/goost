@@ -4,7 +4,7 @@
 // of the MIT license.  See the LICENSE file for details.
 
 #include "StMemory.h"
-#include "Block.h"
+#include "BlkRaw.h"
 #include "Iterator.h"
 
 using namespace std;
@@ -15,22 +15,22 @@ namespace kuznyechik {
 class ItMemory final : public Iterator {
 public:
 	ItMemory(const weak_ptr<const StMemory> &stream_ptr,
-		size_t offset, const Block &data);
+		size_t offset, const BlkRaw &data);
 
 	bool last() const override;
 	size_t size() const override;
-	Block value() const override;
+	BlkRaw value() const override;
 	shared_ptr<const Iterator> next() const override;
 private:
 	const weak_ptr<const StMemory> stream_ptr;
 	const size_t offset;
-	const Block data;
+	const BlkRaw data;
 };
 
 }  // namespace kuznyechik
 
 ItMemory::ItMemory(const weak_ptr<const StMemory> &stream_ptr,
-		size_t offset, const Block &data)
+		size_t offset, const BlkRaw &data)
 	: stream_ptr(stream_ptr), offset(offset), data(data)
 {
 }
@@ -40,12 +40,13 @@ bool ItMemory::last() const
 	return !next();
 }
 
+// @todo #165 Describe alogrythm size constant in common place
 size_t ItMemory::size() const
 {
-	return sizeof(Block);
+	return sizeof(uint64_t) * 2;
 }
 
-Block ItMemory::value() const
+BlkRaw ItMemory::value() const
 {
 	return data;
 }
@@ -53,7 +54,7 @@ Block ItMemory::value() const
 shared_ptr<const Iterator> ItMemory::next() const
 {
 	const auto stream = stream_ptr.lock();
-	return stream->next_iter(offset + sizeof(Block));
+	return stream->next_iter(offset + sizeof(uint64_t) * 2);
 }
 
 StMemory::StMemory(const vector<uint64_t> &data)
@@ -74,6 +75,6 @@ shared_ptr<const Iterator> StMemory::next_iter(size_t offset) const
 	return make_shared<const ItMemory>(
 		shared_from_this(),
 		offset,
-		Block(&data[offset / sizeof(uint64_t)])
+		BlkRaw(&data[offset / sizeof(uint64_t)])
 	);
 }
