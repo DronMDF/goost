@@ -52,7 +52,7 @@ size_t CTREncryptedIterator::size() const
 BlkRaw CTREncryptedIterator::value() const
 {
 	EncryptedBlock block(ctr, key);
-	return iter->value() ^ block.value();
+	return iter->value() ^ BlkRaw(block.value());
 }
 
 shared_ptr<const Iterator> CTREncryptedIterator::next() const

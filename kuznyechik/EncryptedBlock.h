@@ -6,19 +6,18 @@
 #pragma once
 #include <memory>
 #include "BlkRaw.h"
+#include "Block.h"
 
 namespace kuznyechik {
 
 class Key;
 
-// @todo #87:15min Need to introduce BlkRaw abstraction
-//  EncryptedBlock block should be a Block.
-//  Q: If block is a abstraction - value cannot return BlkRaw by value.
-class EncryptedBlock final {
+// @todo #170 Rename EncryptedBlock to BlkEncrypted
+class EncryptedBlock final : public Block {
 public:
 	EncryptedBlock(const BlkRaw &block, const std::shared_ptr<const Key> &key);
 
-	BlkRaw value() const;
+	std::pair<uint64_t, uint64_t> value() const override;
 
 private:
 	const BlkRaw block;

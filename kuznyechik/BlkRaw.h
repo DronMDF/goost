@@ -9,12 +9,14 @@
 
 namespace kuznyechik {
 
+// @todo #170 BlkRaw should have Block type
 class BlkRaw {
 public:
-	BlkRaw();
-	explicit BlkRaw(uint64_t low);
-	explicit BlkRaw(const void * const ptr);
 	BlkRaw(uint64_t low, uint64_t high);
+	explicit BlkRaw(const std::pair<uint64_t, uint64_t> &value);
+	explicit BlkRaw(const void * const ptr);
+	explicit BlkRaw(uint64_t low);
+	BlkRaw();
 
 	bool operator ==(const BlkRaw &block) const;
 	BlkRaw operator <<(int i) const;

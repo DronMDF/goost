@@ -9,13 +9,13 @@
 using namespace std;
 using namespace kuznyechik;
 
-BlkRaw::BlkRaw()
-	: BlkRaw(uint64_t(0))
+BlkRaw::BlkRaw(uint64_t low, uint64_t high)
+	: low(low), high(high)
 {
 }
 
-BlkRaw::BlkRaw(uint64_t low)
-	: BlkRaw(low, 0)
+BlkRaw::BlkRaw(const pair<uint64_t, uint64_t> &value)
+	: BlkRaw(value.first, value.second)
 {
 }
 
@@ -27,8 +27,13 @@ BlkRaw::BlkRaw(const void * const ptr)
 {
 }
 
-BlkRaw::BlkRaw(uint64_t low, uint64_t high)
-	: low(low), high(high)
+BlkRaw::BlkRaw(uint64_t low)
+	: BlkRaw(low, 0)
+{
+}
+
+BlkRaw::BlkRaw()
+	: BlkRaw(uint64_t(0))
 {
 }
 

@@ -14,8 +14,9 @@ EncryptedBlock::EncryptedBlock(const BlkRaw &block, const shared_ptr<const Key> 
 {
 }
 
-BlkRaw EncryptedBlock::value() const
+pair<uint64_t, uint64_t> EncryptedBlock::value() const
 {
-	return key->encrypt(block);
+	const auto v = key->encrypt(block);
+	return {v.low, v.high};
 }
 

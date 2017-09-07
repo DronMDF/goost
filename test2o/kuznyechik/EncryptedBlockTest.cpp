@@ -30,7 +30,7 @@ public:
 	}
 
 	string asString() const override {
-		return ReprPrintable<BlkRaw>(block->value()).asString();
+		return ReprPrintable<BlkRaw>(BlkRaw(block->value())).asString();
 	}
 private:
 	const shared_ptr<EncryptedBlock> block;
