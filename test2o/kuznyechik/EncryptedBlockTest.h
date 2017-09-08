@@ -10,6 +10,7 @@
 
 namespace kuznyechik {
 
+// @todo #174 rename EncryptedBlockTest to BlkEncryptedTest
 class EncryptedBlockTest final : public oout::Test {
 public:
 	EncryptedBlockTest();

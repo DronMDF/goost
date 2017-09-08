@@ -12,10 +12,10 @@ class BlkRaw;
 class Key;
 class Stream;
 
+// @todo #174 Imit should have Block type
 class Imit {
 public:
 	Imit(const std::shared_ptr<const Stream> &data, const std::shared_ptr<const Key> &key);
-
 	BlkRaw value() const;
 private:
 	const std::shared_ptr<const Stream> data;
