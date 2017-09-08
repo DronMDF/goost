@@ -18,7 +18,7 @@ BlockTest::BlockTest()
 	: tests(
 		make_unique<TestNamed>(
 			__func__,
-			make_shared<TestNamed>(
+			make_shared<const TestNamed>(
 				"ByteOrder",
 				make_shared<TestEqual>(
 					make_unique<ReprPrintable<BlkRaw>>(
