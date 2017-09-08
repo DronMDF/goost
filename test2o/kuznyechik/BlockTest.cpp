@@ -15,22 +15,20 @@ using namespace oout;
 using namespace kuznyechik;
 
 BlockTest::BlockTest()
-: tests(
-	make_unique<TestNamed>(
-		__func__,
-		list<shared_ptr<const Test>>{
-			make_unique<TestNamed>(
+	: tests(
+		make_unique<TestNamed>(
+			__func__,
+			make_shared<TestNamed>(
 				"ByteOrder",
-				make_unique<TestEqual>(
+				make_shared<TestEqual>(
 					make_unique<ReprPrintable<BlkRaw>>(
 						BlkRaw(1)
 					),
 					"00000000000000000000000000000001"
 				)
 			)
-		}
+		)
 	)
-)
 {
 }
 
