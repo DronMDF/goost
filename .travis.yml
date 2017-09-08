@@ -16,7 +16,7 @@ matrix:
 
 before_install:
   - eval "${MATRIX_EVAL}"
-  - sudo apt-get install cppcheck ruby-dev
+  - sudo apt-get install cppcheck lcov ruby-dev
   - gem install pdd
 
 # @todo #124:15min Add style make target
