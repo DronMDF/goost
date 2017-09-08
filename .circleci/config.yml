@@ -7,7 +7,7 @@ jobs:
     steps:
       - checkout
       - run: |
-          sudo apt-get install cppcheck
+          sudo apt-get install cmake cppcheck
           gem install pdd
           cmake .
           ./style.sh
