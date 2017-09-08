@@ -8,23 +8,23 @@
 #include <2out/ReprPrintable.h>
 #include <2out/TestEqual.h>
 #include <2out/TestNamed.h>
+#include <kuznyechik/BlkEncrypted.h>
 #include <kuznyechik/BlkRaw.h>
-#include <kuznyechik/EncryptedBlock.h>
 
 using namespace std;
 using namespace oout;
 using namespace kuznyechik;
 
-// @todo #139:15min If EncryptBlock has BlkRaw type,
-//  we can introduce universal block representation instead this class
+// @todo #139:15min If EncryptBlock has Block type,
+//  we can introduce universal Block representation instead this class
 class ReprEncryptedBlock final : public Representation {
 public:
 	ReprEncryptedBlock(const BlkRaw &block, const shared_ptr<const Key> &key)
-		: ReprEncryptedBlock(make_unique<EncryptedBlock>(block, key))
+		: ReprEncryptedBlock(make_unique<BlkEncrypted>(block, key))
 	{
 	}
 
-	explicit ReprEncryptedBlock(const shared_ptr<EncryptedBlock> &block)
+	explicit ReprEncryptedBlock(const shared_ptr<BlkEncrypted> &block)
 		: block(block)
 	{
 	}
@@ -33,16 +33,15 @@ public:
 		return ReprPrintable<BlkRaw>(BlkRaw(block->value())).asString();
 	}
 private:
-	const shared_ptr<EncryptedBlock> block;
+	const shared_ptr<BlkEncrypted> block;
 };
 
 EncryptedBlockTest::EncryptedBlockTest()
-: key(make_unique<Key>("8899aabbccddeeff0011223344556677fedcba98765432100123456789abcdef")),
-  tests(
-	make_unique<TestNamed>(
-		__func__,
-		list<shared_ptr<const Test>>{
-			make_unique<TestNamed>(
+	: key(make_unique<Key>("8899aabbccddeeff0011223344556677fedcba98765432100123456789abcdef")),
+	  tests(
+		make_unique<TestNamed>(
+			__func__,
+			make_shared<TestNamed>(
 				"R3412_A15, R3412_A11_1",
 				make_unique<TestEqual>(
 					make_unique<ReprEncryptedBlock>(
@@ -54,7 +53,7 @@ EncryptedBlockTest::EncryptedBlockTest()
 					)
 				)
 			),
-			make_unique<TestNamed>(
+			make_shared<TestNamed>(
 				"R3412_A11_2",
 				make_unique<TestEqual>(
 					make_unique<ReprEncryptedBlock>(
@@ -66,7 +65,7 @@ EncryptedBlockTest::EncryptedBlockTest()
 					)
 				)
 			),
-			make_unique<TestNamed>(
+			make_shared<TestNamed>(
 				"R3412_A11_3",
 				make_unique<TestEqual>(
 					make_unique<ReprEncryptedBlock>(
@@ -78,7 +77,7 @@ EncryptedBlockTest::EncryptedBlockTest()
 					)
 				)
 			),
-			make_unique<TestNamed>(
+			make_shared<TestNamed>(
 				"R3412_A11_4",
 				make_unique<TestEqual>(
 					make_unique<ReprEncryptedBlock>(
@@ -90,9 +89,8 @@ EncryptedBlockTest::EncryptedBlockTest()
 					)
 				)
 			)
-		}
+		)
 	)
-)
 {
 }
 

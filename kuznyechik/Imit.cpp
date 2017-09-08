@@ -4,8 +4,8 @@
 // of the MIT license.  See the LICENSE file for details.
 
 #include "Imit.h"
+#include "BlkEncrypted.h"
 #include "BlkRaw.h"
-#include "EncryptedBlock.h"
 #include "Iterator.h"
 #include "Stream.h"
 
@@ -24,18 +24,18 @@ BlkRaw Imit::value() const
 
 	while (!iter->last()) {
 		block = make_shared<const BlkRaw>(
-			EncryptedBlock(*block ^ iter->value(), key).value()
+			BlkEncrypted(*block ^ iter->value(), key).value()
 		);
 		iter = iter->next();
 	}
 
-	const auto R = BlkRaw(EncryptedBlock({}, key).value());
+	const auto R = BlkRaw(BlkEncrypted({}, key).value());
 	const BlkRaw B(0x87);
 	const auto K1 = ((R.high & 0x8000000000000000) == 0) ? (R << 1) : (R << 1) ^ B;
 	if (iter->size() == 16) {
-		return BlkRaw(EncryptedBlock(*block ^ iter->value() ^ K1, key).value());
+		return BlkRaw(BlkEncrypted(*block ^ iter->value() ^ K1, key).value());
 	}
 
 	const auto K2 = ((K1.high & 0x8000000000000000) == 0) ? (K1 << 1) : (K1 << 1) ^ B;
-	return BlkRaw(EncryptedBlock(*block ^ iter->value() ^ K2, key).value());
+	return BlkRaw(BlkEncrypted(*block ^ iter->value() ^ K2, key).value());
 }

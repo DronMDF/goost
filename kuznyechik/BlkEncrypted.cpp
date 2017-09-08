@@ -3,18 +3,18 @@
 // This software may be modified and distributed under the terms
 // of the MIT license.  See the LICENSE file for details.
 
-#include "EncryptedBlock.h"
+#include "BlkEncrypted.h"
 #include "Key.h"
 
 using namespace std;
 using namespace kuznyechik;
 
-EncryptedBlock::EncryptedBlock(const BlkRaw &block, const shared_ptr<const Key> &key)
+BlkEncrypted::BlkEncrypted(const BlkRaw &block, const shared_ptr<const Key> &key)
 	: block(block), key(key)
 {
 }
 
-pair<uint64_t, uint64_t> EncryptedBlock::value() const
+pair<uint64_t, uint64_t> BlkEncrypted::value() const
 {
 	const auto v = key->encrypt(block);
 	return {v.low, v.high};

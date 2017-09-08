@@ -4,8 +4,8 @@
 // of the MIT license.  See the LICENSE file for details.
 
 #include "StCTREncrypted.h"
+#include "BlkEncrypted.h"
 #include "BlkRaw.h"
-#include "EncryptedBlock.h"
 #include "Iterator.h"
 
 using namespace std;
@@ -51,7 +51,7 @@ size_t CTREncryptedIterator::size() const
 
 BlkRaw CTREncryptedIterator::value() const
 {
-	EncryptedBlock block(ctr, key);
+	BlkEncrypted block(ctr, key);
 	return iter->value() ^ BlkRaw(block.value());
 }
 

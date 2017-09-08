@@ -12,13 +12,10 @@ namespace kuznyechik {
 
 class Key;
 
-// @todo #170 Rename EncryptedBlock to BlkEncrypted
-class EncryptedBlock final : public Block {
+class BlkEncrypted final : public Block {
 public:
-	EncryptedBlock(const BlkRaw &block, const std::shared_ptr<const Key> &key);
-
+	BlkEncrypted(const BlkRaw &block, const std::shared_ptr<const Key> &key);
 	std::pair<uint64_t, uint64_t> value() const override;
-
 private:
 	const BlkRaw block;
 	const std::shared_ptr<const Key> key;
