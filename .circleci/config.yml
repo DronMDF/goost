@@ -16,6 +16,5 @@ jobs:
           cmake .
           make VERBOSE=1
           make test
-          ./test_report.py -o old-test.xml ./test_goost
       - store_test_results:
           path: .
