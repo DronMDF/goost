@@ -41,13 +41,12 @@ private:
 };
 
 ImitTest::ImitTest()
-: tests(
-	make_unique<TestNamed>(
-		__func__,
-		list<shared_ptr<const Test>>{
-			make_unique<TestNamed>(
+	: tests(
+		make_unique<TestNamed>(
+			__func__,
+			make_shared<const TestNamed>(
 				"R3413_A162",
-				make_unique<TestEqual>(
+				make_shared<TestEqual>(
 					make_unique<ImitRepr>(
 						make_unique<const StMemory>(
 							vector<uint64_t>{
@@ -69,9 +68,8 @@ ImitTest::ImitTest()
 					"336f4d296059fbe3"
 				)
 			)
-		}
+		)
 	)
-)
 {
 }
 
