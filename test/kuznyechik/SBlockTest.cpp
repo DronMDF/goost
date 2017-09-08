@@ -13,10 +13,10 @@ UP_SUITE_BEGIN(kuznyechik)
 UP_SUITE_BEGIN(SBlockTest)
 
 const vector<tuple<uint64_t, uint64_t, uint64_t, uint64_t>> data = {
-	{0x1122334455667700, 0xffeeddccbbaa9988, 0x7765aeea0c9a7efc, 0xb66cd8887d38e8d7},
-	{0x7765aeea0c9a7efc, 0xb66cd8887d38e8d7, 0x7e7b262523280d39, 0x559d8dd7bd06cbfe},
-	{0x7e7b262523280d39, 0x559d8dd7bd06cbfe, 0x0d80ef5c5a81c50b, 0x0c3322fed531e463},
-	{0x0d80ef5c5a81c50b, 0x0c3322fed531e463, 0xc5df529c13f5acda, 0x23ae65633f842d29}
+	{0x1122334455667700LLU, 0xffeeddccbbaa9988LLU, 0x7765aeea0c9a7efcLLU, 0xb66cd8887d38e8d7LLU},
+	{0x7765aeea0c9a7efcLLU, 0xb66cd8887d38e8d7LLU, 0x7e7b262523280d39LLU, 0x559d8dd7bd06cbfeLLU},
+	{0x7e7b262523280d39LLU, 0x559d8dd7bd06cbfeLLU, 0x0d80ef5c5a81c50bLLU, 0x0c3322fed531e463LLU},
+	{0x0d80ef5c5a81c50bLLU, 0x0c3322fed531e463LLU, 0xc5df529c13f5acdaLLU, 0x23ae65633f842d29LLU}
 };
 
 UP_PARAMETRIZED_TEST(R3412_A11, data)
