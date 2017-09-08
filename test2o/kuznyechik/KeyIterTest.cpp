@@ -20,7 +20,7 @@ template<typename KI>
 class ReprKeyIter final : public Representation {
 public:
 	explicit ReprKeyIter(const shared_ptr<const Key::Data> &key)
-		: ReprKeyIter(make_unique<KI>(key))
+		: ReprKeyIter(make_shared<KI>(key))
 	{
 	}
 
