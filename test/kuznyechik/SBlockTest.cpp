@@ -13,10 +13,10 @@ UP_SUITE_BEGIN(kuznyechik)
 UP_SUITE_BEGIN(SBlockTest)
 
 const vector<tuple<uint64_t, uint64_t, uint64_t, uint64_t>> data = {
-	{0x1122334455667700, 0xffeeddccbbaa9988, 0x7765aeea0c9a7efc, 0xb66cd8887d38e8d7},
-	{0x7765aeea0c9a7efc, 0xb66cd8887d38e8d7, 0x7e7b262523280d39, 0x559d8dd7bd06cbfe},
-	{0x7e7b262523280d39, 0x559d8dd7bd06cbfe, 0x0d80ef5c5a81c50b, 0x0c3322fed531e463},
-	{0x0d80ef5c5a81c50b, 0x0c3322fed531e463, 0xc5df529c13f5acda, 0x23ae65633f842d29}
+	make_tuple(0x1122334455667700LU, 0xffeeddccbbaa9988LU, 0x7765aeea0c9a7efcLU, 0xb66cd8887d38e8d7LU),
+	make_tuple(0x7765aeea0c9a7efcLU, 0xb66cd8887d38e8d7LU, 0x7e7b262523280d39LU, 0x559d8dd7bd06cbfeLU),
+	make_tuple(0x7e7b262523280d39LU, 0x559d8dd7bd06cbfeLU, 0x0d80ef5c5a81c50bLU, 0x0c3322fed531e463LU),
+	make_tuple(0x0d80ef5c5a81c50bLU, 0x0c3322fed531e463LU, 0xc5df529c13f5acdaLU, 0x23ae65633f842d29LU)
 };
 
 UP_PARAMETRIZED_TEST(R3412_A11, data)

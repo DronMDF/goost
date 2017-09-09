@@ -17,13 +17,12 @@ using namespace oout;
 using namespace kuznyechik;
 
 KeyDataStringTest::KeyDataStringTest()
-: tests(
-	make_unique<TestNamed>(
-		__func__,
-		list<shared_ptr<const Test>>{
-			make_unique<TestNamed>(
+	: tests(
+		make_unique<TestNamed>(
+			__func__,
+			make_shared<TestNamed>(
 				"High block",
-				make_unique<TestEqual>(
+				make_shared<TestEqual>(
 					make_unique<ReprKeyDataHigh>(
 						make_unique<KeyDataString>(
 							"8899aabbccddeeff0011223344556677"
@@ -35,9 +34,9 @@ KeyDataStringTest::KeyDataStringTest()
 					)
 				)
 			),
-			make_unique<TestNamed>(
+			make_shared<TestNamed>(
 				"Low block",
-				make_unique<TestEqual>(
+				make_shared<TestEqual>(
 					make_unique<ReprKeyDataLow>(
 						make_unique<KeyDataString>(
 							"8899aabbccddeeff0011223344556677"
@@ -49,9 +48,8 @@ KeyDataStringTest::KeyDataStringTest()
 					)
 				)
 			)
-		}
+		)
 	)
-)
 {
 }
 

@@ -43,7 +43,7 @@ EncryptedBlockTest::EncryptedBlockTest()
 			__func__,
 			make_shared<TestNamed>(
 				"R3412_A15, R3412_A11_1",
-				make_unique<TestEqual>(
+				make_shared<TestEqual>(
 					make_unique<ReprEncryptedBlock>(
 						BlkRaw(0xffeeddccbbaa9988, 0x1122334455667700),
 						key
@@ -55,7 +55,7 @@ EncryptedBlockTest::EncryptedBlockTest()
 			),
 			make_shared<TestNamed>(
 				"R3412_A11_2",
-				make_unique<TestEqual>(
+				make_shared<TestEqual>(
 					make_unique<ReprEncryptedBlock>(
 						BlkRaw(0x8899aabbcceeff0a, 0x0011223344556677),
 						key
@@ -67,7 +67,7 @@ EncryptedBlockTest::EncryptedBlockTest()
 			),
 			make_shared<TestNamed>(
 				"R3412_A11_3",
-				make_unique<TestEqual>(
+				make_shared<TestEqual>(
 					make_unique<ReprEncryptedBlock>(
 						BlkRaw(0x99aabbcceeff0a00, 0x1122334455667788),
 						key
@@ -79,7 +79,7 @@ EncryptedBlockTest::EncryptedBlockTest()
 			),
 			make_shared<TestNamed>(
 				"R3412_A11_4",
-				make_unique<TestEqual>(
+				make_shared<TestEqual>(
 					make_unique<ReprEncryptedBlock>(
 						BlkRaw(0xaabbcceeff0a0011, 0x2233445566778899),
 						key
