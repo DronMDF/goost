@@ -8,11 +8,13 @@ ADD_EXECUTABLE(
 	test2o
 	test2o.cpp
 	kuznyechik/BlkEncryptedTest.cpp
+	kuznyechik/BlkShiftedTest.cpp
 	kuznyechik/BlockTest.cpp
 	kuznyechik/ImitTest.cpp
 	kuznyechik/KeyDataStringTest.cpp
 	kuznyechik/KeyIterTest.cpp
 	kuznyechik/LBlockTest.cpp
+	kuznyechik/ReprBlock.cpp
 	kuznyechik/ReprKeyData.cpp
 	kuznyechik/Test.cpp
 )
