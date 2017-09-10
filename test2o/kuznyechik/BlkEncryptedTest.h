@@ -10,10 +10,9 @@
 
 namespace kuznyechik {
 
-// @todo #174 rename EncryptedBlockTest to BlkEncryptedTest
-class EncryptedBlockTest final : public oout::Test {
+class BlkEncryptedTest final : public oout::Test {
 public:
-	EncryptedBlockTest();
+	BlkEncryptedTest();
 	std::unique_ptr<const oout::Result> result() const override;
 private:
 	const std::shared_ptr<const kuznyechik::Key> key;
