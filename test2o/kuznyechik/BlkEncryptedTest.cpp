@@ -3,7 +3,7 @@
 // This software may be modified and distributed under the terms
 // of the MIT license.  See the LICENSE file for details.
 
-#include "EncryptedBlockTest.h"
+#include "BlkEncryptedTest.h"
 #include <list>
 #include <2out/ReprPrintable.h>
 #include <2out/TestEqual.h>
@@ -36,7 +36,7 @@ private:
 	const shared_ptr<BlkEncrypted> block;
 };
 
-EncryptedBlockTest::EncryptedBlockTest()
+BlkEncryptedTest::BlkEncryptedTest()
 	: key(make_unique<Key>("8899aabbccddeeff0011223344556677fedcba98765432100123456789abcdef")),
 	  tests(
 		make_unique<TestNamed>(
@@ -94,7 +94,7 @@ EncryptedBlockTest::EncryptedBlockTest()
 {
 }
 
-unique_ptr<const Result> EncryptedBlockTest::result() const
+unique_ptr<const Result> BlkEncryptedTest::result() const
 {
 	return tests->result();
 }

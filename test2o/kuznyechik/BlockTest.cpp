@@ -14,6 +14,7 @@ using namespace std;
 using namespace oout;
 using namespace kuznyechik;
 
+// @todo #182 Rename BlockTest to BlkRawTest
 BlockTest::BlockTest()
 	: tests(
 		make_unique<TestNamed>(
