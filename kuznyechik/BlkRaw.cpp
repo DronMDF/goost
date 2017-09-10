@@ -52,6 +52,11 @@ BlkRaw BlkRaw::operator ^(const BlkRaw &b) const
 	return {low ^ b.low, high ^ b.high};
 }
 
+pair<uint64_t, uint64_t> BlkRaw::value() const
+{
+	return {low, high};
+}
+
 ostream &kuznyechik::operator <<(ostream &os, const BlkRaw &block)
 {
 	os << hex << setfill('0') << setw(16) << block.high << setw(16) << block.low << dec;

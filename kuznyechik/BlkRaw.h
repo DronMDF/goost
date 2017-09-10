@@ -6,11 +6,11 @@
 #pragma once
 #include <cstdint>
 #include <ostream>
+#include "Block.h"
 
 namespace kuznyechik {
 
-// @todo #170 BlkRaw should have Block type
-class BlkRaw {
+class BlkRaw final : public Block {
 public:
 	BlkRaw(uint64_t low, uint64_t high);
 	explicit BlkRaw(const std::pair<uint64_t, uint64_t> &value);
@@ -21,6 +21,8 @@ public:
 	bool operator ==(const BlkRaw &block) const;
 	BlkRaw operator <<(int i) const;
 	BlkRaw operator ^(const BlkRaw &b) const;
+
+	std::pair<uint64_t, uint64_t> value() const override;
 
 	const uint64_t low;
 	const uint64_t high;
