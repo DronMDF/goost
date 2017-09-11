@@ -5,22 +5,20 @@
 
 #pragma once
 #include <memory>
+#include "Block.h"
 
 namespace kuznyechik {
 
-class BlkRaw;
 class Key;
 class Stream;
 
-// @todo #174 Imit should have Block type
-class Imit {
+class Imit final : public Block {
 public:
 	Imit(const std::shared_ptr<const Stream> &data, const std::shared_ptr<const Key> &key);
-	BlkRaw value() const;
+	std::pair<uint64_t, uint64_t> value() const override;
 private:
 	const std::shared_ptr<const Stream> data;
 	const std::shared_ptr<const Key> key;
 };
 
 }
-
