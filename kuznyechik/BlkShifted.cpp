@@ -8,7 +8,7 @@
 using namespace std;
 using namespace kuznyechik;
 
-BlkShifted::BlkShifted(const std::shared_ptr<const Block> &block, int n)
+BlkShifted::BlkShifted(const shared_ptr<const Block> &block, int n)
 	: block(block), n(n)
 {
 }
