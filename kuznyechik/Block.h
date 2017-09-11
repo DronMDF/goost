@@ -8,8 +8,6 @@
 
 namespace kuznyechik {
 
-// @todo #170 Introduce BlkXored, whoes value is xor of two block
-
 class Block {
 public:
 	virtual ~Block() = default;
