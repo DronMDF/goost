@@ -15,7 +15,7 @@ SBlock::SBlock(const BlkRaw &block)
 {
 }
 
-BlkRaw SBlock::value() const
+pair<uint64_t, uint64_t> SBlock::value() const
 {
 	constexpr array<uint8_t, 256> sbox = {{
 		252, 238, 221, 17, 207, 110, 49, 22, 251, 196, 250, 218, 35, 197, 4, 77, 233,
@@ -41,5 +41,5 @@ BlkRaw SBlock::value() const
 	for (int i = 0; i < 16; i++) {
 		data[i] = sbox[data[i]];
 	}
-	return BlkRaw(&data[0]);
+	return BlkRaw(&data[0]).value();
 }

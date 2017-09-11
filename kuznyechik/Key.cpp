@@ -36,14 +36,14 @@ BlkRaw Key::encrypt(const BlkRaw &block) const
 {
 	// @todo #73:30min Lazy object BlkL and SBlock looks ugly in this context
 	//  Maybe i need to introduce LSX object? Or rework parameters passing to them.
-	const auto t1 = BlkL(SBlock(block ^ k1->value()).value()).value();
-	const auto t2 = BlkL(SBlock(BlkRaw(t1) ^ k2->value()).value()).value();
-	const auto t3 = BlkL(SBlock(BlkRaw(t2) ^ k3->value()).value()).value();
-	const auto t4 = BlkL(SBlock(BlkRaw(t3) ^ k4->value()).value()).value();
-	const auto t5 = BlkL(SBlock(BlkRaw(t4) ^ k5->value()).value()).value();
-	const auto t6 = BlkL(SBlock(BlkRaw(t5) ^ k6->value()).value()).value();
-	const auto t7 = BlkL(SBlock(BlkRaw(t6) ^ k7->value()).value()).value();
-	const auto t8 = BlkL(SBlock(BlkRaw(t7) ^ k8->value()).value()).value();
-	const auto t9 = BlkL(SBlock(BlkRaw(t8) ^ k9->value()).value()).value();
+	const auto t1 = BlkL(BlkRaw(SBlock(block ^ k1->value()).value())).value();
+	const auto t2 = BlkL(BlkRaw(SBlock(BlkRaw(t1) ^ k2->value()).value())).value();
+	const auto t3 = BlkL(BlkRaw(SBlock(BlkRaw(t2) ^ k3->value()).value())).value();
+	const auto t4 = BlkL(BlkRaw(SBlock(BlkRaw(t3) ^ k4->value()).value())).value();
+	const auto t5 = BlkL(BlkRaw(SBlock(BlkRaw(t4) ^ k5->value()).value())).value();
+	const auto t6 = BlkL(BlkRaw(SBlock(BlkRaw(t5) ^ k6->value()).value())).value();
+	const auto t7 = BlkL(BlkRaw(SBlock(BlkRaw(t6) ^ k7->value()).value())).value();
+	const auto t8 = BlkL(BlkRaw(SBlock(BlkRaw(t7) ^ k8->value()).value())).value();
+	const auto t9 = BlkL(BlkRaw(SBlock(BlkRaw(t8) ^ k9->value()).value())).value();
 	return BlkRaw(t9) ^ k10->value();
 }

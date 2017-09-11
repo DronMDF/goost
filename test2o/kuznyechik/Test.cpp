@@ -9,6 +9,7 @@
 #include "BlkEncryptedTest.h"
 #include "BlkRTest.h"
 #include "BlkShiftedTest.h"
+#include "BlkSTest.h"
 #include "BlkXoredTest.h"
 #include "BlockTest.h"
 #include "ImitTest.h"
@@ -21,20 +22,21 @@ using namespace oout;
 using namespace kuznyechik;
 
 kuznyechik::Test::Test()
-: tests(
-	make_unique<TestNamed>(
-		"Kuznyechik tests",
-		make_shared<kuznyechik::BlkEncryptedTest>(),
-		make_shared<kuznyechik::BlkRTest>(),
-		make_shared<kuznyechik::BlkShiftedTest>(),
-		make_shared<kuznyechik::BlkXoredTest>(),
-		make_shared<kuznyechik::BlockTest>(),
-		make_shared<kuznyechik::ImitTest>(),
-		make_shared<kuznyechik::KeyDataStringTest>(),
-		make_shared<kuznyechik::KeyIterTest>(),
-		make_shared<kuznyechik::LBlockTest>()
+	: tests(
+		make_unique<TestNamed>(
+			"Kuznyechik tests",
+			make_shared<kuznyechik::BlkEncryptedTest>(),
+			make_shared<kuznyechik::BlkRTest>(),
+			make_shared<kuznyechik::BlkShiftedTest>(),
+			make_shared<kuznyechik::BlkSTest>(),
+			make_shared<kuznyechik::BlkXoredTest>(),
+			make_shared<kuznyechik::BlockTest>(),
+			make_shared<kuznyechik::ImitTest>(),
+			make_shared<kuznyechik::KeyDataStringTest>(),
+			make_shared<kuznyechik::KeyIterTest>(),
+			make_shared<kuznyechik::LBlockTest>()
+		)
 	)
-)
 {
 }
 

@@ -8,12 +8,12 @@
 
 namespace kuznyechik {
 
-class SBlock final {
+// @todo #160 Rename Sblock to BlkS
+// @todo #160 BlkS should take pointer to Block, not BlkRaw
+class SBlock final : public Block {
 public:
 	explicit SBlock(const BlkRaw &block);
-
-	BlkRaw value() const;
-
+	std::pair<uint64_t, uint64_t> value() const override;
 private:
 	const BlkRaw block;
 };
