@@ -14,9 +14,9 @@ LBlock::LBlock(const BlkRaw &block)
 {
 }
 
-BlkRaw LBlock::value() const
+pair<uint64_t, uint64_t> LBlock::value() const
 {
-	return transform(block, 16);
+	return transform(block, 16).value();
 }
 
 BlkRaw LBlock::transform(const BlkRaw &b, int n) const
