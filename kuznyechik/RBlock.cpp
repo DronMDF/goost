@@ -37,7 +37,7 @@ uint8_t RBlock::gmul(uint8_t a, uint8_t b) const
 	return p;
 }
 
-BlkRaw RBlock::value() const
+pair<uint64_t, uint64_t> RBlock::value() const
 {
 	constexpr int k[16] = {
 		1, 148, 32, 133, 16, 194, 192, 1, 251, 1, 192, 194, 16, 133, 32, 148
@@ -50,5 +50,5 @@ BlkRaw RBlock::value() const
 		sum ^= gmul(data[i], k[i]);
 	}
 	data[16] = sum;
-	return BlkRaw(&data[1]);
+	return BlkRaw(&data[1]).value();
 }
