@@ -8,15 +8,14 @@
 
 namespace kuznyechik {
 
-class LBlock final {
+// @todo #183 Rename LBlock to BlkL
+// @todo #183 BlkL should take pointer to Block instead BlkRaw
+class LBlock final : public Block {
 public:
 	explicit LBlock(const BlkRaw &block);
-
-	BlkRaw value() const;
-
+	std::pair<uint64_t, uint64_t> value() const override;
 private:
 	const BlkRaw block;
-
 	BlkRaw transform(const BlkRaw &b, int n) const;
 };
 
