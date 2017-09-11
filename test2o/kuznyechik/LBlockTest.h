@@ -9,6 +9,7 @@
 
 namespace kuznyechik {
 
+// @todo #198 Rename LBlockTest to BlkLTest
 class LBlockTest final : public oout::Test {
 public:
 	LBlockTest();
