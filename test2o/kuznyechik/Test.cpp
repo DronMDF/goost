@@ -7,6 +7,7 @@
 #include <list>
 #include <2out/TestNamed.h>
 #include "BlkEncryptedTest.h"
+#include "BlkRTest.h"
 #include "BlkShiftedTest.h"
 #include "BlkXoredTest.h"
 #include "BlockTest.h"
@@ -23,16 +24,15 @@ kuznyechik::Test::Test()
 : tests(
 	make_unique<TestNamed>(
 		"Kuznyechik tests",
-		list<shared_ptr<const oout::Test>>{
-			make_unique<kuznyechik::BlkEncryptedTest>(),
-			make_unique<kuznyechik::BlkShiftedTest>(),
-			make_unique<kuznyechik::BlkXoredTest>(),
-			make_unique<kuznyechik::BlockTest>(),
-			make_unique<kuznyechik::ImitTest>(),
-			make_unique<kuznyechik::KeyDataStringTest>(),
-			make_unique<kuznyechik::KeyIterTest>(),
-			make_unique<kuznyechik::LBlockTest>()
-		}
+		make_shared<kuznyechik::BlkEncryptedTest>(),
+		make_shared<kuznyechik::BlkRTest>(),
+		make_shared<kuznyechik::BlkShiftedTest>(),
+		make_shared<kuznyechik::BlkXoredTest>(),
+		make_shared<kuznyechik::BlockTest>(),
+		make_shared<kuznyechik::ImitTest>(),
+		make_shared<kuznyechik::KeyDataStringTest>(),
+		make_shared<kuznyechik::KeyIterTest>(),
+		make_shared<kuznyechik::LBlockTest>()
 	)
 )
 {

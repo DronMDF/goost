@@ -25,5 +25,5 @@ BlkRaw LBlock::transform(const BlkRaw &b, int n) const
 		return b;
 	}
 
-	return transform(RBlock(b).value(), n - 1);
+	return transform(BlkRaw(RBlock(b).value()), n - 1);
 }

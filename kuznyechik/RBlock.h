@@ -8,20 +8,14 @@
 
 namespace kuznyechik {
 
-// @todo #59 Need to introduce abstract interface for Block.
-//  For the sake of speed, I want BlkRaw to be a non-polymorphic type,
-//  but premature optimization is evil, and maybe it's worth making
-//  it polymorphic, then RBlock, EnkriptedBlock will implement its
-//  interface.
-class RBlock final {
+// @todo #159 Rename RBlock to BlkR
+// @todo #159 BlkR should take pointer to Block, not BlkRaw
+class RBlock final : public Block {
 public:
 	explicit RBlock(const BlkRaw &block);
-
-	BlkRaw value() const;
-
+	std::pair<uint64_t, uint64_t> value() const override;
 private:
 	const BlkRaw block;
-
 	uint8_t gmul(uint8_t a, uint8_t b) const;
 };
 
