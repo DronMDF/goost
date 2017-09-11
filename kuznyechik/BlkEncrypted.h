@@ -12,6 +12,7 @@ namespace kuznyechik {
 
 class Key;
 
+// @todo #189 BlkEncrypted Ctor take pointer to Block, not imm BlkRaw
 class BlkEncrypted final : public Block {
 public:
 	BlkEncrypted(const BlkRaw &block, const std::shared_ptr<const Key> &key);
