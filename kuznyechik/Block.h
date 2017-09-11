@@ -12,6 +12,8 @@ class Block {
 public:
 	virtual ~Block() = default;
 	virtual std::pair<uint64_t, uint64_t> value() const = 0;
+
+	static constexpr auto size = sizeof(uint64_t) * 2;
 };
 
 }

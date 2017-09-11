@@ -40,10 +40,9 @@ bool ItMemory::last() const
 	return !next();
 }
 
-// @todo #165 Describe alogrythm size constant in common place
 size_t ItMemory::size() const
 {
-	return sizeof(uint64_t) * 2;
+	return Block::size;
 }
 
 BlkRaw ItMemory::value() const
@@ -54,7 +53,7 @@ BlkRaw ItMemory::value() const
 shared_ptr<const Iterator> ItMemory::next() const
 {
 	const auto stream = stream_ptr.lock();
-	return stream->next_iter(offset + sizeof(uint64_t) * 2);
+	return stream->next_iter(offset + Block::size);
 }
 
 StMemory::StMemory(const vector<uint64_t> &data)
