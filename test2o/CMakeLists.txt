@@ -10,6 +10,7 @@ ADD_EXECUTABLE(
 	kuznyechik/BlkEncryptedTest.cpp
 	kuznyechik/BlkRTest.cpp
 	kuznyechik/BlkShiftedTest.cpp
+	kuznyechik/BlkSTest.cpp
 	kuznyechik/BlkXoredTest.cpp
 	kuznyechik/BlockTest.cpp
 	kuznyechik/ImitTest.cpp
