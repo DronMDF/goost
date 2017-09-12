@@ -9,21 +9,21 @@
 using namespace std;
 using namespace kuznyechik;
 
-BlkL::BlkL(const BlkRaw &block)
+BlkL::BlkL(const shared_ptr<const Block> &block)
 	: block(block)
 {
 }
 
 pair<uint64_t, uint64_t> BlkL::value() const
 {
-	return transform(block, 16).value();
+	return transform(block, 16)->value();
 }
 
-BlkRaw BlkL::transform(const BlkRaw &b, int n) const
+shared_ptr<const Block> BlkL::transform(const shared_ptr<const Block> &b, int n) const
 {
 	if (n == 0) {
 		return b;
 	}
 
-	return transform(BlkRaw(RBlock(b).value()), n - 1);
+	return transform(make_unique<RBlock>(BlkRaw(b)), n - 1);
 }

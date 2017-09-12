@@ -4,18 +4,18 @@
 // of the MIT license.  See the LICENSE file for details.
 
 #pragma once
-#include "BlkRaw.h"
+#include <memory>
+#include "Block.h"
 
 namespace kuznyechik {
 
-// @todo #183 BlkL should take pointer to Block instead BlkRaw
 class BlkL final : public Block {
 public:
-	explicit BlkL(const BlkRaw &block);
+	explicit BlkL(const std::shared_ptr<const Block> &block);
 	std::pair<uint64_t, uint64_t> value() const override;
 private:
-	const BlkRaw block;
-	BlkRaw transform(const BlkRaw &b, int n) const;
+	const std::shared_ptr<const Block> block;
+	std::shared_ptr<const Block> transform(const std::shared_ptr<const Block> &b, int n) const;
 };
 
 }

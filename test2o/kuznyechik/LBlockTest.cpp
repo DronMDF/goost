@@ -7,6 +7,7 @@
 #include <2out/TestEqual.h>
 #include <2out/TestNamed.h>
 #include <kuznyechik/BlkL.h>
+#include <kuznyechik/BlkRaw.h>
 #include "ReprBlock.h"
 
 using namespace std;
@@ -22,7 +23,10 @@ LBlockTest::LBlockTest()
 				make_shared<TestEqual>(
 					make_unique<ReprBlock>(
 						make_unique<BlkL>(
-							BlkRaw(0x0000000000000000, 0x64a5940000000000)
+							make_unique<BlkRaw>(
+								0x0000000000000000,
+								0x64a5940000000000
+							)
 						)
 					),
 					"d456584dd0e3e84cc3166e4b7fa2890d"
@@ -33,7 +37,10 @@ LBlockTest::LBlockTest()
 				make_shared<TestEqual>(
 					make_unique<ReprBlock>(
 						make_unique<BlkL>(
-							BlkRaw(0xc3166e4b7fa2890d, 0xd456584dd0e3e84c)
+							make_unique<BlkRaw>(
+								0xc3166e4b7fa2890d,
+								0xd456584dd0e3e84c
+							)
 						)
 					),
 					"79d26221b87b584cd42fbc4ffea5de9a"
@@ -44,7 +51,10 @@ LBlockTest::LBlockTest()
 				make_shared<TestEqual>(
 					make_unique<ReprBlock>(
 						make_unique<BlkL>(
-							BlkRaw(0xd42fbc4ffea5de9a, 0x79d26221b87b584c)
+							make_unique<BlkRaw>(
+								0xd42fbc4ffea5de9a,
+								0x79d26221b87b584c
+							)
 						)
 					),
 					"0e93691a0cfc60408b7b68f66b513c13"
@@ -55,7 +65,10 @@ LBlockTest::LBlockTest()
 				make_shared<TestEqual>(
 					make_unique<ReprBlock>(
 						make_unique<BlkL>(
-							BlkRaw(0x8b7b68f66b513c13, 0x0e93691a0cfc6040)
+							make_unique<BlkRaw>(
+								0x8b7b68f66b513c13,
+								0x0e93691a0cfc6040
+							)
 						)
 					),
 					"e6a8094fee0aa204fd97bcb0b44b8580"
