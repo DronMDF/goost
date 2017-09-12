@@ -49,7 +49,6 @@ ADD_LIBRARY(goost
 ADD_EXECUTABLE(test_goost
 	test/gost89/DataImitTest.cpp
 	test/gost89/ProceduralImitTest.cpp
-	test/kuznyechik/StCTREncryptedTest.cpp
 	test/magma/DataStreamTest.cpp
 	test/magma/DecryptedBlockTest.cpp
 	test/magma/EncryptedBlockTest.cpp
