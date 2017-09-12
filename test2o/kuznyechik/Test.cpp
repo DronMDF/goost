@@ -16,6 +16,7 @@
 #include "KeyDataStringTest.h"
 #include "KeyIterTest.h"
 #include "LBlockTest.h"
+#include "StCTREncryptedTest.h"
 
 using namespace std;
 using namespace oout;
@@ -25,16 +26,17 @@ kuznyechik::Test::Test()
 	: tests(
 		make_unique<TestNamed>(
 			"Kuznyechik tests",
-			make_shared<kuznyechik::BlkEncryptedTest>(),
-			make_shared<kuznyechik::BlkRTest>(),
-			make_shared<kuznyechik::BlkShiftedTest>(),
-			make_shared<kuznyechik::BlkSTest>(),
-			make_shared<kuznyechik::BlkXoredTest>(),
-			make_shared<kuznyechik::BlockTest>(),
-			make_shared<kuznyechik::ImitTest>(),
-			make_shared<kuznyechik::KeyDataStringTest>(),
-			make_shared<kuznyechik::KeyIterTest>(),
-			make_shared<kuznyechik::LBlockTest>()
+			make_shared<BlkEncryptedTest>(),
+			make_shared<BlkRTest>(),
+			make_shared<BlkShiftedTest>(),
+			make_shared<BlkSTest>(),
+			make_shared<BlkXoredTest>(),
+			make_shared<BlockTest>(),
+			make_shared<ImitTest>(),
+			make_shared<KeyDataStringTest>(),
+			make_shared<KeyIterTest>(),
+			make_shared<LBlockTest>(),
+			make_shared<StCTREncryptedTest>()
 		)
 	)
 {

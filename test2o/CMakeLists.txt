@@ -19,6 +19,7 @@ ADD_EXECUTABLE(
 	kuznyechik/LBlockTest.cpp
 	kuznyechik/ReprBlock.cpp
 	kuznyechik/ReprKeyData.cpp
+	kuznyechik/StCTREncryptedTest.cpp
 	kuznyechik/Test.cpp
 )
 
