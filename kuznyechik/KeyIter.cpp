@@ -50,8 +50,8 @@ BlkRaw KeyIterAny::generate(const BlkRaw &a, const BlkRaw &b, int n) const
 
 	// @todo #82:30min Cn is a const key.
 	//  Need to predefine this keys
-	const auto cn = BlkL(BlkRaw(n)).value();
-	return generate(b, a ^ BlkRaw(BlkL(BlkRaw(SBlock(b ^ BlkRaw(cn)).value())).value()), n + 1);
+	const auto cn = BlkL(make_unique<BlkRaw>(n)).value();
+	return generate(b, a ^ BlkRaw(BlkL(make_unique<SBlock>(b ^ BlkRaw(cn))).value()), n + 1);
 }
 
 KeyIter3::KeyIter3(const shared_ptr<const Key::Data> &key_data)

@@ -19,6 +19,11 @@ BlkRaw::BlkRaw(const pair<uint64_t, uint64_t> &value)
 {
 }
 
+BlkRaw::BlkRaw(const shared_ptr<const Block> &block)
+	: BlkRaw(block->value())
+{
+}
+
 BlkRaw::BlkRaw(const void * const ptr)
 	: BlkRaw(
 		reinterpret_cast<const uint64_t * const>(ptr)[0],

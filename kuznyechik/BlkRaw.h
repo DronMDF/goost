@@ -5,6 +5,7 @@
 
 #pragma once
 #include <cstdint>
+#include <memory>
 #include <ostream>
 #include "Block.h"
 
@@ -14,6 +15,7 @@ class BlkRaw final : public Block {
 public:
 	BlkRaw(uint64_t low, uint64_t high);
 	explicit BlkRaw(const std::pair<uint64_t, uint64_t> &value);
+	explicit BlkRaw(const std::shared_ptr<const Block> &block);
 	explicit BlkRaw(const void * const ptr);
 	explicit BlkRaw(uint64_t low);
 	BlkRaw();
