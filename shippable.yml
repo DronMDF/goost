@@ -9,8 +9,8 @@ build:
     - apt-get update
     - apt-get install cmake cppcheck ruby-dev
     - gem install pdd
-    - ./style.sh
     - cmake .
+    - make style
     - make VERBOSE=1
     - make test
     - ./test_report.py -o shippable/testresults/goost.xml ./test_goost

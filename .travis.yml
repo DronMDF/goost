@@ -19,11 +19,10 @@ before_install:
   - sudo apt-get install cppcheck lcov ruby-dev
   - gem install pdd
 
-# @todo #124:15min Add style make target
 script:
   - |
     cmake -DCMAKE_CXX_FLAGS="--coverage" .
-    ./style.sh
+    make style
     make VERBOSE=1
     make test
     ./test_report.py -o shippable/testresults/goost.xml ./test_goost
