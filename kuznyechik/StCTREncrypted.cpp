@@ -11,10 +11,10 @@
 using namespace std;
 using namespace kuznyechik;
 
-// @todo #95:15min Rename CTREncryptedIterator to ItCTREncrypted
-class CTREncryptedIterator final : public Iterator {
+// @todo #103 ItCTREncrypted should take pointer to ctr as Block, not imm BlkRaw value
+class ItCTREncrypted final : public Iterator {
 public:
-	CTREncryptedIterator(
+	ItCTREncrypted(
 		const shared_ptr<const Iterator> &iter,
 		const shared_ptr<const Key> &key,
 		const BlkRaw &ctr
@@ -31,7 +31,7 @@ private:
 	const BlkRaw ctr;
 };
 
-CTREncryptedIterator::CTREncryptedIterator(
+ItCTREncrypted::ItCTREncrypted(
 		const shared_ptr<const Iterator> &iter,
 		const shared_ptr<const Key> &key,
 		const BlkRaw &ctr)
@@ -39,25 +39,25 @@ CTREncryptedIterator::CTREncryptedIterator(
 {
 }
 
-bool CTREncryptedIterator::last() const
+bool ItCTREncrypted::last() const
 {
 	return iter->last();
 }
 
-size_t CTREncryptedIterator::size() const
+size_t ItCTREncrypted::size() const
 {
 	return iter->size();
 }
 
-BlkRaw CTREncryptedIterator::value() const
+BlkRaw ItCTREncrypted::value() const
 {
 	BlkEncrypted block(ctr, key);
 	return iter->value() ^ BlkRaw(block.value());
 }
 
-shared_ptr<const Iterator> CTREncryptedIterator::next() const
+shared_ptr<const Iterator> ItCTREncrypted::next() const
 {
-	return make_shared<const CTREncryptedIterator>(
+	return make_shared<const ItCTREncrypted>(
 		iter->next(),
 		key,
 		BlkRaw(ctr.low + 1, ctr.high)
@@ -74,5 +74,5 @@ StCTREncrypted::StCTREncrypted(
 
 shared_ptr<const Iterator> StCTREncrypted::iter() const
 {
-	return make_shared<const CTREncryptedIterator>(stream->iter(), key, BlkRaw(0, iv));
+	return make_shared<const ItCTREncrypted>(stream->iter(), key, BlkRaw(0, iv));
 }

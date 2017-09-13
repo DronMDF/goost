@@ -9,6 +9,8 @@ namespace kuznyechik {
 
 class BlkRaw;
 
+// @todo #103 Iterator::value() should return pointer to Block
+
 // This is abstract Iterator type
 // Prefix for implementations is It
 class Iterator {
