@@ -20,6 +20,7 @@ ADD_LIBRARY(goost
 	kuznyechik/BlkEncrypted.cpp
 	kuznyechik/BlkL.cpp
 	kuznyechik/BlkRaw.cpp
+	kuznyechik/BlkS.cpp
 	kuznyechik/BlkShifted.cpp
 	kuznyechik/BlkXored.cpp
 	kuznyechik/Imit.cpp
@@ -27,7 +28,6 @@ ADD_LIBRARY(goost
 	kuznyechik/KeyDataString.cpp
 	kuznyechik/KeyIter.cpp
 	kuznyechik/RBlock.cpp
-	kuznyechik/SBlock.cpp
 	kuznyechik/StCTREncrypted.cpp
 	kuznyechik/StMemory.cpp
 	magma/Block.cpp
