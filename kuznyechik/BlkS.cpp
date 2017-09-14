@@ -3,19 +3,19 @@
 // This software may be modified and distributed under the terms
 // of the MIT license.  See the LICENSE file for details.
 
-#include "SBlock.h"
+#include "BlkS.h"
 #include <array>
 #include <cstring>
 
 using namespace std;
 using namespace kuznyechik;
 
-SBlock::SBlock(const BlkRaw &block)
+BlkS::BlkS(const BlkRaw &block)
 	: block(block)
 {
 }
 
-pair<uint64_t, uint64_t> SBlock::value() const
+pair<uint64_t, uint64_t> BlkS::value() const
 {
 	constexpr array<uint8_t, 256> sbox = {{
 		252, 238, 221, 17, 207, 110, 49, 22, 251, 196, 250, 218, 35, 197, 4, 77, 233,
