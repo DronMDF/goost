@@ -6,7 +6,7 @@
 #include "BlkRTest.h"
 #include <2out/TestEqual.h>
 #include <2out/TestNamed.h>
-#include <kuznyechik/RBlock.h>
+#include <kuznyechik/BlkR.h>
 #include "ReprBlock.h"
 
 using namespace std;
@@ -21,7 +21,7 @@ BlkRTest::BlkRTest()
 				"R3412_A12_1",
 				make_shared<TestEqual>(
 					make_unique<ReprBlock>(
-						make_unique<RBlock>(
+						make_unique<BlkR>(
 							BlkRaw(0x0000000000000100, 0x0000000000000000)
 						)
 					),
@@ -32,7 +32,7 @@ BlkRTest::BlkRTest()
 				"R3412_A12_2",
 				make_shared<TestEqual>(
 					make_unique<ReprBlock>(
-						make_unique<RBlock>(
+						make_unique<BlkR>(
 							BlkRaw(0x0000000000000001, 0x9400000000000000)
 						)
 					),
@@ -43,7 +43,7 @@ BlkRTest::BlkRTest()
 				"R3412_A12_3",
 				make_shared<TestEqual>(
 					make_unique<ReprBlock>(
-						make_unique<RBlock>(
+						make_unique<BlkR>(
 							BlkRaw(0x0000000000000000, 0xa594000000000000)
 						)
 					),
@@ -54,7 +54,7 @@ BlkRTest::BlkRTest()
 				"R3412_A12_4",
 				make_shared<TestEqual>(
 					make_unique<ReprBlock>(
-						make_unique<RBlock>(
+						make_unique<BlkR>(
 							BlkRaw(0x0000000000000000, 0x64a5940000000000)
 						)
 					),

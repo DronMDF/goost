@@ -3,21 +3,21 @@
 // This software may be modified and distributed under the terms
 // of the MIT license.  See the LICENSE file for details.
 
-#include "RBlock.h"
+#include "BlkR.h"
 #include <array>
 #include <cstring>
 
 using namespace std;
 using namespace kuznyechik;
 
-RBlock::RBlock(const BlkRaw &block)
+BlkR::BlkR(const BlkRaw &block)
 	: block(block)
 {
 }
 
 // @todo #82:32min Use predefined gmul tab for speedup kuznyechik alg
 //  Calculation is slower solution.
-uint8_t RBlock::gmul(uint8_t a, uint8_t b) const
+uint8_t BlkR::gmul(uint8_t a, uint8_t b) const
 {
 	uint8_t p = 0;
 	for (int counter = 0; counter < 8; counter++) {
@@ -37,7 +37,7 @@ uint8_t RBlock::gmul(uint8_t a, uint8_t b) const
 	return p;
 }
 
-pair<uint64_t, uint64_t> RBlock::value() const
+pair<uint64_t, uint64_t> BlkR::value() const
 {
 	constexpr int k[16] = {
 		1, 148, 32, 133, 16, 194, 192, 1, 251, 1, 192, 194, 16, 133, 32, 148
