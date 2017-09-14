@@ -3,7 +3,7 @@
 // This software may be modified and distributed under the terms
 // of the MIT license.  See the LICENSE file for details.
 
-#include "LBlockTest.h"
+#include "BlkLTest.h"
 #include <2out/TestEqual.h>
 #include <2out/TestNamed.h>
 #include <kuznyechik/BlkL.h>
@@ -14,7 +14,7 @@ using namespace std;
 using namespace oout;
 using namespace kuznyechik;
 
-LBlockTest::LBlockTest()
+BlkLTest::BlkLTest()
 	: tests(
 		make_unique<TestNamed>(
 			__func__,
@@ -79,7 +79,7 @@ LBlockTest::LBlockTest()
 {
 }
 
-unique_ptr<const Result> LBlockTest::result() const
+unique_ptr<const Result> BlkLTest::result() const
 {
 	return tests->result();
 }
