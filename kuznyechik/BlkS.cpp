@@ -10,7 +10,7 @@
 using namespace std;
 using namespace kuznyechik;
 
-BlkS::BlkS(const BlkRaw &block)
+BlkS::BlkS(const std::shared_ptr<const Block> &block)
 	: block(block)
 {
 }
@@ -35,11 +35,10 @@ pair<uint64_t, uint64_t> BlkS::value() const
 		57, 75, 99, 182
 	}};
 
-	array<uint8_t, 16> data;
-	memcpy(&data[0], &block.low, sizeof(block.low));
-	memcpy(&data[8], &block.high, sizeof(block.high));
+	auto value = block->value();
+	uint8_t * const data = reinterpret_cast<uint8_t *>(&value);
 	for (int i = 0; i < 16; i++) {
 		data[i] = sbox[data[i]];
 	}
-	return BlkRaw(&data[0]).value();
+	return value;
 }

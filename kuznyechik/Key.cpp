@@ -7,6 +7,7 @@
 #include "BlkL.h"
 #include "BlkRaw.h"
 #include "BlkS.h"
+#include "BlkXored.h"
 #include "KeyDataString.h"
 #include "KeyIter.h"
 
@@ -34,16 +35,29 @@ Key::Key(const std::shared_ptr<const Data> &key_data)
 
 BlkRaw Key::encrypt(const BlkRaw &block) const
 {
-	// @todo #73:30min Lazy object BlkL and BlkS looks ugly in this context
-	//  Maybe i need to introduce LSX object? Or rework parameters passing to them.
-	const auto t1 = BlkL(make_unique<BlkS>(block ^ k1->value())).value();
-	const auto t2 = BlkL(make_unique<BlkS>(BlkRaw(t1) ^ k2->value())).value();
-	const auto t3 = BlkL(make_unique<BlkS>(BlkRaw(t2) ^ k3->value())).value();
-	const auto t4 = BlkL(make_unique<BlkS>(BlkRaw(t3) ^ k4->value())).value();
-	const auto t5 = BlkL(make_unique<BlkS>(BlkRaw(t4) ^ k5->value())).value();
-	const auto t6 = BlkL(make_unique<BlkS>(BlkRaw(t5) ^ k6->value())).value();
-	const auto t7 = BlkL(make_unique<BlkS>(BlkRaw(t6) ^ k7->value())).value();
-	const auto t8 = BlkL(make_unique<BlkS>(BlkRaw(t7) ^ k8->value())).value();
-	const auto t9 = BlkL(make_unique<BlkS>(BlkRaw(t8) ^ k9->value())).value();
-	return BlkRaw(t9) ^ k10->value();
+	const auto t1 = encryptStep(make_unique<BlkRaw>(block), k1);
+	const auto t2 = encryptStep(t1, k2);
+	const auto t3 = encryptStep(t2, k3);
+	const auto t4 = encryptStep(t3, k4);
+	const auto t5 = encryptStep(t4, k5);
+	const auto t6 = encryptStep(t5, k6);
+	const auto t7 = encryptStep(t6, k7);
+	const auto t8 = encryptStep(t7, k8);
+	const auto t9 = encryptStep(t8, k9);
+	return BlkRaw(BlkXored(t9, make_unique<BlkRaw>(k10->value())).value());
+}
+
+shared_ptr<const Block> Key::encryptStep(
+		const shared_ptr<const Block> &block,
+		const unique_ptr<const Iter> &iter_key
+	) const
+{
+	return make_unique<BlkL>(
+		make_unique<BlkS>(
+			make_unique<BlkXored>(
+				block,
+				make_unique<BlkRaw>(iter_key->value())
+			)
+		)
+	);
 }
