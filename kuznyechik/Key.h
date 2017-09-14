@@ -6,6 +6,7 @@
 #pragma once
 #include <string>
 #include <memory>
+#include "Block.h"
 
 namespace kuznyechik {
 
@@ -20,6 +21,7 @@ public:
 		virtual BlkRaw high() const = 0;
 	};
 
+	// @todo #208 Key::Iter should be Block
 	class Iter {
 	public:
 		virtual ~Iter() = default;
@@ -29,6 +31,8 @@ public:
 	explicit Key(const std::string &key_data);
 	explicit Key(const std::shared_ptr<const Data> &key_data);
 
+	// @todo #208 Key::encrypt should take pointer to Block, not BlkRaw
+	// @todo #208 Key::encrypt should return pointer to Block, not BlkRaw
 	BlkRaw encrypt(const BlkRaw &block) const;
 
 private:
@@ -42,6 +46,11 @@ private:
 	const std::unique_ptr<const Iter> k8;
 	const std::unique_ptr<const Iter> k9;
 	const std::unique_ptr<const Iter> k10;
+
+	std::shared_ptr<const Block> encryptStep(
+		const std::shared_ptr<const Block> &block,
+		const std::unique_ptr<const Iter> &iter_key
+	) const;
 };
 
 }
