@@ -9,10 +9,9 @@
 
 namespace kuznyechik {
 
-// @todo #198 Rename LBlockTest to BlkLTest
-class LBlockTest final : public oout::Test {
+class BlkLTest final : public oout::Test {
 public:
-	LBlockTest();
+	BlkLTest();
 	std::unique_ptr<const oout::Result> result() const override;
 private:
 	const std::shared_ptr<const oout::Test> tests;

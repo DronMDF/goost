@@ -7,6 +7,7 @@
 #include <list>
 #include <2out/TestNamed.h>
 #include "BlkEncryptedTest.h"
+#include "BlkLTest.h"
 #include "BlkRTest.h"
 #include "BlkShiftedTest.h"
 #include "BlkSTest.h"
@@ -15,7 +16,6 @@
 #include "ImitTest.h"
 #include "KeyDataStringTest.h"
 #include "KeyIterTest.h"
-#include "LBlockTest.h"
 #include "StCTREncryptedTest.h"
 
 using namespace std;
@@ -27,6 +27,7 @@ kuznyechik::Test::Test()
 		make_unique<TestNamed>(
 			"Kuznyechik tests",
 			make_shared<BlkEncryptedTest>(),
+			make_shared<BlkLTest>(),
 			make_shared<BlkRTest>(),
 			make_shared<BlkShiftedTest>(),
 			make_shared<BlkSTest>(),
@@ -35,7 +36,6 @@ kuznyechik::Test::Test()
 			make_shared<ImitTest>(),
 			make_shared<KeyDataStringTest>(),
 			make_shared<KeyIterTest>(),
-			make_shared<LBlockTest>(),
 			make_shared<StCTREncryptedTest>()
 		)
 	)
