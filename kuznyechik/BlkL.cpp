@@ -4,7 +4,7 @@
 // of the MIT license.  See the LICENSE file for details.
 
 #include "BlkL.h"
-#include "RBlock.h"
+#include "BlkR.h"
 
 using namespace std;
 using namespace kuznyechik;
@@ -25,5 +25,5 @@ shared_ptr<const Block> BlkL::transform(const shared_ptr<const Block> &b, int n)
 		return b;
 	}
 
-	return transform(make_unique<RBlock>(BlkRaw(b)), n - 1);
+	return transform(make_unique<BlkR>(BlkRaw(b)), n - 1);
 }
