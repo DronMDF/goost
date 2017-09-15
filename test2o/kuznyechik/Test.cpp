@@ -8,11 +8,11 @@
 #include <2out/TestNamed.h>
 #include "BlkEncryptedTest.h"
 #include "BlkLTest.h"
+#include "BlkRawTest.h"
 #include "BlkRTest.h"
 #include "BlkShiftedTest.h"
 #include "BlkSTest.h"
 #include "BlkXoredTest.h"
-#include "BlockTest.h"
 #include "ImitTest.h"
 #include "KeyDataStringTest.h"
 #include "KeyIterTest.h"
@@ -28,11 +28,11 @@ kuznyechik::Test::Test()
 			"Kuznyechik tests",
 			make_shared<BlkEncryptedTest>(),
 			make_shared<BlkLTest>(),
+			make_shared<BlkRawTest>(),
 			make_shared<BlkRTest>(),
 			make_shared<BlkShiftedTest>(),
 			make_shared<BlkSTest>(),
 			make_shared<BlkXoredTest>(),
-			make_shared<BlockTest>(),
 			make_shared<ImitTest>(),
 			make_shared<KeyDataStringTest>(),
 			make_shared<KeyIterTest>(),
