@@ -24,7 +24,10 @@ BlkEncryptedTest::BlkEncryptedTest()
 				make_shared<TestEqual>(
 					make_unique<ReprBlock>(
 						make_unique<BlkEncrypted>(
-							BlkRaw(0xffeeddccbbaa9988, 0x1122334455667700),
+							make_unique<BlkRaw>(
+								0xffeeddccbbaa9988,
+								0x1122334455667700
+							),
 							key
 						)
 					),
@@ -36,7 +39,10 @@ BlkEncryptedTest::BlkEncryptedTest()
 				make_shared<TestEqual>(
 					make_unique<ReprBlock>(
 						make_unique<BlkEncrypted>(
-							BlkRaw(0x8899aabbcceeff0a, 0x0011223344556677),
+							make_unique<BlkRaw>(
+								0x8899aabbcceeff0a,
+								0x0011223344556677
+							),
 							key
 						)
 					),
@@ -48,7 +54,10 @@ BlkEncryptedTest::BlkEncryptedTest()
 				make_shared<TestEqual>(
 					make_unique<ReprBlock>(
 						make_unique<BlkEncrypted>(
-							BlkRaw(0x99aabbcceeff0a00, 0x1122334455667788),
+							make_unique<BlkRaw>(
+								0x99aabbcceeff0a00,
+								0x1122334455667788
+							),
 							key
 						)
 					),
@@ -60,7 +69,10 @@ BlkEncryptedTest::BlkEncryptedTest()
 				make_shared<TestEqual>(
 					make_unique<ReprBlock>(
 						make_unique<BlkEncrypted>(
-							BlkRaw(0xaabbcceeff0a0011, 0x2233445566778899),
+							make_unique<BlkRaw>(
+								0xaabbcceeff0a0011,
+								0x2233445566778899
+							),
 							key
 						)
 					),

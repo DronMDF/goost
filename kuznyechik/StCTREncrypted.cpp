@@ -51,7 +51,7 @@ size_t ItCTREncrypted::size() const
 
 BlkRaw ItCTREncrypted::value() const
 {
-	BlkEncrypted block(ctr, key);
+	BlkEncrypted block(make_unique<BlkRaw>(ctr), key);
 	return iter->value() ^ BlkRaw(block.value());
 }
 
