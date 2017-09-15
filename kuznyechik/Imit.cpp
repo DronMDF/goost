@@ -39,9 +39,8 @@ std::pair<uint64_t, uint64_t> Imit::value() const
 		return BlkEncrypted(
 			make_unique<BlkXored>(
 				block,
-				make_unique<BlkXored>(
-					make_unique<BlkRaw>(iter->value()),
-					make_unique<BlkRaw>(K1))
+				make_unique<BlkRaw>(iter->value()),
+				make_unique<BlkRaw>(K1)
 			),
 			key
 		).value();
@@ -51,9 +50,8 @@ std::pair<uint64_t, uint64_t> Imit::value() const
 	return BlkEncrypted(
 		make_unique<BlkXored>(
 			block,
-			make_unique<BlkXored>(
-				make_unique<BlkRaw>(iter->value()),
-				make_unique<BlkRaw>(K2))
+			make_unique<BlkRaw>(iter->value()),
+			make_unique<BlkRaw>(K2)
 		),
 		key
 	).value();
