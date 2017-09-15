@@ -9,10 +9,20 @@
 
 namespace kuznyechik {
 
-// @todo #219 BlkXored ctor taked many args
 class BlkXored final : public Block {
 public:
 	BlkXored(const std::shared_ptr<const Block> &a, const std::shared_ptr<const Block> &b);
+
+	template <typename ...B>
+	BlkXored(
+		const std::shared_ptr<const Block> &a,
+		const std::shared_ptr<const Block> &b,
+		const std::shared_ptr<const Block> &c,
+		const B &...d
+	) : BlkXored(std::make_unique<BlkXored>(a, b), c, d...)
+	{
+	}
+
 	std::pair<uint64_t, uint64_t> value() const override;
 private:
 	const std::shared_ptr<const Block> a;
