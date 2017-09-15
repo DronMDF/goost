@@ -6,11 +6,12 @@
 #include "BlkR.h"
 #include <array>
 #include <cstring>
+#include "BlkRaw.h"
 
 using namespace std;
 using namespace kuznyechik;
 
-BlkR::BlkR(const BlkRaw &block)
+BlkR::BlkR(const shared_ptr<const Block> &block)
 	: block(block)
 {
 }
@@ -42,11 +43,12 @@ pair<uint64_t, uint64_t> BlkR::value() const
 	constexpr int k[16] = {
 		1, 148, 32, 133, 16, 194, 192, 1, 251, 1, 192, 194, 16, 133, 32, 148
 	};
+	const auto value = block->value();
 	array<uint8_t, 17> data;
-	memcpy(&data[0], &block.low, sizeof(block.low));
-	memcpy(&data[8], &block.high, sizeof(block.high));
+	memcpy(&data[0], &value.first, sizeof(value.first));
+	memcpy(&data[8], &value.second, sizeof(value.second));
 	int sum = 0;
-	for (int i = 0; i < 16; i++) {
+	for (size_t i = 0; i < Block::size; i++) {
 		sum ^= gmul(data[i], k[i]);
 	}
 	data[16] = sum;

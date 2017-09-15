@@ -25,5 +25,5 @@ shared_ptr<const Block> BlkL::transform(const shared_ptr<const Block> &b, int n)
 		return b;
 	}
 
-	return transform(make_unique<BlkR>(BlkRaw(b)), n - 1);
+	return transform(make_unique<BlkR>(b), n - 1);
 }
