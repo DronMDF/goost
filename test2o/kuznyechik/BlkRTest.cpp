@@ -6,6 +6,7 @@
 #include "BlkRTest.h"
 #include <2out/TestEqual.h>
 #include <2out/TestNamed.h>
+#include <kuznyechik/BlkRaw.h>
 #include <kuznyechik/BlkR.h>
 #include "ReprBlock.h"
 
@@ -22,7 +23,10 @@ BlkRTest::BlkRTest()
 				make_shared<TestEqual>(
 					make_unique<ReprBlock>(
 						make_unique<BlkR>(
-							BlkRaw(0x0000000000000100, 0x0000000000000000)
+							make_unique<BlkRaw>(
+								0x0000000000000100,
+								0x0000000000000000
+							)
 						)
 					),
 					"94000000000000000000000000000001"
@@ -33,7 +37,10 @@ BlkRTest::BlkRTest()
 				make_shared<TestEqual>(
 					make_unique<ReprBlock>(
 						make_unique<BlkR>(
-							BlkRaw(0x0000000000000001, 0x9400000000000000)
+							make_unique<BlkRaw>(
+								0x0000000000000001,
+								0x9400000000000000
+							)
 						)
 					),
 					"a5940000000000000000000000000000"
@@ -44,7 +51,10 @@ BlkRTest::BlkRTest()
 				make_shared<TestEqual>(
 					make_unique<ReprBlock>(
 						make_unique<BlkR>(
-							BlkRaw(0x0000000000000000, 0xa594000000000000)
+							make_unique<BlkRaw>(
+								0x0000000000000000,
+								0xa594000000000000
+							)
 						)
 					),
 					"64a59400000000000000000000000000"
@@ -55,7 +65,10 @@ BlkRTest::BlkRTest()
 				make_shared<TestEqual>(
 					make_unique<ReprBlock>(
 						make_unique<BlkR>(
-							BlkRaw(0x0000000000000000, 0x64a5940000000000)
+							make_unique<BlkRaw>(
+								0x0000000000000000,
+								0x64a5940000000000
+							)
 						)
 					),
 					"0d64a594000000000000000000000000"
