@@ -9,6 +9,7 @@
 
 namespace kuznyechik {
 
+// @todo #219 BlkXored ctor taked many args
 class BlkXored final : public Block {
 public:
 	BlkXored(const std::shared_ptr<const Block> &a, const std::shared_ptr<const Block> &b);

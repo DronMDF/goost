@@ -5,20 +5,21 @@
 
 #pragma once
 #include <memory>
-#include "BlkRaw.h"
 #include "Block.h"
 
 namespace kuznyechik {
 
 class Key;
 
-// @todo #189 BlkEncrypted Ctor take pointer to Block, not imm BlkRaw
 class BlkEncrypted final : public Block {
 public:
-	BlkEncrypted(const BlkRaw &block, const std::shared_ptr<const Key> &key);
+	BlkEncrypted(
+		const std::shared_ptr<const Block> &block,
+		const std::shared_ptr<const Key> &key
+	);
 	std::pair<uint64_t, uint64_t> value() const override;
 private:
-	const BlkRaw block;
+	const std::shared_ptr<const Block> block;
 	const std::shared_ptr<const Key> key;
 };
 
