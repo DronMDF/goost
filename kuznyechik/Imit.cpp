@@ -6,12 +6,40 @@
 #include "Imit.h"
 #include "BlkEncrypted.h"
 #include "BlkRaw.h"
+#include "BlkShifted.h"
 #include "BlkXored.h"
 #include "Iterator.h"
 #include "Stream.h"
 
 using namespace std;
 using namespace kuznyechik;
+
+namespace kuznyechik {
+
+// This class xor a<<1 and B if high bit of a is 1
+class BlkXoredIfHighBit final : public Block {
+public:
+	BlkXoredIfHighBit(const shared_ptr<const Block> &a, const shared_ptr<const Block> &b)
+		: a(a), b(b)
+	{
+	}
+
+	pair<uint64_t, uint64_t> value() const override
+	{
+		const auto a_value = a->value();
+		const auto a_shift = make_shared<BlkShifted>(a, 1);
+		if ((a_value.second & 0x8000000000000000) == 0) {
+			return a_shift->value();
+		}
+		return BlkXored(a_shift, b).value();
+	}
+
+private:
+	const shared_ptr<const Block> a;
+	const shared_ptr<const Block> b;
+};
+
+}
 
 Imit::Imit(const shared_ptr<const Stream> &data, const shared_ptr<const Key> &key)
 	: data(data), key(key)
@@ -31,28 +59,19 @@ std::pair<uint64_t, uint64_t> Imit::value() const
 		iter = iter->next();
 	}
 
-	// @todo #219 Introduce bit operation Block object and replace imm alg to composition
-	const auto R = BlkRaw(BlkEncrypted(make_unique<BlkRaw>(), key).value());
-	const BlkRaw B(0x87);
-	const auto K1 = ((R.high & 0x8000000000000000) == 0) ? (R << 1) : (R << 1) ^ B;
+	const auto B = make_shared<BlkRaw>(0x87);
+	const auto K1 = make_shared<BlkXoredIfHighBit>(
+		make_unique<BlkEncrypted>(make_unique<BlkRaw>(), key),
+		B
+	);
+	const auto xblock = make_shared<BlkXored>(block, make_unique<BlkRaw>(iter->value()));
+
 	if (iter->size() == Block::size) {
-		return BlkEncrypted(
-			make_unique<BlkXored>(
-				block,
-				make_unique<BlkRaw>(iter->value()),
-				make_unique<BlkRaw>(K1)
-			),
-			key
-		).value();
+		return BlkEncrypted(make_unique<BlkXored>(xblock, K1), key).value();
 	}
 
-	const auto K2 = ((K1.high & 0x8000000000000000) == 0) ? (K1 << 1) : (K1 << 1) ^ B;
 	return BlkEncrypted(
-		make_unique<BlkXored>(
-			block,
-			make_unique<BlkRaw>(iter->value()),
-			make_unique<BlkRaw>(K2)
-		),
+		make_unique<BlkXored>(xblock, make_unique<BlkXoredIfHighBit>(K1, B)),
 		key
 	).value();
 }
