@@ -17,6 +17,5 @@ BlkEncrypted::BlkEncrypted(const shared_ptr<const Block> &block, const shared_pt
 
 pair<uint64_t, uint64_t> BlkEncrypted::value() const
 {
-	const auto v = key->encrypt(BlkRaw(block));
-	return {v.low, v.high};
+	return key->encrypt(BlkRaw(block)).value();
 }
