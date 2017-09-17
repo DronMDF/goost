@@ -57,10 +57,12 @@ BlkRaw ItCTREncrypted::value() const
 
 shared_ptr<const Iterator> ItCTREncrypted::next() const
 {
+	// @todo #233 Add BlkIncremented (Block, Increased by n) instead imp value increment
+	const auto value = ctr.value();
 	return make_shared<const ItCTREncrypted>(
 		iter->next(),
 		key,
-		BlkRaw(ctr.low + 1, ctr.high)
+		BlkRaw(value.first + 1, value.second)
 	);
 }
 

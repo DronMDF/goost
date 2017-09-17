@@ -64,7 +64,7 @@ pair<uint64_t, uint64_t> BlkRaw::value() const
 
 ostream &kuznyechik::operator <<(ostream &os, const BlkRaw &block)
 {
-	os << hex << setfill('0') << setw(16) << block.high << setw(16) << block.low << dec;
+	const auto value = block.value();
+	os << hex << setfill('0') << setw(16) << value.second << setw(16) << value.first << dec;
 	return os;
 }
-

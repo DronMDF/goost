@@ -27,7 +27,7 @@ public:
 
 	std::pair<uint64_t, uint64_t> value() const override;
 
-	// @todo #227 Private BlkRaw state
+private:
 	const uint64_t low;
 	const uint64_t high;
 };
