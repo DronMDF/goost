@@ -4,12 +4,11 @@
 // of the MIT license.  See the LICENSE file for details.
 
 #include "KeyDataStringTest.h"
-#include <list>
-#include <2out/ReprPrintable.h>
 #include <2out/TestEqual.h>
 #include <2out/TestNamed.h>
 #include <kuznyechik/BlkRaw.h>
 #include <kuznyechik/KeyDataString.h>
+#include "ReprBlock.h"
 #include "ReprKeyData.h"
 
 using namespace std;
@@ -29,8 +28,11 @@ KeyDataStringTest::KeyDataStringTest()
 							"fedcba98765432100123456789abcdef"
 						)
 					),
-					make_unique<ReprPrintable<BlkRaw>>(
-						BlkRaw(0x0011223344556677, 0x8899aabbccddeeff)
+					make_unique<ReprBlock>(
+						make_unique<BlkRaw>(
+							0x0011223344556677,
+							0x8899aabbccddeeff
+						)
 					)
 				)
 			),
@@ -43,8 +45,11 @@ KeyDataStringTest::KeyDataStringTest()
 							"fedcba98765432100123456789abcdef"
 						)
 					),
-					make_unique<ReprPrintable<BlkRaw>>(
-						BlkRaw(0x0123456789abcdef, 0xfedcba9876543210)
+					make_unique<ReprBlock>(
+						make_unique<BlkRaw>(
+							0x0123456789abcdef,
+							0xfedcba9876543210
+						)
 					)
 				)
 			)

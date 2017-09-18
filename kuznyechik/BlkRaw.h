@@ -6,7 +6,6 @@
 #pragma once
 #include <cstdint>
 #include <memory>
-#include <ostream>
 #include "Block.h"
 
 namespace kuznyechik {
@@ -31,8 +30,5 @@ private:
 	const uint64_t low;
 	const uint64_t high;
 };
-
-// @todo #227 Remove print of BlkRaw
-std::ostream &operator <<(std::ostream &os, const BlkRaw &block);
 
 }

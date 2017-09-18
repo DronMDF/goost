@@ -4,7 +4,6 @@
 // of the MIT license.  See the LICENSE file for details.
 
 #include "BlkRaw.h"
-#include <iomanip>
 
 using namespace std;
 using namespace kuznyechik;
@@ -60,11 +59,4 @@ BlkRaw BlkRaw::operator ^(const BlkRaw &b) const
 pair<uint64_t, uint64_t> BlkRaw::value() const
 {
 	return {low, high};
-}
-
-ostream &kuznyechik::operator <<(ostream &os, const BlkRaw &block)
-{
-	const auto value = block.value();
-	os << hex << setfill('0') << setw(16) << value.second << setw(16) << value.first << dec;
-	return os;
 }
