@@ -5,10 +5,10 @@
 
 #include "BlkRawTest.h"
 #include <list>
-#include <2out/ReprPrintable.h>
 #include <2out/TestEqual.h>
 #include <2out/TestNamed.h>
 #include <kuznyechik/BlkRaw.h>
+#include "ReprBlock.h"
 
 using namespace std;
 using namespace oout;
@@ -21,8 +21,8 @@ BlkRawTest::BlkRawTest()
 			make_shared<const TestNamed>(
 				"ByteOrder",
 				make_shared<TestEqual>(
-					make_unique<ReprPrintable<BlkRaw>>(
-						BlkRaw(1)
+					make_unique<ReprBlock>(
+						make_unique<BlkRaw>(1)
 					),
 					"00000000000000000000000000000001"
 				)

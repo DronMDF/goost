@@ -4,8 +4,8 @@
 // of the MIT license.  See the LICENSE file for details.
 
 #include "ReprKeyData.h"
-#include <2out/ReprPrintable.h>
 #include <kuznyechik/BlkRaw.h>
+#include "ReprBlock.h"
 
 using namespace std;
 using namespace oout;
@@ -18,7 +18,7 @@ ReprKeyDataHigh::ReprKeyDataHigh(const shared_ptr<Key::Data> &key)
 
 string ReprKeyDataHigh::asString() const
 {
-	return ReprPrintable<BlkRaw>(key->high()).asString();
+	return ReprBlock(make_unique<BlkRaw>(key->high())).asString();
 }
 
 ReprKeyDataLow::ReprKeyDataLow(const shared_ptr<Key::Data> &key)
@@ -28,5 +28,5 @@ ReprKeyDataLow::ReprKeyDataLow(const shared_ptr<Key::Data> &key)
 
 string ReprKeyDataLow::asString() const
 {
-	return ReprPrintable<BlkRaw>(key->low()).asString();
+	return ReprBlock(make_unique<BlkRaw>(key->low())).asString();
 }
