@@ -6,6 +6,7 @@
 #include "StCTREncrypted.h"
 #include "BlkEncrypted.h"
 #include "BlkRaw.h"
+#include "BlkXored.h"
 #include "Iterator.h"
 
 using namespace std;
@@ -51,8 +52,12 @@ size_t ItCTREncrypted::size() const
 
 BlkRaw ItCTREncrypted::value() const
 {
-	BlkEncrypted block(make_unique<BlkRaw>(ctr), key);
-	return iter->value() ^ BlkRaw(block.value());
+	return BlkRaw(
+		make_unique<BlkXored>(
+			make_unique<BlkRaw>(iter->value()),
+			make_unique<BlkEncrypted>(make_unique<BlkRaw>(ctr), key)
+		)
+	);
 }
 
 shared_ptr<const Iterator> ItCTREncrypted::next() const

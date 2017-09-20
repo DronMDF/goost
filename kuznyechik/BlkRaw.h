@@ -19,13 +19,7 @@ public:
 	explicit BlkRaw(uint64_t low);
 	BlkRaw();
 
-	// @todo #227 Remove operations from BlkRaw
-	bool operator ==(const BlkRaw &block) const;
-	BlkRaw operator <<(int i) const;
-	BlkRaw operator ^(const BlkRaw &b) const;
-
 	std::pair<uint64_t, uint64_t> value() const override;
-
 private:
 	const uint64_t low;
 	const uint64_t high;

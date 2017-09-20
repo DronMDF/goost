@@ -41,21 +41,6 @@ BlkRaw::BlkRaw()
 {
 }
 
-bool BlkRaw::operator ==(const BlkRaw &block) const
-{
-	return low == block.low && high == block.high;
-}
-
-BlkRaw BlkRaw::operator <<(int i) const
-{
-	return {low << i, high << i | low >> (64 - i)};
-}
-
-BlkRaw BlkRaw::operator ^(const BlkRaw &b) const
-{
-	return {low ^ b.low, high ^ b.high};
-}
-
 pair<uint64_t, uint64_t> BlkRaw::value() const
 {
 	return {low, high};
