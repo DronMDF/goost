@@ -12,13 +12,12 @@
 using namespace std;
 using namespace kuznyechik;
 
-// @todo #103 ItCTREncrypted should take pointer to ctr as Block, not imm BlkRaw value
 class ItCTREncrypted final : public Iterator {
 public:
 	ItCTREncrypted(
 		const shared_ptr<const Iterator> &iter,
 		const shared_ptr<const Key> &key,
-		const BlkRaw &ctr
+		const shared_ptr<const Block> &ctr
 	);
 
 	bool last() const override;
@@ -29,14 +28,14 @@ public:
 private:
 	const shared_ptr<const Iterator> iter;
 	const shared_ptr<const Key> key;
-	const BlkRaw ctr;
+	const shared_ptr<const Block> ctr;
 };
 
 ItCTREncrypted::ItCTREncrypted(
 		const shared_ptr<const Iterator> &iter,
 		const shared_ptr<const Key> &key,
-		const BlkRaw &ctr)
-	: iter(iter), key(key), ctr(ctr)
+		const shared_ptr<const Block> &ctr
+	) : iter(iter), key(key), ctr(ctr)
 {
 }
 
@@ -55,7 +54,7 @@ BlkRaw ItCTREncrypted::value() const
 	return BlkRaw(
 		make_unique<BlkXored>(
 			make_unique<BlkRaw>(iter->value()),
-			make_unique<BlkEncrypted>(make_unique<BlkRaw>(ctr), key)
+			make_unique<BlkEncrypted>(ctr, key)
 		)
 	);
 }
@@ -63,11 +62,11 @@ BlkRaw ItCTREncrypted::value() const
 shared_ptr<const Iterator> ItCTREncrypted::next() const
 {
 	// @todo #233 Add BlkIncremented (Block, Increased by n) instead imp value increment
-	const auto value = ctr.value();
+	const auto value = ctr->value();
 	return make_shared<const ItCTREncrypted>(
 		iter->next(),
 		key,
-		BlkRaw(value.first + 1, value.second)
+		make_unique<BlkRaw>(value.first + 1, value.second)
 	);
 }
 
@@ -81,5 +80,5 @@ StCTREncrypted::StCTREncrypted(
 
 shared_ptr<const Iterator> StCTREncrypted::iter() const
 {
-	return make_shared<const ItCTREncrypted>(stream->iter(), key, BlkRaw(0, iv));
+	return make_shared<const ItCTREncrypted>(stream->iter(), key, make_unique<BlkRaw>(0, iv));
 }
