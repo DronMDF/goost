@@ -33,7 +33,7 @@ Key::Key(const std::shared_ptr<const Data> &key_data)
 {
 }
 
-BlkRaw Key::encrypt(const BlkRaw &block) const
+unique_ptr<const Block> Key::encrypt(const BlkRaw &block) const
 {
 	const auto t1 = encryptStep(make_unique<BlkRaw>(block), k1);
 	const auto t2 = encryptStep(t1, k2);
@@ -44,7 +44,7 @@ BlkRaw Key::encrypt(const BlkRaw &block) const
 	const auto t7 = encryptStep(t6, k7);
 	const auto t8 = encryptStep(t7, k8);
 	const auto t9 = encryptStep(t8, k9);
-	return BlkRaw(BlkXored(t9, make_unique<BlkRaw>(k10->value())).value());
+	return make_unique<BlkXored>(t9, make_unique<BlkRaw>(k10->value()));
 }
 
 shared_ptr<const Block> Key::encryptStep(
