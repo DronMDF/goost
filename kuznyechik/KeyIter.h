@@ -8,6 +8,7 @@
 #include "Block.h"
 #include "Key.h"
 
+// @todo #75 Remove KeyIter*, use BlkIterKey
 namespace kuznyechik {
 
 class KeyIter1 final : public Block {
@@ -26,9 +27,6 @@ private:
 	const std::shared_ptr<const Key::Data> key_data;
 };
 
-// @todo #71:30min KeyIterAny is not final
-//  It is a base class for KeyIter2-10, this is a code sharing.
-//  But I can't right named him for agregate
 class KeyIterAny: public Block {
 public:
 	KeyIterAny(const std::shared_ptr<const Key::Data> &key_data, int iter);
