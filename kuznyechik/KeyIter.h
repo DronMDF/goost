@@ -5,22 +5,23 @@
 
 #pragma once
 #include <memory>
+#include "Block.h"
 #include "Key.h"
 
 namespace kuznyechik {
 
-class KeyIter1 final : public Key::Iter {
+class KeyIter1 final : public Block {
 public:
 	explicit KeyIter1(const std::shared_ptr<const Key::Data> &key_data);
-	BlkRaw value() const override;
+	std::pair<uint64_t, uint64_t> value() const override;
 private:
 	const std::shared_ptr<const Key::Data> key_data;
 };
 
-class KeyIter2 final : public Key::Iter {
+class KeyIter2 final : public Block {
 public:
 	explicit KeyIter2(const std::shared_ptr<const Key::Data> &key_data);
-	BlkRaw value() const override;
+	std::pair<uint64_t, uint64_t> value() const override;
 private:
 	const std::shared_ptr<const Key::Data> key_data;
 };
@@ -28,13 +29,13 @@ private:
 // @todo #71:30min KeyIterAny is not final
 //  It is a base class for KeyIter2-10, this is a code sharing.
 //  But I can't right named him for agregate
-class KeyIterAny: public Key::Iter {
+class KeyIterAny: public Block {
 public:
 	KeyIterAny(const std::shared_ptr<const Key::Data> &key_data, int iter);
-	BlkRaw value() const override;
+	std::pair<uint64_t, uint64_t> value() const override;
 private:
-	const std::unique_ptr<const Key::Iter> k1;
-	const std::unique_ptr<const Key::Iter> k2;
+	const std::shared_ptr<const Block> k1;
+	const std::shared_ptr<const Block> k2;
 	const int iter;
 
 	std::shared_ptr<const Block> generate(

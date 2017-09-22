@@ -44,20 +44,13 @@ unique_ptr<const Block> Key::encrypt(const shared_ptr<const Block> &block) const
 	const auto t7 = encryptStep(t6, k7);
 	const auto t8 = encryptStep(t7, k8);
 	const auto t9 = encryptStep(t8, k9);
-	return make_unique<BlkXored>(t9, make_unique<BlkRaw>(k10->value()));
+	return make_unique<BlkXored>(t9, k10);
 }
 
 shared_ptr<const Block> Key::encryptStep(
 		const shared_ptr<const Block> &block,
-		const unique_ptr<const Iter> &iter_key
+		const shared_ptr<const Block> &kn
 	) const
 {
-	return make_unique<BlkL>(
-		make_unique<BlkS>(
-			make_unique<BlkXored>(
-				block,
-				make_unique<BlkRaw>(iter_key->value())
-			)
-		)
-	);
+	return make_unique<BlkL>(make_unique<BlkS>(make_unique<BlkXored>(block, kn)));
 }
