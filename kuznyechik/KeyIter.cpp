@@ -18,9 +18,9 @@ KeyIter1::KeyIter1(const shared_ptr<const Key::Data> &key_data)
 {
 }
 
-BlkRaw KeyIter1::value() const
+pair<uint64_t, uint64_t> KeyIter1::value() const
 {
-	return key_data->high();
+	return key_data->high().value();
 }
 
 KeyIter2::KeyIter2(const shared_ptr<const Key::Data> &key_data)
@@ -28,9 +28,9 @@ KeyIter2::KeyIter2(const shared_ptr<const Key::Data> &key_data)
 {
 }
 
-BlkRaw KeyIter2::value() const
+pair<uint64_t, uint64_t> KeyIter2::value() const
 {
-	return key_data->low();
+	return key_data->low().value();
 }
 
 KeyIterAny::KeyIterAny(const shared_ptr<const Key::Data> &key_data, int iter)
@@ -38,11 +38,9 @@ KeyIterAny::KeyIterAny(const shared_ptr<const Key::Data> &key_data, int iter)
 {
 }
 
-BlkRaw KeyIterAny::value() const
+pair<uint64_t, uint64_t> KeyIterAny::value() const
 {
-	return BlkRaw(
-		generate(make_shared<BlkRaw>(k2->value()), make_shared<BlkRaw>(k1->value()), 1)
-	);
+	return generate(k2, k1, 1)->value();
 }
 
 shared_ptr<const Block> KeyIterAny::generate(
