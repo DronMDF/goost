@@ -31,8 +31,7 @@ public:
 	explicit Key(const std::string &key_data);
 	explicit Key(const std::shared_ptr<const Data> &key_data);
 
-	// @todo #208 Key::encrypt should take pointer to Block, not BlkRaw
-	std::unique_ptr<const Block> encrypt(const BlkRaw &block) const;
+	std::unique_ptr<const Block> encrypt(const std::shared_ptr<const Block> &block) const;
 
 private:
 	const std::unique_ptr<const Iter> k1;

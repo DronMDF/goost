@@ -33,9 +33,9 @@ Key::Key(const std::shared_ptr<const Data> &key_data)
 {
 }
 
-unique_ptr<const Block> Key::encrypt(const BlkRaw &block) const
+unique_ptr<const Block> Key::encrypt(const shared_ptr<const Block> &block) const
 {
-	const auto t1 = encryptStep(make_unique<BlkRaw>(block), k1);
+	const auto t1 = encryptStep(block, k1);
 	const auto t2 = encryptStep(t1, k2);
 	const auto t3 = encryptStep(t2, k3);
 	const auto t4 = encryptStep(t3, k4);
