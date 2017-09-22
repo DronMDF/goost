@@ -40,15 +40,14 @@ KeyIterAny::KeyIterAny(const shared_ptr<const Key::Data> &key_data, int iter)
 
 BlkRaw KeyIterAny::value() const
 {
-	return generate(k2->value(), k1->value(), 1);
+	return BlkRaw(generate(k2->value(), k1->value(), 1));
 }
 
 // @todo #208 generate should take pointers to Block, instead BlkRaw
-// @todo #208 generate should return pointers to Block, instead BlkRaw
-BlkRaw KeyIterAny::generate(const BlkRaw &a, const BlkRaw &b, int n) const
+unique_ptr<const Block> KeyIterAny::generate(const BlkRaw &a, const BlkRaw &b, int n) const
 {
 	if (n > iter) {
-		return b;
+		return make_unique<BlkRaw>(b);
 	}
 
 	// @todo #82:30min Cn is a const key.
