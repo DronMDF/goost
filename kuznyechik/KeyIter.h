@@ -37,7 +37,7 @@ private:
 	const std::unique_ptr<const Key::Iter> k2;
 	const int iter;
 
-	BlkRaw generate(const BlkRaw &a, const BlkRaw &b, int iter) const;
+	std::unique_ptr<const Block> generate(const BlkRaw &a, const BlkRaw &b, int iter) const;
 };
 
 class KeyIter3 final : public KeyIterAny {

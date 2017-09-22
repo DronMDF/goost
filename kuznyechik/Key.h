@@ -14,6 +14,7 @@ class BlkRaw;
 
 class Key final {
 public:
+	// @todo #236 Key::Data::low and Key::Data::high should return pointer to Block
 	class Data {
 	public:
 		virtual ~Data() = default;
