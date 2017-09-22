@@ -40,14 +40,19 @@ KeyIterAny::KeyIterAny(const shared_ptr<const Key::Data> &key_data, int iter)
 
 BlkRaw KeyIterAny::value() const
 {
-	return BlkRaw(generate(k2->value(), k1->value(), 1));
+	return BlkRaw(
+		generate(make_shared<BlkRaw>(k2->value()), make_shared<BlkRaw>(k1->value()), 1)
+	);
 }
 
-// @todo #208 generate should take pointers to Block, instead BlkRaw
-unique_ptr<const Block> KeyIterAny::generate(const BlkRaw &a, const BlkRaw &b, int n) const
+shared_ptr<const Block> KeyIterAny::generate(
+	const shared_ptr<const Block> &a,
+	const shared_ptr<const Block> &b,
+	int n
+) const
 {
 	if (n > iter) {
-		return make_unique<BlkRaw>(b);
+		return b;
 	}
 
 	// @todo #82:30min Cn is a const key.
@@ -55,18 +60,12 @@ unique_ptr<const Block> KeyIterAny::generate(const BlkRaw &a, const BlkRaw &b, i
 	const auto cn = make_shared<BlkL>(make_unique<BlkRaw>(n));
 	return generate(
 		b,
-		BlkRaw(
-			BlkXored(
-				make_unique<BlkRaw>(a),
-				make_unique<BlkL>(
-					make_unique<BlkS>(
-						make_unique<BlkXored>(
-							make_unique<BlkRaw>(b),
-							cn
-						)
-					)
-				)
-			).value()
+		make_shared<BlkXored>(
+			// @todo #235 Recurse take long time.
+			//  Need introduce BlkCached, for keep intermediate values and break
+			//  resucrivity
+			make_shared<BlkRaw>(a),
+			make_unique<BlkL>(make_unique<BlkS>(make_unique<BlkXored>(b, cn)))
 		),
 		n + 1
 	);
