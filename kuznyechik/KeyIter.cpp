@@ -5,6 +5,7 @@
 
 #include "KeyIter.h"
 #include <cstring>
+#include "BlkCached.h"
 #include "BlkL.h"
 #include "BlkRaw.h"
 #include "BlkS.h"
@@ -59,10 +60,7 @@ shared_ptr<const Block> KeyIterAny::generate(
 	return generate(
 		b,
 		make_shared<BlkXored>(
-			// @todo #235 Recurse take long time.
-			//  Need introduce BlkCached, for keep intermediate values and break
-			//  resucrivity
-			make_shared<BlkRaw>(a),
+			make_shared<BlkCached>(a),
 			make_unique<BlkL>(make_unique<BlkS>(make_unique<BlkXored>(b, cn)))
 		),
 		n + 1

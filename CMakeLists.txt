@@ -17,6 +17,7 @@ ADD_COMPILE_OPTIONS(-std=c++14 -O2 -fomit-frame-pointer -g0
 ADD_LIBRARY(goost
 	gost89/DataImit.cpp
 	gost89/ImitedBlock.cpp
+	kuznyechik/BlkCached.cpp
 	kuznyechik/BlkEncrypted.cpp
 	kuznyechik/BlkIterKey.cpp
 	kuznyechik/BlkL.cpp

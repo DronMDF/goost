@@ -6,6 +6,7 @@
 #include "Test.h"
 #include <list>
 #include <2out/TestNamed.h>
+#include "BlkCachedTest.h"
 #include "BlkEncryptedTest.h"
 #include "BlkIterKeyTest.h"
 #include "BlkLTest.h"
@@ -27,6 +28,7 @@ kuznyechik::Test::Test()
 	: tests(
 		make_unique<TestNamed>(
 			"Kuznyechik tests",
+			make_shared<BlkCachedTest>(),
 			make_shared<BlkEncryptedTest>(),
 			make_shared<BlkIterKeyTest>(),
 			make_shared<BlkLTest>(),
