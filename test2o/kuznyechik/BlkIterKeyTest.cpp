@@ -7,6 +7,8 @@
 #include <2out/TestEqual.h>
 #include <2out/TestNamed.h>
 #include <kuznyechik/KeyDataString.h>
+#include <kuznyechik/BlkCached.h>
+#include <kuznyechik/BlkRaw.h>
 #include <kuznyechik/BlkIterKey.h>
 #include <kuznyechik/BlkRaw.h>
 #include "ReprBlock.h"
@@ -23,14 +25,14 @@ BlkIterKeyTest::BlkIterKeyTest()
 	  ),
 	  k1(make_shared<BlkRaw>(key_data->high())),
 	  k2(make_shared<BlkRaw>(key_data->low())),
-	  k3(make_shared<BlkRaw>(make_shared<BlkIterKey>(k1, k2, 1, 8))),
-	  k4(make_shared<BlkRaw>(make_shared<BlkIterKey>(k1, k2, 1, 7))),
-	  k5(make_shared<BlkRaw>(make_shared<BlkIterKey>(k3, k4, 9, 16))),
-	  k6(make_shared<BlkRaw>(make_shared<BlkIterKey>(k3, k4, 9, 15))),
-	  k7(make_shared<BlkRaw>(make_shared<BlkIterKey>(k5, k6, 17, 24))),
-	  k8(make_shared<BlkRaw>(make_shared<BlkIterKey>(k5, k6, 17, 23))),
-	  k9(make_shared<BlkRaw>(make_shared<BlkIterKey>(k7, k8, 25, 32))),
-	  k10(make_shared<BlkRaw>(make_shared<BlkIterKey>(k7, k8, 25, 31))),
+	  k3(make_shared<BlkCached>(make_shared<BlkIterKey>(k1, k2, 1, 8))),
+	  k4(make_shared<BlkCached>(make_shared<BlkIterKey>(k1, k2, 1, 7))),
+	  k5(make_shared<BlkCached>(make_shared<BlkIterKey>(k3, k4, 9, 16))),
+	  k6(make_shared<BlkCached>(make_shared<BlkIterKey>(k3, k4, 9, 15))),
+	  k7(make_shared<BlkCached>(make_shared<BlkIterKey>(k5, k6, 17, 24))),
+	  k8(make_shared<BlkCached>(make_shared<BlkIterKey>(k5, k6, 17, 23))),
+	  k9(make_shared<BlkCached>(make_shared<BlkIterKey>(k7, k8, 25, 32))),
+	  k10(make_shared<BlkCached>(make_shared<BlkIterKey>(k7, k8, 25, 31))),
 	  tests(
 		make_unique<TestNamed>(
 			__func__,

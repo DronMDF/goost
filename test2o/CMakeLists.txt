@@ -7,6 +7,7 @@ INCLUDE_DIRECTORIES(
 ADD_EXECUTABLE(
 	test2o
 	test2o.cpp
+	kuznyechik/BlkCachedTest.cpp
 	kuznyechik/BlkEncryptedTest.cpp
 	kuznyechik/BlkIterKeyTest.cpp
 	kuznyechik/BlkLTest.cpp
