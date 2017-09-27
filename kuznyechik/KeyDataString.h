@@ -12,11 +12,10 @@ namespace kuznyechik {
 class KeyDataString final : public Key::Data {
 public:
 	explicit KeyDataString(const std::string &key_data);
-	BlkRaw low() const override;
-	BlkRaw high() const override;
+	std::shared_ptr<const Block> low() const override;
+	std::shared_ptr<const Block> high() const override;
 private:
 	const std::string key_data;
 };
 
 }
-

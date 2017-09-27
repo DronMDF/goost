@@ -6,20 +6,18 @@
 #pragma once
 #include <string>
 #include <memory>
-#include "Block.h"
 
 namespace kuznyechik {
 
-class BlkRaw;
+class Block;
 
 class Key final {
 public:
-	// @todo #236 Key::Data::low and Key::Data::high should return pointer to Block
 	class Data {
 	public:
 		virtual ~Data() = default;
-		virtual BlkRaw low() const = 0;
-		virtual BlkRaw high() const = 0;
+		virtual std::shared_ptr<const Block> low() const = 0;
+		virtual std::shared_ptr<const Block> high() const = 0;
 	};
 
 	explicit Key(const std::string &key_data);
