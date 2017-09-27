@@ -18,7 +18,6 @@ ADD_EXECUTABLE(
 	kuznyechik/BlkXoredTest.cpp
 	kuznyechik/ImitTest.cpp
 	kuznyechik/KeyDataStringTest.cpp
-	kuznyechik/KeyIterTest.cpp
 	kuznyechik/ReprBlock.cpp
 	kuznyechik/ReprKeyData.cpp
 	kuznyechik/StCTREncryptedTest.cpp

@@ -4,12 +4,13 @@
 // of the MIT license.  See the LICENSE file for details.
 
 #include "Key.h"
+#include "BlkCached.h"
+#include "BlkIterKey.h"
 #include "BlkL.h"
 #include "BlkRaw.h"
 #include "BlkS.h"
 #include "BlkXored.h"
 #include "KeyDataString.h"
-#include "KeyIter.h"
 
 using namespace std;
 using namespace kuznyechik;
@@ -20,16 +21,16 @@ Key::Key(const string &key_data)
 }
 
 Key::Key(const std::shared_ptr<const Data> &key_data)
-	: k1(make_unique<KeyIter1>(key_data)),
-	  k2(make_unique<KeyIter2>(key_data)),
-	  k3(make_unique<KeyIter3>(key_data)),
-	  k4(make_unique<KeyIter4>(key_data)),
-	  k5(make_unique<KeyIter5>(key_data)),
-	  k6(make_unique<KeyIter6>(key_data)),
-	  k7(make_unique<KeyIter7>(key_data)),
-	  k8(make_unique<KeyIter8>(key_data)),
-	  k9(make_unique<KeyIter9>(key_data)),
-	  k10(make_unique<KeyIter10>(key_data))
+	: k1(make_shared<BlkCached>(key_data->high())),
+	  k2(make_shared<BlkCached>(key_data->low())),
+	  k3(make_shared<BlkCached>(make_shared<BlkIterKey>(k1, k2, 1, 8))),
+	  k4(make_shared<BlkCached>(make_shared<BlkIterKey>(k1, k2, 1, 7))),
+	  k5(make_shared<BlkCached>(make_shared<BlkIterKey>(k3, k4, 9, 16))),
+	  k6(make_shared<BlkCached>(make_shared<BlkIterKey>(k3, k4, 9, 15))),
+	  k7(make_shared<BlkCached>(make_shared<BlkIterKey>(k5, k6, 17, 24))),
+	  k8(make_shared<BlkCached>(make_shared<BlkIterKey>(k5, k6, 17, 23))),
+	  k9(make_shared<BlkCached>(make_shared<BlkIterKey>(k7, k8, 25, 32))),
+	  k10(make_shared<BlkCached>(make_shared<BlkIterKey>(k7, k8, 25, 31)))
 {
 }
 

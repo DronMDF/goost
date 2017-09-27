@@ -29,7 +29,6 @@ ADD_LIBRARY(goost
 	kuznyechik/Imit.cpp
 	kuznyechik/Key.cpp
 	kuznyechik/KeyDataString.cpp
-	kuznyechik/KeyIter.cpp
 	kuznyechik/StCTREncrypted.cpp
 	kuznyechik/StMemory.cpp
 	magma/Block.cpp

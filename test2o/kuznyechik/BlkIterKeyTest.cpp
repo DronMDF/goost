@@ -23,8 +23,8 @@ BlkIterKeyTest::BlkIterKeyTest()
 			"8899aabbccddeeff0011223344556677fedcba98765432100123456789abcdef"
 		)
 	  ),
-	  k1(make_shared<BlkRaw>(key_data->high())),
-	  k2(make_shared<BlkRaw>(key_data->low())),
+	  k1(make_shared<BlkCached>(key_data->high())),
+	  k2(make_shared<BlkCached>(key_data->low())),
 	  k3(make_shared<BlkCached>(make_shared<BlkIterKey>(k1, k2, 1, 8))),
 	  k4(make_shared<BlkCached>(make_shared<BlkIterKey>(k1, k2, 1, 7))),
 	  k5(make_shared<BlkCached>(make_shared<BlkIterKey>(k3, k4, 9, 16))),

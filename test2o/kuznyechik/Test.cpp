@@ -17,7 +17,6 @@
 #include "BlkXoredTest.h"
 #include "ImitTest.h"
 #include "KeyDataStringTest.h"
-#include "KeyIterTest.h"
 #include "StCTREncryptedTest.h"
 
 using namespace std;
@@ -39,7 +38,6 @@ kuznyechik::Test::Test()
 			make_shared<BlkXoredTest>(),
 			make_shared<ImitTest>(),
 			make_shared<KeyDataStringTest>(),
-			make_shared<KeyIterTest>(),
 			make_shared<StCTREncryptedTest>()
 		)
 	)
