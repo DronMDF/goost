@@ -18,7 +18,7 @@ ReprKeyDataHigh::ReprKeyDataHigh(const shared_ptr<Key::Data> &key)
 
 string ReprKeyDataHigh::asString() const
 {
-	return ReprBlock(make_unique<BlkRaw>(key->high())).asString();
+	return ReprBlock(key->high()).asString();
 }
 
 ReprKeyDataLow::ReprKeyDataLow(const shared_ptr<Key::Data> &key)
@@ -28,5 +28,5 @@ ReprKeyDataLow::ReprKeyDataLow(const shared_ptr<Key::Data> &key)
 
 string ReprKeyDataLow::asString() const
 {
-	return ReprBlock(make_unique<BlkRaw>(key->low())).asString();
+	return ReprBlock(key->low()).asString();
 }

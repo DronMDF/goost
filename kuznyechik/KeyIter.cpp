@@ -21,7 +21,7 @@ KeyIter1::KeyIter1(const shared_ptr<const Key::Data> &key_data)
 
 pair<uint64_t, uint64_t> KeyIter1::value() const
 {
-	return key_data->high().value();
+	return key_data->high()->value();
 }
 
 KeyIter2::KeyIter2(const shared_ptr<const Key::Data> &key_data)
@@ -31,7 +31,7 @@ KeyIter2::KeyIter2(const shared_ptr<const Key::Data> &key_data)
 
 pair<uint64_t, uint64_t> KeyIter2::value() const
 {
-	return key_data->low().value();
+	return key_data->low()->value();
 }
 
 KeyIterAny::KeyIterAny(const shared_ptr<const Key::Data> &key_data, int iter)
