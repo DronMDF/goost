@@ -9,9 +9,6 @@
 
 namespace kuznyechik {
 
-// @todo #234 Add kuznyechik::TestBlockEqual class for avoid imm Representation
-//  This should be wrap above TestEqual and ReprBlock
-
 class Test final : public oout::Test {
 public:
 	Test();

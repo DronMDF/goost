@@ -22,6 +22,7 @@ ADD_EXECUTABLE(
 	kuznyechik/ReprKeyData.cpp
 	kuznyechik/StCTREncryptedTest.cpp
 	kuznyechik/Test.cpp
+	kuznyechik/TestBlockEqual.cpp
 )
 
 TARGET_LINK_LIBRARIES(

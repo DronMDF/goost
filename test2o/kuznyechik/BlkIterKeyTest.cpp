@@ -11,7 +11,7 @@
 #include <kuznyechik/BlkRaw.h>
 #include <kuznyechik/BlkIterKey.h>
 #include <kuznyechik/BlkRaw.h>
-#include "ReprBlock.h"
+#include "TestBlockEqual.h"
 
 using namespace std;
 using namespace oout;
@@ -38,121 +38,101 @@ BlkIterKeyTest::BlkIterKeyTest()
 			__func__,
 			make_shared<TestNamed>(
 				"R3412_A14_K1",
-				make_shared<TestEqual>(
-					make_unique<ReprBlock>(k1),
-					make_unique<ReprBlock>(
-						make_unique<BlkRaw>(
-							0x0011223344556677,
-							0x8899aabbccddeeff
-						)
+				make_shared<TestBlockEqual>(
+					k1,
+					make_unique<BlkRaw>(
+						0x0011223344556677,
+						0x8899aabbccddeeff
 					)
 				)
 			),
 			make_shared<TestNamed>(
 				"R3412_A14_K2",
-				make_shared<TestEqual>(
-					make_unique<ReprBlock>(k2),
-					make_unique<ReprBlock>(
-						make_unique<BlkRaw>(
-							0x0123456789abcdef,
-							0xfedcba9876543210
-						)
+				make_shared<TestBlockEqual>(
+					k2,
+					make_unique<BlkRaw>(
+						0x0123456789abcdef,
+						0xfedcba9876543210
 					)
 				)
 			),
 			make_shared<TestNamed>(
 				"R3412_A14_K3",
-				make_shared<TestEqual>(
-					make_unique<ReprBlock>(k3),
-					make_unique<ReprBlock>(
-						make_unique<BlkRaw>(
-							0x228d6aef8cc78c44,
-							0xdb31485315694343
-						)
+				make_shared<TestBlockEqual>(
+					k3,
+					make_unique<BlkRaw>(
+						0x228d6aef8cc78c44,
+						0xdb31485315694343
 					)
 				)
 			),
 			make_shared<TestNamed>(
 				"R3412_A14_K4",
-				make_shared<TestEqual>(
-					make_unique<ReprBlock>(k4),
-					make_unique<ReprBlock>(
-						make_unique<BlkRaw>(
-							0x15ebadc40a9ffd04,
-							0x3d4553d8e9cfec68
-						)
+				make_shared<TestBlockEqual>(
+					k4,
+					make_unique<BlkRaw>(
+						0x15ebadc40a9ffd04,
+						0x3d4553d8e9cfec68
 					)
 				)
 			),
 			make_shared<TestNamed>(
 				"R3412_A14_K5",
-				make_shared<TestEqual>(
-					make_unique<ReprBlock>(k5),
-					make_unique<ReprBlock>(
-						make_unique<BlkRaw>(
-							0xd3e59246f429f1ac,
-							0x57646468c44a5e28
-						)
+				make_shared<TestBlockEqual>(
+					k5,
+					make_unique<BlkRaw>(
+						0xd3e59246f429f1ac,
+						0x57646468c44a5e28
 					)
 				)
 			),
 			make_shared<TestNamed>(
 				"R3412_A14_K6",
-				make_shared<TestEqual>(
-					make_unique<ReprBlock>(k6),
-					make_unique<ReprBlock>(
-						make_unique<BlkRaw>(
-							0xb532e82834da581b,
-							0xbd079435165c6432
-						)
+				make_shared<TestBlockEqual>(
+					k6,
+					make_unique<BlkRaw>(
+						0xb532e82834da581b,
+						0xbd079435165c6432
 					)
 				)
 			),
 			make_shared<TestNamed>(
 				"R3412_A14_K7",
-				make_shared<TestEqual>(
-					make_unique<ReprBlock>(k7),
-					make_unique<ReprBlock>(
-						make_unique<BlkRaw>(
-							0x705727265a0098b1,
-							0x51e640757e8745de
-						)
+				make_shared<TestBlockEqual>(
+					k7,
+					make_unique<BlkRaw>(
+						0x705727265a0098b1,
+						0x51e640757e8745de
 					)
 				)
 			),
 			make_shared<TestNamed>(
 				"R3412_A14_K8",
-				make_shared<TestEqual>(
-					make_unique<ReprBlock>(k8),
-					make_unique<ReprBlock>(
-						make_unique<BlkRaw>(
-							0xd72a91a22286f984,
-							0x5a7925017b9fdd3e
-						)
+				make_shared<TestBlockEqual>(
+					k8,
+					make_unique<BlkRaw>(
+						0xd72a91a22286f984,
+						0x5a7925017b9fdd3e
 					)
 				)
 			),
 			make_shared<TestNamed>(
 				"R3412_A14_K9",
-				make_shared<TestEqual>(
-					make_unique<ReprBlock>(k9),
-					make_unique<ReprBlock>(
-						make_unique<BlkRaw>(
-							0xa5f32f73cdb6e517,
-							0xbb44e25378c73123
-						)
+				make_shared<TestBlockEqual>(
+					k9,
+					make_unique<BlkRaw>(
+						0xa5f32f73cdb6e517,
+						0xbb44e25378c73123
 					)
 				)
 			),
 			make_shared<TestNamed>(
 				"R3412_A14_K10",
-				make_shared<TestEqual>(
-					make_unique<ReprBlock>(k10),
-					make_unique<ReprBlock>(
-						make_unique<BlkRaw>(
-							0x755dbaa88e4a4043,
-							0x72e9dd7416bcf45b
-						)
+				make_shared<TestBlockEqual>(
+					k10,
+					make_unique<BlkRaw>(
+						0x755dbaa88e4a4043,
+						0x72e9dd7416bcf45b
 					)
 				)
 			)
