@@ -4,13 +4,11 @@
 // of the MIT license.  See the LICENSE file for details.
 
 #include "BlkIterKeyTest.h"
-#include <2out/TestEqual.h>
 #include <2out/TestNamed.h>
-#include <kuznyechik/KeyDataString.h>
 #include <kuznyechik/BlkCached.h>
-#include <kuznyechik/BlkRaw.h>
 #include <kuznyechik/BlkIterKey.h>
 #include <kuznyechik/BlkRaw.h>
+#include <kuznyechik/KeyDataString.h>
 #include "TestBlockEqual.h"
 
 using namespace std;
