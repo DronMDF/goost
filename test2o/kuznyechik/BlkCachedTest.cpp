@@ -5,11 +5,9 @@
 
 #include "BlkCachedTest.h"
 #include <random>
-#include <2out/TestEqual.h>
 #include <2out/TestNamed.h>
 #include <kuznyechik/BlkCached.h>
-#include <kuznyechik/BlkRaw.h>
-#include "ReprBlock.h"
+#include "TestBlockEqual.h"
 
 using namespace std;
 using namespace oout;
@@ -35,10 +33,7 @@ BlkCachedTest::BlkCachedTest()
 			__func__,
 			make_shared<const TestNamed>(
 				"BlkCached give value once and forever",
-				make_shared<TestEqual>(
-					make_shared<ReprBlock>(block),
-					make_shared<ReprBlock>(block)
-				)
+				make_shared<TestBlockEqual>(block, block)
 			)
 		)
 	)
