@@ -4,11 +4,10 @@
 // of the MIT license.  See the LICENSE file for details.
 
 #include "BlkXoredTest.h"
-#include <2out/TestEqual.h>
 #include <2out/TestNamed.h>
 #include <kuznyechik/BlkRaw.h>
 #include <kuznyechik/BlkXored.h>
-#include "ReprBlock.h"
+#include "TestBlockEqual.h"
 
 using namespace std;
 using namespace oout;
@@ -20,12 +19,10 @@ BlkXoredTest::BlkXoredTest()
 			__func__,
 			make_shared<const TestNamed>(
 				"Xor",
-				make_shared<TestEqual>(
-					make_unique<ReprBlock>(
-						make_unique<BlkXored>(
-							make_unique<BlkRaw>(0xffffffffffffffff, 0),
-							make_unique<BlkRaw>(0, 0xffffffffffffffff)
-						)
+				make_shared<TestBlockEqual>(
+					make_unique<BlkXored>(
+						make_unique<BlkRaw>(0xffffffffffffffff, 0),
+						make_unique<BlkRaw>(0, 0xffffffffffffffff)
 					),
 					"ffffffffffffffffffffffffffffffff"
 				)

@@ -8,6 +8,9 @@
 #include <2out/Representation.h>
 #include <kuznyechik/Key.h>
 
+// @todo #260 Replace ReprKeyData to TestBlockEqual
+//  key::Data::high and ::low already return Block
+
 // Representation for high block of key data
 class ReprKeyDataHigh final : public oout::Representation {
 public:

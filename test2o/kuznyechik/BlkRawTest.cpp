@@ -4,11 +4,9 @@
 // of the MIT license.  See the LICENSE file for details.
 
 #include "BlkRawTest.h"
-#include <list>
-#include <2out/TestEqual.h>
 #include <2out/TestNamed.h>
 #include <kuznyechik/BlkRaw.h>
-#include "ReprBlock.h"
+#include "TestBlockEqual.h"
 
 using namespace std;
 using namespace oout;
@@ -20,10 +18,8 @@ BlkRawTest::BlkRawTest()
 			__func__,
 			make_shared<const TestNamed>(
 				"ByteOrder",
-				make_shared<TestEqual>(
-					make_unique<ReprBlock>(
-						make_unique<BlkRaw>(1)
-					),
+				make_shared<TestBlockEqual>(
+					make_unique<BlkRaw>(1),
 					"00000000000000000000000000000001"
 				)
 			)
