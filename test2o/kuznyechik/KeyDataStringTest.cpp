@@ -4,12 +4,10 @@
 // of the MIT license.  See the LICENSE file for details.
 
 #include "KeyDataStringTest.h"
-#include <2out/TestEqual.h>
 #include <2out/TestNamed.h>
 #include <kuznyechik/BlkRaw.h>
 #include <kuznyechik/KeyDataString.h>
 #include "BlkKeyData.h"
-#include "ReprBlock.h"
 #include "TestBlockEqual.h"
 
 using namespace std;
@@ -23,13 +21,13 @@ KeyDataStringTest::KeyDataStringTest()
 			make_shared<TestNamed>(
 				"High block",
 				make_shared<TestBlockEqual>(
-					make_unique<BlkKeyDataHigh>(
+					make_shared<BlkKeyDataHigh>(
 						make_unique<KeyDataString>(
 							"8899aabbccddeeff0011223344556677"
 							"fedcba98765432100123456789abcdef"
 						)
 					),
-					make_unique<BlkRaw>(
+					make_shared<BlkRaw>(
 						0x0011223344556677,
 						0x8899aabbccddeeff
 					)
@@ -38,13 +36,13 @@ KeyDataStringTest::KeyDataStringTest()
 			make_shared<TestNamed>(
 				"Low block",
 				make_shared<TestBlockEqual>(
-					make_unique<BlkKeyDataLow>(
+					make_shared<BlkKeyDataLow>(
 						make_unique<KeyDataString>(
 							"8899aabbccddeeff0011223344556677"
 							"fedcba98765432100123456789abcdef"
 						)
 					),
-					make_unique<BlkRaw>(
+					make_shared<BlkRaw>(
 						0x0123456789abcdef,
 						0xfedcba9876543210
 					)
