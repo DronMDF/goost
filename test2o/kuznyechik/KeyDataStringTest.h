@@ -6,6 +6,7 @@
 #include <memory>
 #include <2out/Test.h>
 #include <2out/Result.h>
+#include <kuznyechik/Key.h>
 
 namespace kuznyechik {
 
@@ -14,6 +15,7 @@ public:
 	KeyDataStringTest();
 	std::unique_ptr<const oout::Result> result() const override;
 private:
+	const std::shared_ptr<const Key::Data> key_data;
 	const std::shared_ptr<const oout::Test> tests;
 };
 

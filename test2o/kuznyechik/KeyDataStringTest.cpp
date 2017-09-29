@@ -5,7 +5,6 @@
 
 #include "KeyDataStringTest.h"
 #include <2out/TestNamed.h>
-#include <kuznyechik/BlkRaw.h>
 #include <kuznyechik/KeyDataString.h>
 #include "BlkKeyData.h"
 #include "TestBlockEqual.h"
@@ -15,37 +14,26 @@ using namespace oout;
 using namespace kuznyechik;
 
 KeyDataStringTest::KeyDataStringTest()
-	: tests(
+	: key_data(
+		make_shared<KeyDataString>(
+			"8899aabbccddeeff0011223344556677fedcba98765432100123456789abcdef"
+		)
+	  ),
+	  tests(
 		make_unique<TestNamed>(
 			__func__,
 			make_shared<TestNamed>(
 				"High block",
 				make_shared<TestBlockEqual>(
-					make_shared<BlkKeyDataHigh>(
-						make_unique<KeyDataString>(
-							"8899aabbccddeeff0011223344556677"
-							"fedcba98765432100123456789abcdef"
-						)
-					),
-					make_shared<BlkRaw>(
-						0x0011223344556677,
-						0x8899aabbccddeeff
-					)
+					make_shared<BlkKeyDataHigh>(key_data),
+					"8899aabbccddeeff0011223344556677"
 				)
 			),
 			make_shared<TestNamed>(
 				"Low block",
 				make_shared<TestBlockEqual>(
-					make_shared<BlkKeyDataLow>(
-						make_unique<KeyDataString>(
-							"8899aabbccddeeff0011223344556677"
-							"fedcba98765432100123456789abcdef"
-						)
-					),
-					make_shared<BlkRaw>(
-						0x0123456789abcdef,
-						0xfedcba9876543210
-					)
+					make_shared<BlkKeyDataLow>(key_data),
+					"fedcba98765432100123456789abcdef"
 				)
 			)
 		)
