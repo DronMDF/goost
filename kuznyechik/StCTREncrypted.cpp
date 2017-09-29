@@ -5,6 +5,7 @@
 
 #include "StCTREncrypted.h"
 #include "BlkEncrypted.h"
+#include "BlkIncremented.h"
 #include "BlkRaw.h"
 #include "BlkXored.h"
 #include "Iterator.h"
@@ -61,13 +62,7 @@ BlkRaw ItCTREncrypted::value() const
 
 shared_ptr<const Iterator> ItCTREncrypted::next() const
 {
-	// @todo #233 Add BlkIncremented (Block, Increased by n) instead imp value increment
-	const auto value = ctr->value();
-	return make_shared<const ItCTREncrypted>(
-		iter->next(),
-		key,
-		make_unique<BlkRaw>(value.first + 1, value.second)
-	);
+	return make_shared<ItCTREncrypted>(iter->next(), key, make_shared<BlkIncremented>(ctr));
 }
 
 StCTREncrypted::StCTREncrypted(

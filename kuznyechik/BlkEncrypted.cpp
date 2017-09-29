@@ -4,7 +4,6 @@
 // of the MIT license.  See the LICENSE file for details.
 
 #include "BlkEncrypted.h"
-#include "BlkRaw.h"
 #include "Key.h"
 
 using namespace std;

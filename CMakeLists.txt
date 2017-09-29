@@ -19,6 +19,7 @@ ADD_LIBRARY(goost
 	gost89/ImitedBlock.cpp
 	kuznyechik/BlkCached.cpp
 	kuznyechik/BlkEncrypted.cpp
+	kuznyechik/BlkIncremented.cpp
 	kuznyechik/BlkIterKey.cpp
 	kuznyechik/BlkL.cpp
 	kuznyechik/BlkRaw.cpp
