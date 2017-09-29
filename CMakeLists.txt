@@ -26,6 +26,7 @@ ADD_LIBRARY(goost
 	kuznyechik/BlkR.cpp
 	kuznyechik/BlkS.cpp
 	kuznyechik/BlkShifted.cpp
+	kuznyechik/BlkString.cpp
 	kuznyechik/BlkXored.cpp
 	kuznyechik/Imit.cpp
 	kuznyechik/Key.cpp
