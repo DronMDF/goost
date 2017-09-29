@@ -5,7 +5,7 @@
 
 #include "KeyDataString.h"
 #include <string>
-#include "BlkRaw.h"
+#include "BlkString.h"
 
 using namespace std;
 using namespace kuznyechik;
@@ -17,18 +17,10 @@ KeyDataString::KeyDataString(const string &key_data)
 
 shared_ptr<const Block> KeyDataString::low() const
 {
-	size_t pos;
-	return make_shared<BlkRaw>(
-		stoull(string(key_data, 48, 16), &pos, 16),
-		stoull(string(key_data, 32, 16), &pos, 16)
-	);
+	return make_shared<BlkString>(string(key_data, 32, 32));
 }
 
 shared_ptr<const Block> KeyDataString::high() const
 {
-	size_t pos;
-	return make_shared<BlkRaw>(
-		stoull(string(key_data, 16, 16), &pos, 16),
-		stoull(string(key_data, 0, 16), &pos, 16)
-	);
+	return make_shared<BlkString>(string(key_data, 0, 32));
 }
