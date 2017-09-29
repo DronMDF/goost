@@ -8,6 +8,7 @@
 #include <2out/TestNamed.h>
 #include "BlkCachedTest.h"
 #include "BlkEncryptedTest.h"
+#include "BlkIncrementedTest.h"
 #include "BlkIterKeyTest.h"
 #include "BlkLTest.h"
 #include "BlkRawTest.h"
@@ -29,6 +30,7 @@ kuznyechik::Test::Test()
 			"Kuznyechik tests",
 			make_shared<BlkCachedTest>(),
 			make_shared<BlkEncryptedTest>(),
+			make_shared<BlkIncrementedTest>(),
 			make_shared<BlkIterKeyTest>(),
 			make_shared<BlkLTest>(),
 			make_shared<BlkRawTest>(),
