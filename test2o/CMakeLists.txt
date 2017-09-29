@@ -11,6 +11,7 @@ ADD_EXECUTABLE(
 	kuznyechik/BlkEncryptedTest.cpp
 	kuznyechik/BlkIncrementedTest.cpp
 	kuznyechik/BlkIterKeyTest.cpp
+	kuznyechik/BlkKeyData.cpp
 	kuznyechik/BlkLTest.cpp
 	kuznyechik/BlkRawTest.cpp
 	kuznyechik/BlkRTest.cpp
@@ -20,10 +21,9 @@ ADD_EXECUTABLE(
 	kuznyechik/ImitTest.cpp
 	kuznyechik/KeyDataStringTest.cpp
 	kuznyechik/ReprBlock.cpp
-	kuznyechik/ReprKeyData.cpp
 	kuznyechik/StCTREncryptedTest.cpp
-	kuznyechik/Test.cpp
 	kuznyechik/TestBlockEqual.cpp
+	kuznyechik/Test.cpp
 )
 
 TARGET_LINK_LIBRARIES(
