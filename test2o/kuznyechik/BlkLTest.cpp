@@ -6,7 +6,7 @@
 #include "BlkLTest.h"
 #include <2out/TestNamed.h>
 #include <kuznyechik/BlkL.h>
-#include <kuznyechik/BlkRaw.h>
+#include <kuznyechik/BlkString.h>
 #include "TestBlockEqual.h"
 
 using namespace std;
@@ -21,9 +21,8 @@ BlkLTest::BlkLTest()
 				"R3412_A13_1",
 				make_shared<TestBlockEqual>(
 					make_unique<BlkL>(
-						make_unique<BlkRaw>(
-							0x0000000000000000,
-							0x64a5940000000000
+						make_shared<BlkString>(
+							"64a59400000000000000000000000000"
 						)
 					),
 					"d456584dd0e3e84cc3166e4b7fa2890d"
@@ -33,9 +32,8 @@ BlkLTest::BlkLTest()
 				"R3412_A13_2",
 				make_shared<TestBlockEqual>(
 					make_unique<BlkL>(
-						make_unique<BlkRaw>(
-							0xc3166e4b7fa2890d,
-							0xd456584dd0e3e84c
+						make_shared<BlkString>(
+							"d456584dd0e3e84cc3166e4b7fa2890d"
 						)
 					),
 					"79d26221b87b584cd42fbc4ffea5de9a"
@@ -45,9 +43,8 @@ BlkLTest::BlkLTest()
 				"R3412_A13_3",
 				make_shared<TestBlockEqual>(
 					make_unique<BlkL>(
-						make_unique<BlkRaw>(
-							0xd42fbc4ffea5de9a,
-							0x79d26221b87b584c
+						make_shared<BlkString>(
+							"79d26221b87b584cd42fbc4ffea5de9a"
 						)
 					),
 					"0e93691a0cfc60408b7b68f66b513c13"
@@ -57,9 +54,8 @@ BlkLTest::BlkLTest()
 				"R3412_A13_4",
 				make_shared<TestBlockEqual>(
 					make_unique<BlkL>(
-						make_unique<BlkRaw>(
-							0x8b7b68f66b513c13,
-							0x0e93691a0cfc6040
+						make_shared<BlkString>(
+							"0e93691a0cfc60408b7b68f66b513c13"
 						)
 					),
 					"e6a8094fee0aa204fd97bcb0b44b8580"

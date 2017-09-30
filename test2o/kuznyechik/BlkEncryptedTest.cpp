@@ -6,7 +6,7 @@
 #include "BlkEncryptedTest.h"
 #include <2out/TestNamed.h>
 #include <kuznyechik/BlkEncrypted.h>
-#include <kuznyechik/BlkRaw.h>
+#include <kuznyechik/BlkString.h>
 #include "TestBlockEqual.h"
 
 using namespace std;
@@ -22,9 +22,8 @@ BlkEncryptedTest::BlkEncryptedTest()
 				"R3412_A15, R3412_A11_1",
 				make_shared<TestBlockEqual>(
 					make_unique<BlkEncrypted>(
-						make_unique<BlkRaw>(
-							0xffeeddccbbaa9988,
-							0x1122334455667700
+						make_shared<BlkString>(
+							"1122334455667700ffeeddccbbaa9988"
 						),
 						key
 					),
@@ -35,9 +34,8 @@ BlkEncryptedTest::BlkEncryptedTest()
 				"R3412_A11_2",
 				make_shared<TestBlockEqual>(
 					make_unique<BlkEncrypted>(
-						make_unique<BlkRaw>(
-							0x8899aabbcceeff0a,
-							0x0011223344556677
+						make_shared<BlkString>(
+							"00112233445566778899aabbcceeff0a"
 						),
 						key
 					),
@@ -48,9 +46,8 @@ BlkEncryptedTest::BlkEncryptedTest()
 				"R3412_A11_3",
 				make_shared<TestBlockEqual>(
 					make_unique<BlkEncrypted>(
-						make_unique<BlkRaw>(
-							0x99aabbcceeff0a00,
-							0x1122334455667788
+						make_shared<BlkString>(
+							"112233445566778899aabbcceeff0a00"
 						),
 						key
 					),
@@ -61,9 +58,8 @@ BlkEncryptedTest::BlkEncryptedTest()
 				"R3412_A11_4",
 				make_shared<TestBlockEqual>(
 					make_unique<BlkEncrypted>(
-						make_unique<BlkRaw>(
-							0xaabbcceeff0a0011,
-							0x2233445566778899
+						make_shared<BlkString>(
+							"2233445566778899aabbcceeff0a0011"
 						),
 						key
 					),
