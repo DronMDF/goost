@@ -6,7 +6,7 @@
 #include "BlkIncrementedTest.h"
 #include <2out/TestNamed.h>
 #include <kuznyechik/BlkIncremented.h>
-#include <kuznyechik/BlkRaw.h>
+#include <kuznyechik/BlkString.h>
 #include "TestBlockEqual.h"
 
 using namespace std;
@@ -21,7 +21,7 @@ BlkIncrementedTest::BlkIncrementedTest()
 				"incremented with overloading",
 				make_shared<TestBlockEqual>(
 					make_shared<BlkIncremented>(
-						make_shared<BlkRaw>(0xffffffffffffffff, 0)
+						make_shared<BlkString>("ffffffffffffffff")
 					),
 					"00000000000000010000000000000000"
 				)

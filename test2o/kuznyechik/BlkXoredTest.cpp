@@ -5,7 +5,7 @@
 
 #include "BlkXoredTest.h"
 #include <2out/TestNamed.h>
-#include <kuznyechik/BlkRaw.h>
+#include <kuznyechik/BlkString.h>
 #include <kuznyechik/BlkXored.h>
 #include "TestBlockEqual.h"
 
@@ -21,8 +21,12 @@ BlkXoredTest::BlkXoredTest()
 				"Xor",
 				make_shared<TestBlockEqual>(
 					make_unique<BlkXored>(
-						make_unique<BlkRaw>(0xffffffffffffffff, 0),
-						make_unique<BlkRaw>(0, 0xffffffffffffffff)
+						make_shared<BlkString>(
+							"0000000000000000ffffffffffffffff"
+						),
+						make_shared<BlkString>(
+							"ffffffffffffffff0000000000000000"
+						)
 					),
 					"ffffffffffffffffffffffffffffffff"
 				)

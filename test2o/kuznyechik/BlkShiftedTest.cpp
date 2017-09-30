@@ -5,8 +5,8 @@
 
 #include "BlkShiftedTest.h"
 #include <2out/TestNamed.h>
-#include <kuznyechik/BlkRaw.h>
 #include <kuznyechik/BlkShifted.h>
+#include <kuznyechik/BlkString.h>
 #include "TestBlockEqual.h"
 
 using namespace std;
@@ -21,7 +21,7 @@ BlkShiftedTest::BlkShiftedTest()
 				"Shift on 4 bit",
 				make_shared<TestBlockEqual>(
 					make_unique<BlkShifted>(
-						make_unique<BlkRaw>(1),
+						make_shared<BlkString>("1"),
 						4
 					),
 					"00000000000000000000000000000010"
@@ -31,7 +31,7 @@ BlkShiftedTest::BlkShiftedTest()
 				"Shift over parts",
 				make_shared<TestBlockEqual>(
 					make_unique<BlkShifted>(
-						make_unique<BlkRaw>(0xffffffff00000000),
+						make_shared<BlkString>("ffffffff00000000"),
 						16
 					),
 					"000000000000ffffffff000000000000"
