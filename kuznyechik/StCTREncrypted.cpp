@@ -21,9 +21,9 @@ public:
 		const shared_ptr<const Block> &ctr
 	);
 
+	pair<uint64_t, uint64_t> value() const override;
 	bool last() const override;
 	size_t size() const override;
-	BlkRaw value() const override;
 	shared_ptr<const Iterator> next() const override;
 
 private:
@@ -40,6 +40,11 @@ ItCTREncrypted::ItCTREncrypted(
 {
 }
 
+pair<uint64_t, uint64_t> ItCTREncrypted::value() const
+{
+	return BlkXored(iter, make_unique<BlkEncrypted>(ctr, key)).value();
+}
+
 bool ItCTREncrypted::last() const
 {
 	return iter->last();
@@ -48,16 +53,6 @@ bool ItCTREncrypted::last() const
 size_t ItCTREncrypted::size() const
 {
 	return iter->size();
-}
-
-BlkRaw ItCTREncrypted::value() const
-{
-	return BlkRaw(
-		make_unique<BlkXored>(
-			make_unique<BlkRaw>(iter->value()),
-			make_unique<BlkEncrypted>(ctr, key)
-		)
-	);
 }
 
 shared_ptr<const Iterator> ItCTREncrypted::next() const
