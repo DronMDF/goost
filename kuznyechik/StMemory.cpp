@@ -17,9 +17,9 @@ public:
 	ItMemory(const weak_ptr<const StMemory> &stream_ptr,
 		size_t offset, const BlkRaw &data);
 
+	pair<uint64_t, uint64_t> value() const override;
 	bool last() const override;
 	size_t size() const override;
-	BlkRaw value() const override;
 	shared_ptr<const Iterator> next() const override;
 private:
 	const weak_ptr<const StMemory> stream_ptr;
@@ -29,10 +29,17 @@ private:
 
 }  // namespace kuznyechik
 
+// @todo #214 ItMemopy should take pointer to Block
+//  or give them over stream?
 ItMemory::ItMemory(const weak_ptr<const StMemory> &stream_ptr,
 		size_t offset, const BlkRaw &data)
 	: stream_ptr(stream_ptr), offset(offset), data(data)
 {
+}
+
+pair<uint64_t, uint64_t> ItMemory::value() const
+{
+	return data.value();
 }
 
 bool ItMemory::last() const
@@ -43,11 +50,6 @@ bool ItMemory::last() const
 size_t ItMemory::size() const
 {
 	return Block::size;
-}
-
-BlkRaw ItMemory::value() const
-{
-	return data;
 }
 
 shared_ptr<const Iterator> ItMemory::next() const

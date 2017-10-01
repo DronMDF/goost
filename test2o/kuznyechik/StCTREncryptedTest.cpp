@@ -29,7 +29,7 @@ public:
 		for (size_t i = 0; i < n; i++) {
 			it = it->next();
 		}
-		return it->value().value();
+		return it->value();
 	}
 
 private:
