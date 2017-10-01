@@ -14,32 +14,35 @@ namespace kuznyechik {
 
 class ItMemory final : public Iterator {
 public:
-	ItMemory(const weak_ptr<const StMemory> &stream_ptr,
-		size_t offset, const BlkRaw &data);
+	ItMemory(
+		const weak_ptr<const StMemory> &stream,
+		size_t offset,
+		const shared_ptr<const Block> &data
+	);
 
 	pair<uint64_t, uint64_t> value() const override;
 	bool last() const override;
 	size_t size() const override;
 	shared_ptr<const Iterator> next() const override;
 private:
-	const weak_ptr<const StMemory> stream_ptr;
+	const weak_ptr<const StMemory> stream;
 	const size_t offset;
-	const BlkRaw data;
+	const shared_ptr<const Block> data;
 };
 
 }  // namespace kuznyechik
 
-// @todo #214 ItMemopy should take pointer to Block
-//  or give them over stream?
-ItMemory::ItMemory(const weak_ptr<const StMemory> &stream_ptr,
-		size_t offset, const BlkRaw &data)
-	: stream_ptr(stream_ptr), offset(offset), data(data)
+ItMemory::ItMemory(
+	const weak_ptr<const StMemory> &stream,
+	size_t offset,
+	const shared_ptr<const Block> &data
+) : stream(stream), offset(offset), data(data)
 {
 }
 
 pair<uint64_t, uint64_t> ItMemory::value() const
 {
-	return data.value();
+	return data->value();
 }
 
 bool ItMemory::last() const
@@ -54,8 +57,8 @@ size_t ItMemory::size() const
 
 shared_ptr<const Iterator> ItMemory::next() const
 {
-	const auto stream = stream_ptr.lock();
-	return stream->next_iter(offset + Block::size);
+	const auto stream_ptr = stream.lock();
+	return stream_ptr->next_iter(offset + Block::size);
 }
 
 StMemory::StMemory(const vector<uint64_t> &data)
@@ -76,6 +79,6 @@ shared_ptr<const Iterator> StMemory::next_iter(size_t offset) const
 	return make_shared<const ItMemory>(
 		shared_from_this(),
 		offset,
-		BlkRaw(&data[offset / sizeof(uint64_t)])
+		make_shared<BlkRaw>(&data[offset / sizeof(uint64_t)])
 	);
 }
