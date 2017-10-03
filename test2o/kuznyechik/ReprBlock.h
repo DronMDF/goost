@@ -11,7 +11,6 @@ namespace kuznyechik {
 
 class Block;
 
-// @todo #234 Add ctor to ReprBlock with imm values for short tests
 class ReprBlock final : public oout::Representation {
 public:
 	explicit ReprBlock(const std::shared_ptr<const Block> &block);

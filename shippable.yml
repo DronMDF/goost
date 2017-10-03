@@ -8,6 +8,7 @@ build:
   ci:
     - apt-get update
     - apt-get install cmake cppcheck ruby-dev
+    - gem install rake	# New version of pdd not depend on rake, but need
     - gem install pdd
     - cmake .
     - make style
