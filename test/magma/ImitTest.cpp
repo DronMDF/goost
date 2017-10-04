@@ -4,7 +4,7 @@
 // of the MIT license.  See the LICENSE file for details.
 
 #include <upp11.h>
-#include <magma/Block.h>
+#include <magma/BlkRaw.h>
 #include <magma/DataStream.h>
 #include <magma/Imit.h>
 #include <magma/Key.h>

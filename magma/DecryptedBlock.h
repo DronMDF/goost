@@ -5,20 +5,22 @@
 
 #pragma once
 #include <memory>
-#include "Block.h"
+#include "BlkRaw.h"
 
 namespace magma {
 
 class Key;
 
+// @todo #274 rename magma::DecryptedBlock to magma::BlkDecrypted
+// @todo #274 magma::BlkDecrypted should take pointer to magma::Block
 class DecryptedBlock {
 public:
-	DecryptedBlock(const Block &block, const std::shared_ptr<const Key> &key);
+	DecryptedBlock(const BlkRaw &block, const std::shared_ptr<const Key> &key);
 
-	Block value() const;
+	BlkRaw value() const;
 
 private:
-	const Block block;
+	const BlkRaw block;
 	const std::shared_ptr<const Key> key;
 };
 

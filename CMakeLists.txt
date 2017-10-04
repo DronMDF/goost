@@ -33,7 +33,7 @@ ADD_LIBRARY(goost
 	kuznyechik/KeyDataString.cpp
 	kuznyechik/StCTREncrypted.cpp
 	kuznyechik/StMemory.cpp
-	magma/Block.cpp
+	magma/BlkRaw.cpp
 	magma/DataStream.cpp
 	magma/DecryptedBlock.cpp
 	magma/EncryptedBlock.cpp

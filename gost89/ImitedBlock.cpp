@@ -9,12 +9,12 @@ using namespace std;
 using namespace gost89;
 using namespace magma;
 
-ImitedBlock::ImitedBlock(const Block &block, const shared_ptr<const Key> &key)
+ImitedBlock::ImitedBlock(const BlkRaw &block, const shared_ptr<const Key> &key)
 	: block(block), key(key)
 {
 }
 
-Block ImitedBlock::value() const
+BlkRaw ImitedBlock::value() const
 {
 	return key->forward(key->forward(block));
 }
