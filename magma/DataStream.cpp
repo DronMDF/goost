@@ -4,7 +4,7 @@
 // of the MIT license.  See the LICENSE file for details.
 
 #include "DataStream.h"
-#include "Block.h"
+#include "BlkRaw.h"
 #include "BlockIterator.h"
 
 using namespace std;
@@ -13,20 +13,20 @@ using namespace magma;
 class DataStreamIterator final : public BlockIterator {
 public:
 	DataStreamIterator(const weak_ptr<const DataStream> &stream_ptr,
-		size_t offset, const Block &data);
+		size_t offset, const BlkRaw &data);
 
 	bool last() const override;
 	size_t size() const override;
-	Block value() const override;
+	BlkRaw value() const override;
 	shared_ptr<const BlockIterator> next() const override;
 private:
 	const weak_ptr<const DataStream> stream_ptr;
 	const size_t offset;
-	const Block data;
+	const BlkRaw data;
 };
 
 DataStreamIterator::DataStreamIterator(const weak_ptr<const DataStream> &stream_ptr,
-		size_t offset, const Block &data)
+		size_t offset, const BlkRaw &data)
 	: stream_ptr(stream_ptr), offset(offset), data(data)
 {
 }
@@ -41,7 +41,7 @@ size_t DataStreamIterator::size() const
 	return 8;
 }
 
-Block DataStreamIterator::value() const
+BlkRaw DataStreamIterator::value() const
 {
 	return data;
 }
@@ -65,6 +65,6 @@ shared_ptr<const BlockIterator> DataStream::iter(size_t offset) const
 	return make_shared<const DataStreamIterator>(
 		shared_from_this(),
 		offset,
-		Block(&data[offset / sizeof(uint64_t)])
+		BlkRaw(&data[offset / sizeof(uint64_t)])
 	);
 }

@@ -5,7 +5,7 @@
 
 #include "Key.h"
 #include <cstring>
-#include "Block.h"
+#include "BlkRaw.h"
 #include "KeyCachedData.h"
 #include "KeyData.h"
 #include "KeyDataNative.h"
@@ -41,7 +41,7 @@ uint32_t Key::cycle(uint32_t v, int index) const
 	return sbox->transform(key_data->key(index) + v);
 }
 
-Block Key::forward(const Block &block) const
+BlkRaw Key::forward(const BlkRaw &block) const
 {
 	uint32_t a = block.low;
 	uint32_t b = block.high;
@@ -58,7 +58,7 @@ Block Key::forward(const Block &block) const
 	return {a, b};
 }
 
-Block Key::backward(const Block &block) const
+BlkRaw Key::backward(const BlkRaw &block) const
 {
 	uint32_t a = block.low;
 	uint32_t b = block.high;

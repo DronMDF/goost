@@ -8,15 +8,16 @@
 
 namespace magma {
 
-class Block;
+class BlkRaw;
 class DataStream;
 class Key;
 
+// @todo #274 magma::Imit should be magma::Block
 class Imit final {
 public:
 	Imit(const std::shared_ptr<const DataStream> &data, const std::shared_ptr<const Key> &key);
 
-	Block value() const;
+	BlkRaw value() const;
 private:
 	const std::shared_ptr<const DataStream> data;
 	const std::shared_ptr<const Key> key;

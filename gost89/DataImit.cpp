@@ -30,7 +30,7 @@ vector<uint8_t> DataImit::value() const
 		for (auto &s : state) {
 			s ^= *pi++;
 		}
-		const auto b = ImitedBlock(Block(state), key).value();
+		const auto b = ImitedBlock(BlkRaw(state), key).value();
 		reinterpret_cast<uint32_t *>(&state[0])[0] = b.low;
 		reinterpret_cast<uint32_t *>(&state[0])[1] = b.high;
 	}

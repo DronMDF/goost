@@ -5,7 +5,7 @@
 
 #include "Imit.h"
 #include <iostream>
-#include "Block.h"
+#include "BlkRaw.h"
 #include "BlockIterator.h"
 #include "DataStream.h"
 #include "EncryptedBlock.h"
@@ -18,20 +18,20 @@ Imit::Imit(const shared_ptr<const DataStream> &data, const shared_ptr<const Key>
 {
 }
 
-Block Imit::value() const
+BlkRaw Imit::value() const
 {
 	auto iter = data->iter();
-	auto block = make_shared<const Block>();
+	auto block = make_shared<const BlkRaw>();
 
 	while (!iter->last()) {
-		block = make_shared<const Block>(
+		block = make_shared<const BlkRaw>(
 			EncryptedBlock(*block ^ iter->value(), key).value()
 		);
 		iter = iter->next();
 	}
 
 	const auto R = EncryptedBlock({}, key).value();
-	const Block B(0x1b);
+	const BlkRaw B(0x1b);
 	const auto K1 = ((R.high & 0x80000000) == 0) ? (R << 1) : (R << 1) ^ B;
 	if (iter->size() == 8) {
 		return EncryptedBlock(*block ^ iter->value() ^ K1, key).value();

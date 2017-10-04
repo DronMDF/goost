@@ -11,9 +11,11 @@
 
 namespace magma {
 
-class Block;
+class BlkRaw;
 class Sbox;
 
+// @todo #274 Split magma::Key to magma::Forward and magma::Backward?
+//  need to think about it.
 class Key {
 public:
 	/// String key
@@ -26,8 +28,8 @@ public:
 	/// Primary ctor
 	Key(std::unique_ptr<const KeyData> key_data, const std::shared_ptr<const Sbox> &sbox);
 
-	Block forward(const Block &block) const;
-	Block backward(const Block &block) const;
+	BlkRaw forward(const BlkRaw &block) const;
+	BlkRaw backward(const BlkRaw &block) const;
 
 private:
 	uint32_t cycle(uint32_t v, int index) const;
