@@ -9,6 +9,7 @@
 #include <2out/JUnitXmlReport.h>
 #include <2out/TestSuite.h>
 #include "kuznyechik/Test.h"
+#include "magma/Test.h"
 
 using namespace std;
 using namespace oout;
@@ -16,9 +17,8 @@ using namespace oout;
 int main(int, char **)
 {
 	const shared_ptr<const Result> result = TestSuite(
-		list<shared_ptr<const Test>>{
-			make_unique<kuznyechik::Test>()
-		}
+		make_shared<kuznyechik::Test>(),
+		make_shared<magma::Test>()
 	).result();
 
 	cout << JUnitXmlReport(result).asString() << endl;

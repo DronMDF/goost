@@ -20,6 +20,6 @@ string ReprBlock::asString() const
 {
 	const auto value = block->value();
 	ostringstream os;
-	os << hex << setfill('0') << setw(8) << value.second << value.first;
+	os << hex << setfill('0') << setw(8) << value.second << setw(8) << value.first;
 	return os.str();
 }
