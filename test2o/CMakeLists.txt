@@ -24,6 +24,8 @@ ADD_EXECUTABLE(
 	kuznyechik/StCTREncryptedTest.cpp
 	kuznyechik/TestBlockEqual.cpp
 	kuznyechik/Test.cpp
+	magma/ReprBlock.cpp
+	magma/TestBlockEqual.cpp
 )
 
 TARGET_LINK_LIBRARIES(
