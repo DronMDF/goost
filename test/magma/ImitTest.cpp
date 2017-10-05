@@ -29,7 +29,7 @@ UP_TEST(R3413_A262_Test)
 		}
 	);
 	const Imit imit(data, key);
-	UP_ASSERT_EQUAL(imit.value().high, 0x154e7210);
+	UP_ASSERT_EQUAL(imit.value().second, 0x154e7210);
 }
 
 UP_TEST(Benchmark10M)
@@ -41,7 +41,7 @@ UP_TEST(Benchmark10M)
 		vector<uint64_t>(10000000U / sizeof(uint64_t))
 	);
 	const Imit imit(data, key);
-	UP_ASSERT_EQUAL(imit.value().high, 3801817732);
+	UP_ASSERT_EQUAL(imit.value().second, 3801817732);
 }
 
 UP_SUITE_END()
