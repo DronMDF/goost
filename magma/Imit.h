@@ -5,19 +5,18 @@
 
 #pragma once
 #include <memory>
+#include "Block.h"
 
 namespace magma {
 
-class BlkRaw;
 class DataStream;
 class Key;
 
-// @todo #274 magma::Imit should be magma::Block
-class Imit final {
+class Imit final : public Block {
 public:
 	Imit(const std::shared_ptr<const DataStream> &data, const std::shared_ptr<const Key> &key);
 
-	BlkRaw value() const;
+	std::pair<uint32_t, uint32_t> value() const override;
 private:
 	const std::shared_ptr<const DataStream> data;
 	const std::shared_ptr<const Key> key;
