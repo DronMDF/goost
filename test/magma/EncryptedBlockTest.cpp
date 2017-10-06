@@ -4,7 +4,7 @@
 // of the MIT license.  See the LICENSE file for details.
 
 #include <upp11.h>
-#include <magma/EncryptedBlock.h>
+#include <magma/BlkEncrypted.h>
 #include <magma/Key.h>
 #include <magma/SboxTwisted.h>
 #include <magma/SboxByte.h>
@@ -23,11 +23,14 @@ struct KeyFixture {
 
 UP_FIXTURE_TEST(R3412_A24_Test, KeyFixture)
 {
-	const EncryptedBlock eb(
+	const auto ev = BlkEncrypted(
 		BlkRaw({0x10, 0x32, 0x54, 0x76, 0x98, 0xba, 0xdc, 0xfe}),
 		key
+	).value();
+	UP_ASSERT_EQUAL(
+		BlkRaw(ev.first, ev.second),
+		BlkRaw({0x3d, 0xca, 0xd8, 0xc2, 0xe5, 0x01, 0xe9, 0x4e})
 	);
-	UP_ASSERT_EQUAL(eb.value(), BlkRaw({0x3d, 0xca, 0xd8, 0xc2, 0xe5, 0x01, 0xe9, 0x4e}));
 }
 
 const vector<pair<uint64_t, uint64_t>> data = {
@@ -41,8 +44,8 @@ const vector<pair<uint64_t, uint64_t>> data = {
 // But tests is successefull.
 UP_FIXTURE_PARAMETRIZED_TEST(R3413_A262_Test, KeyFixture, data)
 {
-	const EncryptedBlock e(BlkRaw(get<0>(data)), key);
-	UP_ASSERT_EQUAL(e.value(), BlkRaw(get<1>(data)));
+	const auto ev = BlkEncrypted(BlkRaw(get<0>(data)), key).value();
+	UP_ASSERT_EQUAL(BlkRaw(ev.first, ev.second), BlkRaw(get<1>(data)));
 }
 
 const vector<pair<uint64_t, uint64_t>> old_data = {
@@ -52,7 +55,7 @@ const vector<pair<uint64_t, uint64_t>> old_data = {
 
 UP_PARAMETRIZED_TEST(TestSboxByteEncryption, old_data)
 {
-	const EncryptedBlock e(
+	const auto ev = BlkEncrypted(
 		BlkRaw(get<0>(old_data)),
 		make_shared<Key>(
 			vector<uint32_t>{
@@ -74,9 +77,8 @@ UP_PARAMETRIZED_TEST(TestSboxByteEncryption, old_data)
 				)
 			)
 		)
-	);
-
-	UP_ASSERT_EQUAL(e.value(), BlkRaw(get<1>(old_data)));
+	).value();
+	UP_ASSERT_EQUAL(BlkRaw(ev.first, ev.second), BlkRaw(get<1>(old_data)));
 }
 
 UP_SUITE_END()

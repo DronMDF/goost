@@ -33,18 +33,18 @@ ADD_LIBRARY(goost
 	kuznyechik/KeyDataString.cpp
 	kuznyechik/StCTREncrypted.cpp
 	kuznyechik/StMemory.cpp
+	magma/BlkEncrypted.cpp
 	magma/BlkRaw.cpp
 	magma/BlkString.cpp
 	magma/DataStream.cpp
 	magma/DecryptedBlock.cpp
-	magma/EncryptedBlock.cpp
 	magma/Imit.cpp
 	magma/KeyCachedData.cpp
 	magma/Key.cpp
 	magma/KeyDataNative.cpp
 	magma/KeyDataString.cpp
-	magma/SboxByte.cpp
 	magma/SboxByte64Tab.cpp
+	magma/SboxByte.cpp
 	magma/SboxNibble.cpp
 	magma/SboxR3412.cpp
 	magma/SboxTwisted.cpp
