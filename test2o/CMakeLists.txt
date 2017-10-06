@@ -24,6 +24,7 @@ ADD_EXECUTABLE(
 	kuznyechik/StCTREncryptedTest.cpp
 	kuznyechik/TestBlockEqual.cpp
 	kuznyechik/Test.cpp
+	magma/BlkEncryptedTest.cpp
 	magma/BlkStringTest.cpp
 	magma/ImitTest.cpp
 	magma/ReprBlock.cpp

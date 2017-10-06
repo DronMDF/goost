@@ -5,6 +5,7 @@
 
 #include "Test.h"
 #include <2out/TestNamed.h>
+#include "BlkEncryptedTest.h"
 #include "BlkStringTest.h"
 #include "ImitTest.h"
 
@@ -16,6 +17,7 @@ magma::Test::Test()
 	: tests(
 		make_unique<TestNamed>(
 			"Magma tests",
+			make_shared<BlkEncryptedTest>(),
 			make_shared<BlkStringTest>(),
 			make_shared<ImitTest>()
 		)
