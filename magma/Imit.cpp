@@ -5,10 +5,10 @@
 
 #include "Imit.h"
 #include <iostream>
+#include "BlkEncrypted.h"
 #include "BlkRaw.h"
 #include "BlockIterator.h"
 #include "DataStream.h"
-#include "EncryptedBlock.h"
 
 using namespace std;
 using namespace magma;
@@ -24,21 +24,20 @@ pair<uint32_t, uint32_t> Imit::value() const
 	auto block = make_shared<const BlkRaw>();
 
 	while (!iter->last()) {
-		block = make_shared<const BlkRaw>(
-			EncryptedBlock(*block ^ iter->value(), key).value()
-		);
+		const auto bv = BlkEncrypted(*block ^ iter->value(), key).value();
+		block = make_shared<BlkRaw>(bv.first, bv.second);
 		iter = iter->next();
 	}
 
-	const auto R = EncryptedBlock({}, key).value();
+
+	const auto Rv = BlkEncrypted({}, key).value();
+	const BlkRaw R(Rv.first, Rv.second);
 	const BlkRaw B(0x1b);
 	const auto K1 = ((R.high & 0x80000000) == 0) ? (R << 1) : (R << 1) ^ B;
 	if (iter->size() == 8) {
-		const auto rv1 = EncryptedBlock(*block ^ iter->value() ^ K1, key).value();
-		return {rv1.low, rv1.high};
+		return BlkEncrypted(*block ^ iter->value() ^ K1, key).value();
 	}
 
 	const auto K2 = ((K1.high & 0x80000000) == 0) ? (K1 << 1) : (K1 << 1) ^ B;
-	const auto rv2 = EncryptedBlock(*block ^ iter->value() ^ K2, key).value();
-	return {rv2.low, rv2.high};
+	return BlkEncrypted(*block ^ iter->value() ^ K2, key).value();
 }
