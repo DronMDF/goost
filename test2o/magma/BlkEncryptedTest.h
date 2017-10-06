@@ -6,6 +6,7 @@
 #include <memory>
 #include <2out/Test.h>
 #include <2out/Result.h>
+#include <magma/Key.h>
 
 namespace magma {
 
@@ -14,6 +15,8 @@ public:
 	BlkEncryptedTest();
 	std::unique_ptr<const oout::Result> result() const override;
 private:
+	const std::shared_ptr<const Key> key1;
+	const std::shared_ptr<const Key> key2;
 	const std::shared_ptr<const oout::Test> tests;
 };
 
