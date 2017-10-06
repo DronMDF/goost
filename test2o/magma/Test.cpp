@@ -6,6 +6,7 @@
 #include "Test.h"
 #include <2out/TestNamed.h>
 #include "BlkStringTest.h"
+#include "ImitTest.h"
 
 using namespace std;
 using namespace oout;
@@ -15,7 +16,8 @@ magma::Test::Test()
 	: tests(
 		make_unique<TestNamed>(
 			"Magma tests",
-			make_shared<BlkStringTest>()
+			make_shared<BlkStringTest>(),
+			make_shared<ImitTest>()
 		)
 	)
 {
