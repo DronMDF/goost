@@ -15,7 +15,6 @@ using namespace std;
 using namespace oout;
 using namespace magma;
 
-// @todo #297 Move keys out from Test
 BlkEncryptedTest::BlkEncryptedTest()
 	: key1(
 		make_shared<Key>(
