@@ -16,6 +16,6 @@ DecryptedBlock::DecryptedBlock(const BlkRaw &block, const shared_ptr<const Key> 
 
 BlkRaw DecryptedBlock::value() const
 {
-	const auto rb = key->backward(key->backward(key->backward(key->forward(block))));
-	return {rb.high, rb.low};
+	const auto rb = key->backward(key->backward(key->backward(key->forward(block)))).value();
+	return {rb.second, rb.first};
 }

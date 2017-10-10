@@ -16,6 +16,6 @@ BlkEncrypted::BlkEncrypted(const BlkRaw &block, const shared_ptr<const Key> &key
 
 pair<uint32_t, uint32_t> BlkEncrypted::value() const
 {
-	const auto rb = key->backward(key->forward(key->forward(key->forward(block))));
-	return {rb.high, rb.low};
+	const auto rb = key->backward(key->forward(key->forward(key->forward(block)))).value();
+	return {rb.second, rb.first};
 }

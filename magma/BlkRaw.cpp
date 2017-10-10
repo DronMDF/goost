@@ -40,6 +40,11 @@ BlkRaw::BlkRaw(uint32_t low, uint32_t high)
 {
 }
 
+pair<uint32_t, uint32_t> BlkRaw::value() const
+{
+	return {low, high};
+}
+
 bool BlkRaw::operator ==(const BlkRaw &block) const
 {
 	return low == block.low && high == block.high;
@@ -57,6 +62,7 @@ BlkRaw BlkRaw::operator ^(const BlkRaw &b) const
 
 ostream &magma::operator <<(ostream &os, const BlkRaw &block)
 {
-	os << hex << setfill('0') << setw(8) << block.high << setw(8) << block.low << dec;
+	const auto value = block.value();
+	os << hex << setfill('0') << setw(8) << value.second << setw(8) << value.first;
 	return os;
 }

@@ -7,10 +7,11 @@
 #include <cstdint>
 #include <ostream>
 #include <vector>
+#include "Block.h"
 
 namespace magma {
 
-class BlkRaw {
+class BlkRaw final : public Block {
 public:
 	BlkRaw();
 	explicit BlkRaw(uint64_t block);
@@ -18,12 +19,15 @@ public:
 	explicit BlkRaw(const void *ptr);
 	BlkRaw(uint32_t low, uint32_t high);
 
+	std::pair<uint32_t, uint32_t> value() const override;
+
 	bool operator ==(const BlkRaw &block) const;
 	// @todo #274 Add magma::BlkShifted
 	BlkRaw operator <<(int i) const;
 	// @todo #274 Add magma::BlkXored
 	BlkRaw operator ^(const BlkRaw &b) const;
 
+private:
 	const uint32_t low;
 	const uint32_t high;
 };
