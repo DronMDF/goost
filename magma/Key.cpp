@@ -43,8 +43,9 @@ uint32_t Key::cycle(uint32_t v, int index) const
 
 BlkRaw Key::forward(const BlkRaw &block) const
 {
-	uint32_t a = block.low;
-	uint32_t b = block.high;
+	const auto value = block.value();
+	uint32_t a = value.first;
+	uint32_t b = value.second;
 
 	b ^= cycle(a, 0);
 	a ^= cycle(b, 1);
@@ -60,8 +61,9 @@ BlkRaw Key::forward(const BlkRaw &block) const
 
 BlkRaw Key::backward(const BlkRaw &block) const
 {
-	uint32_t a = block.low;
-	uint32_t b = block.high;
+	const auto value = block.value();
+	uint32_t a = value.first;
+	uint32_t b = value.second;
 
 	b ^= cycle(a, 7);
 	a ^= cycle(b, 6);
