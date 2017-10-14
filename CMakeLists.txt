@@ -54,7 +54,6 @@ ADD_EXECUTABLE(test_goost
 	test/gost89/DataImitTest.cpp
 	test/gost89/ProceduralImitTest.cpp
 	test/magma/DataStreamTest.cpp
-	test/magma/DecryptedBlockTest.cpp
 	test/magma/KeyCachedDataTest.cpp
 	test/magma/KeyDataNativeTest.cpp
 	test/magma/KeyDataStringTest.cpp
