@@ -7,6 +7,9 @@
 
 using namespace std;
 
+// @todo #291 ProceduralImitTest move to benchmark utility,
+//  for comparsion with us. This is not a test.
+
 UP_SUITE_BEGIN(gost89)
 UP_SUITE_BEGIN(ProceduralImitTest)
 
