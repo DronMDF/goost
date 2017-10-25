@@ -11,6 +11,7 @@ using namespace std;
 using namespace magma;
 
 UP_SUITE_BEGIN(magma)
+// @todo #291 Move SboxTwistedTest to 2out
 UP_SUITE_BEGIN(SboxTwistedTest)
 
 UP_TEST(A22ExampleTest)

@@ -10,6 +10,7 @@ using namespace std;
 using namespace magma;
 
 UP_SUITE_BEGIN(magma)
+// @todo #291 Move KeyCachedData to 2out.
 UP_SUITE_BEGIN(KeyCachedDataTest)
 
 class TestKeyData final : public KeyData {

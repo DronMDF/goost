@@ -9,6 +9,7 @@
 using namespace magma;
 
 UP_SUITE_BEGIN(magma)
+// @todo #291 Move SboxNibbleTest to 2out
 UP_SUITE_BEGIN(SboxNibbleTest)
 
 UP_TEST(A21ExampleTest)
