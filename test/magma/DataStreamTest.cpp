@@ -14,6 +14,7 @@ using namespace magma;
 UP_SUITE_BEGIN(magma)
 UP_SUITE_BEGIN(DataStreamTest)
 
+// @todo #291 Move SataStreamTest to 2out.
 UP_TEST(R3413_2015_Test)
 {
 	// Given

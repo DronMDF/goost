@@ -9,6 +9,7 @@
 using namespace magma;
 
 UP_SUITE_BEGIN(magma)
+// @todo #291 Move KeyDataNativeTest to 2out.
 UP_SUITE_BEGIN(KeyDataNativeTest)
 
 UP_TEST(SimpleKey)
