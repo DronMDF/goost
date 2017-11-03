@@ -5,12 +5,12 @@
 
 #include "DataStream.h"
 #include "BlkRaw.h"
-#include "BlockIterator.h"
+#include "Iterator.h"
 
 using namespace std;
 using namespace magma;
 
-class DataStreamIterator final : public BlockIterator {
+class DataStreamIterator final : public Iterator {
 public:
 	DataStreamIterator(const weak_ptr<const DataStream> &stream_ptr,
 		size_t offset, const BlkRaw &data);
@@ -18,7 +18,7 @@ public:
 	bool last() const override;
 	size_t size() const override;
 	BlkRaw value() const override;
-	shared_ptr<const BlockIterator> next() const override;
+	shared_ptr<const Iterator> next() const override;
 private:
 	const weak_ptr<const DataStream> stream_ptr;
 	const size_t offset;
@@ -46,7 +46,7 @@ BlkRaw DataStreamIterator::value() const
 	return data;
 }
 
-shared_ptr<const BlockIterator> DataStreamIterator::next() const
+shared_ptr<const Iterator> DataStreamIterator::next() const
 {
 	const auto stream = stream_ptr.lock();
 	return stream->iter(offset + 8);
@@ -57,7 +57,7 @@ DataStream::DataStream(const vector<uint64_t> &data)
 {
 }
 
-shared_ptr<const BlockIterator> DataStream::iter(size_t offset) const
+shared_ptr<const Iterator> DataStream::iter(size_t offset) const
 {
 	if (data.size() <= offset / sizeof(uint64_t)) {
 		return {};

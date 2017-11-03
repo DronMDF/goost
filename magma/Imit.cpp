@@ -7,8 +7,8 @@
 #include <iostream>
 #include "BlkEncrypted.h"
 #include "BlkRaw.h"
-#include "BlockIterator.h"
 #include "DataStream.h"
+#include "Iterator.h"
 
 using namespace std;
 using namespace magma;
