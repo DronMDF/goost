@@ -5,8 +5,8 @@
 
 #include <upp11.h>
 #include <magma/BlkRaw.h>
-#include <magma/BlockIterator.h>
 #include <magma/DataStream.h>
+#include <magma/Iterator.h>
 
 using namespace std;
 using namespace magma;
