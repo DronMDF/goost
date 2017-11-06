@@ -14,8 +14,8 @@ namespace magma {
 class BlkRaw;
 class Sbox;
 
-// @todo #274 Split magma::Key to magma::Forward and magma::Backward?
-//  need to think about it.
+// @todo #274 magma::Key used in two direction forward and backward.
+//  we need two classes implement Forward and Backward transformed block.
 class Key {
 public:
 	/// String key
