@@ -32,14 +32,14 @@ UP_TEST(R3413_2015_Test)
 	const auto block2 = block1->next();
 	const auto block3 = block2->next();
 	// Then
-	UP_ASSERT_EQUAL(block0->value().value().first, 0x3c130a59);
-	UP_ASSERT_EQUAL(block0->value().value().second, 0x92def06b);
-	UP_ASSERT_EQUAL(block1->value().value().first, 0xf8189d20);
-	UP_ASSERT_EQUAL(block1->value().value().second, 0xdb54c704);
-	UP_ASSERT_EQUAL(block2->value().value().first, 0x67a8024c);
-	UP_ASSERT_EQUAL(block2->value().value().second, 0x4a98fb2e);
-	UP_ASSERT_EQUAL(block3->value().value().first, 0x17b57e41);
-	UP_ASSERT_EQUAL(block3->value().value().second, 0x8912409b);
+	UP_ASSERT_EQUAL(block0->value().first, 0x3c130a59);
+	UP_ASSERT_EQUAL(block0->value().second, 0x92def06b);
+	UP_ASSERT_EQUAL(block1->value().first, 0xf8189d20);
+	UP_ASSERT_EQUAL(block1->value().second, 0xdb54c704);
+	UP_ASSERT_EQUAL(block2->value().first, 0x67a8024c);
+	UP_ASSERT_EQUAL(block2->value().second, 0x4a98fb2e);
+	UP_ASSERT_EQUAL(block3->value().first, 0x17b57e41);
+	UP_ASSERT_EQUAL(block3->value().second, 0x8912409b);
 	UP_ASSERT(block3->last());
 }
 

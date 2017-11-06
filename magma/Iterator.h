@@ -4,19 +4,14 @@
 // of the MIT license.  See the LICENSE file for details.
 
 #pragma once
+#include "Block.h"
 
 namespace magma {
 
-class BlkRaw;
-
-// @todo #274 magma::Iterator should be magma::Block
-class Iterator {
+class Iterator : public Block {
 public:
-	virtual ~Iterator() = default;
-
 	virtual bool last() const = 0;
 	virtual size_t size() const = 0;
-	virtual BlkRaw value() const = 0;
 	virtual std::shared_ptr<const Iterator> next() const = 0;
 };
 

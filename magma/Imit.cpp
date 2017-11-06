@@ -24,7 +24,8 @@ pair<uint32_t, uint32_t> Imit::value() const
 	auto block = make_shared<const BlkRaw>();
 
 	while (!iter->last()) {
-		const auto bv = BlkEncrypted(*block ^ iter->value(), key).value();
+		const auto iv = iter->value();
+		const auto bv = BlkEncrypted(*block ^ BlkRaw(iv.first, iv.second), key).value();
 		block = make_shared<BlkRaw>(bv.first, bv.second);
 		iter = iter->next();
 	}
@@ -35,9 +36,11 @@ pair<uint32_t, uint32_t> Imit::value() const
 	const BlkRaw B(0x1b);
 	const auto K1 = ((R.value().second & 0x80000000) == 0) ? (R << 1) : (R << 1) ^ B;
 	if (iter->size() == 8) {
-		return BlkEncrypted(*block ^ iter->value() ^ K1, key).value();
+		const auto iv = iter->value();
+		return BlkEncrypted(*block ^ BlkRaw(iv.first, iv.second) ^ K1, key).value();
 	}
 
 	const auto K2 = ((K1.value().second & 0x80000000) == 0) ? (K1 << 1) : (K1 << 1) ^ B;
-	return BlkEncrypted(*block ^ iter->value() ^ K2, key).value();
+	const auto iv = iter->value();
+	return BlkEncrypted(*block ^ BlkRaw(iv.first, iv.second) ^ K2, key).value();
 }
