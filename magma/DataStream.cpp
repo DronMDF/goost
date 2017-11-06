@@ -15,9 +15,10 @@ public:
 	DataStreamIterator(const weak_ptr<const DataStream> &stream_ptr,
 		size_t offset, const BlkRaw &data);
 
+	std::pair<uint32_t, uint32_t> value() const override;
+
 	bool last() const override;
 	size_t size() const override;
-	BlkRaw value() const override;
 	shared_ptr<const Iterator> next() const override;
 private:
 	const weak_ptr<const DataStream> stream_ptr;
@@ -31,6 +32,11 @@ DataStreamIterator::DataStreamIterator(const weak_ptr<const DataStream> &stream_
 {
 }
 
+pair<uint32_t, uint32_t> DataStreamIterator::value() const
+{
+	return data.value();
+}
+
 bool DataStreamIterator::last() const
 {
 	return !next();
@@ -39,11 +45,6 @@ bool DataStreamIterator::last() const
 size_t DataStreamIterator::size() const
 {
 	return 8;
-}
-
-BlkRaw DataStreamIterator::value() const
-{
-	return data;
 }
 
 shared_ptr<const Iterator> DataStreamIterator::next() const
