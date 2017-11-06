@@ -16,6 +16,7 @@ using namespace std;
 using namespace oout;
 using namespace kuznyechik;
 
+// @todo #323 introduce kuznyechik::ReprStream for testing
 class BlkOfStream final : public Block {
 public:
 	BlkOfStream(const shared_ptr<const Stream> &stream, size_t n)
