@@ -6,7 +6,7 @@
 #include "StMemoryTest.h"
 #include <2out/TestEqual.h>
 #include <2out/TestNamed.h>
-#include <magma/DataStream.h>
+#include <magma/StMemory.h>
 #include "ReprStream.h"
 
 using namespace std;
@@ -21,7 +21,7 @@ StMemoryTest::StMemoryTest()
 				"StMemory simple test",
 				make_shared<TestEqual>(
 					make_shared<ReprStream>(
-						make_shared<DataStream>(
+						make_shared<StMemory>(
 							vector<uint64_t>{
 								0x92def06b3c130a59,
 								0xdb54c704f8189d20,

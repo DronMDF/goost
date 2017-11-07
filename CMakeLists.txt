@@ -37,7 +37,6 @@ ADD_LIBRARY(goost
 	magma/BlkEncrypted.cpp
 	magma/BlkRaw.cpp
 	magma/BlkString.cpp
-	magma/DataStream.cpp
 	magma/Imit.cpp
 	magma/KeyCachedData.cpp
 	magma/Key.cpp
@@ -48,6 +47,7 @@ ADD_LIBRARY(goost
 	magma/SboxNibble.cpp
 	magma/SboxR3412.cpp
 	magma/SboxTwisted.cpp
+	magma/StMemory.cpp
 )
 
 ADD_EXECUTABLE(test_goost

@@ -9,16 +9,16 @@
 
 namespace magma {
 
-class DataStream;
+class Stream;
 class Key;
 
 class Imit final : public Block {
 public:
-	Imit(const std::shared_ptr<const DataStream> &data, const std::shared_ptr<const Key> &key);
+	Imit(const std::shared_ptr<const Stream> &data, const std::shared_ptr<const Key> &key);
 
 	std::pair<uint32_t, uint32_t> value() const override;
 private:
-	const std::shared_ptr<const DataStream> data;
+	const std::shared_ptr<const Stream> data;
 	const std::shared_ptr<const Key> key;
 };
 

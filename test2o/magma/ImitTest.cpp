@@ -5,9 +5,9 @@
 
 #include "ImitTest.h"
 #include <2out/TestNamed.h>
-#include <magma/DataStream.h>
 #include <magma/Imit.h>
 #include <magma/Key.h>
+#include <magma/StMemory.h>
 #include "TestBlockEqual.h"
 
 using namespace std;
@@ -22,7 +22,7 @@ ImitTest::ImitTest()
 				"R3413_A262_Test",
 				make_shared<TestBlockEqual>(
 					make_shared<Imit>(
-						make_shared<DataStream>(
+						make_shared<StMemory>(
 							vector<uint64_t>{
 								0x92def06b3c130a59,
 								0xdb54c704f8189d20,

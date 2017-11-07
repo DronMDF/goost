@@ -11,10 +11,9 @@
 
 namespace magma {
 
-// @todo #108 Rename magma::DataStream to magma::StMemory
-class DataStream final : public Stream, public std::enable_shared_from_this<const DataStream> {
+class StMemory final : public Stream, public std::enable_shared_from_this<const StMemory> {
 public:
-	explicit DataStream(const std::vector<uint64_t> &data);
+	explicit StMemory(const std::vector<uint64_t> &data);
 	std::shared_ptr<const Iterator> iter() const override;
 	std::shared_ptr<const Iterator> next_iter(size_t offset = 0) const;
 private:

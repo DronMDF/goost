@@ -4,16 +4,15 @@
 // of the MIT license.  See the LICENSE file for details.
 
 #include "Imit.h"
-#include <iostream>
 #include "BlkEncrypted.h"
 #include "BlkRaw.h"
-#include "DataStream.h"
 #include "Iterator.h"
+#include "Stream.h"
 
 using namespace std;
 using namespace magma;
 
-Imit::Imit(const shared_ptr<const DataStream> &data, const shared_ptr<const Key> &key)
+Imit::Imit(const shared_ptr<const Stream> &data, const shared_ptr<const Key> &key)
 	: data(data), key(key)
 {
 }
