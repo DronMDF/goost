@@ -10,6 +10,7 @@
 #include "BlkStringTest.h"
 #include "ImitTest.h"
 #include "ReprStreamTest.h"
+#include "StMemoryTest.h"
 
 using namespace std;
 using namespace oout;
@@ -23,7 +24,8 @@ magma::Test::Test()
 			make_shared<BlkEncryptedTest>(),
 			make_shared<BlkStringTest>(),
 			make_shared<ImitTest>(),
-			make_shared<ReprStreamTest>()
+			make_shared<ReprStreamTest>(),
+			make_shared<StMemoryTest>()
 		)
 	)
 {
