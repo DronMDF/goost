@@ -13,7 +13,7 @@
 using namespace std;
 using namespace magma;
 
-ReprStream::ReprStream(const std::shared_ptr<const Stream> &stream)
+ReprStream::ReprStream(const shared_ptr<const Stream> &stream)
 	: stream(stream)
 {
 }
