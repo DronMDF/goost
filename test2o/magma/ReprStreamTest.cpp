@@ -6,7 +6,7 @@
 #include "ReprStreamTest.h"
 #include <2out/TestNamed.h>
 #include <2out/TestEqual.h>
-#include <magma/DataStream.h>
+#include <magma/StMemory.h>
 #include "ReprStream.h"
 
 using namespace std;
@@ -21,7 +21,7 @@ ReprStreamTest::ReprStreamTest()
 				"Trivial Stream representation",
 				make_shared<TestEqual>(
 					make_shared<ReprStream>(
-						make_shared<DataStream>(
+						make_shared<StMemory>(
 							vector<uint64_t>{
 								0xffeeddccbbaa9988,
 								0x1122334455667700
