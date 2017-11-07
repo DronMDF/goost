@@ -29,6 +29,8 @@ ADD_EXECUTABLE(
 	magma/BlkStringTest.cpp
 	magma/ImitTest.cpp
 	magma/ReprBlock.cpp
+	magma/ReprStream.cpp
+	magma/ReprStreamTest.cpp
 	magma/TestBlockEqual.cpp
 	magma/Test.cpp
 )
