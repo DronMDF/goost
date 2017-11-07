@@ -30,7 +30,6 @@ pair<uint32_t, uint32_t> Imit::value() const
 		iter = iter->next();
 	}
 
-
 	const auto Rv = BlkEncrypted({}, key).value();
 	const BlkRaw R(Rv.first, Rv.second);
 	const BlkRaw B(0x1b);
