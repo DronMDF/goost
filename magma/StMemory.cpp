@@ -10,10 +10,11 @@
 using namespace std;
 using namespace magma;
 
-// @todo #321 Rename DataStreamIterator to magma::ItMemory
-class DataStreamIterator final : public Iterator {
+namespace magma {
+
+class ItMemory final : public Iterator {
 public:
-	DataStreamIterator(const weak_ptr<const StMemory> &stream_ptr,
+	ItMemory(const weak_ptr<const StMemory> &stream_ptr,
 		size_t offset, const BlkRaw &data);
 
 	std::pair<uint32_t, uint32_t> value() const override;
@@ -27,28 +28,31 @@ private:
 	const BlkRaw data;
 };
 
-DataStreamIterator::DataStreamIterator(const weak_ptr<const StMemory> &stream_ptr,
+}
+
+// @todo #332 Add size parameter to iterator, and he can determine last() and size() for youself.
+ItMemory::ItMemory(const weak_ptr<const StMemory> &stream_ptr,
 		size_t offset, const BlkRaw &data)
 	: stream_ptr(stream_ptr), offset(offset), data(data)
 {
 }
 
-pair<uint32_t, uint32_t> DataStreamIterator::value() const
+pair<uint32_t, uint32_t> ItMemory::value() const
 {
 	return data.value();
 }
 
-bool DataStreamIterator::last() const
+bool ItMemory::last() const
 {
 	return !next();
 }
 
-size_t DataStreamIterator::size() const
+size_t ItMemory::size() const
 {
 	return 8;
 }
 
-shared_ptr<const Iterator> DataStreamIterator::next() const
+shared_ptr<const Iterator> ItMemory::next() const
 {
 	const auto stream = stream_ptr.lock();
 	return stream->next_iter(offset + 8);
@@ -69,7 +73,7 @@ shared_ptr<const Iterator> StMemory::next_iter(size_t offset) const
 	if (data.size() <= offset / sizeof(uint64_t)) {
 		return {};
 	}
-	return make_shared<const DataStreamIterator>(
+	return make_shared<const ItMemory>(
 		shared_from_this(),
 		offset,
 		BlkRaw(&data[offset / sizeof(uint64_t)])
