@@ -10,6 +10,7 @@
 #include "BlkStringTest.h"
 #include "ImitTest.h"
 #include "KeyDataNativeTest.h"
+#include "KeyDataStringTest.h"
 #include "ReprStreamTest.h"
 #include "StMemoryTest.h"
 
@@ -26,6 +27,7 @@ magma::Test::Test()
 			make_shared<BlkStringTest>(),
 			make_shared<ImitTest>(),
 			make_shared<KeyDataNativeTest>(),
+			make_shared<KeyDataStringTest>(),
 			make_shared<ReprStreamTest>(),
 			make_shared<StMemoryTest>()
 		)

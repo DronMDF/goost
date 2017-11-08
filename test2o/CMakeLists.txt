@@ -29,6 +29,7 @@ ADD_EXECUTABLE(
 	magma/BlkStringTest.cpp
 	magma/ImitTest.cpp
 	magma/KeyDataNativeTest.cpp
+	magma/KeyDataStringTest.cpp
 	magma/ReprBlock.cpp
 	magma/ReprKeyData.cpp
 	magma/ReprStream.cpp
