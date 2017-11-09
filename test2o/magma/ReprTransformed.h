@@ -5,20 +5,20 @@
 
 #pragma once
 #include <memory>
-#include <2out/Test.h>
-#include <2out/Result.h>
+#include <2out/Representation.h>
 
 namespace magma {
 
 class Sbox;
 
-class SboxNibbleTest final : public oout::Test {
+class ReprTransformed final : public oout::Representation {
 public:
-	SboxNibbleTest();
-	std::unique_ptr<const oout::Result> result() const override;
+	ReprTransformed(const std::shared_ptr<const Sbox> &sbox, uint32_t value);
+
+	std::string asString() const override;
 private:
 	const std::shared_ptr<const Sbox> sbox;
-	const std::shared_ptr<const oout::Test> tests;
+	const uint32_t value;
 };
 
 }

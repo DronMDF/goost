@@ -4,35 +4,14 @@
 // of the MIT license.  See the LICENSE file for details.
 
 #include "SboxNibbleTest.h"
-#include <sstream>
-#include <iomanip>
 #include <2out/TestEqual.h>
 #include <2out/TestNamed.h>
-#include <2out/Representation.h>
 #include <magma/SboxNibble.h>
+#include "ReprTransformed.h"
 
 using namespace std;
 using namespace oout;
 using namespace magma;
-
-class ReprTransformed final : public Representation {
-public:
-	ReprTransformed(const shared_ptr<const Sbox> &sbox, uint32_t value)
-		: sbox(sbox), value(value)
-	{
-	}
-
-	string asString() const override
-	{
-		const auto result = sbox->transform(value);
-		ostringstream out;
-		out << hex << setfill('0') << setw(8) << result;
-		return out.str();
-	}
-private:
-	const shared_ptr<const Sbox> sbox;
-	const uint32_t value;
-};
 
 SboxNibbleTest::SboxNibbleTest()
 	: sbox(

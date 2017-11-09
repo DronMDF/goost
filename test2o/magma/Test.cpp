@@ -14,6 +14,7 @@
 #include "KeyDataStringTest.h"
 #include "ReprStreamTest.h"
 #include "SboxNibbleTest.h"
+#include "SboxTwistedTest.h"
 #include "StMemoryTest.h"
 
 using namespace std;
@@ -33,6 +34,7 @@ magma::Test::Test()
 			make_shared<KeyDataStringTest>(),
 			make_shared<ReprStreamTest>(),
 			make_shared<SboxNibbleTest>(),
+			make_shared<SboxTwistedTest>(),
 			make_shared<StMemoryTest>()
 		)
 	)
