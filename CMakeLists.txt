@@ -53,7 +53,6 @@ ADD_LIBRARY(goost
 ADD_EXECUTABLE(test_goost
 	test/gost89/DataImitTest.cpp
 	test/gost89/ProceduralImitTest.cpp
-	test/magma/SboxNibbleTest.cpp
 	test/magma/SboxTwistedTest.cpp
 	test/main.cpp
 )

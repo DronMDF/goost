@@ -35,6 +35,7 @@ ADD_EXECUTABLE(
 	magma/ReprKeyData.cpp
 	magma/ReprStream.cpp
 	magma/ReprStreamTest.cpp
+	magma/SboxNibbleTest.cpp
 	magma/StMemoryTest.cpp
 	magma/TestBlockEqual.cpp
 	magma/Test.cpp
