@@ -25,7 +25,6 @@ script:
     make style
     make VERBOSE=1
     make test
-    ./test_report.py -o shippable/testresults/goost.xml ./test_goost
 
 after_success:
   # Creating report

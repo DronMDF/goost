@@ -50,13 +50,5 @@ ADD_LIBRARY(goost
 	magma/StMemory.cpp
 )
 
-ADD_EXECUTABLE(test_goost
-	test/gost89/DataImitTest.cpp
-	test/gost89/ProceduralImitTest.cpp
-	test/main.cpp
-)
-TARGET_LINK_LIBRARIES(test_goost goost)
-ADD_TEST(unittest test_goost)
-
 ADD_SUBDIRECTORY(2out)
 ADD_SUBDIRECTORY(test2o)
