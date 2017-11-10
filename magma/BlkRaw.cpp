@@ -59,10 +59,3 @@ BlkRaw BlkRaw::operator ^(const BlkRaw &b) const
 {
 	return {low ^ b.low, high ^ b.high};
 }
-
-ostream &magma::operator <<(ostream &os, const BlkRaw &block)
-{
-	const auto value = block.value();
-	os << hex << setfill('0') << setw(8) << value.second << setw(8) << value.first;
-	return os;
-}

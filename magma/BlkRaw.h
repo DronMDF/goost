@@ -21,6 +21,7 @@ public:
 
 	std::pair<uint32_t, uint32_t> value() const override;
 
+	// @todo #295 Comparsion of BlkRaw is not need. Remove it.
 	bool operator ==(const BlkRaw &block) const;
 	// @todo #274 Add magma::BlkShifted
 	BlkRaw operator <<(int i) const;
@@ -31,8 +32,5 @@ private:
 	const uint32_t low;
 	const uint32_t high;
 };
-
-// @todo #274 Add magma::ReprBlock instead operator <<
-std::ostream &operator <<(std::ostream &os, const BlkRaw &block);
 
 }
