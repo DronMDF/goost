@@ -9,8 +9,18 @@
 using namespace std;
 using namespace magma;
 
-BlkRaw::BlkRaw()
-	: BlkRaw(0LU)
+BlkRaw::BlkRaw(uint32_t low, uint32_t high)
+	: low(low), high(high)
+{
+}
+
+BlkRaw::BlkRaw(const pair<uint32_t, uint32_t> &value)
+	: BlkRaw(value.first, value.second)
+{
+}
+
+BlkRaw::BlkRaw(const shared_ptr<const Block> &block)
+	: BlkRaw(block->value())
 {
 }
 
@@ -35,8 +45,8 @@ BlkRaw::BlkRaw(const void *ptr)
 {
 }
 
-BlkRaw::BlkRaw(uint32_t low, uint32_t high)
-	: low(low), high(high)
+BlkRaw::BlkRaw()
+	: BlkRaw(0LU)
 {
 }
 
@@ -48,9 +58,4 @@ pair<uint32_t, uint32_t> BlkRaw::value() const
 BlkRaw BlkRaw::operator <<(int i) const
 {
 	return {low << i, high << i | low >> (32 - i)};
-}
-
-BlkRaw BlkRaw::operator ^(const BlkRaw &b) const
-{
-	return {low ^ b.low, high ^ b.high};
 }

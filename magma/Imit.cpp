@@ -6,6 +6,7 @@
 #include "Imit.h"
 #include "BlkEncrypted.h"
 #include "BlkRaw.h"
+#include "BlkXored.h"
 #include "Iterator.h"
 #include "Stream.h"
 
@@ -23,22 +24,24 @@ pair<uint32_t, uint32_t> Imit::value() const
 	auto block = make_shared<const BlkRaw>();
 
 	while (!iter->last()) {
-		const auto iv = iter->value();
-		const auto bv = BlkEncrypted(*block ^ BlkRaw(iv.first, iv.second), key).value();
-		block = make_shared<BlkRaw>(bv.first, bv.second);
+		const auto bv = BlkEncrypted(BlkRaw(BlkXored(block, iter).value()), key).value();
+		block = make_shared<BlkRaw>(bv);
 		iter = iter->next();
 	}
 
-	const auto Rv = BlkEncrypted({}, key).value();
-	const BlkRaw R(Rv.first, Rv.second);
-	const BlkRaw B(0x1b);
-	const auto K1 = ((R.value().second & 0x80000000) == 0) ? (R << 1) : (R << 1) ^ B;
+	const auto R = BlkRaw(BlkEncrypted({}, key).value());
+	const auto B = make_shared<BlkRaw>(0x1b);
+	const auto K1 = make_shared<BlkXored>(
+		make_shared<BlkRaw>((R << 1).value()),
+		(R.value().second & 0x80000000) == 0 ?  make_shared<BlkRaw>() : B
+	);
 	if (iter->size() == 8) {
-		const auto iv = iter->value();
-		return BlkEncrypted(*block ^ BlkRaw(iv.first, iv.second) ^ K1, key).value();
+		return BlkEncrypted(BlkRaw(BlkXored(block, iter, K1).value()), key).value();
 	}
 
-	const auto K2 = ((K1.value().second & 0x80000000) == 0) ? (K1 << 1) : (K1 << 1) ^ B;
-	const auto iv = iter->value();
-	return BlkEncrypted(*block ^ BlkRaw(iv.first, iv.second) ^ K2, key).value();
+	const auto K2 = make_shared<BlkXored>(
+		make_shared<BlkRaw>((BlkRaw(K1) << 1).value()),
+		(K1->value().second & 0x80000000) == 0 ?  make_shared<BlkRaw>() : B
+	);
+	return BlkEncrypted(BlkRaw(BlkXored(block, iter, K2).value()), key).value();
 }
