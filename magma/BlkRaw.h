@@ -21,8 +21,6 @@ public:
 
 	std::pair<uint32_t, uint32_t> value() const override;
 
-	// @todo #295 Comparsion of BlkRaw is not need. Remove it.
-	bool operator ==(const BlkRaw &block) const;
 	// @todo #274 Add magma::BlkShifted
 	BlkRaw operator <<(int i) const;
 	// @todo #274 Add magma::BlkXored
