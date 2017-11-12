@@ -6,6 +6,7 @@
 #include "BlkEncryptedTest.h"
 #include <2out/TestNamed.h>
 #include <magma/BlkEncrypted.h>
+#include <magma/BlkRaw.h>
 #include <magma/Key.h>
 #include <magma/SboxByte.h>
 #include <magma/SboxTwisted.h>
@@ -50,10 +51,12 @@ BlkEncryptedTest::BlkEncryptedTest()
 				"R3412_A24",
 				make_shared<TestBlockEqual>(
 					make_shared<BlkEncrypted>(
-						BlkRaw({
-							0x10, 0x32, 0x54, 0x76,
-							0x98, 0xba, 0xdc, 0xfe
-						}),
+						make_shared<BlkRaw>(
+							vector<uint8_t>{
+								0x10, 0x32, 0x54, 0x76,
+								0x98, 0xba, 0xdc, 0xfe
+							}
+						),
 						key1
 					),
 					"4ee901e5c2d8ca3d"
@@ -62,42 +65,60 @@ BlkEncryptedTest::BlkEncryptedTest()
 			make_shared<const TestNamed>(
 				"R3412_A262_1",
 				make_shared<TestBlockEqual>(
-					make_shared<BlkEncrypted>(BlkRaw(0x92def06b3c130a59), key1),
+					make_shared<BlkEncrypted>(
+						make_shared<BlkRaw>(0x92def06b3c130a59),
+						key1
+					),
 					"2b073f0494f372a0"
 				)
 			),
 			make_shared<const TestNamed>(
 				"R3412_A262_2",
 				make_shared<TestBlockEqual>(
-					make_shared<BlkEncrypted>(BlkRaw(0xf053f8006cebef80), key1),
+					make_shared<BlkEncrypted>(
+						make_shared<BlkRaw>(0xf053f8006cebef80),
+						key1
+					),
 					"c89ed814fd5e18e9"
 				)
 			),
 			make_shared<const TestNamed>(
 				"R3412_A262_3",
 				make_shared<TestBlockEqual>(
-					make_shared<BlkEncrypted>(BlkRaw(0x8206233a9af61aa5), key1),
+					make_shared<BlkEncrypted>(
+						make_shared<BlkRaw>(0x8206233a9af61aa5),
+						key1
+					),
 					"f739b18d34289b00"
 				)
 			),
 			make_shared<const TestNamed>(
 				"R3412_A262_4",
 				make_shared<TestBlockEqual>(
-					make_shared<BlkEncrypted>(BlkRaw(0x216e6a2561cff165), key1),
+					make_shared<BlkEncrypted>(
+						make_shared<BlkRaw>(0x216e6a2561cff165),
+						key1
+					),
 					"154e72102030c5bb"
 				)
 			),
 			make_shared<const TestNamed>(
 				"TestSboxbyteEncryption #1",
 				make_shared<TestBlockEqual>(
-					make_shared<BlkEncrypted>(BlkRaw(0x0001020304050607), key2),
+					make_shared<BlkEncrypted>(
+						make_shared<BlkRaw>(0x0001020304050607),
+						key2
+					),
 					"ea4af215984c8c4b"
 				)
 			),
 			make_shared<const TestNamed>(
 				"TestSboxbyteEncryption #2",
 				make_shared<TestBlockEqual>(
-					make_shared<BlkEncrypted>(BlkRaw(0x08090a0b0c0d0e0f), key2),
+					make_shared<BlkEncrypted>(
+						make_shared<BlkRaw>(0x08090a0b0c0d0e0f),
+						key2
+					),
 					"d12ebcb30957c31e"
 				)
 			)

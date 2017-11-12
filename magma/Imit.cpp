@@ -25,24 +25,24 @@ pair<uint32_t, uint32_t> Imit::value() const
 	auto block = make_shared<const BlkRaw>();
 
 	while (!iter->last()) {
-		const auto bv = BlkEncrypted(BlkRaw(BlkXored(block, iter).value()), key).value();
+		const auto bv = BlkEncrypted(make_shared<BlkXored>(block, iter), key).value();
 		block = make_shared<BlkRaw>(bv);
 		iter = iter->next();
 	}
 
-	const auto R = make_shared<BlkEncrypted>(BlkRaw(), key);
+	const auto R = make_shared<BlkEncrypted>(make_shared<BlkRaw>(), key);
 	const auto B = make_shared<BlkRaw>(0x1b);
 	const auto K1 = make_shared<BlkXored>(
 		make_shared<BlkShifted>(R, 1),
 		(R->value().second & 0x80000000) == 0 ?  make_shared<BlkRaw>() : B
 	);
 	if (iter->size() == 8) {
-		return BlkEncrypted(BlkRaw(BlkXored(block, iter, K1).value()), key).value();
+		return BlkEncrypted(make_shared<BlkXored>(block, iter, K1), key).value();
 	}
 
 	const auto K2 = make_shared<BlkXored>(
 		make_shared<BlkShifted>(K1, 1),
 		(K1->value().second & 0x80000000) == 0 ?  make_shared<BlkRaw>() : B
 	);
-	return BlkEncrypted(BlkRaw(BlkXored(block, iter, K2).value()), key).value();
+	return BlkEncrypted(make_shared<BlkXored>(block, iter, K2), key).value();
 }
