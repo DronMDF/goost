@@ -36,6 +36,7 @@ ADD_LIBRARY(goost
 	magma/BlkDecrypted.cpp
 	magma/BlkEncrypted.cpp
 	magma/BlkRaw.cpp
+	magma/BlkShifted.cpp
 	magma/BlkString.cpp
 	magma/BlkXored.cpp
 	magma/Imit.cpp
