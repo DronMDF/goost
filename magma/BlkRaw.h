@@ -23,9 +23,6 @@ public:
 	BlkRaw();
 
 	std::pair<uint32_t, uint32_t> value() const override;
-
-	// @todo #274 Add magma::BlkShifted
-	BlkRaw operator <<(int i) const;
 private:
 	const uint32_t low;
 	const uint32_t high;

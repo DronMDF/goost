@@ -54,8 +54,3 @@ pair<uint32_t, uint32_t> BlkRaw::value() const
 {
 	return {low, high};
 }
-
-BlkRaw BlkRaw::operator <<(int i) const
-{
-	return {low << i, high << i | low >> (32 - i)};
-}
