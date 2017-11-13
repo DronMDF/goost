@@ -11,7 +11,7 @@ namespace magma {
 
 class BlkSwapped final : public Block {
 public:
-	BlkSwapped(const std::shared_ptr<const Block> &block);
+	explicit BlkSwapped(const std::shared_ptr<const Block> &block);
 	std::pair<uint32_t, uint32_t> value() const override;
 private:
 	const std::shared_ptr<const Block> block;
