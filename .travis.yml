@@ -20,11 +20,10 @@ before_install:
   - gem install pdd
 
 script:
-  - |
-    cmake -DCMAKE_CXX_FLAGS="--coverage" .
-    make style
-    make VERBOSE=1
-    make test
+  - cmake -DCMAKE_CXX_FLAGS="--coverage" . || travis_terminate 1
+  - make style || travis_terminate 1
+  - make VERBOSE=1 || travis_terminate 1
+  - make test || travis_terminate 1
 
 after_success:
   # Creating report

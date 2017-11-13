@@ -20,8 +20,5 @@ pair<uint64_t, uint64_t> BlkString::value() const
 		value.insert(0, 1, '0');
 	}
 	size_t pos;
-	return {
-		stoull(string(value, 16, 16), &pos, 16),
-		stoull(string(value, 0, 16), &pos, 16)
-	};
+	return {stoull(string(value, 16, 16), &pos, 16), stoull(string(value, 0, 16), &pos, 16)};
 }

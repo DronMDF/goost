@@ -3,8 +3,9 @@
 // This software may be modified and distributed under the terms
 // of the MIT license.  See the LICENSE file for details.
 
-#include "BlkStringTest.h"
+#include "BlkSwappedTest.h"
 #include <2out/TestNamed.h>
+#include <magma/BlkSwapped.h>
 #include <magma/BlkString.h>
 #include "TestBlockEqual.h"
 
@@ -12,15 +13,17 @@ using namespace std;
 using namespace oout;
 using namespace magma;
 
-BlkStringTest::BlkStringTest()
+BlkSwappedTest::BlkSwappedTest()
 	: tests(
 		make_unique<TestNamed>(
 			__func__,
 			make_shared<const TestNamed>(
-				"Expansion",
+				"Swap",
 				make_shared<TestBlockEqual>(
-					make_shared<BlkString>("1"),
-					"0000000000000001"
+					make_shared<BlkSwapped>(
+						make_shared<BlkString>("aaaaaaaa55555555")
+					),
+					"55555555aaaaaaaa"
 				)
 			)
 		)
@@ -28,8 +31,7 @@ BlkStringTest::BlkStringTest()
 {
 }
 
-unique_ptr<const Result> BlkStringTest::result() const
+unique_ptr<const Result> BlkSwappedTest::result() const
 {
 	return tests->result();
 }
-

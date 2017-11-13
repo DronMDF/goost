@@ -38,6 +38,7 @@ ADD_LIBRARY(goost
 	magma/BlkRaw.cpp
 	magma/BlkShifted.cpp
 	magma/BlkString.cpp
+	magma/BlkSwapped.cpp
 	magma/BlkXored.cpp
 	magma/Imit.cpp
 	magma/KeyCachedData.cpp
@@ -53,4 +54,4 @@ ADD_LIBRARY(goost
 )
 
 ADD_SUBDIRECTORY(2out)
-ADD_SUBDIRECTORY(test2o)
+ADD_SUBDIRECTORY(test)
