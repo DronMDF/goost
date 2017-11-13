@@ -8,6 +8,7 @@
 #include "BlkDecryptedTest.h"
 #include "BlkEncryptedTest.h"
 #include "BlkStringTest.h"
+#include "BlkSwappedTest.h"
 #include "ImitTest.h"
 #include "KeyCachedDataTest.h"
 #include "KeyDataNativeTest.h"
@@ -28,6 +29,7 @@ magma::Test::Test()
 			make_shared<BlkDecryptedTest>(),
 			make_shared<BlkEncryptedTest>(),
 			make_shared<BlkStringTest>(),
+			make_shared<BlkSwappedTest>(),
 			make_shared<ImitTest>(),
 			make_shared<KeyCachedDataTest>(),
 			make_shared<KeyDataNativeTest>(),

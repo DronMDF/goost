@@ -27,6 +27,7 @@ ADD_EXECUTABLE(
 	magma/BlkDecryptedTest.cpp
 	magma/BlkEncryptedTest.cpp
 	magma/BlkStringTest.cpp
+	magma/BlkSwappedTest.cpp
 	magma/ImitTest.cpp
 	magma/KeyCachedDataTest.cpp
 	magma/KeyDataNativeTest.cpp
