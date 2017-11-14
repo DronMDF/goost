@@ -33,8 +33,10 @@ ADD_LIBRARY(goost
 	kuznyechik/KeyDataString.cpp
 	kuznyechik/StCTREncrypted.cpp
 	kuznyechik/StMemory.cpp
+	magma/BlkBackwarded.cpp
 	magma/BlkDecrypted.cpp
 	magma/BlkEncrypted.cpp
+	magma/BlkForwarded.cpp
 	magma/BlkRaw.cpp
 	magma/BlkShifted.cpp
 	magma/BlkString.cpp

@@ -11,15 +11,21 @@ namespace magma {
 
 class Key;
 
-class BlkEncrypted final : public Block {
+// @todo #328 magma::BlkBackwarded should use KeyData, not Key
+//  Key is not need and should be removed after move backward impl
+//  into magma::BlkBackwarded::value()
+
+/// This is a block, trancformed over key in backward direction
+class BlkBackwarded final : public Block {
 public:
-	BlkEncrypted(
+	BlkBackwarded(
 		const std::shared_ptr<const Block> &block,
 		const std::shared_ptr<const Key> &key
 	);
 	std::pair<uint32_t, uint32_t> value() const override;
 private:
 	const std::shared_ptr<const Block> block;
+	const std::shared_ptr<const Key> key;
 };
 
 }
