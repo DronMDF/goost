@@ -10,6 +10,12 @@
 
 namespace gost89 {
 
+// @todo #352 ImitedBlock should give ptr to Block
+
+// @todo #352 ImitedBlock should be Block
+
+// @todo #352 ImitedBlock should named BlkImited
+
 class ImitedBlock {
 public:
 	ImitedBlock(const magma::BlkRaw &block, const std::shared_ptr<const magma::Key> &key);

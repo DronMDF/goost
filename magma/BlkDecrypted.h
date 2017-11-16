@@ -20,7 +20,6 @@ public:
 	std::pair<uint32_t, uint32_t> value() const override;
 private:
 	const std::shared_ptr<const Block> block;
-	const std::shared_ptr<const Key> key;
 };
 
 }

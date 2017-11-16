@@ -4,6 +4,7 @@
 // of the MIT license.  See the LICENSE file for details.
 
 #include "ImitedBlock.h"
+#include <magma/BlkForwarded.h>
 
 using namespace std;
 using namespace gost89;
@@ -16,5 +17,13 @@ ImitedBlock::ImitedBlock(const BlkRaw &block, const shared_ptr<const Key> &key)
 
 BlkRaw ImitedBlock::value() const
 {
-	return key->forward(key->forward(block));
+	return BlkRaw(
+		make_shared<BlkForwarded>(
+			make_shared<BlkForwarded>(
+				make_shared<BlkRaw>(block.value()),
+				key
+			),
+			key
+		)
+	);
 }

@@ -17,5 +17,18 @@ BlkForwarded::BlkForwarded(const shared_ptr<const Block> &block, const shared_pt
 
 pair<uint32_t, uint32_t> BlkForwarded::value() const
 {
-	return key->forward(BlkRaw(block)).value();
+	const auto value = block->value();
+	uint32_t a = value.first;
+	uint32_t b = value.second;
+
+	b ^= key->transform(a, 0);
+	a ^= key->transform(b, 1);
+	b ^= key->transform(a, 2);
+	a ^= key->transform(b, 3);
+	b ^= key->transform(a, 4);
+	a ^= key->transform(b, 5);
+	b ^= key->transform(a, 6);
+	a ^= key->transform(b, 7);
+
+	return {a, b};
 }

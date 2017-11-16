@@ -28,13 +28,11 @@ public:
 	/// Primary ctor
 	Key(std::unique_ptr<const KeyData> key_data, const std::shared_ptr<const Sbox> &sbox);
 
-	/// @todo #291 Key::forward/backward should take and return pointer to Block
-	BlkRaw forward(const BlkRaw &block) const;
 	BlkRaw backward(const BlkRaw &block) const;
 
-private:
-	uint32_t cycle(uint32_t v, int index) const;
+	uint32_t transform(uint32_t v, int index) const;
 
+private:
 	const std::unique_ptr<const KeyData> key_data;
 	const std::shared_ptr<const Sbox> sbox;
 };
