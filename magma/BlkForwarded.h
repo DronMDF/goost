@@ -11,10 +11,6 @@ namespace magma {
 
 class Key;
 
-// @todo #328 magma::BlkForwarded should use KeyData, not Key
-//  Key is not need. and should be removed after move forward impl
-//  into magma::BlkForwarded::value()
-
 /// This is a block, transformed over key in forward direction
 class BlkForwarded final : public Block {
 public:

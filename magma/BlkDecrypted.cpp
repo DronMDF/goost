@@ -4,21 +4,35 @@
 // of the MIT license.  See the LICENSE file for details.
 
 #include "BlkDecrypted.h"
-#include "BlkRaw.h"
-#include "Key.h"
+#include "BlkBackwarded.h"
+#include "BlkForwarded.h"
+#include "BlkSwapped.h"
 
 using namespace std;
 using namespace magma;
 
 BlkDecrypted::BlkDecrypted(const shared_ptr<const Block> &block, const shared_ptr<const Key> &key)
-	: block(block), key(key)
+	: block(
+		make_shared<BlkSwapped>(
+			make_shared<BlkBackwarded>(
+				make_shared<BlkBackwarded>(
+					make_shared<BlkBackwarded>(
+						make_shared<BlkForwarded>(
+							block,
+							key
+						),
+						key
+					),
+					key
+				),
+				key
+			)
+		)
+	  )
 {
 }
 
 pair<uint32_t, uint32_t> BlkDecrypted::value() const
 {
-	const auto b = block->value();
-	const BlkRaw value(b.first, b.second);
-	const auto rb = key->backward(key->backward(key->backward(key->forward(value)))).value();
-	return {rb.second, rb.first};
+	return block->value();
 }

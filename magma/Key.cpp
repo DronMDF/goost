@@ -36,27 +36,9 @@ Key::Key(unique_ptr<const KeyData> key_data, const shared_ptr<const Sbox> &sbox)
 {
 }
 
-uint32_t Key::cycle(uint32_t v, int index) const
+uint32_t Key::transform(uint32_t v, int index) const
 {
 	return sbox->transform(key_data->key(index) + v);
-}
-
-BlkRaw Key::forward(const BlkRaw &block) const
-{
-	const auto value = block.value();
-	uint32_t a = value.first;
-	uint32_t b = value.second;
-
-	b ^= cycle(a, 0);
-	a ^= cycle(b, 1);
-	b ^= cycle(a, 2);
-	a ^= cycle(b, 3);
-	b ^= cycle(a, 4);
-	a ^= cycle(b, 5);
-	b ^= cycle(a, 6);
-	a ^= cycle(b, 7);
-
-	return {a, b};
 }
 
 BlkRaw Key::backward(const BlkRaw &block) const
@@ -65,14 +47,14 @@ BlkRaw Key::backward(const BlkRaw &block) const
 	uint32_t a = value.first;
 	uint32_t b = value.second;
 
-	b ^= cycle(a, 7);
-	a ^= cycle(b, 6);
-	b ^= cycle(a, 5);
-	a ^= cycle(b, 4);
-	b ^= cycle(a, 3);
-	a ^= cycle(b, 2);
-	b ^= cycle(a, 1);
-	a ^= cycle(b, 0);
+	b ^= transform(a, 7);
+	a ^= transform(b, 6);
+	b ^= transform(a, 5);
+	a ^= transform(b, 4);
+	b ^= transform(a, 3);
+	a ^= transform(b, 2);
+	b ^= transform(a, 1);
+	a ^= transform(b, 0);
 
 	return {a, b};
 }
