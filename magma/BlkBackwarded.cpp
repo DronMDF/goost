@@ -17,5 +17,18 @@ BlkBackwarded::BlkBackwarded(const shared_ptr<const Block> &block, const shared_
 
 pair<uint32_t, uint32_t> BlkBackwarded::value() const
 {
-	return key->backward(BlkRaw(block)).value();
+	const auto value = block->value();
+	uint32_t a = value.first;
+	uint32_t b = value.second;
+
+	b ^= key->transform(a, 7);
+	a ^= key->transform(b, 6);
+	b ^= key->transform(a, 5);
+	a ^= key->transform(b, 4);
+	b ^= key->transform(a, 3);
+	a ^= key->transform(b, 2);
+	b ^= key->transform(a, 1);
+	a ^= key->transform(b, 0);
+
+	return {a, b};
 }

@@ -14,8 +14,6 @@ namespace magma {
 class BlkRaw;
 class Sbox;
 
-// @todo #274 magma::Key used in two direction forward and backward.
-//  we need two classes implement Forward and Backward transformed block.
 class Key {
 public:
 	/// String key
@@ -27,8 +25,6 @@ public:
 
 	/// Primary ctor
 	Key(std::unique_ptr<const KeyData> key_data, const std::shared_ptr<const Sbox> &sbox);
-
-	BlkRaw backward(const BlkRaw &block) const;
 
 	uint32_t transform(uint32_t v, int index) const;
 
