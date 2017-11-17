@@ -4,8 +4,6 @@
 // of the MIT license.  See the LICENSE file for details.
 
 #include "Key.h"
-#include <cstring>
-#include "BlkRaw.h"
 #include "KeyCachedData.h"
 #include "KeyData.h"
 #include "KeyDataNative.h"
@@ -39,22 +37,4 @@ Key::Key(unique_ptr<const KeyData> key_data, const shared_ptr<const Sbox> &sbox)
 uint32_t Key::transform(uint32_t v, int index) const
 {
 	return sbox->transform(key_data->key(index) + v);
-}
-
-BlkRaw Key::backward(const BlkRaw &block) const
-{
-	const auto value = block.value();
-	uint32_t a = value.first;
-	uint32_t b = value.second;
-
-	b ^= transform(a, 7);
-	a ^= transform(b, 6);
-	b ^= transform(a, 5);
-	a ^= transform(b, 4);
-	b ^= transform(a, 3);
-	a ^= transform(b, 2);
-	b ^= transform(a, 1);
-	a ^= transform(b, 0);
-
-	return {a, b};
 }

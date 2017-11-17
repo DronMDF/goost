@@ -11,10 +11,6 @@ namespace magma {
 
 class Key;
 
-// @todo #328 magma::BlkBackwarded should use KeyData, not Key
-//  Key is not need and should be removed after move backward impl
-//  into magma::BlkBackwarded::value()
-
 /// This is a block, trancformed over key in backward direction
 class BlkBackwarded final : public Block {
 public:
