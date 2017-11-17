@@ -4,8 +4,6 @@
 // of the MIT license.  See the LICENSE file for details.
 
 #include "Key.h"
-#include <cstring>
-#include "BlkRaw.h"
 #include "KeyCachedData.h"
 #include "KeyData.h"
 #include "KeyDataNative.h"
