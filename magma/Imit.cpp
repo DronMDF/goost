@@ -25,7 +25,7 @@ private:
 	const shared_ptr<const Iterator> iter;
 };
 
-} // namespace magma
+}  // namespace magma
 
 BlkImitFinalKey::BlkImitFinalKey(
 	const shared_ptr<const Key> &key,
