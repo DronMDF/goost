@@ -16,6 +16,14 @@ using namespace magma;
 
 namespace magma {
 
+class BlkImitShifted final : public Block {
+public:
+	explicit BlkImitShifted(const shared_ptr<const Block> &block);
+	pair<uint32_t, uint32_t> value() const override;
+private:
+	const shared_ptr<const Block> block;
+};
+
 class BlkImitFinalKey final : public Block {
 public:
 	BlkImitFinalKey(const shared_ptr<const Key> &key, const shared_ptr<const Iterator> &iter);
@@ -27,6 +35,20 @@ private:
 
 }  // namespace magma
 
+BlkImitShifted::BlkImitShifted(const shared_ptr<const Block> &block)
+	: block(block)
+{
+}
+
+pair<uint32_t, uint32_t> BlkImitShifted::value() const
+{
+	const auto b = make_shared<BlkShifted>(block, 1);
+	if ((block->value().second & 0x80000000) == 0) {
+		return b->value();
+	}
+	return BlkXored(b, make_shared<BlkRaw>(0x1b)).value();
+}
+
 BlkImitFinalKey::BlkImitFinalKey(
 	const shared_ptr<const Key> &key,
 	const shared_ptr<const Iterator> &iter
@@ -37,22 +59,13 @@ BlkImitFinalKey::BlkImitFinalKey(
 
 pair<uint32_t, uint32_t> BlkImitFinalKey::value() const
 {
-	const auto R = make_shared<BlkEncrypted>(make_shared<BlkRaw>(), key);
-	// @todo #360 Extract shifted block xor B to another block class for code reuse
-	const auto B = make_shared<BlkRaw>(0x1b);
-	const auto K1 = make_shared<BlkXored>(
-		make_shared<BlkShifted>(R, 1),
-		(R->value().second & 0x80000000) == 0 ?  make_shared<BlkRaw>() : B
+	const auto K1 = make_shared<BlkImitShifted>(
+		make_shared<BlkEncrypted>(make_shared<BlkRaw>(), key)
 	);
 	if (iter->size() == 8) {
 		return K1->value();
 	}
-
-	const auto K2 = make_shared<BlkXored>(
-		make_shared<BlkShifted>(K1, 1),
-		(K1->value().second & 0x80000000) == 0 ?  make_shared<BlkRaw>() : B
-	);
-	return K2->value();
+	return BlkImitShifted(K1).value();
 }
 
 
