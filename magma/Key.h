@@ -33,4 +33,4 @@ private:
 	const std::shared_ptr<const Sbox> sbox;
 };
 
-}
+}  // namespace magma

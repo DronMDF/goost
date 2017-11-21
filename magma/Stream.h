@@ -15,4 +15,4 @@ public:
 	virtual std::shared_ptr<const Iterator> iter() const = 0;
 };
 
-}
+}  // namespace magma

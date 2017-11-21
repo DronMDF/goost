@@ -21,4 +21,4 @@ private:
 	const uint32_t value;
 };
 
-}
+}  // namespace magma

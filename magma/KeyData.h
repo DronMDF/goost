@@ -14,4 +14,4 @@ public:
 	virtual uint32_t key(int index) const = 0;
 };
 
-}
+}  // namespace magma

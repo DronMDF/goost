@@ -29,4 +29,4 @@ private:
 	const std::shared_ptr<const oout::Test> tests;
 };
 
-}
+}  // namespace kuznyechik

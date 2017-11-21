@@ -25,4 +25,4 @@ private:
 	const uint64_t high;
 };
 
-}
+}  // namespace kuznyechik

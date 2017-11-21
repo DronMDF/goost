@@ -20,4 +20,4 @@ private:
 	const std::vector<uint64_t> data;
 };
 
-}
+}  // namespace magma

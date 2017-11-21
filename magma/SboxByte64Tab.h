@@ -17,4 +17,4 @@ private:
 	int offset;
 };
 
-}
+}  // namespace magma

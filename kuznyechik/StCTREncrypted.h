@@ -31,4 +31,4 @@ private:
 	const uint64_t iv;
 };
 
-}
+}  // namespace kuznyechik

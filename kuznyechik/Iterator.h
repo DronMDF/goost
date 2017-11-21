@@ -19,4 +19,4 @@ public:
 	virtual std::shared_ptr<const Iterator> next() const = 0;
 };
 
-}
+}  // namespace kuznyechik
