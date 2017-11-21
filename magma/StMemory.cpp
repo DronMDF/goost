@@ -28,7 +28,7 @@ private:
 	const BlkRaw data;
 };
 
-}
+}  // namespace magma
 
 // @todo #332 Add size parameter to iterator, and he can determine last() and size() for youself.
 ItMemory::ItMemory(const weak_ptr<const StMemory> &stream_ptr,

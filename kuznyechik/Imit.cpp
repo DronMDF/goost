@@ -39,7 +39,7 @@ private:
 	const shared_ptr<const Block> b;
 };
 
-}
+}  // namespace kuznyechik
 
 Imit::Imit(const shared_ptr<const Stream> &data, const shared_ptr<const Key> &key)
 	: data(data), key(key)
