@@ -11,8 +11,8 @@ jobs:
       - run: |
           git submodule sync
           git submodule update --init
-          sudo apt-get install cmake cppcheck
-          sudo pip install cpplint
+          sudo apt-get install cmake cppcheck python3-pip
+          sudo pip3 install cpplint
           sudo gem install pdd
           cmake .
           make VERBOSE=1

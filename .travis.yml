@@ -18,7 +18,7 @@ before_install:
   - eval "${MATRIX_EVAL}"
   - sudo apt-get install cppcheck lcov ruby-dev
   - sudo pip install cpplint
-  - sudo gem install pdd
+  - gem install pdd
 
 script:
   - cmake -DCMAKE_CXX_FLAGS="--coverage" . || travis_terminate 1
