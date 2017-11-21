@@ -12,7 +12,7 @@ jobs:
           git submodule sync
           git submodule update --init
           sudo apt-get install cmake cppcheck
-          sudo pip3 install cpplint
+          sudo pip install cpplint
           sudo gem install pdd
           cmake .
           make VERBOSE=1
