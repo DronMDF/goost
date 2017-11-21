@@ -17,4 +17,4 @@ public:
 	static constexpr auto size = sizeof(uint64_t) * 2;
 };
 
-}
+}  // namespace kuznyechik

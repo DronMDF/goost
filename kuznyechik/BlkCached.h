@@ -19,4 +19,4 @@ private:
 	const std::shared_ptr<BlockCache> cache;
 };
 
-}
+}  // namespace kuznyechik

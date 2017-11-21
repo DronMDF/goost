@@ -19,4 +19,4 @@ private:
 	const std::shared_ptr<const Stream> stream;
 };
 
-}
+}  // namespace magma

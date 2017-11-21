@@ -18,4 +18,4 @@ private:
 	const int n;
 };
 
-}
+}  // namespace magma

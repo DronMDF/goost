@@ -29,5 +29,4 @@ private:
 	const std::shared_ptr<const Block> b;
 };
 
-}
-
+}  // namespace magma

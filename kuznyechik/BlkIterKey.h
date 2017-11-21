@@ -30,4 +30,4 @@ private:
 	) const;
 };
 
-}
+}  // namespace kuznyechik

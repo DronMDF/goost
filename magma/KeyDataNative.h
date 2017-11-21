@@ -17,4 +17,4 @@ private:
 	const std::vector<uint32_t> key_data;
 };
 
-}
+}  // namespace magma

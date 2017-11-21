@@ -17,4 +17,4 @@ private:
 	const std::string block;
 };
 
-}
+}  // namespace magma

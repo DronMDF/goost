@@ -27,4 +27,4 @@ private:
 	const std::shared_ptr<const Key::Data> key;
 };
 
-}
+}  // namespace kuznyechik

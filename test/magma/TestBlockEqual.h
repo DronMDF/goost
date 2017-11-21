@@ -31,4 +31,4 @@ private:
 	const std::shared_ptr<const oout::Test> test;
 };
 
-}
+}  // namespace magma

@@ -18,4 +18,4 @@ private:
 	std::shared_ptr<const Block> transform(const std::shared_ptr<const Block> &b, int n) const;
 };
 
-}
+}  // namespace kuznyechik

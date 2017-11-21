@@ -40,4 +40,4 @@ private:
 	const std::unique_ptr<const Tab> tab4;
 };
 
-}
+}  // namespace magma

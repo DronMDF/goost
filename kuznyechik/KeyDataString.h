@@ -18,4 +18,4 @@ private:
 	const std::string key_data;
 };
 
-}
+}  // namespace kuznyechik

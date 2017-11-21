@@ -28,4 +28,4 @@ private:
 	const uint32_t high;
 };
 
-}
+}  // namespace magma

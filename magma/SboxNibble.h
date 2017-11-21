@@ -35,4 +35,4 @@ private:
 	uint32_t transformN(uint32_t value, const std::vector<int> &p, int nidx) const;
 };
 
-}
+}  // namespace magma

@@ -22,4 +22,4 @@ private:
 	const std::unique_ptr<const KeyData> keydata;
 };
 
-}
+}  // namespace magma

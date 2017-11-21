@@ -18,4 +18,4 @@ private:
 	const std::unique_ptr<const Sbox> sbox;
 };
 
-}
+}  // namespace magma

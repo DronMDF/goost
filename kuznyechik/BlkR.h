@@ -18,4 +18,4 @@ private:
 	uint8_t gmul(uint8_t a, uint8_t b) const;
 };
 
-}
+}  // namespace kuznyechik
