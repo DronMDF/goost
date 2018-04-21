@@ -1,7 +1,10 @@
-CMAKE_MINIMUM_REQUIRED(VERSION 2.6)
+CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
 PROJECT(goost)
 
 INCLUDE(CTest)
+
+include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
+conan_basic_setup()
 
 INCLUDE_DIRECTORIES(
 	"${PROJECT_SOURCE_DIR}"
@@ -55,5 +58,10 @@ ADD_LIBRARY(goost
 	magma/StMemory.cpp
 )
 
-ADD_SUBDIRECTORY(2out)
 ADD_SUBDIRECTORY(test)
+
+add_custom_target(
+	style
+	COMMAND ${CMAKE_SOURCE_DIR}/style.sh
+	WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+)
