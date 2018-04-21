@@ -17,14 +17,18 @@ matrix:
 before_install:
   - eval "${MATRIX_EVAL}"
   - sudo apt-get install cppcheck lcov ruby-dev
-  - sudo pip install cpplint
+  - sudo pip install cpplint conan
   - gem install pdd
+  - conan remote add dronmdf https://api.bintray.com/conan/mdf/2out
+  - conan install . -s compiler.libcxx='libstdc++11' --build 2out
 
 script:
-  - cmake -DCMAKE_CXX_FLAGS="--coverage" . || travis_terminate 1
-  - make style || travis_terminate 1
-  - make VERBOSE=1 || travis_terminate 1
-  - make test || travis_terminate 1
+  - |
+    set -e
+    cmake -DCMAKE_CXX_FLAGS="--coverage" .
+    make style
+    make VERBOSE=1
+    make test
 
 after_success:
   # Creating report

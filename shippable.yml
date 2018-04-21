@@ -6,10 +6,11 @@ compiler:
 
 build:
   ci:
-    - apt-get update
     - apt-get install cmake cppcheck ruby-dev
-    - pip install cpplint
+    - pip install cpplint conan
     - gem install rake pdd
+    - conan remote add dronmdf https://api.bintray.com/conan/mdf/2out
+    - conan install . -s compiler.libcxx='libstdc++11' --build 2out
     - cmake .
     - make style
     - make VERBOSE=1

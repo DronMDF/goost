@@ -3,6 +3,9 @@ PROJECT(goost)
 
 INCLUDE(CTest)
 
+include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
+conan_basic_setup()
+
 INCLUDE_DIRECTORIES(
 	"${PROJECT_SOURCE_DIR}"
 	"${PROJECT_SOURCE_DIR}/test"
@@ -55,5 +58,4 @@ ADD_LIBRARY(goost
 	magma/StMemory.cpp
 )
 
-ADD_SUBDIRECTORY(2out)
 ADD_SUBDIRECTORY(test)
