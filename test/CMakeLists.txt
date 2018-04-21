@@ -1,8 +1,8 @@
 CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
+PROJECT(test2o)
 
-INCLUDE_DIRECTORIES(
-	"${PROJECT_SOURCE_DIR}/2out"
-)
+include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
+conan_basic_setup()
 
 ADD_EXECUTABLE(
 	test2o
@@ -47,7 +47,7 @@ ADD_EXECUTABLE(
 TARGET_LINK_LIBRARIES(
 	test2o
 	goost
-	2out
+	${CONAN_LIBS}
 )
 
 ADD_CUSTOM_COMMAND(
@@ -59,5 +59,5 @@ ADD_CUSTOM_COMMAND(
 # @todo #122:15min Hardcoded shippable path
 ADD_TEST(
 	NAME test2o
-	COMMAND sh -c "./test2o > ${CMAKE_BINARY_DIR}/shippable/testresults/test2o.xml"
+	COMMAND sh -c "$<TARGET_FILE:test2o> > ${CMAKE_BINARY_DIR}/shippable/testresults/test2o.xml"
 )
