@@ -24,7 +24,7 @@ class GoostConan(ConanFile):
 
 	def package(self):
 		self.copy("*.h", dst="include/goost/magma", src="magma")
-		self.copy("*.h", dst="include/goost/kuznyechik", src="kuznechik")
+		self.copy("*.h", dst="include/goost/kuznyechik", src="kuznyechik")
 		self.copy("*.so", dst="lib", keep_path=False)
 		self.copy("*.a", dst="lib", keep_path=False)
 
