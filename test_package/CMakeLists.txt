@@ -3,7 +3,7 @@ PROJECT(test_package)
 INCLUDE(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
 CONAN_BASIC_SETUP()
 
-ADD_DEFINITIONS("-std=c++14 -Wall -Wextra -Weffc++ -Werror")
+ADD_DEFINITIONS("-std=c++14 -Wall -Wextra -Weffc++ -Werror -Wno-non-virtual-dtor")
 
 ADD_EXECUTABLE(
 	example
