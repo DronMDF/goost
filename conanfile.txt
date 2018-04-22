@@ -1,5 +1,0 @@
-[generators]
-cmake
-
-[requires]
-2out/0.5@dronmdf/stable
