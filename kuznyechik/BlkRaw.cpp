@@ -25,8 +25,8 @@ BlkRaw::BlkRaw(const shared_ptr<const Block> &block)
 
 BlkRaw::BlkRaw(const void * const ptr)
 	: BlkRaw(
-		reinterpret_cast<const uint64_t * const>(ptr)[0],
-		reinterpret_cast<const uint64_t * const>(ptr)[1]
+		reinterpret_cast<const uint64_t *>(ptr)[0],
+		reinterpret_cast<const uint64_t *>(ptr)[1]
 	)
 {
 }

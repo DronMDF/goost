@@ -25,3 +25,12 @@ Pure object oriented gost ciphers implementation
 * All base classes are abstract (with default virtual dtor)
 * All method are const (exclude private classes)
 * All member are private and const (exclude private classes)
+
+# Building
+
+```sh
+$ conan install <path to goost> --build 2out
+$ cmake -GNinja <path to goost>
+$ ninja
+$ ninja test
+```
