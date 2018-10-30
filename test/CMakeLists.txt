@@ -1,12 +1,12 @@
 CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
-PROJECT(test2o)
+PROJECT(goost_test)
 
 include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
 conan_basic_setup()
 
 ADD_EXECUTABLE(
-	test2o
-	test2o.cpp
+	goost_test
+	goost_test.cpp
 	kuznyechik/BlkCachedTest.cpp
 	kuznyechik/BlkEncryptedTest.cpp
 	kuznyechik/BlkIncrementedTest.cpp
@@ -45,19 +45,19 @@ ADD_EXECUTABLE(
 )
 
 TARGET_LINK_LIBRARIES(
-	test2o
+	goost_test
 	goost
 	${CONAN_LIBS}
 )
 
 ADD_CUSTOM_COMMAND(
-	TARGET test2o
+	TARGET goost_test
 	PRE_BUILD
 	COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_BINARY_DIR}/shippable/testresults
 )
 
 # @todo #122:15min Hardcoded shippable path
 ADD_TEST(
-	NAME test2o
-	COMMAND sh -c "$<TARGET_FILE:test2o> > ${CMAKE_BINARY_DIR}/shippable/testresults/test2o.xml"
+	NAME goost_test
+	COMMAND sh -c "$<TARGET_FILE:goost_test> > ${CMAKE_BINARY_DIR}/shippable/testresults/goost_test.xml"
 )
