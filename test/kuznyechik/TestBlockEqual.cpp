@@ -4,31 +4,29 @@
 // of the MIT license.  See the LICENSE file for details.
 
 #include "TestBlockEqual.h"
-#include <2out/ReprString.h>
+#include <2out/EqualMatch.h>
+#include <2out/MatchTest.h>
 #include <2out/Result.h>
-#include <2out/TestEqual.h>
 #include "ReprBlock.h"
 
 using namespace std;
 using namespace oout;
 using namespace kuznyechik;
 
-TestBlockEqual::TestBlockEqual(
-	const shared_ptr<const Representation> &a,
-	const shared_ptr<const Representation> &b
-) : test(make_shared<TestEqual>(a, b))
+TestBlockEqual::TestBlockEqual(const shared_ptr<const Text> &a, const string &b)
+	: test(make_shared<MatchTest>(a, make_shared<EqualMatch>(b)))
 {
 }
 
 TestBlockEqual::TestBlockEqual(
 	const shared_ptr<const Block> &a,
 	const shared_ptr<const Block> &b
-) : TestBlockEqual(make_shared<ReprBlock>(a), make_shared<ReprBlock>(b))
+) : TestBlockEqual(make_shared<ReprBlock>(a), ReprBlock(b).asString())
 {
 }
 
 TestBlockEqual::TestBlockEqual(const shared_ptr<const Block> &a, const string &b)
-	: TestBlockEqual(make_shared<ReprBlock>(a), make_shared<ReprString>(b))
+	: TestBlockEqual(make_shared<ReprBlock>(a), b)
 {
 }
 

@@ -20,7 +20,7 @@ Pure object oriented gost ciphers implementation
 * Only one primary ctor (all other are delegating to primary)
 * No static
 * No null
-* No new (make_unique or make_shared)
+* No new (use make_unique or make_shared)
 * All classes are final
 * All base classes are abstract (with default virtual dtor)
 * All method are const (exclude private classes)
@@ -29,7 +29,8 @@ Pure object oriented gost ciphers implementation
 # Building
 
 ```sh
-$ conan install <path to goost> --build 2out
+$ conan remote add mdf https://api.bintray.com/conan/mdf/2out
+$ conan install <path to goost> -s compiler.libcxx='libstdc++11' --build 2out
 $ cmake -GNinja <path to goost>
 $ ninja
 $ ninja test
