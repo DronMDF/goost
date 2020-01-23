@@ -5,8 +5,9 @@
 
 #include "KeyCachedDataTest.h"
 #include <random>
-#include <2out/TestEqual.h>
-#include <2out/TestNamed.h>
+#include <2out/EqualMatch.h>
+#include <2out/MatchTest.h>
+#include <2out/NamedTest.h>
 #include <magma/KeyCachedData.h>
 #include "ReprKeyData.h"
 
@@ -36,13 +37,13 @@ KeyCachedDataTest::KeyCachedDataTest()
 		)
 	  ),
 	  tests(
-		make_unique<TestNamed>(
+		make_unique<NamedTest>(
 			__func__,
-			make_shared<const TestNamed>(
+			make_shared<const NamedTest>(
 				"Cached first result",
-				make_shared<TestEqual>(
+				make_shared<MatchTest>(
 					make_shared<ReprKeyData>(key_data),
-					make_shared<ReprKeyData>(key_data)
+					make_shared<EqualMatch>(ReprKeyData(key_data).asString())
 				)
 			)
 		)

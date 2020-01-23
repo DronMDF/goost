@@ -10,12 +10,13 @@
 
 namespace magma {
 
+// @todo #378 Add magma::BlockMatch with 2out::MatchTest instead TestBlockEqual
 class TestBlockEqual final : public oout::Test {
 public:
 	/// Primary ctor
 	TestBlockEqual(
 		const std::shared_ptr<const oout::Representation> &a,
-		const std::shared_ptr<const oout::Representation> &b
+		const std::string &b
 	);
 
 	TestBlockEqual(
