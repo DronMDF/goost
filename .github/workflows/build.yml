@@ -9,8 +9,10 @@ jobs:
     - uses: actions/setup-ruby@v1
     - run: |
         sudo apt-get install cmake cppcheck doxygen python3-pip
-        sudo pip3 install cpplint
+        sudo pip3 install cpplint conan
         gem install pdd
+        conan remote add mdf https://api.bintray.com/conan/mdf/2out
+        conan install . -s compiler.libcxx='libstdc++11' --build 2out
         cmake -DCMAKE_CXX_FLAGS="--coverage" .
         make style
         make VERBOSE=1
