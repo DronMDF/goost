@@ -1,0 +1,19 @@
+name: Build
+on:
+  push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - uses: actions/setup-ruby@v1
+    - run: |
+        sudo apt-get install cmake cppcheck doxygen python3-pip python3-setuptools
+        sudo pip3 install cpplint conan
+        gem install pdd
+        conan remote add mdf https://api.bintray.com/conan/mdf/2out
+        conan install . -s compiler.libcxx='libstdc++11' --build 2out
+        cmake -DCMAKE_CXX_FLAGS="--coverage" .
+        make style
+        make VERBOSE=1
+        make test
