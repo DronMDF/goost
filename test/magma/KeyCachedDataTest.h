@@ -6,7 +6,7 @@
 #include <memory>
 #include <2out/Test.h>
 #include <2out/Result.h>
-#include <magma/KeyData.h>
+#include <goost/magma/KeyData.h>
 
 namespace magma {
 

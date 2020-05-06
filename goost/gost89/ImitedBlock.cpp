@@ -4,7 +4,7 @@
 // of the MIT license.  See the LICENSE file for details.
 
 #include "ImitedBlock.h"
-#include <magma/BlkForwarded.h>
+#include <goost/magma/BlkForwarded.h>
 
 using namespace std;
 using namespace gost89;

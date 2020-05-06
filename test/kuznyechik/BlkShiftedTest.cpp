@@ -5,8 +5,8 @@
 
 #include "BlkShiftedTest.h"
 #include <2out/TestNamed.h>
-#include <kuznyechik/BlkShifted.h>
-#include <kuznyechik/BlkString.h>
+#include <goost/kuznyechik/BlkShifted.h>
+#include <goost/kuznyechik/BlkString.h>
 #include "TestBlockEqual.h"
 
 using namespace std;

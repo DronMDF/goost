@@ -5,9 +5,9 @@
 
 #include "ImitTest.h"
 #include <2out/TestNamed.h>
-#include <magma/Imit.h>
-#include <magma/Key.h>
-#include <magma/StMemory.h>
+#include <goost/magma/Imit.h>
+#include <goost/magma/Key.h>
+#include <goost/magma/StMemory.h>
 #include "TestBlockEqual.h"
 
 using namespace std;

@@ -6,7 +6,7 @@
 #include "ReprBlock.h"
 #include <iomanip>
 #include <sstream>
-#include <kuznyechik/Block.h>
+#include <goost/kuznyechik/Block.h>
 
 using namespace std;
 using namespace kuznyechik;

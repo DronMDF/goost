@@ -7,7 +7,7 @@
 #include <iomanip>
 #include <sstream>
 #include <arpa/inet.h>
-#include <magma/KeyData.h>
+#include <goost/magma/KeyData.h>
 
 using namespace std;
 using namespace magma;

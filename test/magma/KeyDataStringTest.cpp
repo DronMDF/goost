@@ -6,7 +6,7 @@
 #include "KeyDataStringTest.h"
 #include <2out/TestEqual.h>
 #include <2out/TestNamed.h>
-#include <magma/KeyDataString.h>
+#include <goost/magma/KeyDataString.h>
 #include "ReprKeyData.h"
 
 using namespace std;

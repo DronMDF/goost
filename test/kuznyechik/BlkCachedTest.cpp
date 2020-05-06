@@ -6,7 +6,7 @@
 #include "BlkCachedTest.h"
 #include <random>
 #include <2out/TestNamed.h>
-#include <kuznyechik/BlkCached.h>
+#include <goost/kuznyechik/BlkCached.h>
 #include "TestBlockEqual.h"
 
 using namespace std;

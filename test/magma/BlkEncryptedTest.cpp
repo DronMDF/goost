@@ -5,11 +5,11 @@
 
 #include "BlkEncryptedTest.h"
 #include <2out/TestNamed.h>
-#include <magma/BlkEncrypted.h>
-#include <magma/BlkRaw.h>
-#include <magma/Key.h>
-#include <magma/SboxByte.h>
-#include <magma/SboxTwisted.h>
+#include <goost/magma/BlkEncrypted.h>
+#include <goost/magma/BlkRaw.h>
+#include <goost/magma/Key.h>
+#include <goost/magma/SboxByte.h>
+#include <goost/magma/SboxTwisted.h>
 #include "TestBlockEqual.h"
 
 using namespace std;

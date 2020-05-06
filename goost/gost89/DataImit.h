@@ -5,7 +5,7 @@
 
 #include <memory>
 #include <vector>
-#include <magma/Key.h>
+#include <goost/magma/Key.h>
 
 namespace gost89 {
 

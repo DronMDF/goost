@@ -5,11 +5,11 @@
 
 #include "StCTREncryptedTest.h"
 #include <2out/TestNamed.h>
-#include <kuznyechik/BlkRaw.h>
-#include <kuznyechik/Iterator.h>
-#include <kuznyechik/Key.h>
-#include <kuznyechik/StCTREncrypted.h>
-#include <kuznyechik/StMemory.h>
+#include <goost/kuznyechik/BlkRaw.h>
+#include <goost/kuznyechik/Iterator.h>
+#include <goost/kuznyechik/Key.h>
+#include <goost/kuznyechik/StCTREncrypted.h>
+#include <goost/kuznyechik/StMemory.h>
 #include "TestBlockEqual.h"
 
 using namespace std;

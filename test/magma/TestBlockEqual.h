@@ -6,7 +6,7 @@
 #pragma once
 #include <2out/Representation.h>
 #include <2out/Test.h>
-#include <magma/Block.h>
+#include <goost/magma/Block.h>
 
 namespace magma {
 
