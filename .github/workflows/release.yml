@@ -13,4 +13,4 @@ jobs:
         conan remote add mdf https://api.bintray.com/conan/mdf/pureoop
         conan create . dronmdf/testing --build=missing
         conan user -p ${{ secrets.BINTRAY }} -r mdf dronmdf
-        conan upload "*" -r mdf --all --confirm
+        conan upload "goost/*" -r mdf --all --confirm
