@@ -27,4 +27,4 @@ private:
 	const std::shared_ptr<const magma::Key> key;
 };
 
-}
+}  // namespace gost89
