@@ -2,7 +2,7 @@ from conans import ConanFile, CMake, tools
 
 class GoostConan(ConanFile):
 	name = "goost"
-	version = "0.2"
+	version = "0.3"
 	description = "Object oriented gost algs library"
 	license = "MIT"
 	url = "https://github.com/DronMDF/goost/"
