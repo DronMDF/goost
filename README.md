@@ -29,7 +29,7 @@ Pure object oriented gost ciphers implementation
 # Building
 
 ```sh
-$ conan remote add mdf https://api.bintray.com/conan/mdf/2out
+$ conan remote add mdf https://api.bintray.com/conan/mdf/pureoop
 $ conan install <path to goost> -s compiler.libcxx='libstdc++11' --build 2out
 $ cmake -GNinja <path to goost>
 $ ninja
