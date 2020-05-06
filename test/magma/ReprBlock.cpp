@@ -6,7 +6,7 @@
 #include "ReprBlock.h"
 #include <iomanip>
 #include <sstream>
-#include <magma/Block.h>
+#include <goost/magma/Block.h>
 
 using namespace std;
 using namespace magma;

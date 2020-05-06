@@ -5,9 +5,9 @@
 
 #include "BlkIterKeyTest.h"
 #include <2out/TestNamed.h>
-#include <kuznyechik/BlkCached.h>
-#include <kuznyechik/BlkIterKey.h>
-#include <kuznyechik/KeyDataString.h>
+#include <goost/kuznyechik/BlkCached.h>
+#include <goost/kuznyechik/BlkIterKey.h>
+#include <goost/kuznyechik/KeyDataString.h>
 #include "TestBlockEqual.h"
 
 using namespace std;

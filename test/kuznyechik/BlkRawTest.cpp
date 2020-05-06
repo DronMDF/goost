@@ -5,7 +5,7 @@
 
 #include "BlkRawTest.h"
 #include <2out/TestNamed.h>
-#include <kuznyechik/BlkRaw.h>
+#include <goost/kuznyechik/BlkRaw.h>
 #include "TestBlockEqual.h"
 
 using namespace std;

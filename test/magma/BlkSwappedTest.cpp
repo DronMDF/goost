@@ -5,8 +5,8 @@
 
 #include "BlkSwappedTest.h"
 #include <2out/TestNamed.h>
-#include <magma/BlkSwapped.h>
-#include <magma/BlkString.h>
+#include <goost/magma/BlkSwapped.h>
+#include <goost/magma/BlkString.h>
 #include "TestBlockEqual.h"
 
 using namespace std;

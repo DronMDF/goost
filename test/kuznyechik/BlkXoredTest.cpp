@@ -5,8 +5,8 @@
 
 #include "BlkXoredTest.h"
 #include <2out/TestNamed.h>
-#include <kuznyechik/BlkString.h>
-#include <kuznyechik/BlkXored.h>
+#include <goost/kuznyechik/BlkString.h>
+#include <goost/kuznyechik/BlkXored.h>
 #include "TestBlockEqual.h"
 
 using namespace std;

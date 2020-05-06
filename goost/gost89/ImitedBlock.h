@@ -5,8 +5,8 @@
 
 #pragma once
 #include <memory>
-#include <magma/BlkRaw.h>
-#include <magma/Key.h>
+#include <goost/magma/BlkRaw.h>
+#include <goost/magma/Key.h>
 
 namespace gost89 {
 

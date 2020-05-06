@@ -6,7 +6,7 @@
 #pragma once
 #include <2out/Representation.h>
 #include <2out/Test.h>
-#include <kuznyechik/Block.h>
+#include <goost/kuznyechik/Block.h>
 
 namespace kuznyechik {
 

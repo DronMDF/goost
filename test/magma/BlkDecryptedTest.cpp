@@ -5,9 +5,9 @@
 
 #include "BlkDecryptedTest.h"
 #include <2out/TestNamed.h>
-#include <magma/BlkDecrypted.h>
-#include <magma/BlkString.h>
-#include <magma/Key.h>
+#include <goost/magma/BlkDecrypted.h>
+#include <goost/magma/BlkString.h>
+#include <goost/magma/Key.h>
 #include "TestBlockEqual.h"
 
 using namespace std;

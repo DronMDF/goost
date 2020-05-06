@@ -5,7 +5,7 @@
 
 #include "KeyDataStringTest.h"
 #include <2out/TestNamed.h>
-#include <kuznyechik/KeyDataString.h>
+#include <goost/kuznyechik/KeyDataString.h>
 #include "BlkKeyData.h"
 #include "TestBlockEqual.h"
 

@@ -7,9 +7,9 @@
 #include "ImitTest.h"
 #include <2out/TestNamed.h>
 #include <2out/TestStartsWith.h>
-#include <kuznyechik/Imit.h>
-#include <kuznyechik/StMemory.h>
-#include <kuznyechik/Key.h>
+#include <goost/kuznyechik/Imit.h>
+#include <goost/kuznyechik/StMemory.h>
+#include <goost/kuznyechik/Key.h>
 #include "ReprBlock.h"
 
 using namespace std;

@@ -6,7 +6,7 @@
 #include "SboxNibbleTest.h"
 #include <2out/TestEqual.h>
 #include <2out/TestNamed.h>
-#include <magma/SboxNibble.h>
+#include <goost/magma/SboxNibble.h>
 #include "ReprTransformed.h"
 
 using namespace std;

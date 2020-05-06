@@ -7,8 +7,8 @@
 #include <iomanip>
 #include <sstream>
 #include <arpa/inet.h>
-#include <magma/Iterator.h>
-#include <magma/Stream.h>
+#include <goost/magma/Iterator.h>
+#include <goost/magma/Stream.h>
 
 using namespace std;
 using namespace magma;

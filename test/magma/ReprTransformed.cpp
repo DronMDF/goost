@@ -6,7 +6,7 @@
 #include "ReprTransformed.h"
 #include <sstream>
 #include <iomanip>
-#include <magma/Sbox.h>
+#include <goost/magma/Sbox.h>
 
 using namespace std;
 using namespace magma;

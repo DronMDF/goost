@@ -6,7 +6,7 @@
 #include "StMemoryTest.h"
 #include <2out/TestEqual.h>
 #include <2out/TestNamed.h>
-#include <magma/StMemory.h>
+#include <goost/magma/StMemory.h>
 #include "ReprStream.h"
 
 using namespace std;

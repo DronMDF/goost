@@ -6,7 +6,7 @@
 #include <memory>
 #include <2out/Test.h>
 #include <2out/Result.h>
-#include <kuznyechik/Key.h>
+#include <goost/kuznyechik/Key.h>
 
 namespace kuznyechik {
 

@@ -6,7 +6,7 @@
 #include "KeyDataNativeTest.h"
 #include <2out/TestEqual.h>
 #include <2out/TestNamed.h>
-#include <magma/KeyDataNative.h>
+#include <goost/magma/KeyDataNative.h>
 #include "ReprKeyData.h"
 
 using namespace std;

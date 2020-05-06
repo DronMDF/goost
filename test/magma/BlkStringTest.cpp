@@ -5,7 +5,7 @@
 
 #include "BlkStringTest.h"
 #include <2out/TestNamed.h>
-#include <magma/BlkString.h>
+#include <goost/magma/BlkString.h>
 #include "TestBlockEqual.h"
 
 using namespace std;

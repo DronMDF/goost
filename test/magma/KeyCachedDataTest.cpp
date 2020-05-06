@@ -8,7 +8,7 @@
 #include <2out/EqualMatch.h>
 #include <2out/MatchTest.h>
 #include <2out/NamedTest.h>
-#include <magma/KeyCachedData.h>
+#include <goost/magma/KeyCachedData.h>
 #include "ReprKeyData.h"
 
 using namespace std;

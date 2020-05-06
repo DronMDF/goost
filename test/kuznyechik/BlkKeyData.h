@@ -4,8 +4,8 @@
 // of the MIT license.  See the LICENSE file for details.
 
 #pragma once
-#include <kuznyechik/Block.h>
-#include <kuznyechik/Key.h>
+#include <goost/kuznyechik/Block.h>
+#include <goost/kuznyechik/Key.h>
 
 namespace kuznyechik {
 
