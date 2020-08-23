@@ -26,6 +26,7 @@ class GoostConan(ConanFile):
 		self.copy("*.h", dst="include/goost/gost89", src="goost/gost89")
 		self.copy("*.h", dst="include/goost/kuznyechik", src="goost/kuznyechik")
 		self.copy("*.h", dst="include/goost/magma", src="goost/magma")
+		self.copy("*.h", dst="include/goost", src="goost")
 		self.copy("*.so", dst="lib", keep_path=False)
 		self.copy("*.a", dst="lib", keep_path=False)
 

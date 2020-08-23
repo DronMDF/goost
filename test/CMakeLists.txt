@@ -7,6 +7,8 @@ conan_basic_setup()
 ADD_EXECUTABLE(
 	goost_test
 	goost_test.cpp
+	HexMatch.cpp
+	TestSink.cpp
 	kuznyechik/BlkCachedTest.cpp
 	kuznyechik/BlkEncryptedTest.cpp
 	kuznyechik/BlkIncrementedTest.cpp
@@ -28,6 +30,7 @@ ADD_EXECUTABLE(
 	magma/BlkEncryptedTest.cpp
 	magma/BlkStringTest.cpp
 	magma/BlkSwappedTest.cpp
+	magma/CFBSinkTest.cpp
 	magma/ImitTest.cpp
 	magma/KeyCachedDataTest.cpp
 	magma/KeyDataNativeTest.cpp
