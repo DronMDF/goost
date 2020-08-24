@@ -11,7 +11,7 @@ jobs:
         sudo apt-get install cmake cppcheck doxygen python3-pip python3-setuptools
         sudo pip3 install cpplint conan
         gem install pdd
-        conan remote add mdf https://api.bintray.com/conan/mdf/2out
+        conan remote add mdf https://api.bintray.com/conan/mdf/pureoop
         conan install . -s compiler.libcxx='libstdc++11' --build 2out
         cmake -DCMAKE_CXX_FLAGS="--coverage" .
         make style
