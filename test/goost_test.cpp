@@ -4,10 +4,7 @@
 // of the MIT license.  See the LICENSE file for details.
 
 #include <iostream>
-#include <2out/CountError.h>
-#include <2out/CountFailure.h>
-#include <2out/JUnitXmlReport.h>
-#include <2out/TestSuite.h>
+#include <2out/2out.h>
 #include "kuznyechik/Test.h"
 #include "magma/Test.h"
 
@@ -21,7 +18,7 @@ int main(int, char **)
 		make_shared<magma::Test>()
 	).result();
 
-	cout << JUnitXmlReport(result).asString() << endl;
+	cout << OoutReportText(result).asString() << endl;
 
 	return (
 		CountFailure(result).count() == 0 &&
