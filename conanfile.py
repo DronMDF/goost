@@ -10,7 +10,7 @@ class GoostConan(ConanFile):
 	settings = "os", "compiler", "build_type", "arch"
 	options = {"shared": [True, False]}
 	default_options = "shared=False"
-	requires = "2out/0.8@dronmdf/stable"
+	requires = "2out/0.9@dronmdf/stable"
 	generators = "cmake"
 
 	def source(self):
