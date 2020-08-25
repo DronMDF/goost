@@ -20,4 +20,4 @@ private:
 	std::vector<std::byte> to_bytes(const std::string &str) const;
 };
 
-}
+}  // namespace magma

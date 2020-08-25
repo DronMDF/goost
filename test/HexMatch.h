@@ -7,7 +7,7 @@
 
 class HexMatch final : public oout::Match {
 public:
-	HexMatch(const std::string &hex);
+	explicit HexMatch(const std::string &hex);
 
 	std::unique_ptr<const oout::Result> match(
 		const std::shared_ptr<const oout::Text> &b

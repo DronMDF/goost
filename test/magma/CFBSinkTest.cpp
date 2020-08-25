@@ -31,6 +31,7 @@ public:
 		).write(to_bytes(data))->finalize();
 		return dynamic_pointer_cast<const TestSink>(out)->asHexString();
 	}
+
 private:
 	vector<byte> to_bytes(const string &str) const
 	{
