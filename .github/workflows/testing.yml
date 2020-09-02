@@ -1,7 +1,8 @@
-name: Deploy
+name: Testing deploy
 on:
-  release:
-    types: [published]
+  push:
+    branches:
+      - master
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -10,7 +11,9 @@ jobs:
     - run: |
         sudo apt install python3-setuptools
         sudo pip3 install conan
+        sed -i "s/checkout('v' + self.version)/checkout('${{ github.sha }}')/" conanfile.py
+        conan export . dronmdf/testing
         conan remote add pureoop https://api.bintray.com/conan/mdf/pureoop
-        conan create . dronmdf/stable --build=missing
         conan user -p ${{ secrets.BINTRAY }} -r pureoop dronmdf
-        conan upload "goost/*" -r pureoop --all --confirm
+        conan upload "*" -r pureoop --confirm
+

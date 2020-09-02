@@ -2,7 +2,7 @@ from conans import ConanFile, CMake, tools
 
 class GoostConan(ConanFile):
 	name = "goost"
-	version = "0.3"
+	version = "0.4"
 	description = "Object oriented gost algs library"
 	license = "MIT"
 	url = "https://github.com/DronMDF/goost/"
@@ -14,8 +14,9 @@ class GoostConan(ConanFile):
 	generators = "cmake"
 
 	def source(self):
-		self.run("git clone https://github.com/DronMDF/goost.git .")
-		self.run("git checkout v%s" % self.version)
+		git = tools.Git()
+		git.clone('https://github.com/DronMDF/goost.git')
+		git.checkout('v' + self.version)
 
 	def build(self):
 		cmake = CMake(self)
