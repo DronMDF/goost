@@ -22,7 +22,7 @@ TestSink::TestSink()
 shared_ptr<const Sink> TestSink::write(const vector<byte> &d) const
 {
 	auto dd = data;
-	dd.insert(dd.begin(), d.begin(), d.end());
+	dd.insert(dd.end(), d.begin(), d.end());
 	return make_shared<TestSink>(dd);
 }
 

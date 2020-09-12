@@ -4,38 +4,76 @@
 // of the MIT license.  See the LICENSE file for details.
 
 #include "CFBSink.h"
+#include <cstring>
+#include "BlkEncrypted.h"
+#include "BlkRaw.h"
+#include "Block.h"
 
 using namespace std;
 using namespace magma;
 
-CFBSink::CFBSink(const shared_ptr<const Sink> &sink)
-	: sink(sink)
+CFBSink::CFBSink(
+	const shared_ptr<const Sink> &sink,
+	const shared_ptr<const Key> &key,
+	uint64_t ivl,
+	uint64_t ivr,
+	const vector<byte> &plain
+) : sink(sink), key(key), ivl(ivl), ivr(ivr), plain(plain)
 {
 }
 
-shared_ptr<const Sink> CFBSink::write(const vector<byte> &data [[maybe_unused]]) const
+CFBSink::CFBSink(
+	const shared_ptr<const Sink> &sink,
+	const shared_ptr<const Key> &key,
+	uint64_t ivl,
+	uint64_t ivr
+) : CFBSink(sink, key, ivl, ivr, {})
 {
-	const auto s = sink->write(to_bytes(
-		"db37e0e266903c83"
-		"0d46644c1f9a089c"
-		"24bdd2035315d38b"
-		"bcc0321421075505"
-	));
-	return make_shared<CFBSink>(s);
+}
+
+shared_ptr<const Sink> CFBSink::write(const vector<byte> &data) const
+{
+	auto s = sink;
+	auto p = plain;
+	auto rl = ivl;
+	auto rr = ivr;
+	for (const auto &b : data) {
+		p.push_back(b);
+		if (p.size() == Block::size) {
+			const auto e = BlkEncrypted(
+				make_shared<BlkRaw>(rl),
+				key
+			).value();
+
+			auto c = p;
+			for (int i = 0; i < 4; i++) {
+				c[0 + i] ^= static_cast<byte>(e.first >> (i * 8));
+				c[4 + i] ^= static_cast<byte>(e.second >> (i * 8));
+			}
+
+			s = s->write(c);
+			rl = rr;
+			memcpy(&rr, &c[0], sizeof(rr));
+			p.clear();
+		}
+	}
+	return make_shared<CFBSink>(s, key, rl, rr, p);
 }
 
 shared_ptr<const Sink> CFBSink::finalize() const
 {
-	return sink;
-}
-
-vector<byte> CFBSink::to_bytes(const string &str) const
-{
-	vector<byte> rv;
-	for (size_t i = 0; i < str.size(); i += 2) {
-		byte b = static_cast<byte>(stoul(str.substr(i, 2), 0, 16));
-		rv.push_back(b);
+	auto s = sink;
+	if (!plain.empty()) {
+		const auto e = BlkEncrypted(
+			make_shared<BlkRaw>(ivl),
+			key
+		).value();
+		auto c = plain;
+		for (int i = 0; i < 4; i++) {
+			c[0 + i] ^= static_cast<byte>(e.second >> (i * 8));
+			c[4 + i] ^= static_cast<byte>(e.first >> (i * 8));
+		}
+		s = s->write(c);
 	}
-	return rv;
+	return s;
 }
-
