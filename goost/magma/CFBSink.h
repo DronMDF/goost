@@ -29,6 +29,7 @@ public:
 
 	std::shared_ptr<const Sink> write(const std::vector<std::byte> &data) const override;
 	std::shared_ptr<const Sink> finalize() const override;
+
 private:
 	const std::shared_ptr<const Sink> sink;
 	const std::shared_ptr<const Key> key;
