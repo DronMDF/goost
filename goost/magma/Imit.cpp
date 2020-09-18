@@ -12,8 +12,9 @@
 #include "Stream.h"
 
 using namespace std;
-using namespace magma;
+using namespace goost::magma;
 
+namespace goost {
 namespace magma {
 
 class BlkImitShifted final : public Block {
@@ -34,6 +35,7 @@ private:
 };
 
 }  // namespace magma
+}  // namespace goost
 
 BlkImitShifted::BlkImitShifted(const shared_ptr<const Block> &block)
 	: block(block)

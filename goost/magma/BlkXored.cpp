@@ -6,7 +6,7 @@
 #include "BlkXored.h"
 
 using namespace std;
-using namespace magma;
+using namespace goost::magma;
 
 BlkXored::BlkXored(const shared_ptr<const Block> &a, const shared_ptr<const Block> &b)
 	: a(a), b(b)

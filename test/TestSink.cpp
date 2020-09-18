@@ -8,6 +8,7 @@
 #include <iomanip>
 
 using namespace std;
+using namespace goost;
 
 TestSink::TestSink(const vector<byte> &data)
 	: data(data)

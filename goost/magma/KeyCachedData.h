@@ -7,6 +7,7 @@
 #include "KeyData.h"
 #include <memory>
 
+namespace goost {
 namespace magma {
 
 class KeyCachedData final : public KeyData {
@@ -23,3 +24,4 @@ private:
 };
 
 }  // namespace magma
+}  // namespace goost

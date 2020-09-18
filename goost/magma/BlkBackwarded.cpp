@@ -7,7 +7,7 @@
 #include "Key.h"
 
 using namespace std;
-using namespace magma;
+using namespace goost::magma;
 
 BlkBackwarded::BlkBackwarded(const shared_ptr<const Block> &block, const shared_ptr<const Key> &key)
 	: block(block), key(key)

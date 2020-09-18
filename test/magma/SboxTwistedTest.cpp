@@ -12,6 +12,7 @@
 
 using namespace std;
 using namespace oout;
+using namespace goost::magma;
 using namespace magma;
 
 SboxTwistedTest::SboxTwistedTest()

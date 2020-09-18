@@ -7,6 +7,7 @@
 #include "Sbox.h"
 #include <vector>
 
+namespace goost {
 namespace magma {
 
 class SboxNibble : public Sbox {
@@ -36,3 +37,4 @@ private:
 };
 
 }  // namespace magma
+}  // namespace goost

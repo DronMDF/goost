@@ -11,8 +11,8 @@
 #include <magma/SboxTwisted.h>
 
 using namespace std;
-using namespace gost89;
-using namespace magma;
+using namespace goost::gost89;
+using namespace goost::magma;
 
 UP_SUITE_BEGIN(gost89)
 UP_SUITE_BEGIN(DataImitTest)

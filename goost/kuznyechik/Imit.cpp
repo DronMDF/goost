@@ -12,8 +12,9 @@
 #include "Stream.h"
 
 using namespace std;
-using namespace kuznyechik;
+using namespace goost::kuznyechik;
 
+namespace goost {
 namespace kuznyechik {
 
 // This class xor a<<1 and B if high bit of a is 1
@@ -40,6 +41,7 @@ private:
 };
 
 }  // namespace kuznyechik
+}  // namespace goost
 
 Imit::Imit(const shared_ptr<const Stream> &data, const shared_ptr<const Key> &key)
 	: data(data), key(key)

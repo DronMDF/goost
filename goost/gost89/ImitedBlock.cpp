@@ -7,8 +7,8 @@
 #include <goost/magma/BlkForwarded.h>
 
 using namespace std;
-using namespace gost89;
-using namespace magma;
+using namespace goost::gost89;
+using namespace goost::magma;
 
 ImitedBlock::ImitedBlock(const BlkRaw &block, const shared_ptr<const Key> &key)
 	: block(block), key(key)

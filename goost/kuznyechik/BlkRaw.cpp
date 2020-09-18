@@ -6,7 +6,7 @@
 #include "BlkRaw.h"
 
 using namespace std;
-using namespace kuznyechik;
+using namespace goost::kuznyechik;
 
 BlkRaw::BlkRaw(uint64_t low, uint64_t high)
 	: low(low), high(high)

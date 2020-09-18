@@ -10,6 +10,7 @@
 #include "Iterator.h"
 #include "Stream.h"
 
+namespace goost {
 namespace kuznyechik {
 
 class StMemory final :
@@ -27,3 +28,4 @@ private:
 };
 
 }  // namespace kuznyechik
+}  // namespace goost

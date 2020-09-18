@@ -7,7 +7,7 @@
 #include "BlkR.h"
 
 using namespace std;
-using namespace kuznyechik;
+using namespace goost::kuznyechik;
 
 BlkL::BlkL(const shared_ptr<const Block> &block)
 	: block(block)

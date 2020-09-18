@@ -8,7 +8,7 @@
 #include <cstring>
 
 using namespace std;
-using namespace kuznyechik;
+using namespace goost::kuznyechik;
 
 BlkS::BlkS(const std::shared_ptr<const Block> &block)
 	: block(block)

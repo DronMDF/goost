@@ -11,6 +11,7 @@
 #include <goost/magma/Stream.h>
 
 using namespace std;
+using namespace goost::magma;
 using namespace magma;
 
 ReprStream::ReprStream(const shared_ptr<const Stream> &stream)

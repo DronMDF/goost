@@ -10,7 +10,8 @@
 #include "Block.h"
 
 using namespace std;
-using namespace magma;
+using namespace goost;
+using namespace goost::magma;
 
 CFBSink::CFBSink(
 	const shared_ptr<const Sink> &sink,

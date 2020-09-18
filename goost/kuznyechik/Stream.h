@@ -6,6 +6,7 @@
 #pragma once
 #include <memory>
 
+namespace goost {
 namespace kuznyechik {
 
 class Iterator;
@@ -20,3 +21,4 @@ public:
 };
 
 }  // namespace kuznyechik
+}  // namespace goost

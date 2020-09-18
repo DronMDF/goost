@@ -6,7 +6,7 @@
 #include "BlkSwapped.h"
 
 using namespace std;
-using namespace magma;
+using namespace goost::magma;
 
 BlkSwapped::BlkSwapped(const shared_ptr<const Block> &block)
 	: block(block)

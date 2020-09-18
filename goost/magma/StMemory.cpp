@@ -8,8 +8,9 @@
 #include "Iterator.h"
 
 using namespace std;
-using namespace magma;
+using namespace goost::magma;
 
+namespace goost {
 namespace magma {
 
 class ItMemory final : public Iterator {
@@ -29,6 +30,7 @@ private:
 };
 
 }  // namespace magma
+}  // namespace goost
 
 // @todo #332 Add size parameter to iterator, and he can determine last() and size() for youself.
 ItMemory::ItMemory(const weak_ptr<const StMemory> &stream_ptr,

@@ -5,9 +5,13 @@
 
 #pragma once
 
+namespace goost {
+
 class Source {
 public:
 	virtual ~Source() = default;
 
 	std::pair<std::vector<std::byte>, std::shared_ptr<const Source>> read(size_t size) const = 0;
 };
+
+}  // namespace goost

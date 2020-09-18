@@ -7,6 +7,7 @@
 #include "Key.h"
 #include <string>
 
+namespace goost {
 namespace kuznyechik {
 
 class KeyDataString final : public Key::Data {
@@ -19,3 +20,4 @@ private:
 };
 
 }  // namespace kuznyechik
+}  // namespace goost

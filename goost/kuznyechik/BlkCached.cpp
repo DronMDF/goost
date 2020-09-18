@@ -6,7 +6,7 @@
 #include "BlkCached.h"
 
 using namespace std;
-using namespace kuznyechik;
+using namespace goost::kuznyechik;
 
 class BlkCached::BlockCache final {
 public:

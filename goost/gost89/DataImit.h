@@ -7,6 +7,7 @@
 #include <vector>
 #include <goost/magma/Key.h>
 
+namespace goost {
 namespace gost89 {
 
 class DataImit {
@@ -21,3 +22,4 @@ private:
 };
 
 }  // namespace gost89
+}  // namespace goost

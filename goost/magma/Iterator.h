@@ -6,6 +6,7 @@
 #pragma once
 #include "Block.h"
 
+namespace goost {
 namespace magma {
 
 class Iterator : public Block {
@@ -16,3 +17,4 @@ public:
 };
 
 }
+}  // namespace goost

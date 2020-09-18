@@ -8,6 +8,7 @@
 #include <goost/magma/BlkRaw.h>
 #include <goost/magma/Key.h>
 
+namespace goost {
 namespace gost89 {
 
 // @todo #352 ImitedBlock should give ptr to Block
@@ -28,3 +29,4 @@ private:
 };
 
 }  // namespace gost89
+}  // namespace goost

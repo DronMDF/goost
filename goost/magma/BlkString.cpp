@@ -6,7 +6,7 @@
 #include "BlkString.h"
 
 using namespace std;
-using namespace magma;
+using namespace goost::magma;
 
 BlkString::BlkString(const string &block)
 	: block(block)

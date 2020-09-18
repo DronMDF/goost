@@ -6,6 +6,7 @@
 #pragma once
 #include "Block.h"
 
+namespace goost {
 namespace kuznyechik {
 
 // This is abstract Iterator type
@@ -20,3 +21,4 @@ public:
 };
 
 }  // namespace kuznyechik
+}  // namespace goost

@@ -8,7 +8,7 @@
 #include <stdexcept>
 
 using namespace std;
-using namespace magma;
+using namespace goost::magma;
 
 KeyDataString::KeyDataString(const std::string &key_data)
 	: key_data(key_data)

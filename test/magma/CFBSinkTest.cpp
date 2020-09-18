@@ -11,7 +11,7 @@
 
 using namespace std;
 using namespace oout;
-using namespace magma;
+using namespace goost::magma;
 
 class CFBSinkText final : public oout::Text {
 public:

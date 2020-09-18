@@ -7,6 +7,7 @@
 #include <string>
 #include <memory>
 
+namespace goost {
 namespace kuznyechik {
 
 class Block;
@@ -44,3 +45,4 @@ private:
 };
 
 }  // namespace kuznyechik
+}  // namespace goost

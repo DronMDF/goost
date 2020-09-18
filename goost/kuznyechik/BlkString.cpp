@@ -6,7 +6,7 @@
 #include "BlkString.h"
 
 using namespace std;
-using namespace kuznyechik;
+using namespace goost::kuznyechik;
 
 BlkString::BlkString(const string &block)
 	: block(block)

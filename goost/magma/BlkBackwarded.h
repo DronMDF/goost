@@ -7,6 +7,7 @@
 #include <memory>
 #include "Block.h"
 
+namespace goost {
 namespace magma {
 
 class Key;
@@ -25,3 +26,4 @@ private:
 };
 
 }  // namespace magma
+}  // namespace goost

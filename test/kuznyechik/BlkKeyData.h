@@ -10,21 +10,21 @@
 namespace kuznyechik {
 
 // High block of key data
-class BlkKeyDataHigh final : public Block {
+class BlkKeyDataHigh final : public goost::kuznyechik::Block {
 public:
-	explicit BlkKeyDataHigh(const std::shared_ptr<const Key::Data> &key);
+	explicit BlkKeyDataHigh(const std::shared_ptr<const goost::kuznyechik::Key::Data> &key);
 	std::pair<uint64_t, uint64_t> value() const override;
 private:
-	const std::shared_ptr<const Key::Data> key;
+	const std::shared_ptr<const goost::kuznyechik::Key::Data> key;
 };
 
 // Low block of key data.
-class BlkKeyDataLow final : public Block {
+class BlkKeyDataLow final : public goost::kuznyechik::Block {
 public:
-	explicit BlkKeyDataLow(const std::shared_ptr<const Key::Data> &key);
+	explicit BlkKeyDataLow(const std::shared_ptr<const goost::kuznyechik::Key::Data> &key);
 	std::pair<uint64_t, uint64_t> value() const override;
 private:
-	const std::shared_ptr<const Key::Data> key;
+	const std::shared_ptr<const goost::kuznyechik::Key::Data> key;
 };
 
 }  // namespace kuznyechik

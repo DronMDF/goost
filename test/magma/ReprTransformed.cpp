@@ -9,6 +9,7 @@
 #include <goost/magma/Sbox.h>
 
 using namespace std;
+using namespace goost::magma;
 using namespace magma;
 
 ReprTransformed::ReprTransformed(const shared_ptr<const Sbox> &sbox, uint32_t value)

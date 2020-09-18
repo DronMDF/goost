@@ -8,8 +8,9 @@
 #include "Iterator.h"
 
 using namespace std;
-using namespace kuznyechik;
+using namespace goost::kuznyechik;
 
+namespace goost {
 namespace kuznyechik {
 
 class ItMemory final : public Iterator {
@@ -31,6 +32,7 @@ private:
 };
 
 }  // namespace kuznyechik
+}  // namespace goost
 
 ItMemory::ItMemory(
 	const weak_ptr<const StMemory> &stream,

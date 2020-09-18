@@ -7,6 +7,7 @@
 #include <memory>
 #include "Stream.h"
 
+namespace goost {
 namespace kuznyechik {
 
 class BlkRaw;
@@ -32,3 +33,4 @@ private:
 };
 
 }  // namespace kuznyechik
+}  // namespace goost

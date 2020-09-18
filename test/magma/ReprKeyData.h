@@ -6,17 +6,16 @@
 #pragma once
 #include <memory>
 #include <2out/Representation.h>
+#include <goost/magma/KeyData.h>
 
 namespace magma {
 
-class KeyData;
-
 class ReprKeyData final : public oout::Representation {
 public:
-	explicit ReprKeyData(const std::shared_ptr<const KeyData> &key_data);
+	explicit ReprKeyData(const std::shared_ptr<const goost::magma::KeyData> &key_data);
 	std::string asString() const override;
 private:
-	const std::shared_ptr<const KeyData> key_data;
+	const std::shared_ptr<const goost::magma::KeyData> key_data;
 };
 
 }  // namespace magma

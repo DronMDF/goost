@@ -15,7 +15,7 @@ public:
 	BlkEncryptedTest();
 	std::unique_ptr<const oout::Result> result() const override;
 private:
-	const std::shared_ptr<const kuznyechik::Key> key;
+	const std::shared_ptr<const goost::kuznyechik::Key> key;
 	const std::shared_ptr<const oout::Test> tests;
 };
 

@@ -5,6 +5,7 @@
 
 #pragma once
 
+namespace goost {
 namespace magma {
 
 class Iterator;
@@ -16,3 +17,4 @@ public:
 };
 
 }  // namespace magma
+}  // namespace goost

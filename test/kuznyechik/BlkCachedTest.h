@@ -15,7 +15,7 @@ public:
 	BlkCachedTest();
 	std::unique_ptr<const oout::Result> result() const override;
 private:
-	const std::shared_ptr<const kuznyechik::Block> block;
+	const std::shared_ptr<const goost::kuznyechik::Block> block;
 	const std::shared_ptr<const oout::Test> tests;
 };
 

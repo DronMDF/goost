@@ -9,6 +9,7 @@
 #include <goost/magma/Block.h>
 
 using namespace std;
+using namespace goost::magma;
 using namespace magma;
 
 ReprBlock::ReprBlock(const std::shared_ptr<const Block> &block)
