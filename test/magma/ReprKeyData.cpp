@@ -10,6 +10,7 @@
 #include <goost/magma/KeyData.h>
 
 using namespace std;
+using namespace goost::magma;
 using namespace magma;
 
 ReprKeyData::ReprKeyData(const shared_ptr<const KeyData> &key_data)

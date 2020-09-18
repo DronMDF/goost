@@ -15,7 +15,7 @@ public:
 	KeyCachedDataTest();
 	std::unique_ptr<const oout::Result> result() const override;
 private:
-	const std::shared_ptr<const KeyData> key_data;
+	const std::shared_ptr<const goost::magma::KeyData> key_data;
 	const std::shared_ptr<const oout::Test> tests;
 };
 

@@ -7,6 +7,7 @@
 #include "KeyData.h"
 #include <vector>
 
+namespace goost {
 namespace magma {
 
 class KeyDataNative : public KeyData {
@@ -18,3 +19,4 @@ private:
 };
 
 }  // namespace magma
+}  // namespace goost

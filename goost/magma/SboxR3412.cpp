@@ -9,7 +9,7 @@
 #include "SboxNibble.h"
 
 using namespace std;
-using namespace magma;
+using namespace goost::magma;
 
 SboxR3412::SboxR3412()
 	: sbox(

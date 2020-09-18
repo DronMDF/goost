@@ -7,7 +7,7 @@
 #include <limits>
 
 using namespace std;
-using namespace kuznyechik;
+using namespace goost::kuznyechik;
 
 BlkIncremented::BlkIncremented(const shared_ptr<const Block> &block)
 	: block(block)

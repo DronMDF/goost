@@ -9,6 +9,7 @@
 #include <vector>
 #include "Stream.h"
 
+namespace goost {
 namespace magma {
 
 class StMemory final : public Stream, public std::enable_shared_from_this<const StMemory> {
@@ -21,3 +22,4 @@ private:
 };
 
 }  // namespace magma
+}  // namespace goost

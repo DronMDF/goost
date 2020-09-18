@@ -7,6 +7,7 @@
 #include <string>
 #include "Block.h"
 
+namespace goost {
 namespace magma {
 
 class BlkString final : public Block {
@@ -18,3 +19,4 @@ private:
 };
 
 }  // namespace magma
+}  // namespace goost

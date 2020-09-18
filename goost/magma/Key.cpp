@@ -12,7 +12,7 @@
 #include "SboxR3412.h"
 
 using namespace std;
-using namespace magma;
+using namespace goost::magma;
 
 Key::Key(const string &key_data)
 	: Key(key_data, make_shared<SboxR3412>())

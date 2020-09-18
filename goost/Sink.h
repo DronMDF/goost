@@ -8,6 +8,8 @@
 #include <memory>
 #include <vector>
 
+namespace goost {
+
 class Sink {
 public:
 	virtual ~Sink() = default;
@@ -17,3 +19,5 @@ public:
 	// This method return underlaying sink
 	virtual std::shared_ptr<const Sink> finalize() const = 0;
 };
+
+}  // namespace goost

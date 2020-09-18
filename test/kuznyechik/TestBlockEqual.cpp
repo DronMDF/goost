@@ -11,6 +11,7 @@
 
 using namespace std;
 using namespace oout;
+using namespace goost::kuznyechik;
 using namespace kuznyechik;
 
 TestBlockEqual::TestBlockEqual(const shared_ptr<const Text> &a, const string &b)

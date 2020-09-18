@@ -11,7 +11,7 @@
 #include "Iterator.h"
 
 using namespace std;
-using namespace kuznyechik;
+using namespace goost::kuznyechik;
 
 class ItCTREncrypted final : public Iterator {
 public:

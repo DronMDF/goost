@@ -20,11 +20,11 @@ public:
 	);
 
 	TestBlockEqual(
-		const std::shared_ptr<const Block> &a,
-		const std::shared_ptr<const Block> &b
+		const std::shared_ptr<const goost::kuznyechik::Block> &a,
+		const std::shared_ptr<const goost::kuznyechik::Block> &b
 	);
 
-	TestBlockEqual(const std::shared_ptr<const Block> &a, const std::string &b);
+	TestBlockEqual(const std::shared_ptr<const goost::kuznyechik::Block> &a, const std::string &b);
 
 	/// Get result
 	std::unique_ptr<const oout::Result> result() const override;

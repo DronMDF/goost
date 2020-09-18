@@ -7,6 +7,7 @@
 #include <memory>
 #include "Block.h"
 
+namespace goost {
 namespace magma {
 
 class BlkXored final : public Block {
@@ -30,3 +31,4 @@ private:
 };
 
 }  // namespace magma
+}  // namespace goost

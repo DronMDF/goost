@@ -22,7 +22,7 @@
 
 using namespace std;
 using namespace oout;
-using namespace kuznyechik;
+using namespace goost::kuznyechik;
 
 kuznyechik::Test::Test()
 	: tests(

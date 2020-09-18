@@ -6,7 +6,7 @@
 #include "SboxNibble.h"
 
 using namespace std;
-using namespace magma;
+using namespace goost::magma;
 
 SboxNibble::SboxNibble(const vector<int> &p0, const vector<int> &p1, const vector<int> &p2,
 		const vector<int> &p3, const vector<int> &p4, const vector<int> &p5,

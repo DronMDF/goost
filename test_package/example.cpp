@@ -10,7 +10,7 @@
 #include <goost/kuznyechik/Key.h>
 
 using namespace std;
-using namespace kuznyechik;
+using namespace goost::kuznyechik;
 
 int main(int, char **)
 {

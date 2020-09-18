@@ -10,6 +10,7 @@
 #include <vector>
 #include "Block.h"
 
+namespace goost {
 namespace magma {
 
 class BlkRaw final : public Block {
@@ -29,3 +30,4 @@ private:
 };
 
 }  // namespace magma
+}  // namespace goost

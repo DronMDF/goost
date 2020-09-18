@@ -6,17 +6,16 @@
 #pragma once
 #include <memory>
 #include <2out/Representation.h>
+#include <goost/magma/Stream.h>
 
 namespace magma {
 
-class Stream;
-
 class ReprStream final : public oout::Representation {
 public:
-	explicit ReprStream(const std::shared_ptr<const Stream> &stream);
+	explicit ReprStream(const std::shared_ptr<const goost::magma::Stream> &stream);
 	std::string asString() const override;
 private:
-	const std::shared_ptr<const Stream> stream;
+	const std::shared_ptr<const goost::magma::Stream> stream;
 };
 
 }  // namespace magma

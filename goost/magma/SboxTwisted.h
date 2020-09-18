@@ -7,6 +7,7 @@
 #include "Sbox.h"
 #include <memory>
 
+namespace goost {
 namespace magma {
 
 // Sbox decorator for <<<11 operation
@@ -20,3 +21,4 @@ private:
 };
 
 }  // namespace magma
+}  // namespace goost

@@ -9,6 +9,7 @@
 #include <vector>
 #include "KeyData.h"
 
+namespace goost {
 namespace magma {
 
 class BlkRaw;
@@ -34,3 +35,4 @@ private:
 };
 
 }  // namespace magma
+}  // namespace goost

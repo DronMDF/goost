@@ -9,7 +9,7 @@
 #include "BlkSwapped.h"
 
 using namespace std;
-using namespace magma;
+using namespace goost::magma;
 
 BlkDecrypted::BlkDecrypted(const shared_ptr<const Block> &block, const shared_ptr<const Key> &key)
 	: block(

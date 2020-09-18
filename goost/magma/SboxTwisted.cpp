@@ -6,7 +6,7 @@
 #include "SboxTwisted.h"
 
 using namespace std;
-using namespace magma;
+using namespace goost::magma;
 
 SboxTwisted::SboxTwisted(unique_ptr<const Sbox> sbox)
 	: sbox(move(sbox))

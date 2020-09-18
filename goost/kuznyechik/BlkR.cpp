@@ -9,7 +9,7 @@
 #include "BlkRaw.h"
 
 using namespace std;
-using namespace kuznyechik;
+using namespace goost::kuznyechik;
 
 BlkR::BlkR(const shared_ptr<const Block> &block)
 	: block(block)

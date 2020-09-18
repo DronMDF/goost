@@ -6,6 +6,7 @@
 #pragma once
 #include <goost/Sink.h>
 
+namespace goost {
 namespace magma {
 
 class Key;
@@ -39,3 +40,4 @@ private:
 };
 
 }  // namespace magma
+}  // namespace goost

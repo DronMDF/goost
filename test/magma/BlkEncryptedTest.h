@@ -15,8 +15,8 @@ public:
 	BlkEncryptedTest();
 	std::unique_ptr<const oout::Result> result() const override;
 private:
-	const std::shared_ptr<const Key> key1;
-	const std::shared_ptr<const Key> key2;
+	const std::shared_ptr<const goost::magma::Key> key1;
+	const std::shared_ptr<const goost::magma::Key> key2;
 	const std::shared_ptr<const oout::Test> tests;
 };
 

@@ -7,7 +7,7 @@
 #include "SboxByte64Tab.h"
 
 using namespace std;
-using namespace magma;
+using namespace goost::magma;
 
 SboxByte::SboxByte(const std::vector<uint8_t> &uz)
 	: SboxByte(

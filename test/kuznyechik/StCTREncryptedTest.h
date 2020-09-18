@@ -15,7 +15,7 @@ public:
 	StCTREncryptedTest();
 	std::unique_ptr<const oout::Result> result() const override;
 private:
-	const std::shared_ptr<const Stream> stream;
+	const std::shared_ptr<const goost::kuznyechik::Stream> stream;
 	const std::shared_ptr<const oout::Test> tests;
 };
 

@@ -6,18 +6,17 @@
 #pragma once
 #include <memory>
 #include <2out/Representation.h>
+#include <goost/magma/Sbox.h>
 
 namespace magma {
 
-class Sbox;
-
 class ReprTransformed final : public oout::Representation {
 public:
-	ReprTransformed(const std::shared_ptr<const Sbox> &sbox, uint32_t value);
+	ReprTransformed(const std::shared_ptr<const goost::magma::Sbox> &sbox, uint32_t value);
 
 	std::string asString() const override;
 private:
-	const std::shared_ptr<const Sbox> sbox;
+	const std::shared_ptr<const goost::magma::Sbox> sbox;
 	const uint32_t value;
 };
 

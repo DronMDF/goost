@@ -13,6 +13,7 @@
 
 using namespace std;
 using namespace oout;
+using namespace goost::magma;
 using namespace magma;
 
 class KeyDataRandom final : public KeyData {

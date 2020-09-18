@@ -6,7 +6,7 @@
 #include "BlkXored.h"
 
 using namespace std;
-using namespace kuznyechik;
+using namespace goost::kuznyechik;
 
 BlkXored::BlkXored(const shared_ptr<const Block> &a, const shared_ptr<const Block> &b)
 	: a(a), b(b)

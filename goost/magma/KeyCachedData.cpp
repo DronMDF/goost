@@ -6,7 +6,7 @@
 #include "KeyCachedData.h"
 
 using namespace std;
-using namespace magma;
+using namespace goost::magma;
 
 KeyCachedData::KeyCachedData(unique_ptr<const KeyData> keydata)
 	: cache(make_unique<CachedData>()), keydata(move(keydata))

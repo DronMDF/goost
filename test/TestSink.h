@@ -6,13 +6,13 @@
 #pragma once
 #include <goost/Sink.h>
 
-class TestSink final : public Sink {
+class TestSink final : public goost::Sink {
 public:
 	explicit TestSink(const std::vector<std::byte> &data);
 	TestSink();
 
-	std::shared_ptr<const Sink> write(const std::vector<std::byte> &data) const override;
-	std::shared_ptr<const Sink> finalize() const override;
+	std::shared_ptr<const goost::Sink> write(const std::vector<std::byte> &data) const override;
+	std::shared_ptr<const goost::Sink> finalize() const override;
 
 	std::string asHexString() const;
 private:

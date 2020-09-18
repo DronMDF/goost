@@ -7,7 +7,7 @@
 #include <iomanip>
 
 using namespace std;
-using namespace magma;
+using namespace goost::magma;
 
 BlkRaw::BlkRaw(uint32_t low, uint32_t high)
 	: low(low), high(high)

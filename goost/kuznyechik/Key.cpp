@@ -13,7 +13,7 @@
 #include "KeyDataString.h"
 
 using namespace std;
-using namespace kuznyechik;
+using namespace goost::kuznyechik;
 
 Key::Key(const string &key_data)
 	: Key(make_shared<KeyDataString>(key_data))

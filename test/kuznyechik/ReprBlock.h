@@ -6,17 +6,16 @@
 #pragma once
 #include <memory>
 #include <2out/Representation.h>
+#include <goost/kuznyechik/Block.h>
 
 namespace kuznyechik {
 
-class Block;
-
 class ReprBlock final : public oout::Representation {
 public:
-	explicit ReprBlock(const std::shared_ptr<const Block> &block);
+	explicit ReprBlock(const std::shared_ptr<const goost::kuznyechik::Block> &block);
 	std::string asString() const override;
 private:
-	const std::shared_ptr<const Block> block;
+	const std::shared_ptr<const goost::kuznyechik::Block> block;
 };
 
 }  // namespace kuznyechik

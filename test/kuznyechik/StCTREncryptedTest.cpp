@@ -14,6 +14,7 @@
 
 using namespace std;
 using namespace oout;
+using namespace goost::kuznyechik;
 using namespace kuznyechik;
 
 // @todo #323 introduce kuznyechik::ReprStream for testing

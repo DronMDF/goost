@@ -6,7 +6,7 @@
 #include "SboxByte64Tab.h"
 
 using namespace std;
-using namespace magma;
+using namespace goost::magma;
 
 SboxByte64Tab::SboxByte64Tab(const vector<uint8_t> &uz, int offset)
 	: uz(uz), offset(offset)

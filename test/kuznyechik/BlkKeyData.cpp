@@ -6,6 +6,7 @@
 #include "BlkKeyData.h"
 
 using namespace std;
+using namespace goost::kuznyechik;
 using namespace kuznyechik;
 
 BlkKeyDataHigh::BlkKeyDataHigh(const shared_ptr<const Key::Data> &key)

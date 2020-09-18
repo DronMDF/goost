@@ -7,6 +7,7 @@
 #include "Sbox.h"
 #include <memory>
 
+namespace goost {
 namespace magma {
 
 class SboxR3412 : public Sbox {
@@ -19,3 +20,4 @@ private:
 };
 
 }  // namespace magma
+}  // namespace goost

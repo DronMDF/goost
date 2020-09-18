@@ -7,6 +7,7 @@
 #include <memory>
 #include "Block.h"
 
+namespace goost {
 namespace magma {
 
 class Stream;
@@ -23,3 +24,4 @@ private:
 };
 
 }  // namespace magma
+}  // namespace goost

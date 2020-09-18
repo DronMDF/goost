@@ -6,7 +6,7 @@
 #include "BlkShifted.h"
 
 using namespace std;
-using namespace magma;
+using namespace goost::magma;
 
 BlkShifted::BlkShifted(const shared_ptr<const Block> &block, int n)
 	: block(block), n(n)

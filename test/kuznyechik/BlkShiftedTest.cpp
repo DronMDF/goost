@@ -11,6 +11,7 @@
 
 using namespace std;
 using namespace oout;
+using namespace goost::kuznyechik;
 using namespace kuznyechik;
 
 BlkShiftedTest::BlkShiftedTest()

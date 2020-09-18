@@ -6,7 +6,7 @@
 #include "KeyDataNative.h"
 
 using namespace std;
-using namespace magma;
+using namespace goost::magma;
 
 KeyDataNative::KeyDataNative(const vector<uint32_t> &key_data)
 	: key_data(key_data)

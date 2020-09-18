@@ -8,7 +8,7 @@
 #include "BlkString.h"
 
 using namespace std;
-using namespace kuznyechik;
+using namespace goost::kuznyechik;
 
 KeyDataString::KeyDataString(const string &key_data)
 	: key_data(key_data)

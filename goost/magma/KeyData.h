@@ -6,6 +6,7 @@
 #pragma once
 #include <cstdint>
 
+namespace goost {
 namespace magma {
 
 class KeyData {
@@ -15,3 +16,4 @@ public:
 };
 
 }  // namespace magma
+}  // namespace goost

@@ -9,6 +9,7 @@
 #include <goost/kuznyechik/Block.h>
 
 using namespace std;
+using namespace goost::kuznyechik;
 using namespace kuznyechik;
 
 ReprBlock::ReprBlock(const std::shared_ptr<const Block> &block)

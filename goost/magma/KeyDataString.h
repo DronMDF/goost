@@ -7,6 +7,7 @@
 #include "KeyData.h"
 #include <string>
 
+namespace goost {
 namespace magma {
 
 class KeyDataString : public KeyData {
@@ -18,3 +19,4 @@ private:
 };
 
 }  // namespace magma
+}  // namespace goost

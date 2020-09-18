@@ -7,6 +7,7 @@
 #include <cstdint>
 #include <utility>
 
+namespace goost {
 namespace magma {
 
 class Block {
@@ -18,3 +19,4 @@ public:
 };
 
 }  // namespace magma
+}  // namespace goost

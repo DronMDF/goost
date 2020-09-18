@@ -9,6 +9,7 @@
 #include <memory>
 #include <vector>
 
+namespace goost {
 namespace magma {
 
 // This is a byte expanded sbox, not fastest.
@@ -41,3 +42,4 @@ private:
 };
 
 }  // namespace magma
+}  // namespace goost

@@ -8,7 +8,7 @@
 #include "Key.h"
 
 using namespace std;
-using namespace magma;
+using namespace goost::magma;
 
 BlkForwarded::BlkForwarded(const shared_ptr<const Block> &block, const shared_ptr<const Key> &key)
 	: block(block), key(key)

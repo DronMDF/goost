@@ -14,6 +14,7 @@
 
 using namespace std;
 using namespace oout;
+using namespace goost::magma;
 using namespace magma;
 
 BlkEncryptedTest::BlkEncryptedTest()

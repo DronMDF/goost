@@ -5,6 +5,7 @@
 
 #include "SboxByte.h"
 
+namespace goost {
 namespace magma {
 
 class SboxByte64Tab final : public SboxByte::Tab {
@@ -18,3 +19,4 @@ private:
 };
 
 }  // namespace magma
+}  // namespace goost
