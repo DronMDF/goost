@@ -9,6 +9,8 @@ ADD_EXECUTABLE(
 	goost_test.cpp
 	Hex64Match.cpp
 	HexMatch.cpp
+	SourceText.cpp
+	SourceTextTest.cpp
 	TestSink.cpp
 	kuznyechik/BlkCachedTest.cpp
 	kuznyechik/BlkEncryptedTest.cpp
