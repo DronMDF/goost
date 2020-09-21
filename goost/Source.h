@@ -4,9 +4,10 @@
 // of the MIT license.  See the LICENSE file for details.
 
 #pragma once
+#include <cstddef>
+#include <memory>
 #include <utility>
 #include <vector>
-#include <memory>
 
 namespace goost {
 
