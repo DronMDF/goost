@@ -30,13 +30,13 @@ public:
 
 	string asString() const override
 	{
-		const auto [bytes, _] = data->read(numeric_limits<size_t>::max());
+		const auto bytes = data->read(numeric_limits<size_t>::max());
 		const auto out = CFBSink(
 			make_shared<TestSink>(),
 			key,
 			ivl,
 			ivr
-		).write(bytes)->finalize();
+		).write(bytes.first)->finalize();
 		return dynamic_pointer_cast<const TestSink>(out)->asHexString();
 	}
 
