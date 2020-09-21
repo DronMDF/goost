@@ -4,16 +4,25 @@
 // of the MIT license.  See the LICENSE file for details.
 
 #include "SourceText.h"
+#include <cstddef>
+#include <iomanip>
+#include <sstream>
+#include <goost/Source.h>
 
 using namespace std;
 using namespace goost;
 
-SourceText::SourceText(const shared_ptr<const goost::Source> &source)
+SourceText::SourceText(const shared_ptr<const Source> &source)
 	: source(source)
 {
 }
 
 string SourceText::asString() const
 {
-	return {};
+	const auto bytes = source->read(numeric_limits<size_t>::max());
+	ostringstream out;
+	for (const auto &b : bytes.first) {
+		out << hex << setw(2) << setfill('0') << to_integer<unsigned>(b);
+	}
+	return out.str();
 }

@@ -4,6 +4,9 @@
 // of the MIT license.  See the LICENSE file for details.
 
 #pragma once
+#include <utility>
+#include <vector>
+#include <memory>
 
 namespace goost {
 
@@ -11,7 +14,7 @@ class Source {
 public:
 	virtual ~Source() = default;
 
-	std::pair<std::vector<std::byte>, std::shared_ptr<const Source>> read(size_t size) const = 0;
+	virtual std::pair<std::vector<std::byte>, std::shared_ptr<const Source>> read(size_t size) const = 0;
 };
 
 }  // namespace goost

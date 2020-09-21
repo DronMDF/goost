@@ -5,16 +5,16 @@
 
 #include <2out/Match.h>
 
-// This matcher get expected string as 64-bin integer
-// This form used in GOST examples.
-class Hex64Match final : public oout::Match {
+namespace goost { class Source; }
+
+class SourceMatch final : public oout::Match {
 public:
-	explicit Hex64Match(const std::string &hex);
+	explicit SourceMatch(const std::shared_ptr<const goost::Source> &source);
 
 	std::unique_ptr<const oout::Result> match(
 		const std::shared_ptr<const oout::Text> &b
 	) const override;
 
 private:
-	const std::string hex;
+	const std::shared_ptr<const goost::Source> source;
 };

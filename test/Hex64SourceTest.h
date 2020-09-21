@@ -6,7 +6,7 @@
 #pragma once
 #include <2out/dirty/Test.h>
 
-class SourceTextTest final : public oout::dirty::Test {
+class Hex64SourceTest final : public oout::dirty::Test {
 public:
-	SourceTextTest();
+	Hex64SourceTest();
 };
