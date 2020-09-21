@@ -4,13 +4,17 @@
 // of the MIT license.  See the LICENSE file for details.
 
 #include "CFBSinkTest.h"
+#include <limits>
+#include <goost/Source.h>
 #include <goost/magma/CFBSink.h>
 #include <goost/magma/Key.h>
 #include <test/TestSink.h>
-#include <test/Hex64Match.h>
+#include <test/Hex64Source.h>
+#include <test/SourceMatch.h>
 
 using namespace std;
 using namespace oout;
+using namespace goost;
 using namespace goost::magma;
 
 class CFBSinkText final : public oout::Text {
@@ -19,39 +23,28 @@ public:
 		const shared_ptr<const Key> &key,
 		const uint64_t ivl,
 		const uint64_t ivr,
-		const string &data
+		const shared_ptr<const Source> &data
 	) : key(key), ivl(ivl), ivr(ivr), data(data)
 	{
 	}
 
 	string asString() const override
 	{
+		const auto bytes = data->read(numeric_limits<size_t>::max());
 		const auto out = CFBSink(
 			make_shared<TestSink>(),
 			key,
 			ivl,
 			ivr
-		).write(to_bytes(data))->finalize();
+		).write(bytes.first)->finalize();
 		return dynamic_pointer_cast<const TestSink>(out)->asHexString();
 	}
 
 private:
-	vector<byte> to_bytes(const string &str) const
-	{
-		vector<byte> rv;
-		for (size_t i = 0; i < str.size(); i += 16) {
-			for (size_t j = 0; j < 16; j += 2) {
-				byte b = static_cast<byte>(stoul(str.substr(i + 14 - j, 2), 0, 16));
-				rv.push_back(b);
-			}
-		}
-		return rv;
-	}
-
 	const shared_ptr<const Key> key;
 	const uint64_t ivl;
 	const uint64_t ivr;
-	const string data;
+	const shared_ptr<const Source> data;
 };
 
 CFBSinkTest::CFBSinkTest()
@@ -65,16 +58,20 @@ CFBSinkTest::CFBSinkTest()
 			),
 			0x1234567890abcdef,
 			0x234567890abcdef1,
-			"92def06b3c130a59"
-			"db54c704f8189d20"
-			"4a98fb2e67a8024c"
-			"8912409b17b57e41"
+			make_shared<Hex64Source>(
+				"92def06b3c130a59"
+				"db54c704f8189d20"
+				"4a98fb2e67a8024c"
+				"8912409b17b57e41"
+			)
 		),
-		make_shared<Hex64Match>(
-			"db37e0e266903c83"
-			"0d46644c1f9a089c"
-			"24bdd2035315d38b"
-			"bcc0321421075505"
+		make_shared<SourceMatch>(
+			make_shared<Hex64Source>(
+				"db37e0e266903c83"
+				"0d46644c1f9a089c"
+				"24bdd2035315d38b"
+				"bcc0321421075505"
+			)
 		)
 	)
 )

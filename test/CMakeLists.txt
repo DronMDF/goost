@@ -7,8 +7,11 @@ conan_basic_setup()
 ADD_EXECUTABLE(
 	goost_test
 	goost_test.cpp
-	Hex64Match.cpp
+	Hex64Source.cpp
+	Hex64SourceTest.cpp
 	HexMatch.cpp
+	SourceMatch.cpp
+	SourceText.cpp
 	TestSink.cpp
 	kuznyechik/BlkCachedTest.cpp
 	kuznyechik/BlkEncryptedTest.cpp
