@@ -13,7 +13,7 @@ INCLUDE_DIRECTORIES(
 
 # @todo #104:15min -Wno-non-virtual-dtor cause from boost::enable_shared_trom_this class
 #  How resolve this? Avois shared_from_this?
-ADD_COMPILE_OPTIONS(-std=c++17 -O2 -fomit-frame-pointer -g0
+ADD_COMPILE_OPTIONS(-std=c++17 -ggdb3 -O0
 	-Wall -Wextra -Weffc++ -Wpedantic -Werror
 	-Wno-non-virtual-dtor)
 

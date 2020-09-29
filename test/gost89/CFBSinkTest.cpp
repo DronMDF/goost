@@ -19,6 +19,9 @@ using namespace goost;
 using namespace goost::magma;
 using namespace goost::gost89;
 
+namespace goost {
+namespace gost89 {
+
 class CFBSinkText final : public oout::Text {
 public:
 	CFBSinkText(
@@ -46,7 +49,10 @@ private:
 	const shared_ptr<const Source> data;
 };
 
-gost89::CFBSinkTest::CFBSinkTest()
+}
+}
+
+CFBSinkTest::CFBSinkTest()
 : dirty::Test(
 	make_shared<NamedTest>(
 		"Cipher feedback encryption by GOST-89 example",

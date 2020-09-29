@@ -5,6 +5,8 @@
 
 #include "CFBSink.h"
 #include <cstring>
+#include <iostream>
+#include <iomanip>
 #include <goost/magma/BlkEncrypted.h>
 #include <goost/magma/BlkRaw.h>
 #include <goost/magma/Block.h>
@@ -39,16 +41,31 @@ shared_ptr<const Sink> CFBSink::write(const vector<byte> &data) const
 	for (const auto &b : data) {
 		p.push_back(b);
 		if (p.size() == Block::size) {
+			const auto op = BlkRaw(
+				reinterpret_cast<const uint32_t *>(&l)[1],
+				reinterpret_cast<const uint32_t *>(&l)[0]
+			).value();
+			cout << "plain " << hex << setw(4) << setfill('0') << op.second << op.first << endl;
+
 			const auto e = BlkEncrypted(
-				make_shared<BlkRaw>(l),
+				make_shared<BlkRaw>(
+					// For gost89 need exchange uint32_t in block.
+					reinterpret_cast<const uint32_t *>(&l)[1],
+					reinterpret_cast<const uint32_t *>(&l)[0]
+				),
 				key
 			).value();
+
+			cout << "encrypted " << hex << setw(4) << setfill('0') << e.second << e.first << endl;
 
 			auto c = p;
 			for (int i = 0; i < 4; i++) {
 				c[0 + i] ^= static_cast<byte>(e.first >> (i * 8));
 				c[4 + i] ^= static_cast<byte>(e.second >> (i * 8));
 			}
+
+			const auto ox = BlkRaw(&c[0]).value();
+			cout << "xored " << hex << setw(4) << setfill('0') << ox.second << ox.first << endl;
 
 			s = s->write(c);
 			memcpy(&l, &c[0], sizeof(l));

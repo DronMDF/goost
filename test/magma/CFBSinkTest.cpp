@@ -17,6 +17,9 @@ using namespace oout;
 using namespace goost;
 using namespace goost::magma;
 
+namespace goost {
+namespace magma {
+
 class CFBSinkText final : public oout::Text {
 public:
 	CFBSinkText(
@@ -46,6 +49,9 @@ private:
 	const uint64_t ivr;
 	const shared_ptr<const Source> data;
 };
+
+}
+}
 
 CFBSinkTest::CFBSinkTest()
 : dirty::Test(
