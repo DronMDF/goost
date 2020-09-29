@@ -13,6 +13,7 @@ ADD_EXECUTABLE(
 	SourceMatch.cpp
 	SourceText.cpp
 	TestSink.cpp
+	gost89/CFBSinkTest.cpp
 	kuznyechik/BlkCachedTest.cpp
 	kuznyechik/BlkEncryptedTest.cpp
 	kuznyechik/BlkIncrementedTest.cpp

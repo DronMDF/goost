@@ -8,13 +8,15 @@
 #include <goost/Source.h>
 #include <goost/gost89/CFBSink.h>
 #include <goost/magma/Key.h>
-#include <test/TestSink.h>
+#include <goost/magma/SboxByte.h>
 #include <test/Hex64Source.h>
 #include <test/SourceMatch.h>
+#include <test/TestSink.h>
 
 using namespace std;
 using namespace oout;
 using namespace goost;
+using namespace goost::magma;
 using namespace goost::gost89;
 
 class CFBSinkText final : public oout::Text {
@@ -59,7 +61,7 @@ gost89::CFBSinkTest::CFBSinkTest()
 					0x8A1EAE91,
 					0x9ECD792F,
 					0xBDEFBCD2
-				),
+				},
 				make_shared<SboxByte>(
 					vector<uint8_t>{
 						0xc4, 0xed, 0x83, 0xc9, 0x92, 0x98, 0xfe, 0x6b,

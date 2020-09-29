@@ -5,6 +5,7 @@
 
 #include <2out/dirty/Test.h>
 
+namespace goost {
 namespace magma {
 
 class CFBSinkTest final : public oout::dirty::Test {
@@ -13,3 +14,4 @@ public:
 };
 
 }	// namespace magma
+}	// namespace goost

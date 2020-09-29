@@ -47,7 +47,7 @@ private:
 	const shared_ptr<const Source> data;
 };
 
-magma::CFBSinkTest::CFBSinkTest()
+CFBSinkTest::CFBSinkTest()
 : dirty::Test(
 	make_shared<NamedTest>(
 		"Cipher feedback encryption by GOST-34.13 example",
