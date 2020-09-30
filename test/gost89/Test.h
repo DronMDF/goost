@@ -6,11 +6,11 @@
 #include <2out/dirty/Test.h>
 
 namespace goost {
-namespace magma {
+namespace gost89 {
 
-class CFBSinkTest final : public oout::dirty::Test {
+class Test final : public oout::dirty::Test {
 public:
-	CFBSinkTest();
+	Test();
 };
 
 }

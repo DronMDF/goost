@@ -18,6 +18,7 @@ ADD_COMPILE_OPTIONS(-std=c++17 -O2 -fomit-frame-pointer -g0
 	-Wno-non-virtual-dtor)
 
 ADD_LIBRARY(goost
+	goost/gost89/CFBSink.cpp
 	goost/gost89/DataImit.cpp
 	goost/gost89/ImitedBlock.cpp
 	goost/kuznyechik/BlkCached.cpp

@@ -6,28 +6,29 @@
 #include "CFBSinkTest.h"
 #include <limits>
 #include <goost/Source.h>
-#include <goost/magma/CFBSink.h>
+#include <goost/gost89/CFBSink.h>
 #include <goost/magma/Key.h>
-#include <test/TestSink.h>
 #include <test/Hex64Source.h>
 #include <test/SourceMatch.h>
+#include <test/TestSink.h>
+#include "TestSbox.h"
 
 using namespace std;
 using namespace oout;
 using namespace goost;
 using namespace goost::magma;
+using namespace goost::gost89;
 
 namespace goost {
-namespace magma {
+namespace gost89 {
 
 class CFBSinkText final : public oout::Text {
 public:
 	CFBSinkText(
 		const shared_ptr<const Key> &key,
-		const uint64_t ivl,
-		const uint64_t ivr,
+		const uint64_t iv,
 		const shared_ptr<const Source> &data
-	) : key(key), ivl(ivl), ivr(ivr), data(data)
+	) : key(key), iv(iv), data(data)
 	{
 	}
 
@@ -37,16 +38,14 @@ public:
 		const auto out = CFBSink(
 			make_shared<TestSink>(),
 			key,
-			ivl,
-			ivr
+			iv
 		).write(bytes.first)->finalize();
 		return dynamic_pointer_cast<const TestSink>(out)->asHexString();
 	}
 
 private:
 	const shared_ptr<const Key> key;
-	const uint64_t ivl;
-	const uint64_t ivr;
+	const uint64_t iv;
 	const shared_ptr<const Source> data;
 };
 
@@ -56,28 +55,26 @@ private:
 CFBSinkTest::CFBSinkTest()
 : dirty::Test(
 	make_shared<NamedTest>(
-		"Cipher feedback encryption by GOST-34.13 example",
+		"Cipher feedback encryption by GOST-89 example",
 		make_shared<CFBSinkText>(
 			make_shared<Key>(
-				"ffeeddccbbaa99887766554433221100"
-				"f0f1f2f3f4f5f6f7f8f9fafbfcfdfeff"
+				vector<uint32_t>{
+					0xE0F67504,
+					0xFAFB3850,
+					0x90C3C7D2,
+					0x3DCAB3ED,
+					0x42124715,
+					0x8A1EAE91,
+					0x9ECD792F,
+					0xBDEFBCD2
+				},
+				make_shared<TestSbox>()
 			),
-			0x1234567890abcdef,
-			0x234567890abcdef1,
-			make_shared<Hex64Source>(
-				"92def06b3c130a59"
-				"db54c704f8189d20"
-				"4a98fb2e67a8024c"
-				"8912409b17b57e41"
-			)
+			0x47E3A8FFC3A7802A,
+			make_shared<Hex64Source>("33333333CCCCCCCC" "CCCCCCCC33333333")
 		),
 		make_shared<SourceMatch>(
-			make_shared<Hex64Source>(
-				"db37e0e266903c83"
-				"0d46644c1f9a089c"
-				"24bdd2035315d38b"
-				"bcc0321421075505"
-			)
+			make_shared<Hex64Source>("4B64BD1043224C3B" "0FAA6CD95548EB99")
 		)
 	)
 )

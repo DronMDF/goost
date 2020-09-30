@@ -36,9 +36,3 @@ vector<uint8_t> DataImit::value() const
 	}
 	return state;
 }
-
-uint32_t DataImit::asUInt32() const
-{
-	const auto rv = value();
-	return *reinterpret_cast<const uint32_t *>(&rv[0]);
-}

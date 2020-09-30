@@ -5,9 +5,10 @@
 
 #include <iostream>
 #include <2out/2out.h>
-#include "Hex64SourceTest.h"
+#include "gost89/Test.h"
 #include "kuznyechik/Test.h"
 #include "magma/Test.h"
+#include "Hex64SourceTest.h"
 
 using namespace std;
 using namespace oout;
@@ -16,6 +17,7 @@ int main(int, char **)
 {
 	const shared_ptr<const Result> result = TestSuite(
 		make_shared<Hex64SourceTest>(),
+		make_shared<goost::gost89::Test>(),
 		make_shared<kuznyechik::Test>(),
 		make_shared<magma::Test>()
 	).result();
