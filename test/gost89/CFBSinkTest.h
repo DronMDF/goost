@@ -13,5 +13,5 @@ public:
 	CFBSinkTest();
 };
 
-}	// namespace gost89
-}	// namespace goost
+}
+}

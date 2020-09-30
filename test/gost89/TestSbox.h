@@ -13,7 +13,7 @@ namespace gost89 {
 class TestSbox final : public goost::magma::Sbox {
 public:
 	TestSbox();
-	uint32_t transform(uint32_t value) const;
+	uint32_t transform(uint32_t value) const override;
 private:
 	const std::shared_ptr<const Sbox> sbox;
 };

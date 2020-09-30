@@ -13,5 +13,5 @@ public:
 	CFBSinkTest();
 };
 
-}	// namespace magma
-}	// namespace goost
+}
+}
