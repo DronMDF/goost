@@ -6,6 +6,7 @@
 #include "Test.h"
 #include "BlkEncryptedTest.h"
 #include "CFBSinkTest.h"
+#include "CFBSourceTest.h"
 
 using namespace std;
 using namespace oout;
@@ -16,7 +17,8 @@ gost89::Test::Test()
 	: dirty::Test(
 		"Gost89 tests",
 		make_shared<BlkEncryptedTest>(),
-		make_shared<CFBSinkTest>()
+		make_shared<CFBSinkTest>(),
+		make_shared<CFBSourceTest>()
 	)
 {
 }
