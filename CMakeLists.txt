@@ -47,6 +47,7 @@ ADD_LIBRARY(goost
 	goost/magma/BlkSwapped.cpp
 	goost/magma/BlkXored.cpp
 	goost/magma/CFBSink.cpp
+	goost/magma/CFBSource.cpp
 	goost/magma/Imit.cpp
 	goost/magma/KeyCachedData.cpp
 	goost/magma/Key.cpp
