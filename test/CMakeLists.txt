@@ -15,6 +15,7 @@ ADD_EXECUTABLE(
 	TestSink.cpp
 	gost89/BlkEncryptedTest.cpp
 	gost89/CFBSinkTest.cpp
+	gost89/CFBSourceTest.cpp
 	gost89/Test.cpp
 	gost89/TestSbox.cpp
 	kuznyechik/BlkCachedTest.cpp
