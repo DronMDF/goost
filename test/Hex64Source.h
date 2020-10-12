@@ -9,7 +9,10 @@
 class Hex64Source final : public goost::Source {
 public:
 	explicit Hex64Source(const std::string &str);
-	std::pair<std::vector<std::byte>, std::shared_ptr<const Source>> read(size_t size) const override;
+	// Query size should be crated to 16 hex char, spaces available
+	std::pair<std::vector<std::byte>, std::shared_ptr<const Source>> read(
+		size_t size
+	) const override;
 private:
 	const std::string str;
 };
