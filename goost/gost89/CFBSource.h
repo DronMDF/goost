@@ -7,11 +7,7 @@
 #include <goost/Source.h>
 
 namespace goost {
-
-class Source;
-
 namespace magma { class Key; }
-
 namespace gost89 {
 
 class CFBSource final : public Source {
