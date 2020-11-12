@@ -13,6 +13,7 @@ ADD_EXECUTABLE(
 	SourceMatch.cpp
 	SourceText.cpp
 	TestSink.cpp
+	TestSinkText.cpp
 	gost89/BlkEncryptedTest.cpp
 	gost89/CFBSinkTest.cpp
 	gost89/CFBSourceTest.cpp
