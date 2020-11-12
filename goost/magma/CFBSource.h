@@ -7,9 +7,6 @@
 #include <goost/Source.h>
 
 namespace goost {
-
-class Source;
-
 namespace magma {
 
 class Key;
