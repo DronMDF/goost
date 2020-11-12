@@ -42,6 +42,8 @@ ADD_EXECUTABLE(
 	magma/BlkSwappedTest.cpp
 	magma/CFBSinkTest.cpp
 	magma/CFBSourceTest.cpp
+	magma/ECBSinkTest.cpp
+	magma/ECBSourceTest.cpp
 	magma/ImitTest.cpp
 	magma/KeyCachedDataTest.cpp
 	magma/KeyDataNativeTest.cpp
