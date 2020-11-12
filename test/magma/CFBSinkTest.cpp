@@ -4,66 +4,33 @@
 // of the MIT license.  See the LICENSE file for details.
 
 #include "CFBSinkTest.h"
-#include <limits>
 #include <goost/Source.h>
 #include <goost/magma/CFBSink.h>
 #include <goost/magma/Key.h>
-#include <test/TestSink.h>
 #include <test/Hex64Source.h>
 #include <test/SourceMatch.h>
+#include <test/TestSink.h>
+#include <test/TestSinkText.h>
 
 using namespace std;
 using namespace oout;
 using namespace goost;
 using namespace goost::magma;
 
-namespace goost {
-namespace magma {
-
-class CFBSinkText final : public oout::Text {
-public:
-	CFBSinkText(
-		const shared_ptr<const Key> &key,
-		const uint64_t ivl,
-		const uint64_t ivr,
-		const shared_ptr<const Source> &data
-	) : key(key), ivl(ivl), ivr(ivr), data(data)
-	{
-	}
-
-	string asString() const override
-	{
-		const auto bytes = data->read(numeric_limits<size_t>::max());
-		const auto out = CFBSink(
-			make_shared<TestSink>(),
-			key,
-			ivl,
-			ivr
-		).write(bytes.first)->finalize();
-		return dynamic_pointer_cast<const TestSink>(out)->asHexString();
-	}
-
-private:
-	const shared_ptr<const Key> key;
-	const uint64_t ivl;
-	const uint64_t ivr;
-	const shared_ptr<const Source> data;
-};
-
-}
-}
-
 CFBSinkTest::CFBSinkTest()
 : dirty::Test(
 	make_shared<NamedTest>(
 		"Cipher feedback encryption by GOST-34.13 example",
-		make_shared<CFBSinkText>(
-			make_shared<Key>(
-				"ffeeddccbbaa99887766554433221100"
-				"f0f1f2f3f4f5f6f7f8f9fafbfcfdfeff"
+		make_shared<TestSinkText>(
+			make_shared<CFBSink>(
+				make_shared<TestSink>(),
+				make_shared<Key>(
+					"ffeeddccbbaa99887766554433221100"
+					"f0f1f2f3f4f5f6f7f8f9fafbfcfdfeff"
+				),
+				0x1234567890abcdef,
+				0x234567890abcdef1
 			),
-			0x1234567890abcdef,
-			0x234567890abcdef1,
 			make_shared<Hex64Source>(
 				"92def06b3c130a59"
 				"db54c704f8189d20"
