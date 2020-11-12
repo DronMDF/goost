@@ -11,6 +11,8 @@
 #include "BlkSwappedTest.h"
 #include "CFBSinkTest.h"
 #include "CFBSourceTest.h"
+#include "ECBSinkTest.h"
+#include "ECBSourceTest.h"
 #include "ImitTest.h"
 #include "KeyCachedDataTest.h"
 #include "KeyDataNativeTest.h"
@@ -35,6 +37,8 @@ magma::Test::Test()
 			make_shared<BlkSwappedTest>(),
 			make_shared<CFBSinkTest>(),
 			make_shared<CFBSourceTest>(),
+			make_shared<ECBSinkTest>(),
+			make_shared<ECBSourceTest>(),
 			make_shared<ImitTest>(),
 			make_shared<KeyCachedDataTest>(),
 			make_shared<KeyDataNativeTest>(),

@@ -19,10 +19,17 @@ SourceText::SourceText(const shared_ptr<const Source> &source)
 
 string SourceText::asString() const
 {
-	const auto bytes = source->read(numeric_limits<size_t>::max());
 	ostringstream out;
-	for (const auto &b : bytes.first) {
-		out << hex << setw(2) << setfill('0') << to_integer<unsigned>(b);
+	auto s = source;
+	while (true) {
+		vector<byte> bytes;
+		tie(bytes, s) = s->read(numeric_limits<size_t>::max());
+		if (bytes.empty()) {
+			break;
+		}
+		for (const auto &b : bytes) {
+			out << hex << setw(2) << setfill('0') << to_integer<unsigned>(b);
+		}
 	}
 	return out.str();
 }
