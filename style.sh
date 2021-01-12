@@ -7,4 +7,4 @@ set -ue
 # Use it for information
 cppcheck -I. --enable=all --suppress=missingIncludeSystem --quiet goost test
 
-cpplint `for d in benchmark goost test; do find $d -name *.cpp -o -name *.h; done`
+cpplint `for d in goost test; do find $d -name *.cpp -o -name *.h; done`
