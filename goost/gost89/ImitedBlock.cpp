@@ -10,7 +10,7 @@ using namespace std;
 using namespace goost::gost89;
 using namespace goost::magma;
 
-ImitedBlock::ImitedBlock(const BlkRaw &block, const shared_ptr<const Key> &key)
+ImitedBlock::ImitedBlock(const BlkRaw &block, const shared_ptr<const LazyKey> &key)
 	: block(block), key(key)
 {
 }

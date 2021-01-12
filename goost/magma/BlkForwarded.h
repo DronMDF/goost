@@ -10,19 +10,19 @@
 namespace goost {
 namespace magma {
 
-class Key;
+class LazyKey;
 
 /// This is a block, transformed over key in forward direction
 class BlkForwarded final : public Block {
 public:
 	BlkForwarded(
 		const std::shared_ptr<const Block> &block,
-		const std::shared_ptr<const Key> &key
+		const std::shared_ptr<const LazyKey> &key
 	);
 	std::pair<uint32_t, uint32_t> value() const override;
 private:
 	const std::shared_ptr<const Block> block;
-	const std::shared_ptr<const Key> key;
+	const std::shared_ptr<const LazyKey> key;
 };
 
 }  // namespace magma

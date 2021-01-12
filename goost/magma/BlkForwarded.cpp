@@ -5,12 +5,12 @@
 
 #include "BlkForwarded.h"
 #include "BlkRaw.h"
-#include "Key.h"
+#include "LazyKey.h"
 
 using namespace std;
 using namespace goost::magma;
 
-BlkForwarded::BlkForwarded(const shared_ptr<const Block> &block, const shared_ptr<const Key> &key)
+BlkForwarded::BlkForwarded(const shared_ptr<const Block> &block, const shared_ptr<const LazyKey> &key)
 	: block(block), key(key)
 {
 }

@@ -4,12 +4,12 @@
 // of the MIT license.  See the LICENSE file for details.
 
 #include "BlkBackwarded.h"
-#include "Key.h"
+#include "LazyKey.h"
 
 using namespace std;
 using namespace goost::magma;
 
-BlkBackwarded::BlkBackwarded(const shared_ptr<const Block> &block, const shared_ptr<const Key> &key)
+BlkBackwarded::BlkBackwarded(const shared_ptr<const Block> &block, const shared_ptr<const LazyKey> &key)
 	: block(block), key(key)
 {
 }

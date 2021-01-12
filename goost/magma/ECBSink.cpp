@@ -15,7 +15,7 @@ using namespace goost::magma;
 
 ECBSink::ECBSink(
 	const shared_ptr<const Sink> &sink,
-	const shared_ptr<const Key> &key
+	const shared_ptr<const LazyKey> &key
 ) : sink(sink), key(key)
 {
 }

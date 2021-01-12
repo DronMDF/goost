@@ -5,19 +5,19 @@
 
 #include <memory>
 #include <vector>
-#include <goost/magma/Key.h>
+#include <goost/magma/LazyKey.h>
 
 namespace goost {
 namespace gost89 {
 
 class DataImit {
 public:
-	DataImit(const std::vector<uint8_t> &data, const std::shared_ptr<const magma::Key> &key);
+	DataImit(const std::vector<uint8_t> &data, const std::shared_ptr<const magma::LazyKey> &key);
 
 	std::vector<uint8_t> value() const;
 private:
 	const std::vector<uint8_t> data;
-	const std::shared_ptr<const magma::Key> key;
+	const std::shared_ptr<const magma::LazyKey> key;
 };
 
 }  // namespace gost89

@@ -10,7 +10,7 @@ using namespace std;
 using namespace goost::gost89;
 using namespace goost::magma;
 
-DataImit::DataImit(const vector<uint8_t> &data, const shared_ptr<const Key> &key)
+DataImit::DataImit(const vector<uint8_t> &data, const shared_ptr<const LazyKey> &key)
 	: data(data), key(key)
 {
 }

@@ -5,7 +5,7 @@
 
 #include "CFBSourceTest.h"
 #include <goost/gost89/CFBSource.h>
-#include <goost/magma/Key.h>
+#include <goost/magma/LazyKey.h>
 #include <test/Hex64Source.h>
 #include <test/SourceMatch.h>
 #include <test/SourceText.h>
@@ -24,7 +24,7 @@ CFBSourceTest::CFBSourceTest()
 		make_shared<SourceText>(
 			make_shared<CFBSource>(
 				make_shared<Hex64Source>("4B64BD1043224C3B" "0FAA6CD95548EB99"),
-				make_shared<Key>(
+				make_shared<LazyKey>(
 					vector<uint32_t>{
 						0xE0F67504,
 						0xFAFB3850,

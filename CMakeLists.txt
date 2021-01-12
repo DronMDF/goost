@@ -53,11 +53,11 @@ ADD_LIBRARY(goost
 	goost/magma/ECBSource.cpp
 	goost/magma/Imit.cpp
 	goost/magma/KeyCachedData.cpp
-	goost/magma/Key.cpp
 	goost/magma/KeyDataNative.cpp
 	goost/magma/KeyDataString.cpp
-	goost/magma/SboxByte64Tab.cpp
+	goost/magma/LazyKey.cpp
 	goost/magma/SboxByte.cpp
+	goost/magma/SboxByte64Tab.cpp
 	goost/magma/SboxNibble.cpp
 	goost/magma/SboxR3412.cpp
 	goost/magma/SboxTwisted.cpp

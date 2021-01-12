@@ -7,21 +7,21 @@
 #include <goost/Source.h>
 
 namespace goost {
-namespace magma { class Key; }
+namespace magma { class LazyKey; }
 namespace gost89 {
 
 class CFBSource final : public Source {
 public:
 	CFBSource(
 		const std::shared_ptr<const Source> &source,
-		const std::shared_ptr<const magma::Key> &key,
+		const std::shared_ptr<const magma::LazyKey> &key,
 		uint64_t iv,
 		const std::vector<std::byte> &plain
 	);
 
 	CFBSource(
 		const std::shared_ptr<const Source> &source,
-		const std::shared_ptr<const magma::Key> &key,
+		const std::shared_ptr<const magma::LazyKey> &key,
 		uint64_t iv
 	);
 
@@ -31,7 +31,7 @@ public:
 
 private:
 	const std::shared_ptr<const Source> source;
-	const std::shared_ptr<const magma::Key> key;
+	const std::shared_ptr<const magma::LazyKey> key;
 	const uint64_t iv;
 	const std::vector<std::byte> plain;
 };
