@@ -15,7 +15,7 @@ using namespace goost::gost89;
 
 CFBSource::CFBSource(
 	const shared_ptr<const Source> &source,
-	const shared_ptr<const Key> &key,
+	const shared_ptr<const LazyKey> &key,
 	uint64_t iv,
 	const vector<byte> &plain
 ) : source(source), key(key), iv(iv), plain(plain)
@@ -24,7 +24,7 @@ CFBSource::CFBSource(
 
 CFBSource::CFBSource(
 	const shared_ptr<const Source> &source,
-	const shared_ptr<const Key> &key,
+	const shared_ptr<const LazyKey> &key,
 	uint64_t iv
 ) : CFBSource(source, key, iv, {})
 {

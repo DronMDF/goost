@@ -11,7 +11,7 @@
 using namespace std;
 using namespace goost::magma;
 
-BlkDecrypted::BlkDecrypted(const shared_ptr<const Block> &block, const shared_ptr<const Key> &key)
+BlkDecrypted::BlkDecrypted(const shared_ptr<const Block> &block, const shared_ptr<const LazyKey> &key)
 	: block(
 		make_shared<BlkSwapped>(
 			make_shared<BlkBackwarded>(

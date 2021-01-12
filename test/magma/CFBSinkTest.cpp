@@ -6,7 +6,7 @@
 #include "CFBSinkTest.h"
 #include <goost/Source.h>
 #include <goost/magma/CFBSink.h>
-#include <goost/magma/Key.h>
+#include <goost/magma/LazyKey.h>
 #include <test/Hex64Source.h>
 #include <test/SourceMatch.h>
 #include <test/TestSink.h>
@@ -24,7 +24,7 @@ CFBSinkTest::CFBSinkTest()
 		make_shared<TestSinkText>(
 			make_shared<CFBSink>(
 				make_shared<TestSink>(),
-				make_shared<Key>(
+				make_shared<LazyKey>(
 					"ffeeddccbbaa99887766554433221100"
 					"f0f1f2f3f4f5f6f7f8f9fafbfcfdfeff"
 				),

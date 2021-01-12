@@ -6,7 +6,7 @@
 #include "ImitTest.h"
 #include <2out/TestNamed.h>
 #include <goost/magma/Imit.h>
-#include <goost/magma/Key.h>
+#include <goost/magma/LazyKey.h>
 #include <goost/magma/StMemory.h>
 #include "TestBlockEqual.h"
 
@@ -31,7 +31,7 @@ ImitTest::ImitTest()
 								0x8912409b17b57e41
 							}
 						),
-						make_shared<Key>(
+						make_shared<LazyKey>(
 							"ffeeddccbbaa99887766554433221100"
 							"f0f1f2f3f4f5f6f7f8f9fafbfcfdfeff"
 						)

@@ -14,7 +14,7 @@ using namespace goost::magma;
 
 ECBSource::ECBSource(
 	const shared_ptr<const Source> &source,
-	const shared_ptr<const Key> &key
+	const shared_ptr<const LazyKey> &key
 ) : source(source), key(key)
 {
 }

@@ -8,7 +8,7 @@
 
 namespace goost {
 
-namespace magma { class Key; }
+namespace magma { class LazyKey; }
 
 namespace gost89 {
 
@@ -16,14 +16,14 @@ class CFBSink final : public Sink {
 public:
 	CFBSink(
 		const std::shared_ptr<const Sink> &sink,
-		const std::shared_ptr<const magma::Key> &key,
+		const std::shared_ptr<const magma::LazyKey> &key,
 		uint64_t iv,
 		const std::vector<std::byte> &plain
 	);
 
 	CFBSink(
 		const std::shared_ptr<const Sink> &sink,
-		const std::shared_ptr<const magma::Key> &key,
+		const std::shared_ptr<const magma::LazyKey> &key,
 		uint64_t iv
 	);
 
@@ -32,7 +32,7 @@ public:
 
 private:
 	const std::shared_ptr<const Sink> sink;
-	const std::shared_ptr<const magma::Key> key;
+	const std::shared_ptr<const magma::LazyKey> key;
 	const uint64_t iv;
 	const std::vector<std::byte> plain;
 };

@@ -15,17 +15,17 @@ namespace magma {
 class BlkRaw;
 class Sbox;
 
-class Key {
+class LazyKey {
 public:
 	/// String key
-	explicit Key(const std::string &key_data);
-	Key(const std::string &key_data, const std::shared_ptr<const Sbox> &sbox);
+	explicit LazyKey(const std::string &key_data);
+	LazyKey(const std::string &key_data, const std::shared_ptr<const Sbox> &sbox);
 
 	/// Native key
-	Key(const std::vector<uint32_t> &key_data, const std::shared_ptr<const Sbox> &sbox);
+	LazyKey(const std::vector<uint32_t> &key_data, const std::shared_ptr<const Sbox> &sbox);
 
 	/// Primary ctor
-	Key(std::unique_ptr<const KeyData> key_data, const std::shared_ptr<const Sbox> &sbox);
+	LazyKey(std::unique_ptr<const KeyData> key_data, const std::shared_ptr<const Sbox> &sbox);
 
 	uint32_t transform(uint32_t v, int index) const;
 

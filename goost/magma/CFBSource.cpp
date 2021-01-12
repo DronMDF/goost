@@ -14,7 +14,7 @@ using namespace goost::magma;
 
 CFBSource::CFBSource(
 	const shared_ptr<const Source> &source,
-	const shared_ptr<const Key> &key,
+	const shared_ptr<const LazyKey> &key,
 	uint64_t ivl,
 	uint64_t ivr,
 	const vector<byte> &plain
@@ -24,7 +24,7 @@ CFBSource::CFBSource(
 
 CFBSource::CFBSource(
 	const shared_ptr<const Source> &source,
-	const shared_ptr<const Key> &key,
+	const shared_ptr<const LazyKey> &key,
 	uint64_t ivl,
 	uint64_t ivr
 ) : CFBSource(source, key, ivl, ivr, {})

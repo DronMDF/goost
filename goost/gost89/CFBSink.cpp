@@ -18,7 +18,7 @@ using namespace goost::magma;
 
 CFBSink::CFBSink(
 	const shared_ptr<const Sink> &sink,
-	const shared_ptr<const Key> &key,
+	const shared_ptr<const LazyKey> &key,
 	uint64_t iv,
 	const vector<byte> &plain
 ) : sink(sink), key(key), iv(iv), plain(plain)
@@ -27,7 +27,7 @@ CFBSink::CFBSink(
 
 CFBSink::CFBSink(
 	const shared_ptr<const Sink> &sink,
-	const shared_ptr<const Key> &key,
+	const shared_ptr<const LazyKey> &key,
 	uint64_t iv
 ) : CFBSink(sink, key, iv, {})
 {

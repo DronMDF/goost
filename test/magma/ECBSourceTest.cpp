@@ -5,7 +5,7 @@
 
 #include "ECBSourceTest.h"
 #include <goost/magma/ECBSource.h>
-#include <goost/magma/Key.h>
+#include <goost/magma/LazyKey.h>
 #include <test/Hex64Source.h>
 #include <test/SourceMatch.h>
 #include <test/SourceText.h>
@@ -27,7 +27,7 @@ ECBSourceTest::ECBSourceTest()
 					"11d8d9e9eacfbc1e"
 					"7c68260996c67efb"
 				),
-				make_shared<Key>(
+				make_shared<LazyKey>(
 					"ffeeddccbbaa99887766554433221100"
 					"f0f1f2f3f4f5f6f7f8f9fafbfcfdfeff"
 				)

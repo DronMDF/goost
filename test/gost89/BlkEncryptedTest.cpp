@@ -6,7 +6,7 @@
 #include "BlkEncryptedTest.h"
 #include <goost/magma/BlkEncrypted.h>
 #include <goost/magma/BlkRaw.h>
-#include <goost/magma/Key.h>
+#include <goost/magma/LazyKey.h>
 #include <test/magma/ReprBlock.h>
 #include <test/HexMatch.h>
 #include "TestSbox.h"
@@ -22,7 +22,7 @@ BlkEncryptedTest::BlkEncryptedTest()
 	make_shared<::magma::ReprBlock>(
 		make_shared<BlkEncrypted>(
 			make_shared<BlkRaw>(0x04050607, 0x00010203),
-			make_shared<Key>(
+			make_shared<LazyKey>(
 				vector<uint32_t>{
 					0xE0F67504,
 					0xFAFB3850,

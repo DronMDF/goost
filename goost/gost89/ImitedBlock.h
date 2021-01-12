@@ -6,7 +6,7 @@
 #pragma once
 #include <memory>
 #include <goost/magma/BlkRaw.h>
-#include <goost/magma/Key.h>
+#include <goost/magma/LazyKey.h>
 
 namespace goost {
 namespace gost89 {
@@ -19,13 +19,13 @@ namespace gost89 {
 
 class ImitedBlock {
 public:
-	ImitedBlock(const magma::BlkRaw &block, const std::shared_ptr<const magma::Key> &key);
+	ImitedBlock(const magma::BlkRaw &block, const std::shared_ptr<const magma::LazyKey> &key);
 
 	magma::BlkRaw value() const;
 
 private:
 	const magma::BlkRaw block;
-	const std::shared_ptr<const magma::Key> key;
+	const std::shared_ptr<const magma::LazyKey> key;
 };
 
 }  // namespace gost89

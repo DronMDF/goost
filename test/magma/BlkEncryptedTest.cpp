@@ -7,7 +7,7 @@
 #include <2out/TestNamed.h>
 #include <goost/magma/BlkEncrypted.h>
 #include <goost/magma/BlkRaw.h>
-#include <goost/magma/Key.h>
+#include <goost/magma/LazyKey.h>
 #include <goost/magma/SboxByte.h>
 #include <goost/magma/SboxTwisted.h>
 #include "TestBlockEqual.h"
@@ -19,12 +19,12 @@ using namespace magma;
 
 BlkEncryptedTest::BlkEncryptedTest()
 	: key1(
-		make_shared<Key>(
+		make_shared<LazyKey>(
 			"ffeeddccbbaa99887766554433221100f0f1f2f3f4f5f6f7f8f9fafbfcfdfeff"
 		)
 	  ),
 	  key2(
-		make_shared<Key>(
+		make_shared<LazyKey>(
 			vector<uint32_t>{
 				0xE0F67504, 0xFAFB3850, 0x90C3C7D2, 0x3DCAB3ED,
 				0x42124715, 0x8A1EAE91, 0x9ECD792F, 0xBDEFBCD2

@@ -27,10 +27,10 @@ private:
 
 class BlkImitFinalKey final : public Block {
 public:
-	BlkImitFinalKey(const shared_ptr<const Key> &key, const shared_ptr<const Iterator> &iter);
+	BlkImitFinalKey(const shared_ptr<const LazyKey> &key, const shared_ptr<const Iterator> &iter);
 	pair<uint32_t, uint32_t> value() const override;
 private:
-	const shared_ptr<const Key> key;
+	const shared_ptr<const LazyKey> key;
 	const shared_ptr<const Iterator> iter;
 };
 
@@ -52,7 +52,7 @@ pair<uint32_t, uint32_t> BlkImitShifted::value() const
 }
 
 BlkImitFinalKey::BlkImitFinalKey(
-	const shared_ptr<const Key> &key,
+	const shared_ptr<const LazyKey> &key,
 	const shared_ptr<const Iterator> &iter
 )
 	: key(key), iter(iter)
@@ -71,7 +71,7 @@ pair<uint32_t, uint32_t> BlkImitFinalKey::value() const
 }
 
 
-Imit::Imit(const shared_ptr<const Stream> &data, const shared_ptr<const Key> &key)
+Imit::Imit(const shared_ptr<const Stream> &data, const shared_ptr<const LazyKey> &key)
 	: data(data), key(key)
 {
 }

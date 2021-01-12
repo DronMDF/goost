@@ -11,16 +11,16 @@ namespace goost {
 namespace magma {
 
 class Stream;
-class Key;
+class LazyKey;
 
 class Imit final : public Block {
 public:
-	Imit(const std::shared_ptr<const Stream> &data, const std::shared_ptr<const Key> &key);
+	Imit(const std::shared_ptr<const Stream> &data, const std::shared_ptr<const LazyKey> &key);
 
 	std::pair<uint32_t, uint32_t> value() const override;
 private:
 	const std::shared_ptr<const Stream> data;
-	const std::shared_ptr<const Key> key;
+	const std::shared_ptr<const LazyKey> key;
 };
 
 }  // namespace magma

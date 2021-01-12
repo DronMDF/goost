@@ -7,7 +7,7 @@
 #include <2out/TestNamed.h>
 #include <goost/magma/BlkDecrypted.h>
 #include <goost/magma/BlkString.h>
-#include <goost/magma/Key.h>
+#include <goost/magma/LazyKey.h>
 #include "TestBlockEqual.h"
 
 using namespace std;
@@ -24,7 +24,7 @@ BlkDecryptedTest::BlkDecryptedTest()
 				make_shared<TestBlockEqual>(
 					make_shared<BlkDecrypted>(
 						make_shared<BlkString>("4ee901e5c2d8ca3d"),
-						make_shared<Key>(
+						make_shared<LazyKey>(
 							"ffeeddccbbaa99887766554433221100"
 							"f0f1f2f3f4f5f6f7f8f9fafbfcfdfeff"
 						)
