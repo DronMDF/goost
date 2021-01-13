@@ -7,6 +7,7 @@
 #include <cstdint>
 #include <memory>
 #include <vector>
+#include "Key.h"
 #include "KeyData.h"
 
 namespace goost {
@@ -15,7 +16,7 @@ namespace magma {
 class BlkRaw;
 class Sbox;
 
-class LazyKey {
+class LazyKey final : public Key {
 public:
 	/// String key
 	explicit LazyKey(const std::string &key_data);
@@ -27,7 +28,7 @@ public:
 	/// Primary ctor
 	LazyKey(std::unique_ptr<const KeyData> key_data, const std::shared_ptr<const Sbox> &sbox);
 
-	uint32_t transform(uint32_t v, int index) const;
+	uint32_t transform(uint32_t v, int index) const override;
 
 private:
 	const std::unique_ptr<const KeyData> key_data;
