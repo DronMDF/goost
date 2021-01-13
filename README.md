@@ -1,9 +1,8 @@
 Pure object oriented gost ciphers implementation
 
-![Shippable test](https://api.shippable.com/projects/58a0cbe8b195740f00e03db0/badge?branch=master)
-[![Travis](https://travis-ci.org/DronMDF/goost.svg?branch=master)](https://travis-ci.org/DronMDF/goost)
-[![codecov](https://codecov.io/gh/DronMDF/goost/branch/master/graph/badge.svg)](https://codecov.io/gh/DronMDF/goost)
-[![PDD status](http://www.0pdd.com/svg?name=DronMDF/goost)](http://www.0pdd.com/p?name=DronMDF/goost)
+![Build](https://github.com/DronMDF/goost/workflows/Build/badge.svg)
+[![Coverage](https://codecov.io/gh/DronMDF/goost/branch/master/graph/badge.svg)](https://codecov.io/gh/DronMDF/goost)
+[ ![Download](https://api.bintray.com/packages/mdf/pureoop/goost%3Adronmdf/images/download.svg) ](https://bintray.com/mdf/pureoop/goost%3Adronmdf/_latestVersion)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/DronMDF/2out/blob/master/LICENSE)
 
 # Standarts
