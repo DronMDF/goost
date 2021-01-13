@@ -6,14 +6,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
-    - uses: actions/setup-ruby@v1
     - run: |
-        sudo apt-get install cmake cppcheck doxygen python3-pip python3-setuptools
+        sudo apt-get install cmake cppcheck python3-pip python3-setuptools
         sudo pip3 install cpplint conan
-        gem install pdd
         conan remote add mdf https://api.bintray.com/conan/mdf/pureoop
         conan install . -s compiler.libcxx='libstdc++11' --build 2out
         cmake -DCMAKE_CXX_FLAGS="--coverage" .
         make style
         make VERBOSE=1
         make test
+    - run: |
+        sudo apt-get install lcov
+        lcov --directory . --capture --output-file coverage.info
+        lcov --remove coverage.info '/usr/*' --output-file coverage.info
+    - uses: codecov/codecov-action@v1
+      with:
+        files: coverage.info
