@@ -7,6 +7,7 @@
 #include <cstring>
 #include <goost/magma/BlkEncrypted.h>
 #include <goost/magma/BlkRaw.h>
+#include <goost/magma/LazyKey.h>
 
 using namespace std;
 using namespace goost;
@@ -15,7 +16,7 @@ using namespace goost::gost89;
 
 CFBSource::CFBSource(
 	const shared_ptr<const Source> &source,
-	const shared_ptr<const LazyKey> &key,
+	const shared_ptr<const Key> &key,
 	uint64_t iv,
 	const vector<byte> &plain
 ) : source(source), key(key), iv(iv), plain(plain)
@@ -24,7 +25,7 @@ CFBSource::CFBSource(
 
 CFBSource::CFBSource(
 	const shared_ptr<const Source> &source,
-	const shared_ptr<const LazyKey> &key,
+	const shared_ptr<const Key> &key,
 	uint64_t iv
 ) : CFBSource(source, key, iv, {})
 {
@@ -49,7 +50,7 @@ pair<vector<byte>, shared_ptr<const Source>> CFBSource::read(size_t size) const
 
 		const auto e = BlkEncrypted(
 			make_shared<BlkRaw>(r),
-			key
+			dynamic_pointer_cast<const LazyKey>(key)
 		).value();
 
 		tie(p, s) = s->read(8);
