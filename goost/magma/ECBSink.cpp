@@ -5,10 +5,8 @@
 
 #include "ECBSink.h"
 #include <cstring>
-#include "BlkEncrypted.h"
-#include "BlkRaw.h"
-#include "Block.h"
-#include "LazyKey.h"
+#include <stdexcept>
+#include "EncryptionBase.h"
 
 using namespace std;
 using namespace goost;
@@ -27,13 +25,12 @@ shared_ptr<const Sink> ECBSink::write(const vector<byte> &data) const
 	auto s = sink;
 	for (const auto &b : data) {
 		p.push_back(b);
-		if (p.size() == Block::size) {
-			const auto e = BlkEncrypted(
-				make_shared<BlkRaw>(&p[0]),
-				dynamic_pointer_cast<const LazyKey>(key)
-			).value();
+		if (p.size() == 8) {
+			const auto e = EncryptionBase(key).transform(
+				*reinterpret_cast<const uint64_t *>(&p[0])
+			);
 
-			memcpy(&p[0], &e.first, Block::size);
+			memcpy(&p[0], &e, 8);
 
 			s = s->write(p);
 			p.clear();
