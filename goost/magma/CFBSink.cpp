@@ -8,6 +8,7 @@
 #include "BlkEncrypted.h"
 #include "BlkRaw.h"
 #include "Block.h"
+#include "LazyKey.h"
 
 using namespace std;
 using namespace goost;
@@ -15,7 +16,7 @@ using namespace goost::magma;
 
 CFBSink::CFBSink(
 	const shared_ptr<const Sink> &sink,
-	const shared_ptr<const LazyKey> &key,
+	const shared_ptr<const Key> &key,
 	uint64_t ivl,
 	uint64_t ivr,
 	const vector<byte> &plain
@@ -25,7 +26,7 @@ CFBSink::CFBSink(
 
 CFBSink::CFBSink(
 	const shared_ptr<const Sink> &sink,
-	const shared_ptr<const LazyKey> &key,
+	const shared_ptr<const Key> &key,
 	uint64_t ivl,
 	uint64_t ivr
 ) : CFBSink(sink, key, ivl, ivr, {})
@@ -43,7 +44,7 @@ shared_ptr<const Sink> CFBSink::write(const vector<byte> &data) const
 		if (p.size() == Block::size) {
 			const auto e = BlkEncrypted(
 				make_shared<BlkRaw>(rl),
-				key
+				dynamic_pointer_cast<const LazyKey>(key)
 			).value();
 
 			auto c = p;
@@ -67,7 +68,7 @@ shared_ptr<const Sink> CFBSink::finalize() const
 	if (!plain.empty()) {
 		const auto e = BlkEncrypted(
 			make_shared<BlkRaw>(ivl),
-			key
+			dynamic_pointer_cast<const LazyKey>(key)
 		).value();
 		auto c = plain;
 		for (int i = 0; i < 4; i++) {
