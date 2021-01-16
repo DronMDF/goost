@@ -9,13 +9,13 @@
 namespace goost {
 namespace magma {
 
-class LazyKey;
+class Key;
 
 class ECBSink final : public Sink {
 public:
 	ECBSink(
 		const std::shared_ptr<const Sink> &sink,
-		const std::shared_ptr<const LazyKey> &key
+		const std::shared_ptr<const Key> &key
 	);
 
 	std::shared_ptr<const Sink> write(const std::vector<std::byte> &data) const override;
@@ -23,7 +23,7 @@ public:
 
 private:
 	const std::shared_ptr<const Sink> sink;
-	const std::shared_ptr<const LazyKey> key;
+	const std::shared_ptr<const Key> key;
 };
 
 }  // namespace magma
