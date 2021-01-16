@@ -7,6 +7,7 @@
 #include <cstring>
 #include "BlkDecrypted.h"
 #include "BlkRaw.h"
+#include "LazyKey.h"
 
 using namespace std;
 using namespace goost;
@@ -14,7 +15,7 @@ using namespace goost::magma;
 
 ECBSource::ECBSource(
 	const shared_ptr<const Source> &source,
-	const shared_ptr<const LazyKey> &key
+	const shared_ptr<const Key> &key
 ) : source(source), key(key)
 {
 }
@@ -35,7 +36,7 @@ pair<vector<byte>, shared_ptr<const Source>> ECBSource::read(size_t size) const
 
 	const auto e = BlkDecrypted(
 		make_shared<BlkRaw>(&p[0]),
-		key
+		dynamic_pointer_cast<const LazyKey>(key)
 	).value();
 
 	memcpy(&p[0], &e.first, Block::size);
