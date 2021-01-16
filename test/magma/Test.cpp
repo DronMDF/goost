@@ -13,6 +13,7 @@
 #include "CFBSourceTest.h"
 #include "ECBSinkTest.h"
 #include "ECBSourceTest.h"
+#include "EncryptionBaseTest.h"
 #include "ImitTest.h"
 #include "KeyCachedDataTest.h"
 #include "KeyDataNativeTest.h"
@@ -26,6 +27,7 @@ using namespace std;
 using namespace oout;
 using namespace goost::magma;
 using namespace magma;
+using namespace test::magma;
 
 magma::Test::Test()
 	: tests(
@@ -39,6 +41,7 @@ magma::Test::Test()
 			make_shared<CFBSourceTest>(),
 			make_shared<ECBSinkTest>(),
 			make_shared<ECBSourceTest>(),
+			make_shared<EncryptionBaseTest>(),
 			make_shared<ImitTest>(),
 			make_shared<KeyCachedDataTest>(),
 			make_shared<KeyDataNativeTest>(),

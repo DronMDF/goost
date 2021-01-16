@@ -51,6 +51,7 @@ ADD_LIBRARY(goost
 	goost/magma/CFBSource.cpp
 	goost/magma/ECBSink.cpp
 	goost/magma/ECBSource.cpp
+	goost/magma/EncryptionBase.cpp
 	goost/magma/Imit.cpp
 	goost/magma/KeyCachedData.cpp
 	goost/magma/KeyDataNative.cpp
