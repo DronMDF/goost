@@ -9,13 +9,13 @@
 namespace goost {
 namespace magma {
 
-class LazyKey;
+class Key;
 
 class ECBSource final : public Source {
 public:
 	ECBSource(
 		const std::shared_ptr<const Source> &source,
-		const std::shared_ptr<const LazyKey> &key
+		const std::shared_ptr<const Key> &key
 	);
 
 	std::pair<std::vector<std::byte>, std::shared_ptr<const Source>> read(
@@ -24,7 +24,7 @@ public:
 
 private:
 	const std::shared_ptr<const Source> source;
-	const std::shared_ptr<const LazyKey> key;
+	const std::shared_ptr<const Key> key;
 };
 
 }
