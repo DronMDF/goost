@@ -7,6 +7,7 @@
 #include <cstring>
 #include "BlkEncrypted.h"
 #include "BlkRaw.h"
+#include "LazyKey.h"
 
 using namespace std;
 using namespace goost;
@@ -14,7 +15,7 @@ using namespace goost::magma;
 
 CFBSource::CFBSource(
 	const shared_ptr<const Source> &source,
-	const shared_ptr<const LazyKey> &key,
+	const shared_ptr<const Key> &key,
 	uint64_t ivl,
 	uint64_t ivr,
 	const vector<byte> &plain
@@ -24,7 +25,7 @@ CFBSource::CFBSource(
 
 CFBSource::CFBSource(
 	const shared_ptr<const Source> &source,
-	const shared_ptr<const LazyKey> &key,
+	const shared_ptr<const Key> &key,
 	uint64_t ivl,
 	uint64_t ivr
 ) : CFBSource(source, key, ivl, ivr, {})
@@ -51,7 +52,7 @@ pair<vector<byte>, shared_ptr<const Source>> CFBSource::read(size_t size) const
 
 		const auto e = BlkEncrypted(
 			make_shared<BlkRaw>(rl),
-			key
+			dynamic_pointer_cast<const LazyKey>(key)
 		).value();
 
 		tie(p, s) = s->read(8);
