@@ -8,6 +8,7 @@
 #include "BlkEncrypted.h"
 #include "BlkRaw.h"
 #include "Block.h"
+#include "LazyKey.h"
 
 using namespace std;
 using namespace goost;
@@ -15,7 +16,7 @@ using namespace goost::magma;
 
 ECBSink::ECBSink(
 	const shared_ptr<const Sink> &sink,
-	const shared_ptr<const LazyKey> &key
+	const shared_ptr<const Key> &key
 ) : sink(sink), key(key)
 {
 }
@@ -29,7 +30,7 @@ shared_ptr<const Sink> ECBSink::write(const vector<byte> &data) const
 		if (p.size() == Block::size) {
 			const auto e = BlkEncrypted(
 				make_shared<BlkRaw>(&p[0]),
-				key
+				dynamic_pointer_cast<const LazyKey>(key)
 			).value();
 
 			memcpy(&p[0], &e.first, Block::size);
