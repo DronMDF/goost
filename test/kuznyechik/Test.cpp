@@ -5,7 +5,7 @@
 
 #include "Test.h"
 #include <list>
-#include <2out/TestNamed.h>
+#include <2out/NamedTest.h>
 #include "BlkCachedTest.h"
 #include "BlkEncryptedTest.h"
 #include "BlkIncrementedTest.h"
@@ -26,7 +26,7 @@ using namespace goost::kuznyechik;
 
 kuznyechik::Test::Test()
 	: tests(
-		make_unique<TestNamed>(
+		make_unique<NamedTest>(
 			"Kuznyechik tests",
 			make_shared<BlkCachedTest>(),
 			make_shared<BlkEncryptedTest>(),

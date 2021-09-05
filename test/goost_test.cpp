@@ -15,7 +15,7 @@ using namespace oout;
 
 int main(int, char **)
 {
-	const shared_ptr<const Result> result = TestSuite(
+	const shared_ptr<const Result> result = SuiteTest(
 		make_shared<Hex64SourceTest>(),
 		make_shared<goost::gost89::Test>(),
 		make_shared<kuznyechik::Test>(),

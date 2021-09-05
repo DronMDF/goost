@@ -5,12 +5,12 @@
 
 #pragma once
 #include <memory>
-#include <2out/Representation.h>
+#include <2out/Text.h>
 #include <goost/magma/Block.h>
 
 namespace magma {
 
-class ReprBlock final : public oout::Representation {
+class ReprBlock final : public oout::Text {
 public:
 	explicit ReprBlock(const std::shared_ptr<const goost::magma::Block> &block);
 	std::string asString() const override;

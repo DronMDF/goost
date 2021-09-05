@@ -4,7 +4,7 @@
 // of the MIT license.  See the LICENSE file for details.
 
 #include "Test.h"
-#include <2out/TestNamed.h>
+#include <2out/NamedTest.h>
 #include "BlkDecryptedTest.h"
 #include "BlkEncryptedTest.h"
 #include "BlkStringTest.h"
@@ -31,7 +31,7 @@ using namespace test::magma;
 
 magma::Test::Test()
 	: tests(
-		make_unique<TestNamed>(
+		make_unique<NamedTest>(
 			"Magma tests",
 			make_shared<BlkDecryptedTest>(),
 			make_shared<BlkEncryptedTest>(),

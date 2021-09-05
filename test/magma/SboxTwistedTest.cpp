@@ -4,8 +4,7 @@
 // of the MIT license.  See the LICENSE file for details.
 
 #include "SboxTwistedTest.h"
-#include <2out/TestEqual.h>
-#include <2out/TestNamed.h>
+#include <2out/2out.h>
 #include <goost/magma/SboxNibble.h>
 #include <goost/magma/SboxTwisted.h>
 #include "ReprTransformed.h"
@@ -31,32 +30,32 @@ SboxTwistedTest::SboxTwistedTest()
 		)
 	  ),
 	  tests(
-		make_unique<TestNamed>(
+		make_unique<NamedTest>(
 			__func__,
-			make_shared<const TestNamed>(
+			make_shared<const NamedTest>(
 				"Sbox transformation 1",
-				make_shared<TestEqual>(
+				make_shared<MatchTest>(
 					make_shared<ReprTransformed>(sbox, 0x87654321 + 0xfedcba98),
 					"fdcbc20c"
 				)
 			),
-			make_shared<const TestNamed>(
+			make_shared<const NamedTest>(
 				"Sbox transformation 2",
-				make_shared<TestEqual>(
+				make_shared<MatchTest>(
 					make_shared<ReprTransformed>(sbox, 0xfdcbc20c + 0x87654321),
 					"7e791a4b"
 				)
 			),
-			make_shared<const TestNamed>(
+			make_shared<const NamedTest>(
 				"Sbox transformation 3",
-				make_shared<TestEqual>(
+				make_shared<MatchTest>(
 					make_shared<ReprTransformed>(sbox, 0x7e791a4b + 0xfdcbc20c),
 					"c76549ec"
 				)
 			),
-			make_shared<const TestNamed>(
+			make_shared<const NamedTest>(
 				"Sbox transformation 4",
-				make_shared<TestEqual>(
+				make_shared<MatchTest>(
 					make_shared<ReprTransformed>(sbox, 0xc76549ec + 0x7e791a4b),
 					"9791c849"
 				)

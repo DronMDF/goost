@@ -4,7 +4,7 @@
 // of the MIT license.  See the LICENSE file for details.
 
 #include "BlkDecryptedTest.h"
-#include <2out/TestNamed.h>
+#include <2out/NamedTest.h>
 #include <goost/magma/BlkDecrypted.h>
 #include <goost/magma/BlkString.h>
 #include <goost/magma/LazyKey.h>
@@ -17,9 +17,9 @@ using namespace magma;
 
 BlkDecryptedTest::BlkDecryptedTest()
 	: tests(
-		make_unique<TestNamed>(
+		make_unique<NamedTest>(
 			__func__,
-			make_shared<const TestNamed>(
+			make_shared<const NamedTest>(
 				"R3412_A25",
 				make_shared<TestBlockEqual>(
 					make_shared<BlkDecrypted>(

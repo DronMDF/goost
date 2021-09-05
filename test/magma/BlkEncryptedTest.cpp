@@ -4,7 +4,7 @@
 // of the MIT license.  See the LICENSE file for details.
 
 #include "BlkEncryptedTest.h"
-#include <2out/TestNamed.h>
+#include <2out/NamedTest.h>
 #include <goost/magma/BlkEncrypted.h>
 #include <goost/magma/BlkRaw.h>
 #include <goost/magma/LazyKey.h>
@@ -46,9 +46,9 @@ BlkEncryptedTest::BlkEncryptedTest()
 		)
 	  ),
 	  tests(
-		make_unique<TestNamed>(
+		make_unique<NamedTest>(
 			__func__,
-			make_shared<const TestNamed>(
+			make_shared<const NamedTest>(
 				"R3412_A24",
 				make_shared<TestBlockEqual>(
 					make_shared<BlkEncrypted>(
@@ -63,7 +63,7 @@ BlkEncryptedTest::BlkEncryptedTest()
 					"4ee901e5c2d8ca3d"
 				)
 			),
-			make_shared<const TestNamed>(
+			make_shared<const NamedTest>(
 				"R3412_A262_1",
 				make_shared<TestBlockEqual>(
 					make_shared<BlkEncrypted>(
@@ -73,7 +73,7 @@ BlkEncryptedTest::BlkEncryptedTest()
 					"2b073f0494f372a0"
 				)
 			),
-			make_shared<const TestNamed>(
+			make_shared<const NamedTest>(
 				"R3412_A262_2",
 				make_shared<TestBlockEqual>(
 					make_shared<BlkEncrypted>(
@@ -83,7 +83,7 @@ BlkEncryptedTest::BlkEncryptedTest()
 					"c89ed814fd5e18e9"
 				)
 			),
-			make_shared<const TestNamed>(
+			make_shared<const NamedTest>(
 				"R3412_A262_3",
 				make_shared<TestBlockEqual>(
 					make_shared<BlkEncrypted>(
@@ -93,7 +93,7 @@ BlkEncryptedTest::BlkEncryptedTest()
 					"f739b18d34289b00"
 				)
 			),
-			make_shared<const TestNamed>(
+			make_shared<const NamedTest>(
 				"R3412_A262_4",
 				make_shared<TestBlockEqual>(
 					make_shared<BlkEncrypted>(
@@ -103,7 +103,7 @@ BlkEncryptedTest::BlkEncryptedTest()
 					"154e72102030c5bb"
 				)
 			),
-			make_shared<const TestNamed>(
+			make_shared<const NamedTest>(
 				"TestSboxbyteEncryption #1",
 				make_shared<TestBlockEqual>(
 					make_shared<BlkEncrypted>(
@@ -113,7 +113,7 @@ BlkEncryptedTest::BlkEncryptedTest()
 					"ea4af215984c8c4b"
 				)
 			),
-			make_shared<const TestNamed>(
+			make_shared<const NamedTest>(
 				"TestSboxbyteEncryption #2",
 				make_shared<TestBlockEqual>(
 					make_shared<BlkEncrypted>(

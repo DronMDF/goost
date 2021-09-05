@@ -5,12 +5,12 @@
 
 #pragma once
 #include <memory>
-#include <2out/Representation.h>
+#include <2out/Text.h>
 #include <goost/magma/KeyData.h>
 
 namespace magma {
 
-class ReprKeyData final : public oout::Representation {
+class ReprKeyData final : public oout::Text {
 public:
 	explicit ReprKeyData(const std::shared_ptr<const goost::magma::KeyData> &key_data);
 	std::string asString() const override;

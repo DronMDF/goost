@@ -4,8 +4,7 @@
 // of the MIT license.  See the LICENSE file for details.
 
 #include "KeyDataStringTest.h"
-#include <2out/TestEqual.h>
-#include <2out/TestNamed.h>
+#include <2out/2out.h>
 #include <goost/magma/KeyDataString.h>
 #include "ReprKeyData.h"
 
@@ -16,11 +15,11 @@ using namespace magma;
 
 KeyDataStringTest::KeyDataStringTest()
 	: tests(
-		make_unique<TestNamed>(
+		make_unique<NamedTest>(
 			__func__,
-			make_shared<const TestNamed>(
+			make_shared<const NamedTest>(
 				"string key",
-				make_shared<TestEqual>(
+				make_shared<MatchTest>(
 					make_shared<ReprKeyData>(
 						make_shared<KeyDataString>(
 							"ffeeddccbbaa99887766554433221100"

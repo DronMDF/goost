@@ -4,7 +4,7 @@
 // of the MIT license.  See the LICENSE file for details.
 
 #include "BlkSwappedTest.h"
-#include <2out/TestNamed.h>
+#include <2out/NamedTest.h>
 #include <goost/magma/BlkSwapped.h>
 #include <goost/magma/BlkString.h>
 #include "TestBlockEqual.h"
@@ -16,9 +16,9 @@ using namespace magma;
 
 BlkSwappedTest::BlkSwappedTest()
 	: tests(
-		make_unique<TestNamed>(
+		make_unique<NamedTest>(
 			__func__,
-			make_shared<const TestNamed>(
+			make_shared<const NamedTest>(
 				"Swap",
 				make_shared<TestBlockEqual>(
 					make_shared<BlkSwapped>(

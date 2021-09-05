@@ -4,7 +4,7 @@
 // of the MIT license.  See the LICENSE file for details.
 
 #include "BlkRawTest.h"
-#include <2out/TestNamed.h>
+#include <2out/NamedTest.h>
 #include <goost/kuznyechik/BlkRaw.h>
 #include "TestBlockEqual.h"
 
@@ -15,9 +15,9 @@ using namespace kuznyechik;
 
 BlkRawTest::BlkRawTest()
 	: tests(
-		make_unique<TestNamed>(
+		make_unique<NamedTest>(
 			__func__,
-			make_shared<const TestNamed>(
+			make_shared<const NamedTest>(
 				"ByteOrder",
 				make_shared<TestBlockEqual>(
 					make_unique<BlkRaw>(1),

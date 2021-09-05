@@ -4,7 +4,7 @@
 // of the MIT license.  See the LICENSE file for details.
 
 #include "BlkStringTest.h"
-#include <2out/TestNamed.h>
+#include <2out/NamedTest.h>
 #include <goost/magma/BlkString.h>
 #include "TestBlockEqual.h"
 
@@ -15,9 +15,9 @@ using namespace magma;
 
 BlkStringTest::BlkStringTest()
 	: tests(
-		make_unique<TestNamed>(
+		make_unique<NamedTest>(
 			__func__,
-			make_shared<const TestNamed>(
+			make_shared<const NamedTest>(
 				"Expansion",
 				make_shared<TestBlockEqual>(
 					make_shared<BlkString>("1"),

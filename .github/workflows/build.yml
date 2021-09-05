@@ -10,10 +10,10 @@ jobs:
       run: |
         sudo apt-get install cmake cppcheck lcov python3-pip python3-setuptools
         sudo pip3 install cpplint conan
-        conan remote add mdf https://api.bintray.com/conan/mdf/pureoop
+        conan remote add pureoop-2out https://conan.cloudsmith.io/pureoop/2out
     - name: Build
       run: |
-        conan install . -s compiler.libcxx='libstdc++11' --build 2out
+        conan install . -s compiler.libcxx='libstdc++11' --build=missing
         cmake -DCMAKE_CXX_FLAGS="--coverage" .
         make style
         make VERBOSE=1

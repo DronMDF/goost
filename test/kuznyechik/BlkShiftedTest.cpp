@@ -4,7 +4,7 @@
 // of the MIT license.  See the LICENSE file for details.
 
 #include "BlkShiftedTest.h"
-#include <2out/TestNamed.h>
+#include <2out/NamedTest.h>
 #include <goost/kuznyechik/BlkShifted.h>
 #include <goost/kuznyechik/BlkString.h>
 #include "TestBlockEqual.h"
@@ -16,9 +16,9 @@ using namespace kuznyechik;
 
 BlkShiftedTest::BlkShiftedTest()
 	: tests(
-		make_unique<TestNamed>(
+		make_unique<NamedTest>(
 			__func__,
-			make_shared<const TestNamed>(
+			make_shared<const NamedTest>(
 				"Shift on 4 bit",
 				make_shared<TestBlockEqual>(
 					make_unique<BlkShifted>(
@@ -28,7 +28,7 @@ BlkShiftedTest::BlkShiftedTest()
 					"00000000000000000000000000000010"
 				)
 			),
-			make_shared<const TestNamed>(
+			make_shared<const NamedTest>(
 				"Shift over parts",
 				make_shared<TestBlockEqual>(
 					make_unique<BlkShifted>(

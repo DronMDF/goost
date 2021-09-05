@@ -4,7 +4,7 @@
 // of the MIT license.  See the LICENSE file for details.
 
 #pragma once
-#include <2out/Representation.h>
+#include <2out/Text.h>
 #include <2out/Test.h>
 #include <goost/magma/Block.h>
 
@@ -15,7 +15,7 @@ class TestBlockEqual final : public oout::Test {
 public:
 	/// Primary ctor
 	TestBlockEqual(
-		const std::shared_ptr<const oout::Representation> &a,
+		const std::shared_ptr<const oout::Text> &a,
 		const std::string &b
 	);
 
