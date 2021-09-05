@@ -5,7 +5,7 @@
 
 #include "BlkCachedTest.h"
 #include <random>
-#include <2out/TestNamed.h>
+#include <2out/NamedTest.h>
 #include <goost/kuznyechik/BlkCached.h>
 #include "TestBlockEqual.h"
 
@@ -30,9 +30,9 @@ BlkCachedTest::BlkCachedTest()
 		)
 	  ),
 	  tests(
-		make_unique<TestNamed>(
+		make_unique<NamedTest>(
 			__func__,
-			make_shared<const TestNamed>(
+			make_shared<const NamedTest>(
 				"BlkCached give value once and forever",
 				make_shared<TestBlockEqual>(block, block)
 			)

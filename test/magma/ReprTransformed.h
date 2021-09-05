@@ -5,12 +5,12 @@
 
 #pragma once
 #include <memory>
-#include <2out/Representation.h>
+#include <2out/Text.h>
 #include <goost/magma/Sbox.h>
 
 namespace magma {
 
-class ReprTransformed final : public oout::Representation {
+class ReprTransformed final : public oout::Text {
 public:
 	ReprTransformed(const std::shared_ptr<const goost::magma::Sbox> &sbox, uint32_t value);
 

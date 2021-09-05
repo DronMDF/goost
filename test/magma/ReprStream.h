@@ -5,12 +5,12 @@
 
 #pragma once
 #include <memory>
-#include <2out/Representation.h>
+#include <2out/Text.h>
 #include <goost/magma/Stream.h>
 
 namespace magma {
 
-class ReprStream final : public oout::Representation {
+class ReprStream final : public oout::Text {
 public:
 	explicit ReprStream(const std::shared_ptr<const goost::magma::Stream> &stream);
 	std::string asString() const override;

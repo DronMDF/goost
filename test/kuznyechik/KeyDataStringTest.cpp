@@ -4,7 +4,7 @@
 // of the MIT license.  See the LICENSE file for details.
 
 #include "KeyDataStringTest.h"
-#include <2out/TestNamed.h>
+#include <2out/NamedTest.h>
 #include <goost/kuznyechik/KeyDataString.h>
 #include "BlkKeyData.h"
 #include "TestBlockEqual.h"
@@ -21,16 +21,16 @@ KeyDataStringTest::KeyDataStringTest()
 		)
 	  ),
 	  tests(
-		make_unique<TestNamed>(
+		make_unique<NamedTest>(
 			__func__,
-			make_shared<TestNamed>(
+			make_shared<NamedTest>(
 				"High block",
 				make_shared<TestBlockEqual>(
 					make_shared<BlkKeyDataHigh>(key_data),
 					"8899aabbccddeeff0011223344556677"
 				)
 			),
-			make_shared<TestNamed>(
+			make_shared<NamedTest>(
 				"Low block",
 				make_shared<TestBlockEqual>(
 					make_shared<BlkKeyDataLow>(key_data),

@@ -4,7 +4,7 @@
 // of the MIT license.  See the LICENSE file for details.
 
 #include "BlkSTest.h"
-#include <2out/TestNamed.h>
+#include <2out/NamedTest.h>
 #include <goost/kuznyechik/BlkS.h>
 #include <goost/kuznyechik/BlkString.h>
 #include "TestBlockEqual.h"
@@ -16,9 +16,9 @@ using namespace kuznyechik;
 
 BlkSTest::BlkSTest()
 	: tests(
-		make_unique<TestNamed>(
+		make_unique<NamedTest>(
 			__func__,
-			make_shared<TestNamed>(
+			make_shared<NamedTest>(
 				"R3412_A11_1",
 				make_shared<TestBlockEqual>(
 					make_unique<BlkS>(
@@ -29,7 +29,7 @@ BlkSTest::BlkSTest()
 					"b66cd8887d38e8d77765aeea0c9a7efc"
 				)
 			),
-			make_shared<TestNamed>(
+			make_shared<NamedTest>(
 				"R3412_A11_2",
 				make_shared<TestBlockEqual>(
 					make_unique<BlkS>(
@@ -40,7 +40,7 @@ BlkSTest::BlkSTest()
 					"559d8dd7bd06cbfe7e7b262523280d39"
 				)
 			),
-			make_shared<TestNamed>(
+			make_shared<NamedTest>(
 				"R3412_A11_3",
 				make_shared<TestBlockEqual>(
 					make_unique<BlkS>(
@@ -51,7 +51,7 @@ BlkSTest::BlkSTest()
 					"0c3322fed531e4630d80ef5c5a81c50b"
 				)
 			),
-			make_shared<TestNamed>(
+			make_shared<NamedTest>(
 				"R3412_A11_4",
 				make_shared<TestBlockEqual>(
 					make_unique<BlkS>(

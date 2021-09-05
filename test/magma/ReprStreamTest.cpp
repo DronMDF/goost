@@ -4,8 +4,7 @@
 // of the MIT license.  See the LICENSE file for details.
 
 #include "ReprStreamTest.h"
-#include <2out/TestNamed.h>
-#include <2out/TestEqual.h>
+#include <2out/2out.h>
 #include <goost/magma/StMemory.h>
 #include "ReprStream.h"
 
@@ -16,11 +15,11 @@ using namespace magma;
 
 ReprStreamTest::ReprStreamTest()
 	: tests(
-		make_unique<TestNamed>(
+		make_unique<NamedTest>(
 			__func__,
-			make_shared<const TestNamed>(
+			make_shared<const NamedTest>(
 				"Trivial Stream representation",
-				make_shared<TestEqual>(
+				make_shared<MatchTest>(
 					make_shared<ReprStream>(
 						make_shared<StMemory>(
 							vector<uint64_t>{

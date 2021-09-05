@@ -5,8 +5,7 @@
 // of the MIT license.  See the LICENSE file for details.
 
 #include "ImitTest.h"
-#include <2out/TestNamed.h>
-#include <2out/TestStartsWith.h>
+#include <2out/2out.h>
 #include <goost/kuznyechik/Imit.h>
 #include <goost/kuznyechik/StMemory.h>
 #include <goost/kuznyechik/Key.h>
@@ -19,11 +18,11 @@ using namespace kuznyechik;
 
 ImitTest::ImitTest()
 	: tests(
-		make_unique<TestNamed>(
+		make_unique<NamedTest>(
 			__func__,
-			make_shared<const TestNamed>(
+			make_shared<const NamedTest>(
 				"R3413_A162",
-				make_shared<TestStartsWith>(
+				make_shared<MatchTest>(
 					make_unique<ReprBlock>(
 						make_unique<Imit>(
 							make_unique<const StMemory>(
@@ -44,7 +43,7 @@ ImitTest::ImitTest()
 							)
 						)
 					),
-					"336f4d296059fbe3"
+					make_shared<StartsWithMatch>("336f4d296059fbe3")
 				)
 			)
 		)

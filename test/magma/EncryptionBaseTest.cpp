@@ -59,7 +59,7 @@ EncryptionBaseTest::EncryptionBaseTest()
 		make_shared<EncryptionBaseText>(0x8206233a9af61aa5),
 		make_shared<EqualMatch>("f739b18d34289b00")
 	),
-	make_shared<const TestNamed>(
+	make_shared<const NamedTest>(
 		"R3412_A262_4",
 		make_shared<EncryptionBaseText>(0x216e6a2561cff165),
 		make_shared<EqualMatch>("154e72102030c5bb")

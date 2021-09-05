@@ -4,7 +4,7 @@
 // of the MIT license.  See the LICENSE file for details.
 
 #include "BlkEncryptedTest.h"
-#include <2out/TestNamed.h>
+#include <2out/NamedTest.h>
 #include <goost/kuznyechik/BlkEncrypted.h>
 #include <goost/kuznyechik/BlkString.h>
 #include "TestBlockEqual.h"
@@ -17,9 +17,9 @@ using namespace kuznyechik;
 BlkEncryptedTest::BlkEncryptedTest()
 	: key(make_unique<Key>("8899aabbccddeeff0011223344556677fedcba98765432100123456789abcdef")),
 	  tests(
-		make_unique<TestNamed>(
+		make_unique<NamedTest>(
 			__func__,
-			make_shared<TestNamed>(
+			make_shared<NamedTest>(
 				"R3412_A15, R3412_A11_1",
 				make_shared<TestBlockEqual>(
 					make_unique<BlkEncrypted>(
@@ -31,7 +31,7 @@ BlkEncryptedTest::BlkEncryptedTest()
 					"7f679d90bebc24305a468d42b9d4edcd"
 				)
 			),
-			make_shared<TestNamed>(
+			make_shared<NamedTest>(
 				"R3412_A11_2",
 				make_shared<TestBlockEqual>(
 					make_unique<BlkEncrypted>(
@@ -43,7 +43,7 @@ BlkEncryptedTest::BlkEncryptedTest()
 					"b429912c6e0032f9285452d76718d08b"
 				)
 			),
-			make_shared<TestNamed>(
+			make_shared<NamedTest>(
 				"R3412_A11_3",
 				make_shared<TestBlockEqual>(
 					make_unique<BlkEncrypted>(
@@ -55,7 +55,7 @@ BlkEncryptedTest::BlkEncryptedTest()
 					"f0ca33549d247ceef3f5a5313bd4b157"
 				)
 			),
-			make_shared<TestNamed>(
+			make_shared<NamedTest>(
 				"R3412_A11_4",
 				make_shared<TestBlockEqual>(
 					make_unique<BlkEncrypted>(

@@ -4,7 +4,7 @@
 // of the MIT license.  See the LICENSE file for details.
 
 #include "ImitTest.h"
-#include <2out/TestNamed.h>
+#include <2out/NamedTest.h>
 #include <goost/magma/Imit.h>
 #include <goost/magma/LazyKey.h>
 #include <goost/magma/StMemory.h>
@@ -17,9 +17,9 @@ using namespace magma;
 
 ImitTest::ImitTest()
 	: tests(
-		make_unique<TestNamed>(
+		make_unique<NamedTest>(
 			__func__,
-			make_shared<const TestNamed>(
+			make_shared<const NamedTest>(
 				"R3413_A262_Test",
 				make_shared<TestBlockEqual>(
 					make_shared<Imit>(
