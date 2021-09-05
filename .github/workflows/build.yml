@@ -13,7 +13,7 @@ jobs:
         conan remote add pureoop-2out https://conan.cloudsmith.io/pureoop/2out
     - name: Build
       run: |
-        conan install . --build=2out
+        conan install . -s compiler.libcxx='libstdc++11' --build=missing
         cmake -DCMAKE_CXX_FLAGS="--coverage" .
         make style
         make VERBOSE=1
