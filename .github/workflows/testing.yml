@@ -11,9 +11,11 @@ jobs:
     - run: |
         sudo apt install python3-setuptools
         sudo pip3 install conan
+        BUILD=`git log --first-parent --oneline v0.3..HEAD | wc -l`
+        sed -i "s/version = '0.4'/version = '0.4.$BUILD'/" conanfile.py
         sed -i "s/checkout('v' + self.version)/checkout('${{ github.sha }}')/" conanfile.py
-        conan export . dronmdf/testing
-        conan remote add pureoop https://api.bintray.com/conan/mdf/pureoop
-        conan user -p ${{ secrets.BINTRAY }} -r pureoop dronmdf
-        conan upload "*" -r pureoop --confirm
-
+        conan remote add pureoop-2out https://conan.cloudsmith.io/pureoop/2out
+        conan remote add pureoop-goost https://conan.cloudsmith.io/pureoop/goost
+        conan create . dronmdf/testing --build=missing
+        conan user -p ${{ secrets.CLOUDSMITH }} -r pureoop-goost andrey-valyaev
+        conan upload "goost/*" -r pureoop-goost --all --confirm
