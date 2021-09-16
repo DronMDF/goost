@@ -7,7 +7,7 @@
 #include <2out/NamedTest.h>
 #include <goost/magma/Imit.h>
 #include <goost/magma/LazyKey.h>
-#include <goost/magma/StMemory.h>
+#include <test/Hex64Source.h>
 #include "TestBlockEqual.h"
 
 using namespace std;
@@ -23,13 +23,11 @@ ImitTest::ImitTest()
 				"R3413_A262_Test",
 				make_shared<TestBlockEqual>(
 					make_shared<Imit>(
-						make_shared<StMemory>(
-							vector<uint64_t>{
-								0x92def06b3c130a59,
-								0xdb54c704f8189d20,
-								0x4a98fb2e67a8024c,
-								0x8912409b17b57e41
-							}
+						make_shared<Hex64Source>(
+							"92def06b3c130a59"
+							"db54c704f8189d20"
+							"4a98fb2e67a8024c"
+							"8912409b17b57e41"
 						),
 						make_shared<LazyKey>(
 							"ffeeddccbbaa99887766554433221100"

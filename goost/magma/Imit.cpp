@@ -4,12 +4,13 @@
 // of the MIT license.  See the LICENSE file for details.
 
 #include "Imit.h"
+#include <cstring>
+#include <goost/Source.h>
 #include "BlkEncrypted.h"
 #include "BlkRaw.h"
 #include "BlkShifted.h"
 #include "BlkXored.h"
 #include "Iterator.h"
-#include "Stream.h"
 
 using namespace std;
 using namespace goost::magma;
@@ -27,11 +28,11 @@ private:
 
 class BlkImitFinalKey final : public Block {
 public:
-	BlkImitFinalKey(const shared_ptr<const LazyKey> &key, const shared_ptr<const Iterator> &iter);
+	BlkImitFinalKey(const shared_ptr<const LazyKey> &key, const size_t block_size);
 	pair<uint32_t, uint32_t> value() const override;
 private:
 	const shared_ptr<const LazyKey> key;
-	const shared_ptr<const Iterator> iter;
+	const size_t block_size;
 };
 
 }  // namespace magma
@@ -53,9 +54,8 @@ pair<uint32_t, uint32_t> BlkImitShifted::value() const
 
 BlkImitFinalKey::BlkImitFinalKey(
 	const shared_ptr<const LazyKey> &key,
-	const shared_ptr<const Iterator> &iter
-)
-	: key(key), iter(iter)
+	size_t block_size
+) : key(key), block_size(block_size)
 {
 }
 
@@ -64,30 +64,40 @@ pair<uint32_t, uint32_t> BlkImitFinalKey::value() const
 	const auto K1 = make_shared<BlkImitShifted>(
 		make_shared<BlkEncrypted>(make_shared<BlkRaw>(), key)
 	);
-	if (iter->size() == 8) {
+	if (block_size == 8) {
 		return K1->value();
 	}
 	return BlkImitShifted(K1).value();
 }
 
 
-Imit::Imit(const shared_ptr<const Stream> &data, const shared_ptr<const LazyKey> &key)
+Imit::Imit(const shared_ptr<const Source> &data, const shared_ptr<const LazyKey> &key)
 	: data(data), key(key)
 {
 }
 
 pair<uint32_t, uint32_t> Imit::value() const
 {
-	auto iter = data->iter();
-	auto block = make_shared<const BlkRaw>();
+	shared_ptr<const Block> k;
+	shared_ptr<const Block> block = make_shared<const BlkRaw>();
+	auto s = data;
 
-	while (!iter->last()) {
-		const auto bv = BlkEncrypted(make_shared<BlkXored>(block, iter), key).value();
-		block = make_shared<BlkRaw>(bv);
-		iter = iter->next();
+	vector<byte> b;
+	tie(b, s) = s->read(Block::size);
+	while (true) {
+		k = make_shared<BlkImitFinalKey>(key, b.size());
+		uint64_t v = 0;
+		memcpy(&v, &b[0], b.size());
+		block = make_shared<BlkXored>(block, make_shared<BlkRaw>(v));
+		if (b.size() < Block::size) {
+			break;
+		}
+		tie(b, s) = s->read(Block::size);
+		if (b.empty()) {
+			break;
+		}
+		block = make_shared<BlkEncrypted>(block, key);
 	}
 
-	return BlkEncrypted(
-		make_shared<BlkXored>(block, iter, make_shared<BlkImitFinalKey>(key, iter)), key
-	).value();
+	return BlkEncrypted(make_shared<BlkXored>(block, k), key).value();
 }
