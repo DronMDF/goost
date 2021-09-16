@@ -8,18 +8,20 @@
 #include "Block.h"
 
 namespace goost {
+
+class Source;
+
 namespace magma {
 
-class Stream;
 class LazyKey;
 
 class Imit final : public Block {
 public:
-	Imit(const std::shared_ptr<const Stream> &data, const std::shared_ptr<const LazyKey> &key);
+	Imit(const std::shared_ptr<const Source> &data, const std::shared_ptr<const LazyKey> &key);
 
 	std::pair<uint32_t, uint32_t> value() const override;
 private:
-	const std::shared_ptr<const Stream> data;
+	const std::shared_ptr<const Source> data;
 	const std::shared_ptr<const LazyKey> key;
 };
 
