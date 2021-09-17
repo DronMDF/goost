@@ -34,3 +34,7 @@ $ cmake -GNinja <path to goost>
 $ ninja
 $ ninja test
 ```
+
+# Benchmark
+
+[goost-benchmark project](https://github.com/DronMDF/goost-benchmark)
