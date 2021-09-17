@@ -18,10 +18,8 @@
 #include "KeyCachedDataTest.h"
 #include "KeyDataNativeTest.h"
 #include "KeyDataStringTest.h"
-#include "ReprStreamTest.h"
 #include "SboxNibbleTest.h"
 #include "SboxTwistedTest.h"
-#include "StMemoryTest.h"
 
 using namespace std;
 using namespace oout;
@@ -46,10 +44,8 @@ magma::Test::Test()
 			make_shared<KeyCachedDataTest>(),
 			make_shared<KeyDataNativeTest>(),
 			make_shared<KeyDataStringTest>(),
-			make_shared<ReprStreamTest>(),
 			make_shared<SboxNibbleTest>(),
-			make_shared<SboxTwistedTest>(),
-			make_shared<StMemoryTest>()
+			make_shared<SboxTwistedTest>()
 		)
 	)
 {
