@@ -62,7 +62,6 @@ ADD_LIBRARY(goost
 	goost/magma/SboxNibble.cpp
 	goost/magma/SboxR3412.cpp
 	goost/magma/SboxTwisted.cpp
-	goost/magma/StMemory.cpp
 )
 
 ADD_SUBDIRECTORY(test)
