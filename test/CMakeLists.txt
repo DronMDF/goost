@@ -64,14 +64,7 @@ TARGET_LINK_LIBRARIES(
 	${CONAN_LIBS}
 )
 
-ADD_CUSTOM_COMMAND(
-	TARGET goost_test
-	PRE_BUILD
-	COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_BINARY_DIR}/shippable/testresults
-)
-
-# @todo #122:15min Hardcoded shippable path
 ADD_TEST(
 	NAME goost_test
-	COMMAND sh -c "$<TARGET_FILE:goost_test> > ${CMAKE_BINARY_DIR}/shippable/testresults/goost_test.xml"
+	COMMAND sh -c "$<TARGET_FILE:goost_test>"
 )
