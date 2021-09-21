@@ -10,12 +10,18 @@ namespace goost {
 namespace magma {
 
 class Key;
+class Container;
 
 class ECBSource final : public Source {
 public:
 	ECBSource(
 		const std::shared_ptr<const Source> &source,
 		const std::shared_ptr<const Key> &key
+	);
+
+	ECBSource(
+		const std::shared_ptr<const Source> &source,
+		const std::shared_ptr<const Container> &container
 	);
 
 	std::pair<std::vector<std::byte>, std::shared_ptr<const Source>> read(
@@ -25,6 +31,10 @@ public:
 private:
 	const std::shared_ptr<const Source> source;
 	const std::shared_ptr<const Key> key;
+
+	std::shared_ptr<const Key> makeKey(
+		const std::shared_ptr<const Container> &container
+	) const;
 };
 
 }
