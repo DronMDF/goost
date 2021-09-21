@@ -45,6 +45,7 @@ ADD_EXECUTABLE(
 	magma/ECBSinkTest.cpp
 	magma/ECBSourceTest.cpp
 	magma/EncryptionBaseTest.cpp
+	magma/HexContainer.cpp
 	magma/ImitTest.cpp
 	magma/KeyCachedDataTest.cpp
 	magma/KeyDataNativeTest.cpp
