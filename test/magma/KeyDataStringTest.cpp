@@ -30,7 +30,7 @@ KeyDataStringTest::KeyDataStringTest()
 					// where high part is K0. Our representation -
 					// is a byte string in host order from K0 to K7
 					"ccddeeff8899aabb4455667700112233"
-					"f3f2f1f0f7f6f5f4fbfaf9f8fffefdfc"
+					"f3f2f1f0f7f6f5f4fbfaf9f8fffefdfc"s
 				)
 			)
 		)
