@@ -6,6 +6,7 @@
 #include "SourceText.h"
 #include <cstddef>
 #include <iomanip>
+#include <limits>
 #include <sstream>
 #include <goost/Source.h>
 
